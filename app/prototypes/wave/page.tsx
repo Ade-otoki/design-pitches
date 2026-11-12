@@ -106,7 +106,35 @@ export default function FairCancel() {
   const [toast, setToast] = useState<{ id: number; text: string; leaving?: boolean } | null>(null);
   const confirmRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const [embed, setEmbed] = useState(false);
+  const [ready, setReady] = useState(false);
+  const chan = useRef<BroadcastChannel | null>(null);
   const t = COPY[lang];
+
+  // URL options for the live mockup page (/live/wave):
+  // ?side=sender|recipient  ?lang=fr|en  ?embed=1 hides the demo controls  ?sync=1 links phones on the same page
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const qs = q.get("side"), ql = q.get("lang");
+    if (qs === "sender" || qs === "recipient") setSide(qs);
+    if (ql === "fr" || ql === "en") setLang(ql);
+    setEmbed(q.get("embed") === "1");
+    setReady(true);
+    if (q.get("sync") !== "1" || typeof BroadcastChannel === "undefined") return;
+    const c = new BroadcastChannel("wave-fair-cancel");
+    chan.current = c;
+    c.onmessage = (e: MessageEvent) => {
+      const m = e.data as { type: string; reason?: Reason; lang?: Lang };
+      if (m.type === "cancel" && m.reason) setCancelled(m.reason);
+      if (m.type === "lang" && m.lang) setLang(m.lang);
+      if (m.type === "reset") { setCancelled(null); setLeft(START_LEFT); setSheet("closed"); setToast(null); setHidden(false); }
+    };
+    return () => c.close();
+  }, []);
+  function cancelWith(r: Reason) {
+    setCancelled(r);
+    chan.current?.postMessage({ type: "cancel", reason: r });
+  }
 
   useEffect(() => {
     if (cancelled || left <= 0) return;
@@ -146,7 +174,7 @@ export default function FairCancel() {
     setTimeout(() => { setSheet("closed"); triggerRef.current?.focus(); }, 200);
   }
   function confirmCancel() {
-    setCancelled(reason);
+    cancelWith(reason);
     closeSheet();
     say(t.snackCancelled);
   }
@@ -160,7 +188,7 @@ export default function FairCancel() {
   const balance = useMemo(() => (cancelled ? 41500 : 66500), [cancelled]);
 
   return (
-    <div className="fc" data-side={side}>
+    <div className={`fc ${embed ? "is-embed" : ""}`} data-side={side} style={ready ? undefined : { visibility: "hidden" }}>
       <style>{CSS}</style>
 
       <div className="demo" role="group" aria-label={t.demo}>
@@ -264,7 +292,7 @@ export default function FairCancel() {
                 <li className={`note ${isFinal ? "ok" : "wait"}`}>
                   <b>{isFinal ? t.final : t.notFinalTitle}</b>
                   <span>{isFinal ? t.finalBody : fill(t.notFinalBody, { t: finalTime })}</span>
-                  {!isFinal && <button className="ghost" onClick={() => setCancelled("number")}>{t.simulate}</button>}
+                  {!isFinal && <button className="ghost" onClick={() => cancelWith("number")}>{t.simulate}</button>}
                 </li>
               )}
               <li className="row"><div><b>{t.withdrawal}</b><span className="date">11 Nov 2026 {lang === "fr" ? "à 9h20" : "at 09:20"}</span></div><b className="val">−{fmt(2000)}</b></li>
@@ -390,6 +418,7 @@ const CSS = `
 .ghost{align-self:flex-start;margin-top:8px;border:1px dashed #b08a4a;background:transparent;border-radius:10px;padding:10px 12px;min-height:44px;font-size:12.5px;color:var(--amber);cursor:pointer;transition:transform 160ms var(--ease-out)}
 .ghost:active{transform:scale(.97)}
 
+.fc.is-embed .demo,.fc.is-embed .credit{display:none}
 .credit{margin:18px 14px 0;text-align:center;font-size:11px;color:#6f6f80}
 
 /* bottom sheet */
