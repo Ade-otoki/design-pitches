@@ -83,7 +83,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             </div>
             <div className="cta-row">
               <a className="btn solid" href={log.prototype.path} target="_blank" rel="noreferrer">Open the prototype ↗</a>
-              <a className="btn ghost" href={log.prototype.repoUrl} target="_blank" rel="noreferrer">View code</a>
             </div>
           </div>
           <Device log={log} />
@@ -244,7 +243,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             <p className="muted lede" style={{ marginTop: 20 }}>{log.depth.body}</p>
             <div className="cta-row">
               <a className="btn solid" href={log.prototype.path} target="_blank" rel="noreferrer">Open full screen ↗</a>
-              <a className="btn ghost" href={log.prototype.repoUrl} target="_blank" rel="noreferrer">View code</a>
             </div>
           </div>
           <Device log={log} />
