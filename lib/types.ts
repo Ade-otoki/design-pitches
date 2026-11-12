@@ -78,3 +78,23 @@ export type ProductLog = {
   nextSteps: string[];
   sources: Source[];
 };
+
+// One pitch deck per company, at /pitch/<slug>. Written by the agent in /content/pitches/<slug>.json.
+// Daniel's own intro, numbers and case studies live in lib/candidate.ts and are shared by every deck.
+export type CaseStudyKey = "youverify" | "foodlify" | "shecluded" | "shecluded-color" | "okubo";
+
+export type PitchDeck = {
+  slug: string; // must match the Product Log slug
+  company: string;
+  role: string;
+  date: string; // e.g. "NOV 2026"
+  hook: string; // cover line, e.g. "I want to help make failed deploys obvious to fix"
+  tags: [string, string]; // two short domain stickers on the cover
+  builtFor: { context: string; opportunities: { title: string; body: string }[] }; // exactly 3
+  whyMe: { body: string[]; bring: { title: string; body: string }[] };
+  caseStudies: [CaseStudyKey, CaseStudyKey, CaseStudyKey]; // order by relevance
+  systemsGets: string; // "What <Company> gets" line on the design-systems slide
+  opportunity: { title: string; problem: string; solution: string };
+  firstWeek: { intro: string; days: { day: string; body: string }[] };
+  ask: string;
+};

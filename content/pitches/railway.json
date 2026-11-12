@@ -1,0 +1,54 @@
+{
+  "slug": "railway",
+  "company": "Railway",
+  "role": "Senior Product Designer",
+  "date": "NOV 2026",
+  "hook": "I want to make every failed deploy obvious to fix",
+  "tags": ["developer", "experience"],
+  "builtFor": {
+    "context": "Railway's promise is that you push code and it's live. When that breaks, the next five minutes decide whether a developer trusts the platform. From your public Help Station, the moments that hurt most are the ones where something failed and nobody can say why.",
+    "opportunities": [
+      {
+        "title": "Failures that explain themselves",
+        "body": "Show what the platform actually saw at each step, starting with healthchecks, so a developer can tell in seconds whether the cause is their code or the platform."
+      },
+      {
+        "title": "Evidence for the agent, not instead of it",
+        "body": "Give the Canvas agent the same structured evidence the person sees, so its answers are grounded and checkable."
+      },
+      {
+        "title": "Rules shown at the moment they're broken",
+        "body": "2xx-only healthchecks, PORT binding, pre-deploy commands: bring the docs' rules into the product where they apply."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "My background is FinTech and RegTech, where the job was making complex, high-stakes systems legible to the people operating them.",
+      "At Youverify I designed transaction-monitoring and KYC dashboards that compliance teams used to make decisions from dense data. That's the same skill Railway's deploy and observability views need."
+    ],
+    "bring": [
+      { "title": "Data-dense interfaces", "body": "Monitoring dashboards where clarity is the product." },
+      { "title": "Design systems", "body": "A component library that cut developer onboarding time by 45%." },
+      { "title": "Building in code", "body": "Working prototypes in code, like the one in this pitch, built with AI tools." }
+    ]
+  },
+  "caseStudies": ["youverify", "foodlify", "shecluded"],
+  "systemsGets": "Someone who can improve one workflow, like a failed deploy, while keeping the whole dashboard consistent as it grows.",
+  "opportunity": {
+    "title": "Healthcheck Timeline",
+    "problem": "A failed healthcheck says it failed, not why. In public threads, developers lost 12 to 18 hours on causes as different as a redirect, a deliberate 503, slow startup and platform-side issues, while their logs said the app was ready.",
+    "solution": "Show every probe attempt and what it got back, lead with a one-line verdict on who owns the fix, and end with one concrete next step. The same evidence is handed to the assistant."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on understanding how developers experience failure on Railway, then shipping a small, useful improvement with the team.",
+    "days": [
+      { "day": "MON", "body": "Meet product, design, engineering and support. Learn current priorities and how success is measured for the deploy experience." },
+      { "day": "TUE", "body": "Read recent support threads and Help Station questions. Tag failures by root cause and map where people get stuck." },
+      { "day": "WED", "body": "Agree on one failure moment to improve, based on evidence and what the platform already records." },
+      { "day": "THU", "body": "Prototype in code with real failure examples, then review edge cases with an engineer." },
+      { "day": "FRI", "body": "Share what I learned, the prototype, the trade-offs and a proposed next step." }
+    ]
+  },
+  "ask": "I'd love to bring design craft, product thinking and a builder's habit of shipping working prototypes to Railway's deploy experience."
+}
