@@ -14,7 +14,8 @@
   "prototype": {
     "path": "/prototypes/wave",
     "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/wave",
-    "frame": "phone"
+    "frame": "phone",
+    "liveUrl": "/live/wave"
   },
   "context": {
     "title": "Cancelling a transfer is hidden for the sender and invisible to the recipient",

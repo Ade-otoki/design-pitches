@@ -42,7 +42,9 @@ export default async function Pitch({ params }: { params: Promise<{ slug: string
   const d = getDeck(slug);
   if (!d) notFound();
   const C = d.company.toUpperCase();
-  const kind = getLog(slug)?.prototype.frame === "phone" ? "phone" : "desktop";
+  const proto = getLog(slug)?.prototype;
+  const kind = proto?.frame === "phone" ? "phone" : "desktop";
+  const tryHref = proto?.liveUrl ?? `/prototypes/${d.slug}`;
   const index = ["Intro", `Why ${d.company}`, "Experience", "Product thinking", "Design systems", "Working style", "First week", "Ask"];
 
   return (
@@ -174,7 +176,7 @@ export default async function Pitch({ params }: { params: Promise<{ slug: string
             <p className="body"><b className="pinkt">Problem:</b> {d.opportunity.problem}</p>
             <p className="body"><b className="yel">Solution:</b> {d.opportunity.solution}</p>
             <div className="btns">
-              <a className="btn yellow" href={`/prototypes/${d.slug}`} target="_blank" rel="noreferrer">Try the prototype ↗</a>
+              <a className="btn yellow" href={tryHref} target="_blank" rel="noreferrer">Try the prototype ↗</a>
               <a className="btn ghost" href={`/${d.slug}`} target="_blank" rel="noreferrer">Read the product log ↗</a>
             </div>
           </div>

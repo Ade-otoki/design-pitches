@@ -83,7 +83,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
               <span>{fmtDate(log.date)}</span>
             </div>
             <div className="cta-row">
-              <a className="btn solid" href={log.prototype.path} target="_blank" rel="noreferrer">Open the prototype ↗</a>
+              <a className="btn solid" href={log.prototype.liveUrl ?? log.prototype.path} target="_blank" rel="noreferrer">Open the prototype ↗</a>
             </div>
           </div>
           <Device log={log} />
@@ -259,7 +259,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             <h2 className="serif h-section">The working prototype</h2>
             <p className="muted lede" style={{ marginTop: 20 }}>{log.depth.body}</p>
             <div className="cta-row">
-              <a className="btn solid" href={log.prototype.path} target="_blank" rel="noreferrer">Open full screen ↗</a>
+              <a className="btn solid" href={log.prototype.liveUrl ?? log.prototype.path} target="_blank" rel="noreferrer">Open full screen ↗</a>
             </div>
           </div>
           <Device log={log} />

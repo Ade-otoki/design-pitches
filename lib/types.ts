@@ -22,6 +22,7 @@ export type ProductLog = {
     path: string; // e.g. "/prototypes/acme" (live in this same site)
     repoUrl: string; // GitHub folder link
     frame?: "phone" | "desktop";
+    liveUrl?: string; // optional live mockup page (e.g. "/live/acme"); prototype buttons open this when set
   };
 
   context: {
