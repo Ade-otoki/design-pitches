@@ -188,7 +188,10 @@ export default function FairCancel() {
   const balance = useMemo(() => (cancelled ? 41500 : 66500), [cancelled]);
 
   return (
-    <div className={`fc ${embed ? "is-embed" : ""}`} data-side={side} style={ready ? undefined : { visibility: "hidden" }}>
+    <div className={`fc ${embed ? "is-embed" : ""} ${ready ? "is-ready" : ""}`} data-side={side}>
+      {/* Only the recipient view (opened with ?side=recipient) waits for JS, so it never flashes the sender screen.
+          Every other view renders straight from the HTML, even if scripts are slow or fail. */}
+      <script dangerouslySetInnerHTML={{ __html: "if(/[?&]side=recipient/.test(location.search))document.documentElement.classList.add('fc-wait')" }} />
       <style>{CSS}</style>
 
       <div className="demo" role="group" aria-label={t.demo}>
@@ -418,6 +421,7 @@ const CSS = `
 .ghost{align-self:flex-start;margin-top:8px;border:1px dashed #b08a4a;background:transparent;border-radius:10px;padding:10px 12px;min-height:44px;font-size:12.5px;color:var(--amber);cursor:pointer;transition:transform 160ms var(--ease-out)}
 .ghost:active{transform:scale(.97)}
 
+.fc-wait .fc:not(.is-ready){visibility:hidden}
 .fc.is-embed .demo,.fc.is-embed .credit{display:none}
 .credit{margin:18px 14px 0;text-align:center;font-size:11px;color:#6f6f80}
 
