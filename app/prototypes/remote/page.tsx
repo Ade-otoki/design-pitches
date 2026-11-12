@@ -158,7 +158,7 @@ export default function WhyMyPayChanged() {
 
 const CSS = `
 .pp{--ink:#14161c;--muted:#5f6573;--faint:#9aa0ad;--line:#eceef2;--bg:#f6f7f9;--card:#fff;--green:#127a4b;--green-bg:#e8f6ef;--red:#b4232c;--red-bg:#fdecec;--accent:#3b3ff5;
-  min-height:100svh;background:var(--bg);color:var(--ink);font:15px/1.45 Inter,system-ui,sans-serif;padding:52px 16px 24px;}
+  min-height:100svh;background:var(--bg);color:var(--ink);font:15px/1.45 Inter,system-ui,sans-serif;padding:60px 16px 24px;}
 .pp *{box-sizing:border-box}
 .top{display:grid;grid-template-columns:24px 1fr auto;align-items:center;font-weight:600;font-size:16px;margin-bottom:14px}
 .back{font-size:26px;line-height:1;color:var(--muted)}

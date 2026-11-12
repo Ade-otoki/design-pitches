@@ -4,6 +4,7 @@ import { allLogs, getLog } from "../../../lib/content";
 import type { ProductLog } from "../../../lib/types";
 import { BOOKING_URL } from "../../../lib/site";
 import ScaledFrame from "../../../lib/ScaledFrame";
+import IPhone17 from "../../../lib/IPhone17";
 
 export const dynamicParams = false;
 
@@ -39,7 +40,7 @@ function Device({ log }: { log: ProductLog }) {
   }
   return (
     <div className="phone">
-      <ScaledFrame src={src} title={title} kind="phone" />
+      <IPhone17 src={src} title={title} />
     </div>
   );
 }

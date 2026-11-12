@@ -7,6 +7,7 @@ import { CASE_STUDIES, INTRO, LINKS, SYSTEMS, WORKING_STYLE } from "../../../lib
 import { BOOKING_URL } from "../../../lib/site";
 import { getLog } from "../../../lib/content";
 import ScaledFrame from "../../../lib/ScaledFrame";
+import IPhone17 from "../../../lib/IPhone17";
 import "./deck.css";
 
 const DIR = path.join(process.cwd(), "content", "pitches");
@@ -178,7 +179,11 @@ export default async function Pitch({ params }: { params: Promise<{ slug: string
             </div>
           </div>
           <div className={`screen ${kind}`}>
-            <ScaledFrame src={`/prototypes/${d.slug}`} title={`${d.opportunity.title} prototype`} kind={kind} />
+            {kind === "phone" ? (
+              <IPhone17 src={`/prototypes/${d.slug}`} title={`${d.opportunity.title} prototype`} />
+            ) : (
+              <ScaledFrame src={`/prototypes/${d.slug}`} title={`${d.opportunity.title} prototype`} kind="desktop" />
+            )}
           </div>
         </div>
       </Slide>

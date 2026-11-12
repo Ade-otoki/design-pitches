@@ -17,7 +17,7 @@ export default function SamplePrototype() {
   const done = COLUMNS.every((c) => c.confidence > 0.9 || confirmed[c.file]);
 
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", padding: "48px 20px 24px", minHeight: "100svh", background: "#fff", color: "#16140f" }}>
+    <div style={{ fontFamily: "system-ui, sans-serif", padding: "60px 20px 24px", minHeight: "100svh", background: "#fff", color: "#16140f" }}>
       <p style={{ fontSize: 12, letterSpacing: ".08em", textTransform: "uppercase", color: "#8a8476", margin: 0 }}>Step 2 of 3</p>
       <h1 style={{ fontSize: 24, margin: "6px 0 4px" }}>Match your columns</h1>
       <p style={{ color: "#4a463d", fontSize: 14, margin: "0 0 20px" }}>We matched what we could. Check the one we&apos;re unsure about.</p>

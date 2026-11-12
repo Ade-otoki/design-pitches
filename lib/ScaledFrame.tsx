@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Renders a prototype at its real size (desktop 1280x800, phone 390x844) and scales it down to fit
+// Renders a prototype at its real size (desktop 1280x800, phone 402x874 (iPhone 17)) and scales it down to fit
 // the frame, so web solutions show their full desktop layout instead of collapsing to a mobile one.
-const SIZES = { desktop: { w: 1280, h: 800 }, phone: { w: 390, h: 844 } } as const;
+const SIZES = { desktop: { w: 1280, h: 800 }, phone: { w: 402, h: 874 } } as const;
 
 export default function ScaledFrame({ src, title, kind }: { src: string; title: string; kind: "desktop" | "phone" }) {
   const box = useRef<HTMLDivElement>(null);

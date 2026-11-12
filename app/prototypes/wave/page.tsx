@@ -307,7 +307,7 @@ const CSS = `
   --indigo:#4a3fdb; --indigo-ink:#2b2392; --sky:#5bc5f7; --sky-ink:#0b77ab; --ink:#1d1b3a; --muted:#686879;
   --line:#ececf3; --soft:#f5f5fa; --red:#d93a40; --red-text:#b3242a; --red-bg:#fdeeee; --amber:#8a5300; --amber-bg:#fff4dc; --green:#0e7a4c; --green-bg:#e6f6ee;
   --ease-out:cubic-bezier(.23,1,.32,1); --ease-drawer:cubic-bezier(.32,.72,0,1);
-  min-height:100svh;background:#fff;color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;padding:46px 0 20px;position:relative;overflow:hidden}
+  min-height:100svh;background:#fff;color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;padding:60px 0 20px;position:relative;overflow:hidden}
 .fc *{box-sizing:border-box}
 .fc button{font:inherit;-webkit-tap-highlight-color:transparent}
 .fc button:focus-visible,.opt:focus-within{outline:2px solid var(--sky-ink);outline-offset:2px}
