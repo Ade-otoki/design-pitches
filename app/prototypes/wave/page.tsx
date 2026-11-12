@@ -307,7 +307,7 @@ const CSS = `
   --indigo:#4a3fdb; --indigo-ink:#2b2392; --sky:#5bc5f7; --sky-ink:#0b77ab; --ink:#1d1b3a; --muted:#686879;
   --line:#ececf3; --soft:#f5f5fa; --red:#d93a40; --red-text:#b3242a; --red-bg:#fdeeee; --amber:#8a5300; --amber-bg:#fff4dc; --green:#0e7a4c; --green-bg:#e6f6ee;
   --ease-out:cubic-bezier(.23,1,.32,1); --ease-drawer:cubic-bezier(.32,.72,0,1);
-  min-height:100svh;background:#fff;color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;padding:60px 0 20px;position:relative;overflow:hidden}
+  box-sizing:border-box;min-height:100svh;background:#fff;color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;padding:60px 0 20px;position:relative;overflow:hidden}
 .fc *{box-sizing:border-box}
 .fc button{font:inherit;-webkit-tap-highlight-color:transparent}
 .fc button:focus-visible,.opt:focus-within{outline:2px solid var(--sky-ink);outline-offset:2px}
@@ -393,10 +393,10 @@ const CSS = `
 .credit{margin:18px 14px 0;text-align:center;font-size:11px;color:#6f6f80}
 
 /* bottom sheet */
-.scrim{position:absolute;inset:0;background:rgba(20,18,60,.38);display:flex;align-items:flex-end;z-index:10;animation:fade 200ms ease both}
+.scrim{position:fixed;inset:0;background:rgba(20,18,60,.38);display:flex;align-items:flex-end;z-index:10;animation:fade 200ms ease both}
 .scrim.out{animation:fadeout 200ms ease both}
 @keyframes fade{from{opacity:0}} @keyframes fadeout{to{opacity:0}}
-.drawer{width:100%;background:#fff;border-radius:22px 22px 0 0;padding:10px 18px 24px;animation:up 320ms var(--ease-drawer) both}
+.drawer{width:100%;background:#fff;border-radius:22px 22px 0 0;padding:10px 18px 38px;animation:up 320ms var(--ease-drawer) both}
 .drawer.out{animation:down 200ms var(--ease-out) both}
 @keyframes up{from{transform:translateY(100%)}} @keyframes down{to{transform:translateY(100%)}}
 .grab{width:40px;height:4px;border-radius:2px;background:#dcdce8;margin:0 auto 14px}
@@ -410,7 +410,7 @@ fieldset{border:0;margin:14px 0 4px;padding:0}
 .btn-text{width:100%;margin-top:4px;padding:13px;border:0;border-radius:999px;background:none;color:var(--sky-ink);font-weight:600;cursor:pointer}
 
 /* toast */
-.toast{position:absolute;left:14px;right:14px;bottom:16px;z-index:20;background:var(--ink);color:#fff;border-radius:14px;padding:11px 14px;font-size:14px;text-align:center;animation:toast 300ms var(--ease-out) both}
+.toast{position:fixed;left:14px;right:14px;bottom:44px;z-index:20;background:var(--ink);color:#fff;border-radius:14px;padding:11px 14px;font-size:14px;text-align:center;animation:toast 300ms var(--ease-out) both}
 @keyframes toast{from{opacity:0;transform:translateY(100%)}}
 .toast.out{animation:toastout 200ms var(--ease-out) both}
 @keyframes toastout{to{opacity:0;transform:translateY(100%)}}
