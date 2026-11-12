@@ -27,7 +27,6 @@ export default function ScaledFrame({ src, title, kind }: { src: string; title: 
         <iframe
           src={src}
           title={title}
-          loading="lazy"
           style={{ width: w, height: h, transform: `scale(${scale})`, transformOrigin: "0 0" }}
         />
       )}
