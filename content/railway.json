@@ -1,0 +1,200 @@
+{
+  "slug": "railway",
+  "draft": false,
+  "company": "Railway",
+  "companyUrl": "https://railway.com",
+  "role": "Senior Product Designer",
+  "jobUrl": "https://railway.com/careers/Product-designer",
+  "date": "2026-11-12",
+  "feature": {
+    "name": "Healthcheck Timeline",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "♥"
+  },
+  "prototype": {
+    "path": "/prototypes/railway",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/railway",
+    "frame": "desktop"
+  },
+  "context": {
+    "title": "A failed healthcheck tells you that it failed, not why",
+    "body": "Railway holds traffic on the old deployment until the new one answers its healthcheck with a 2xx response, within a 5-minute default window. That's a great safety net for zero-downtime deploys. But when the check fails, the developer's own logs usually say the app is ready, and the failure reason is a single line. In public Help Station threads, people spend hours, sometimes a full day, working out whether the cause is their code, their config or the platform. The causes turn out to be very different each time: a redirect, a deliberate 503, a slow startup, a host allow-list, or a platform-side issue.",
+    "assumptions": [
+      "I've only seen Railway's product through its public docs, changelog and Help Station. I haven't used the deploy view while signed in, so details of today's UI may differ from my reading.",
+      "The healthcheck prober already knows each attempt's outcome (connection refused, timeout, status code, redirect location), so surfacing it is mostly a presentation problem, not new infrastructure.",
+      "The Canvas agent shipped in February 2026 is the right place for conversational debugging; this concept gives both the person and the agent better raw evidence to work from."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Show what the check actually received",
+      "body": "Every probe attempt, with its time, the path and port it hit, and exactly what came back, including the cases where nothing came back."
+    },
+    {
+      "title": "Answer “is it me or Railway?” first",
+      "body": "Lead with attribution, so people stop rewriting working config when the platform is at fault, and stop waiting on support when it's their code."
+    },
+    {
+      "title": "Turn the verdict into one next step",
+      "body": "Each failure pattern ends in a concrete fix, such as pointing the check at a path that returns 200, or moving migrations to a pre-deploy command."
+    }
+  ],
+  "jtbd": "When my new deploy fails its healthcheck even though my logs say the app is ready, I want to see exactly what the healthcheck got back, so I can fix the right thing in minutes instead of guessing for hours.",
+  "evidence": [
+    {
+      "step": "A redirect looked like an outage for 18 hours",
+      "finding": "Every deploy of a Next.js service failed its healthcheck for about 18 hours, even when redeploying a commit that had worked before. The developer added in-process instrumentation and saw zero requests arrive. The cause was the healthcheck path: \"/\" returned a 308 redirect. After the check was pointed at a path that returns 200, deploys went through.",
+      "source": {
+        "label": "Railway Help Station: “Every deploy fails healthcheck”",
+        "url": "https://station.railway.com/questions/every-deploy-fails-healthcheck-confirm-4adb21e6"
+      }
+    },
+    {
+      "step": "A deliberate 503 was mistaken for a platform incident",
+      "finding": "A production service had 29 failed deploys over 12+ hours. The developer suspected a regional incident and tried changing the bind address. The real cause was their own /health endpoint returning 503 until database migrations were applied, which had been designed as a deploy gate.",
+      "source": {
+        "label": "Railway Help Station: “Production service failing healthcheck, 21+ consecutive failed deploys”",
+        "url": "https://station.railway.com/questions/production-service-failing-healthcheck-s-bfa606dc"
+      }
+    },
+    {
+      "step": "Slow startup produced empty logs",
+      "finding": "A FastAPI app ran schema setup for about 180 tables at boot, across two workers that blocked each other. It never started listening before the timeout, so the logs were empty. The fix was moving schema work into a pre-deploy command.",
+      "source": {
+        "label": "Railway Help Station community post: “Deploy failed at Healthcheck with nothing in the logs”",
+        "url": "https://station.railway.com/community/deploy-failed-at-healthcheck-with-nothin-edb86e2f"
+      }
+    },
+    {
+      "step": "Platform-side failures sent people rewriting their config",
+      "finding": "In two threads, builds failed with no useful log output and the developers changed root directories, build commands and lockfiles. Railway staff later confirmed a known platform-side issue in one case and pointed to the builder in the other.",
+      "source": {
+        "label": "Railway Help Station: “Consistent deploy failures without log details”",
+        "url": "https://station.railway.com/questions/consistent-deploy-failures-without-log-d-661d0c59"
+      }
+    },
+    {
+      "step": "The rules exist, but only in the docs",
+      "finding": "Railway's docs explain that only a 2xx counts as healthy, the default timeout is 300 seconds, the probe comes from healthcheck.railway.app, and apps must listen on PORT. Each of the failures above breaks one of these rules, but the rule isn't shown at the moment it's broken.",
+      "source": {
+        "label": "Railway Docs: Healthchecks",
+        "url": "https://docs.railway.com/deployments/healthchecks"
+      }
+    }
+  ],
+  "approaches": [
+    "Show every probe attempt and its response on the failed deploy",
+    "Lead the failure with an attribution line: your app vs the platform",
+    "A preflight check in the CLI before pushing",
+    "Show live incident status inside the deploy view",
+    "Expand the docs with a troubleshooting decision tree"
+  ],
+  "ranges": [
+    {
+      "title": "Probe timeline on the failed deploy",
+      "summary": "Expand the Network › Healthcheck step into a timeline of every attempt: time, path, port and outcome (refused, timed out, 3xx with location, 4xx, 5xx). A verdict and one suggested fix sit on top.",
+      "pros": [
+        "Answers the exact question every thread asks: what did the check get back?",
+        "Covers app-side and platform-side causes with one pattern.",
+        "Gives the Canvas agent structured evidence to reason over."
+      ],
+      "cons": [
+        "Needs per-attempt probe data to be stored and exposed.",
+        "Dense for people who just want the fix."
+      ]
+    },
+    {
+      "title": "Preflight check in the CLI",
+      "summary": "Before deploying, run the start command in a local container, probe the healthcheck path on PORT and warn about redirects, non-2xx responses or slow startup.",
+      "pros": [
+        "Catches problems before a deploy is wasted.",
+        "Teaches the healthcheck rules early."
+      ],
+      "cons": [
+        "Can't reproduce platform-side or environment-specific failures, such as missing migrations or private networking.",
+        "Only helps CLI users, not GitHub-triggered deploys."
+      ]
+    },
+    {
+      "title": "Incident status in the deploy view",
+      "summary": "When a failed deploy overlaps an active incident in the same region or builder, say so on the deploy itself with a link to the status page.",
+      "pros": [
+        "Stops people rewriting config during platform incidents.",
+        "Cheap to build from existing status data."
+      ],
+      "cons": [
+        "Says nothing useful when the cause is the user's own app, which is the more common case in the threads.",
+        "Risks blaming an incident for an unrelated failure."
+      ]
+    }
+  ],
+  "decision": {
+    "title": "A probe timeline that leads with attribution",
+    "body": "Range 1, with Range 3's incident line folded in as one possible verdict. The timeline is the evidence; the verdict on top answers “is it me or Railway?” in one sentence, then offers one next step.",
+    "reasons": [
+      "It's the only option that would have shortened all four failures in the evidence.",
+      "Attribution first respects the developer's time: most people need the verdict, and experts can expand the attempts.",
+      "It complements the AI agent instead of competing with it. “Ask the agent” starts with the same evidence the person is looking at."
+    ],
+    "tradeoff": "Railway would need to store and expose each probe attempt's outcome, and the verdicts need careful wording so the platform never wrongly blames a user, or itself."
+  },
+  "effortImpact": [
+    {
+      "option": "Probe timeline + attribution",
+      "chosen": true,
+      "effort": { "design": 5, "dev": 6, "gtm": 2 },
+      "impact": { "reach": 8, "value": 9, "business": 7 }
+    },
+    {
+      "option": "CLI preflight check",
+      "effort": { "design": 3, "dev": 6, "gtm": 4 },
+      "impact": { "reach": 4, "value": 6, "business": 4 }
+    },
+    {
+      "option": "Incident line on deploys",
+      "effort": { "design": 2, "dev": 3, "gtm": 1 },
+      "impact": { "reach": 3, "value": 5, "business": 4 }
+    }
+  ],
+  "depth": {
+    "body": "The prototype recreates a failed deploy in a neutral dashboard (not Railway's real UI). Switch between four failure patterns taken from the evidence: a redirect, a deliberate 503, a slow startup and a platform-side issue. Each one shows the probe attempts, an attribution verdict and a single fix. You can also hand the same evidence to an assistant."
+  },
+  "validation": {
+    "method": "Before building, I'd replay 20–30 recent healthcheck failures from support tickets through the verdict rules to check they land on the right cause. After launch, I'd compare failed-deploy outcomes for teams with and without the timeline.",
+    "hypotheses": [
+      "Most healthcheck failures fall into a small set of patterns that can be told apart from probe data alone.",
+      "Leading with attribution reduces repeated redeploys of unchanged code.",
+      "People who see the probe timeline open fewer Help Station threads about healthchecks."
+    ],
+    "metrics": [
+      {
+        "name": "Time to next successful deploy",
+        "definition": "Median time from a healthcheck failure to the next successful deploy of the same service."
+      },
+      {
+        "name": "Blind retries",
+        "definition": "How often a healthcheck failure is followed by a redeploy with no code or config change."
+      },
+      {
+        "name": "Verdict accuracy",
+        "definition": "Share of verdicts that match the cause confirmed later in support tickets. Platform blame must be near-perfect before it ships."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Check with the team which probe data is already stored per attempt.",
+    "Audit 30 recent healthcheck support threads and tag each by root cause.",
+    "Test verdict wording with five developers who recently hit a healthcheck failure.",
+    "Agree with the Canvas agent team how the timeline hands evidence to the agent."
+  ],
+  "sources": [
+    { "label": "Railway Help Station: Every deploy fails healthcheck (308 redirect)", "url": "https://station.railway.com/questions/every-deploy-fails-healthcheck-confirm-4adb21e6" },
+    { "label": "Railway Help Station: Production service failing healthcheck, 21+ failed deploys", "url": "https://station.railway.com/questions/production-service-failing-healthcheck-s-bfa606dc" },
+    { "label": "Railway Help Station: Deploy failed at Healthcheck with nothing in the logs", "url": "https://station.railway.com/community/deploy-failed-at-healthcheck-with-nothin-edb86e2f" },
+    { "label": "Railway Help Station: Consistent deploy failures without log details", "url": "https://station.railway.com/questions/consistent-deploy-failures-without-log-d-661d0c59" },
+    { "label": "Railway Help Station: Build failing with empty build logs", "url": "https://station.railway.com/questions/build-failing-on-railway-with-empty-buil-81b4dd02" },
+    { "label": "Railway Docs: Healthchecks", "url": "https://docs.railway.com/deployments/healthchecks" },
+    { "label": "Railway Changelog #0277: Chat with your canvas", "url": "https://railway.com/changelog/2026-02-13-chat-with-your-canvas" },
+    { "label": "Railway careers: Senior Product Designer", "url": "https://railway.com/careers/Product-designer" }
+  ]
+}
