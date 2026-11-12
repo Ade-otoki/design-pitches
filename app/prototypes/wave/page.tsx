@@ -65,6 +65,31 @@ const COPY = {
   },
 } as const;
 
+
+const ICONS = [
+  // person (transfer)
+  <svg key="t" viewBox="0 0 24 24" aria-hidden><circle cx="12" cy="8" r="4" fill="#3f46c9"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="#3f46c9"/></svg>,
+  // basket (payments)
+  <svg key="p" viewBox="0 0 24 24" aria-hidden><path d="M3 10h18l-2 9H5z" fill="#e08a2c"/><path d="M7 10l3-5M17 10l-3-5" stroke="#9a5a14" strokeWidth="1.8" strokeLinecap="round" fill="none"/></svg>,
+  // phone (credit)
+  <svg key="c" viewBox="0 0 24 24" aria-hidden><rect x="7" y="3" width="10" height="18" rx="2.5" fill="#2f9fe0"/><rect x="9" y="5.5" width="6" height="11" rx="1" fill="#dff3fd"/></svg>,
+  // bank
+  <svg key="b" viewBox="0 0 24 24" aria-hidden><path d="M12 3l9 5H3z" fill="#d84545"/><path d="M5 10h2v7H5zM11 10h2v7h-2zM17 10h2v7h-2z" fill="#d84545"/><rect x="3" y="18" width="18" height="2.5" rx="1" fill="#d84545"/></svg>,
+];
+const EyeIcon = ({ off }: { off: boolean }) => (
+  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z" />
+    <circle cx="12" cy="12" r="3" />
+    {off && <path d="M4 4l16 16" />}
+  </svg>
+);
+const GearIcon = () => (
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="12" cy="12" r="3.2" />
+    <path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" strokeLinecap="round" />
+  </svg>
+);
+
 const WINDOW = 30 * 60; // illustrative
 const START_LEFT = WINDOW - 2 * 60 - 10;
 const fmt = (n: number) => n.toLocaleString("de-DE") + "F"; // 25.000F, as in Wave's app
@@ -202,17 +227,17 @@ export default function FairCancel() {
         <section className="recipient" key="recipient" lang={lang}>
           <h1 className="sr">{lang === "fr" ? "Accueil" : "Home"}</h1>
           <div className="top">
-            <span className="gear" aria-hidden>⚙</span>
+            <span className="gear" aria-hidden><GearIcon /></span>
             <div className="balance">
               <b key={`${balance}-${hidden}`} className="bal-num">{hidden ? "•••••F" : fmt(balance)}</b>
-              <button className="eye" onClick={() => setHidden((h) => !h)} aria-label={hidden ? t.showBalance : t.hideBalance}>{hidden ? "◡" : "◉"}</button>
+              <button className="eye" onClick={() => setHidden((h) => !h)} aria-label={hidden ? t.showBalance : t.hideBalance}><EyeIcon off={hidden} /></button>
             </div>
           </div>
 
           <div className="sheetbody">
             <ul className="actions" aria-hidden>
               {t.actions.map((a, i) => (
-                <li key={a}><span className={`ic ic${i}`} /> <span>{a}</span></li>
+                <li key={a}><span className={`ic ic${i}`}>{ICONS[i]}</span><span>{a}</span></li>
               ))}
             </ul>
 
@@ -333,20 +358,18 @@ const CSS = `
 
 /* recipient: Wave-style home */
 .top{background:var(--indigo);color:#fff;padding:16px 18px 54px;margin-top:-6px;position:relative}
-.gear{position:absolute;left:18px;top:16px;font-size:18px;opacity:.9}
+.gear{position:absolute;left:18px;top:18px;opacity:.9;display:flex}
 .balance{display:flex;justify-content:center;align-items:center;gap:8px;padding-top:6px}
 .bal-num{font-size:30px;font-weight:800;letter-spacing:-.01em;font-variant-numeric:tabular-nums;animation:num 220ms ease both}
 @keyframes num{from{opacity:0;filter:blur(3px)}}
-.eye{border:0;background:rgba(255,255,255,.14);color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:13px;transition:transform 160ms var(--ease-out)}
+.eye{border:0;background:rgba(255,255,255,.14);color:#fff;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;cursor:pointer;font-size:13px;transition:transform 160ms var(--ease-out)}
 .eye:active{transform:scale(.94)}
 .sheetbody{background:#fff;border-radius:22px 22px 0 0;margin-top:-30px;position:relative;padding:16px 16px 0}
 .actions{list-style:none;margin:0 0 12px;padding:0 0 14px;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:8px solid var(--soft)}
 .actions li{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;color:var(--ink)}
-.ic{width:46px;height:46px;border-radius:50%;display:block}
-.ic0{background:radial-gradient(circle at 50% 38%,#3f46c9 0 22%,transparent 23%),radial-gradient(ellipse 60% 40% at 50% 92%,#3f46c9 0 60%,transparent 61%),#dfe4ff}
-.ic1{background:radial-gradient(ellipse 55% 35% at 50% 62%,#e08a2c 0 60%,transparent 61%),#fdf0d8}
-.ic2{background:linear-gradient(#2f9fe0,#2f9fe0) center/16px 26px no-repeat,#dff3fd}
-.ic3{background:linear-gradient(#d84545,#d84545) center 30%/26px 6px no-repeat,linear-gradient(#d84545,#d84545) center 72%/24px 10px no-repeat,#fde4e4}
+.ic{width:46px;height:46px;border-radius:50%;display:grid;place-items:center}
+.ic svg{width:24px;height:24px}
+.ic0{background:#dfe4ff}.ic1{background:#fdf0d8}.ic2{background:#dff3fd}.ic3{background:#fde4e4}
 .alert{margin:4px 0 10px;padding:12px 14px;border-radius:14px;background:var(--red-bg);display:flex;flex-direction:column;gap:2px;animation:drop 260ms var(--ease-out) both}
 @keyframes drop{from{opacity:0;transform:translateY(-8px)}}
 .alert b{color:var(--red-text)} .alert span{font-size:13.5px}
