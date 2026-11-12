@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { allLogs, getLog } from "../../lib/content";
-import type { ProductLog } from "../../lib/types";
+import { allLogs, getLog } from "../../../lib/content";
+import type { ProductLog } from "../../../lib/types";
 
 export const dynamicParams = false;
 

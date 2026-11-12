@@ -1,4 +1,4 @@
-import { allLogs } from "../lib/content";
+import { allLogs } from "../../lib/content";
 
 export default function Home() {
   const logs = allLogs().filter((l) => !l.draft);

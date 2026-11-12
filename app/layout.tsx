@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://design-pitches.vercel.app"),
 };
 
+// Bare root: prototypes render with nothing around them so they look right inside the device frame.
+// The site header and footer live in app/(site)/layout.tsx.
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -19,28 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
         />
       </head>
-      <body>
-        <header className="topbar">
-          <div className="wrap">
-            <a href="/" className="mark">DANIELADEOTOKI.COM</a>
-            <nav>
-              <a href="https://danieladeotoki.com" className="hide-sm">Portfolio</a>
-              <a href="https://linkedin.com/in/adeotokidaniel/" className="hide-sm">LinkedIn</a>
-              <a href="mailto:adeotokidaniel@gmail.com">Contact</a>
-            </nav>
-          </div>
-        </header>
-        {children}
-        <footer>
-          <div className="wrap">
-            <span>Daniel Ade-Otoki · Product Designer · Lagos, Nigeria · open to remote and relocation</span>
-            <span>
-              <a href="https://danieladeotoki.com">danieladeotoki.com</a> ·{" "}
-              <a href="https://github.com/Ade-otoki">GitHub</a>
-            </span>
-          </div>
-        </footer>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

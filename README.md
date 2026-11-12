@@ -10,7 +10,7 @@ Self-initiated product work for teams I'd like to join. For each company I resea
 | Path | What it is |
 |---|---|
 | `content/<company>.json` | The Product Log for one company: context, goals, job to be done, sourced evidence, approaches, decision, validation plan |
-| `app/[slug]/page.tsx` | Renders any Product Log at `/<company>` |
+| `app/(site)/[slug]/page.tsx` | Renders any Product Log at `/<company>` |
 | `app/prototypes/<company>/` | The working prototype for that company, served at `/prototypes/<company>` and embedded in its log |
 | `lib/types.ts` | The Product Log schema |
 
