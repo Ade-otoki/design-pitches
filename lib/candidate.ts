@@ -10,7 +10,7 @@ export const INTRO = {
   numbers: [
     "+31% repeat orders after redesigning Foodlify's checkout and ordering flows.",
     "−45% developer onboarding time with the Foodlify component library.",
-    "+30% first-time user engagement after the Shecluded loan dashboard redesign.",
+    "30K+ female-owned businesses empowered across Nigeria and Africa at Shecluded.",
     "3 Transaction Monitoring projects shipped on schedule at Youverify.",
     "An iOS video-chat app delivered 6 weeks ahead of schedule.",
   ],
