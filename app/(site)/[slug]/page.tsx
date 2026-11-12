@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { allLogs, getLog } from "../../../lib/content";
 import type { ProductLog } from "../../../lib/types";
+import { BOOKING_URL } from "../../../lib/site";
 
 export const dynamicParams = false;
 
@@ -278,7 +279,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
               {log.jobUrl && <a href={log.jobUrl} target="_blank" rel="noreferrer">See the role ↗</a>}
             </p>
             <div className="cta-row">
-              <a className="btn solid" href="mailto:adeotokidaniel@gmail.com">Get in touch</a>
+              <a className="btn solid" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call ↗</a>
+              <a className="btn ghost" href="mailto:adeotokidaniel@gmail.com">Email me</a>
               <a className="btn ghost" href="https://danieladeotoki.com">Portfolio</a>
             </div>
           </div>
