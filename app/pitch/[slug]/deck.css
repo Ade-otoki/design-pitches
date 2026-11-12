@@ -37,13 +37,13 @@
 .slide.yellow {
   background-color: var(--yellow);
   background-image:
-    repeating-radial-gradient(ellipse at 20% 30%, transparent 0 1.1cqw, rgba(0, 0, 0, 0.035) 1.1cqw 1.6cqw),
-    repeating-radial-gradient(ellipse at 80% 70%, transparent 0 1.3cqw, rgba(0, 0, 0, 0.03) 1.3cqw 1.8cqw);
+    radial-gradient(120% 90% at 15% 20%, rgba(255, 255, 255, 0.28), transparent 60%),
+    repeating-radial-gradient(ellipse 140% 60% at 30% 50%, transparent 0 2.4cqw, rgba(0, 0, 0, 0.022) 2.4cqw 2.7cqw);
   color: var(--black);
 }
 .slide.blue {
   background-color: var(--blue);
-  background-image: repeating-radial-gradient(ellipse at 70% 40%, transparent 0 1.2cqw, rgba(255, 255, 255, 0.12) 1.2cqw 1.7cqw);
+  background-image: repeating-radial-gradient(ellipse 140% 60% at 70% 40%, transparent 0 2.4cqw, rgba(255, 255, 255, 0.1) 2.4cqw 2.7cqw);
   color: var(--black);
 }
 .slide.black {
