@@ -1,0 +1,95 @@
+{
+  "slug": "sample",
+  "draft": true,
+  "company": "Sample Co",
+  "companyUrl": "https://example.com",
+  "role": "Senior Product Designer",
+  "jobUrl": "https://example.com/careers",
+  "date": "2026-11-12",
+  "feature": {
+    "name": "Guided Bulk Import",
+    "sprint": "Self-initiated · 2-day concept sprint",
+    "icon": "⇪"
+  },
+  "prototype": {
+    "path": "/prototypes/sample",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/sample",
+    "frame": "phone"
+  },
+  "context": {
+    "title": "Getting customer data in is the first wall new teams hit",
+    "body": "Placeholder context. In a real log this paragraph explains, from public evidence, where the product's users get stuck and why it matters to the business.",
+    "assumptions": [
+      "Placeholder assumption one, stated so the team can correct it.",
+      "Placeholder assumption two.",
+      "Placeholder assumption three."
+    ]
+  },
+  "goals": [
+    { "title": "Make the first import succeed", "body": "Placeholder goal description." },
+    { "title": "Explain errors in plain language", "body": "Placeholder goal description." },
+    { "title": "Let people fix rows in place", "body": "Placeholder goal description." }
+  ],
+  "jtbd": "When I bring my existing customer list into a new tool, I want it to understand my columns without a developer, so I can start using the product the same day.",
+  "evidence": [
+    { "step": "Placeholder finding one", "finding": "In a real log this is a specific, sourced observation.", "source": { "label": "Example source", "url": "https://example.com/1" } },
+    { "step": "Placeholder finding two", "finding": "In a real log this is a specific, sourced observation.", "source": { "label": "Example source", "url": "https://example.com/2" } },
+    { "step": "Placeholder finding three", "finding": "In a real log this is a specific, sourced observation.", "source": { "label": "Example source", "url": "https://example.com/3" } }
+  ],
+  "approaches": [
+    "Auto-match columns with a confidence score",
+    "Downloadable template only",
+    "Step-by-step import wizard",
+    "Fix errors inline in a preview table",
+    "Concierge import via support"
+  ],
+  "ranges": [
+    {
+      "title": "Template-first import",
+      "summary": "Placeholder summary of the first approach.",
+      "pros": ["Placeholder pro", "Placeholder pro"],
+      "cons": ["Placeholder con", "Placeholder con"]
+    },
+    {
+      "title": "Auto-match with review",
+      "summary": "Placeholder summary of the second approach.",
+      "pros": ["Placeholder pro", "Placeholder pro"],
+      "cons": ["Placeholder con"]
+    },
+    {
+      "title": "Inline fix in preview",
+      "summary": "Placeholder summary of the third approach.",
+      "pros": ["Placeholder pro"],
+      "cons": ["Placeholder con", "Placeholder con"]
+    }
+  ],
+  "decision": {
+    "title": "Auto-match, then fix in place",
+    "body": "Placeholder explanation of the chosen direction.",
+    "reasons": ["Placeholder reason", "Placeholder reason", "Placeholder reason"],
+    "tradeoff": "Placeholder trade-off the design deliberately accepts."
+  },
+  "effortImpact": [
+    { "option": "Template-first", "effort": { "design": 2, "dev": 2, "gtm": 3 }, "impact": { "reach": 5, "value": 4, "business": 4 } },
+    { "option": "Auto-match + fix in place", "effort": { "design": 5, "dev": 6, "gtm": 3 }, "impact": { "reach": 8, "value": 9, "business": 8 } },
+    { "option": "Concierge import", "effort": { "design": 1, "dev": 1, "gtm": 8 }, "impact": { "reach": 3, "value": 7, "business": 5 } }
+  ],
+  "depth": {
+    "body": "Placeholder description of what the prototype shows and which interaction details were refined."
+  },
+  "validation": {
+    "method": "Placeholder: moderated sessions with five recent sign-ups, plus funnel tracking after launch.",
+    "hypotheses": ["Placeholder hypothesis one", "Placeholder hypothesis two"],
+    "metrics": [
+      { "name": "First-import success rate", "definition": "Placeholder definition." },
+      { "name": "Time to first import", "definition": "Placeholder definition." },
+      { "name": "Support tickets about import", "definition": "Placeholder definition." }
+    ]
+  },
+  "nextSteps": ["Placeholder next step", "Placeholder next step", "Placeholder next step"],
+  "sources": [
+    { "label": "Example source one", "url": "https://example.com/1" },
+    { "label": "Example source two", "url": "https://example.com/2" },
+    { "label": "Example source three", "url": "https://example.com/3" }
+  ]
+}
