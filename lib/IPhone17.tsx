@@ -5,7 +5,8 @@ import ScaledFrame from "./ScaledFrame";
 // iPhone 17 mockup: 402 x 874 pt screen, Dynamic Island, status bar, side buttons, home indicator.
 // The prototype renders at real iPhone 17 size and scales to the width this mockup is given.
 // Everything is sized in container units, so the device stays in proportion at any width.
-export default function IPhone17({ src, title }: { src: string; title: string }) {
+// Pass `src` for a live prototype (iframe) or `image` for a static screen (e.g. a concept sketch, 402x874).
+export default function IPhone17({ src, image, title, statusBar = "dark" }: { src?: string; image?: string; title: string; statusBar?: "dark" | "light" }) {
   return (
     <div className="ip17" role="figure" aria-label={`${title}, shown on an iPhone 17`}>
       <style>{CSS}</style>
@@ -16,8 +17,12 @@ export default function IPhone17({ src, title }: { src: string; title: string })
       <span className="ip17-btn ip17-camera" aria-hidden />
       <div className="ip17-bezel">
         <div className="ip17-screen">
-          <ScaledFrame src={src} title={title} kind="phone" />
-          <div className="ip17-status" aria-hidden>
+          {image ? (
+            <img className="ip17-img" src={image} alt={title} />
+          ) : (
+            <ScaledFrame src={src ?? ""} title={title} kind="phone" />
+          )}
+          <div className={`ip17-status ${statusBar === "light" ? "is-light" : ""}`} aria-hidden>
             <span className="ip17-time">9:41</span>
             <span className="ip17-icons">
               <svg viewBox="0 0 18 12" className="ip17-signal"><rect x="0" y="8" width="3" height="4" rx="1" /><rect x="5" y="5.5" width="3" height="6.5" rx="1" /><rect x="10" y="3" width="3" height="9" rx="1" /><rect x="15" y="0" width="3" height="12" rx="1" /></svg>
@@ -41,8 +46,10 @@ const CSS = `
 .ip17-screen{position:relative;width:100%;height:100%;border-radius:12.4cqw;overflow:hidden;background:#000;
   box-shadow:0 0 0 1.1cqw #050506;container-type:inline-size}
 .ip17-screen .sf{border-radius:0}
+.ip17-img{display:block;width:100%;height:100%;object-fit:cover;background:#fff}
 .ip17-status{position:absolute;left:0;right:0;top:0;height:13.4cqw;display:flex;justify-content:space-between;align-items:center;
   padding:1.2cqw 7.5cqw 0 9.5cqw;color:#000;pointer-events:none;font:600 4.2cqw/1 -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;letter-spacing:-.02em}
+.ip17-status.is-light{color:#fff}
 .ip17-icons{display:flex;gap:1.6cqw;align-items:center}
 .ip17-icons svg{fill:currentColor;height:3cqw;width:auto}
 .ip17-battery{height:3.2cqw!important}

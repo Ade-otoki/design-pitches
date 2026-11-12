@@ -187,7 +187,23 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             </div>
           </div>
           <div className="visual">
-            {r.image ? <img src={r.image.src} alt={r.image.alt} /> : <div className="placeholder">Sketch of range {i + 1}</div>}
+            {r.screens ? (
+              <div className="sketch-phones">
+                <div className={`sketch-row n${r.screens.length}`}>
+                  {r.screens.map((sc) => (
+                    <figure key={sc.src}>
+                      <IPhone17 image={sc.src} title={sc.alt} statusBar={sc.statusBar} />
+                      {sc.label && <figcaption>{sc.label}</figcaption>}
+                    </figure>
+                  ))}
+                </div>
+                {r.notes && <ul className="sketch-notes">{r.notes.map((n) => <li key={n}>{n}</li>)}</ul>}
+              </div>
+            ) : r.image ? (
+              <img src={r.image.src} alt={r.image.alt} />
+            ) : (
+              <div className="placeholder">Sketch of range {i + 1}</div>
+            )}
           </div>
         </div>
       ))}

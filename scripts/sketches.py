@@ -173,10 +173,98 @@ def railway_3():
     return browser(w, h, b, "Range 3 sketch: failed deploy view with an incident banner when a platform incident overlaps")
 
 
-SKETCHES = {"wave-1": wave_1, "wave-2": wave_2, "wave-3": wave_3,
-            "railway-1": railway_1, "railway-2": railway_2, "railway-3": railway_3}
+SKETCHES = {"railway-1": railway_1, "railway-2": railway_2, "railway-3": railway_3}
 
 if __name__ == "__main__":
     for name, fn in SKETCHES.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)
+
+
+# ---------------- WAVE full screens for the iPhone 17 mockup (402 x 874) ----------------
+SW, SH = 402, 874
+RING = "#c2410c"
+
+
+def screen(body, title):
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{SW}" height="{SH}" viewBox="0 0 {SW} {SH}" role="img" aria-label="{title}">'
+            f'<title>{title}</title><rect width="{SW}" height="{SH}" fill="#ffffff"/>{body}</svg>')
+
+
+def ring(x, y, w, h, r=18):
+    return f'<rect x="{x-7}" y="{y-7}" width="{w+14}" height="{h+14}" rx="{r+6}" fill="none" stroke="{RING}" stroke-width="2.5" stroke-dasharray="7 6"/>'
+
+
+def nav(title):
+    return text(28, 92, "‹", 34, INK, 400) + text(SW / 2, 92, title, 18, INK, 700, "middle")
+
+
+def wave_receipt(cancel_btn=True, with_reason=False):
+    b = nav("Détails du transfert")
+    b += f'<circle cx="{SW/2}" cy="150" r="30" fill="#e8f7fe"/>' + text(SW / 2, 160, "✓", 26, "#0b77ab", 700, "middle")
+    b += bar(SW / 2 - 50, 196, 100, 10) + text(SW / 2, 236, "Awa Diop", 18, INK, 700, "middle")
+    b += text(SW / 2, 290, "−25.000F", 40, "#2b2392", 800, "middle") + bar(SW / 2 - 110, 308, 220, 8)
+    for i in range(3):
+        y = 352 + i * 50
+        b += f'<line x1="28" y1="{y-18}" x2="{SW-28}" y2="{y-18}" stroke="{LIGHT}" stroke-width="2"/>' + bar(28, y, 90, 10) + bar(SW - 118, y, 90, 10)
+    b += bar(28, 510, SW - 56, 6, "#f0f0f5", 3) + bar(28, 510, (SW - 56) * 0.92, 6, "#5bc5f7", 3)
+    if cancel_btn:
+        b += box(28, 534, SW - 56, 56, RED, RED_BG, 28, 2.5) + text(52, 568, "Annuler l'envoi", 17, RED, 700) + text(SW - 52, 568, "27:48", 16, RED, 600, "end")
+        b += ring(28, 534, SW - 56, 56, 28)
+    b += bar(32, 614, 300, 9) + bar(32, 632, 240, 9)
+    if with_reason:
+        b += f'<rect x="0" y="0" width="{SW}" height="{SH}" fill="rgba(20,18,60,.32)"/>'
+        b += f'<rect x="0" y="520" width="{SW}" height="{SH-520}" rx="28" fill="#fff"/>' + bar(SW / 2 - 22, 536, 44, 5, "#dcdce8", 3)
+        b += text(28, 584, "Annuler l'envoi de 25.000F ?", 19, INK, 800)
+        for i, (lab, on) in enumerate([("Mauvais numéro", True), ("Mauvais montant", False), ("Autre raison", False)]):
+            y = 610 + i * 58
+            b += box(28, y, SW - 56, 46, INDIGO if on else LIGHT, "#fff", 14, 2) + f'<circle cx="54" cy="{y+23}" r="8" fill="{INDIGO if on else "#fff"}" stroke="{INDIGO if on else MID}" stroke-width="2"/>' + text(74, y + 29, lab, 15, INK, 500)
+        b += ring(28, 610, SW - 56, 162, 16)
+        b += f'<rect x="28" y="790" width="{SW-56}" height="50" rx="25" fill="{RED}"/>' + text(SW / 2, 821, "Annuler l'envoi", 16, "#fff", 700, "middle")
+    return b
+
+
+def wave_home(chip=True, note_card=True, cancelled=False):
+    b = f'<rect width="{SW}" height="250" fill="{INDIGO}"/>' + text(SW / 2, 160, "41.500F" if cancelled else "66.500F", 36, "#fff", 800, "middle")
+    b += f'<rect x="0" y="210" width="{SW}" height="{SH-210}" rx="28" fill="#fff"/>'
+    for i, c in enumerate(["#dfe4ff", "#fdf0d8", "#dff3fd", "#fde4e4"]):
+        cx = 62 + i * 93
+        b += f'<circle cx="{cx}" cy="262" r="25" fill="{c}"/>' + bar(cx - 26, 298, 52, 8)
+    b += f'<rect x="0" y="326" width="{SW}" height="10" fill="#f5f5fa"/>'
+    y = 362
+    if cancelled:
+        b += f'<rect x="20" y="{y}" width="{SW-40}" height="104" rx="18" fill="{RED_BG}"/>'
+        b += text(38, y + 32, "Moussa a annulé son envoi", 16, "#b3242a", 700) + text(38, y + 56, "Raison : mauvais numéro", 14, INK, 500)
+        b += text(38, y + 86, "Signaler un problème", 14, "#b3242a", 700)
+        b += ring(20, y, SW - 40, 104, 18)
+        y += 128
+    b += text(24, y + 16, "Reçu de Moussa Ndiaye", 16, "#2b2392", 700) + bar(24, y + 30, 150, 9)
+    amt = "+25.000F"
+    b += text(SW - 24, y + 16, amt, 16, MID if cancelled else "#2b2392", 700, "end")
+    if cancelled:
+        b += f'<line x1="{SW-100}" y1="{y+10}" x2="{SW-24}" y2="{y+10}" stroke="{MID}" stroke-width="2"/>'
+    if chip and not cancelled:
+        b += box(24, y + 50, 150, 28, AMBER, AMBER_BG, 14, 1.5) + text(38, y + 69, "Définitif à 14h52", 13, AMBER, 700)
+        b += ring(24, y + 50, 150, 28, 14)
+    y += 96
+    if note_card and not cancelled:
+        b += f'<rect x="20" y="{y}" width="{SW-40}" height="112" rx="18" fill="{AMBER_BG}"/>'
+        b += text(38, y + 32, "Pas encore définitif", 16, AMBER, 700) + bar(38, y + 50, 300, 9, "#efd9a6") + bar(38, y + 68, 280, 9, "#efd9a6") + bar(38, y + 86, 200, 9, "#efd9a6")
+        y += 136
+    for i in range(3):
+        b += f'<line x1="24" y1="{y-14}" x2="{SW-24}" y2="{y-14}" stroke="{LIGHT}" stroke-width="2"/>' + bar(24, y, 110, 10, "#d9d9f0") + bar(24, y + 18, 150, 8) + bar(SW - 104, y, 80, 10, "#d9d9f0")
+        y += 62
+    return b
+
+
+SCREENS = {
+    "wave-1-screen": lambda: screen(wave_receipt(), "Range 1: Cancel button with countdown on the sender's receipt"),
+    "wave-2-screen": lambda: screen(wave_home(), "Range 2: Recipient home marks incoming money as final at 14h52"),
+    "wave-3-sender": lambda: screen(wave_receipt(with_reason=True), "Range 3, sender: cancel sheet asking for a reason"),
+    "wave-3-recipient": lambda: screen(wave_home(cancelled=True), "Range 3, recipient: cancellation notice with reason and report link"),
+}
+
+if __name__ == "__main__":
+    for name, fn in SCREENS.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)

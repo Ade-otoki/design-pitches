@@ -102,10 +102,16 @@
         "Makes cancelling easier for bad actors too, with nothing for the recipient.",
         "Doesn't help a recipient who has already handed something over."
       ],
-      "image": {
-        "src": "/sketches/wave-1.svg",
-        "alt": "Sketch: cancel button with a countdown on the sender's receipt"
-      }
+      "screens": [
+        {
+          "src": "/sketches/wave-1-screen.svg",
+          "alt": "Sketch: cancel button with a countdown on the sender's receipt"
+        }
+      ],
+      "notes": [
+        "Undo on the receipt, time left in view",
+        "Recipient: nothing changes"
+      ]
     },
     {
       "title": "Recipient sees what isn't final yet",
@@ -118,10 +124,17 @@
         "Adds a state to every incoming transfer.",
         "Vendors may wait out the window, slowing trade."
       ],
-      "image": {
-        "src": "/sketches/wave-2.svg",
-        "alt": "Sketch: recipient's home screen marks incoming money as not final until 14h52"
-      }
+      "screens": [
+        {
+          "src": "/sketches/wave-2-screen.svg",
+          "alt": "Sketch: recipient's home marks incoming money as final at 14h52",
+          "statusBar": "light"
+        }
+      ],
+      "notes": [
+        "“Not final yet” + when it will be",
+        "Sender still cancels via the chatbot"
+      ]
     },
     {
       "title": "Two-sided Fair Cancel",
@@ -135,10 +148,23 @@
         "Needs policy decisions on reasons, limits and repeated cancellations.",
         "More design and copy to test in French and local languages."
       ],
-      "image": {
-        "src": "/sketches/wave-3.svg",
-        "alt": "Sketch: sender cancels with a reason; recipient sees when money is final and gets a cancellation notice"
-      }
+      "screens": [
+        {
+          "src": "/sketches/wave-3-sender.svg",
+          "alt": "Sketch: sender's cancel sheet asks for a reason",
+          "label": "Sender"
+        },
+        {
+          "src": "/sketches/wave-3-recipient.svg",
+          "alt": "Sketch: recipient sees who cancelled, why, and can report it",
+          "label": "Recipient",
+          "statusBar": "light"
+        }
+      ],
+      "notes": [
+        "One rule, visible to both people",
+        "The reason travels with the cancel"
+      ]
     }
   ],
   "decision": {

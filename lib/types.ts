@@ -50,6 +50,9 @@ export type ProductLog = {
     pros: string[];
     cons: string[];
     image?: { src: string; alt: string };
+    // Mobile solutions: one or more 402x874 sketch screens, each shown in an iPhone 17 mockup.
+    screens?: { src: string; alt: string; label?: string; statusBar?: "dark" | "light" }[];
+    notes?: string[]; // short captions under the device(s)
   }[]; // 3 compared in depth
 
   decision: {
