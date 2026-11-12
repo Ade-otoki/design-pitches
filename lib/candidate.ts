@@ -9,7 +9,7 @@ export const INTRO = {
   ],
   numbers: [
     "+31% repeat orders after redesigning Foodlify's checkout and ordering flows.",
-    "−45% developer onboarding time with the Foodlify component library.",
+    "Shipped a complete color system and usage reference that sharply reduced brand inconsistency.",
     "30K+ female-owned businesses empowered across Nigeria and Africa at Shecluded.",
     "Designed Youverify's Transaction Monitoring MVP end to end.",
     "60% increase in revenue for Shecluded.",
