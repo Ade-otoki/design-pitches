@@ -1,3 +1,5 @@
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
 /* Web pitch deck, styled after Daniel's Figma Slides template. 16:9 slides scale with width (cqw). */
 .deck {
   --yellow: #f6df57;

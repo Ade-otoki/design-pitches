@@ -1,3 +1,4 @@
+import "../globals.css";
 import { BOOKING_URL } from "../../lib/site";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
