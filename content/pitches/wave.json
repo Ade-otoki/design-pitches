@@ -1,0 +1,54 @@
+{
+  "slug": "wave",
+  "company": "Wave",
+  "role": "Product Designer",
+  "date": "NOV 2026",
+  "hook": "I want every transfer to feel safe, on both ends",
+  "tags": ["mobile", "money"],
+  "builtFor": {
+    "context": "Wave made sending money instant, free to receive and accepted everywhere. Instant is the magic, and it's also why mistakes and reversals need to be crystal clear. With Wave now on the BCEAO's instant payment network, more transfers cross between wallets and banks, so the rules have to be obvious to both people.",
+    "opportunities": [
+      {
+        "title": "Fair cancellation",
+        "body": "Let senders undo mistakes from the receipt itself, while recipients always see when money becomes final."
+      },
+      {
+        "title": "Clear status across networks",
+        "body": "As transfers move through PI-SPI, show where money is and what to do next in plain French and English."
+      },
+      {
+        "title": "Finding the right transaction",
+        "body": "Users are asking for search, date filters and totals in their history. It's the starting point for every dispute."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "Most of my work has been financial products: lending at Shecluded, KYC and compliance at Youverify, and payments and checkout at Foodlify, including two Nigerian fintechs.",
+      "I design for real conditions: phones used outdoors and on lower-end screens, first-time users, and moments where trust is on the line. And I prototype with Claude, which is how Wave says it prototypes too."
+    ],
+    "bring": [
+      { "title": "Payments and wallets", "body": "A wallet-first mobile checkout that lifted repeat orders by 31%." },
+      { "title": "Trust and accessibility", "body": "A WCAG-passing color system for a lending app used on lower-end screens." },
+      { "title": "Prototyping with Claude", "body": "Working mobile prototypes in code, like the one in this pitch." }
+    ]
+  },
+  "caseStudies": ["foodlify", "shecluded", "shecluded-color"],
+  "systemsGets": "Someone who can design one sensitive moment, like a cancelled transfer, while keeping it consistent with Wave's design system and component library.",
+  "opportunity": {
+    "title": "Fair Cancel",
+    "problem": "Cancelling a mistaken transfer runs through Settings and a WhatsApp chatbot, under time pressure. Recipients get no sign that money can still be pulled back: a recent review from Senegal describes a vendor cancelling change after the customer walked away.",
+    "solution": "One rule, visible to both people. Senders cancel from the receipt with the time left in view, and give a reason. Recipients see “final at 14:52”, get told who cancelled and why, and can report it."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how people send, receive and fix mistakes on Wave, then contributing one useful improvement with the team.",
+    "days": [
+      { "day": "MON", "body": "Meet product, research, engineering and support. Learn priorities, the design system and how success is measured." },
+      { "day": "TUE", "body": "Review support data and research on cancellations, failed transfers and disputes, by country." },
+      { "day": "WED", "body": "Agree on one moment to improve, grounded in evidence and Wave's policies." },
+      { "day": "THU", "body": "Prototype it as an Android build with Claude, and review edge cases with an engineer and a researcher." },
+      { "day": "FRI", "body": "Share findings, the prototype, the trade-offs and a plan to test it with users in-market." }
+    ]
+  },
+  "ask": "I'd love to bring financial-product design experience, a West African's perspective on mobile money and fast prototyping with Claude to Wave's mission of making Africa the first cashless continent."
+}

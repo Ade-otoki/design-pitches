@@ -1,0 +1,188 @@
+{
+  "slug": "wave",
+  "draft": false,
+  "company": "Wave",
+  "companyUrl": "https://www.wave.com",
+  "role": "Product Designer",
+  "jobUrl": "https://www.wave.com/en/careers/job/6238979004/",
+  "date": "2026-11-12",
+  "feature": {
+    "name": "Fair Cancel",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "↺"
+  },
+  "prototype": {
+    "path": "/prototypes/wave",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/wave",
+    "frame": "phone"
+  },
+  "context": {
+    "title": "Cancelling a transfer is hidden for the sender and invisible to the recipient",
+    "body": "Wave transfers land instantly, which is the product's magic. That also makes mistakes urgent: if you send to the wrong number, you have a short window to get the money back before the recipient takes it. Today, according to a public guide, that path runs through Settings, then customer service, then a WhatsApp chatbot. On the other side, a recipient who's just received money has no sign that it can still be pulled back, and a recent App Store review describes exactly that going wrong. With Wave now on the BCEAO's instant payment network, more transfers will cross to other wallets and banks, so the rules for undoing them need to be clear to both people.",
+    "assumptions": [
+      "I haven't used Wave myself. My view comes from public guides, App Store reviews, news and Wave's own job posting, so the current app may differ.",
+      "The cancellation window and rules differ by country (a guide cites 30 minutes in Côte d'Ivoire, while the recipient hasn't been paid). The prototype uses 30 minutes as an example only.",
+      "The ledger already knows whether a transfer is still cancellable, so showing that state is mainly a design and policy question, not new infrastructure."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Undo a mistake where the mistake is",
+      "body": "Cancel from the transfer's own receipt, with the time left in view, instead of through Settings and a chatbot."
+    },
+    {
+      "title": "Never surprise the recipient",
+      "body": "Money that can still be cancelled says so, with the time it becomes final, so nobody hands over goods or change against it blind."
+    },
+    {
+      "title": "Make every cancellation explainable",
+      "body": "Both people see who cancelled, when, why and what to do next, in plain language, in French and English."
+    }
+  ],
+  "jtbd": "When I send money to the wrong number, I want to cancel it right away from the transfer itself; and when I receive money, I want to know whether it's final before I hand anything over.",
+  "evidence": [
+    {
+      "step": "The cancel path runs through Settings and a chatbot",
+      "finding": "A guide published in October 2026 explains that to cancel a transfer you go to Settings, then customer service, choose WhatsApp and select “Annuler un transfert” in the chatbot, which lists only recent transfers. Otherwise you call the hotline. In Côte d'Ivoire a full refund is possible within 30 minutes, if the recipient hasn't been paid.",
+      "source": {
+        "label": "Ibrahim Kamara: Annuler un transfert Wave (Oct 2026)",
+        "url": "https://ibrahimkamara.com/blog/annuler-transfert-wave"
+      }
+    },
+    {
+      "step": "Recipients can be caught out by a cancellation",
+      "finding": "In a recent App Store review from Senegal, a user says a vendor sent them money as change, then cancelled it once they'd left, and the money disappeared. They asked Wave to revisit the cancellation feature.",
+      "source": {
+        "label": "App Store (Senegal): Wave Mobile Money reviews",
+        "url": "https://apps.apple.com/sn/app/wave-mobile-money/id1523884528?l=fr-FR"
+      }
+    },
+    {
+      "step": "Transfers now cross networks",
+      "finding": "Wave became an authorised participant in the BCEAO's PI-SPI instant payment network in late September 2026, in Côte d'Ivoire and with approval in Senegal. Transfers can now move between banks and wallets in seconds.",
+      "source": {
+        "label": "Daba Finance: Wave joins the BCEAO's PI-SPI network (Oct 2026)",
+        "url": "https://dabafinance.com/en/news/wave-joins-the-bceao-s-pi-spi-instant-payment-network-2026-10-02"
+      }
+    },
+    {
+      "step": "The switch to PI-SPI left some transfers failing",
+      "finding": "After PI-SPI became mandatory for interoperable transfers on 2 November 2026, some bank-to-wallet transfers to Wave and other wallets failed, and users complained there was no transition period. Status and next steps matter more as the rails change.",
+      "source": {
+        "label": "Senego: transferts bancaires vers Wave et Orange Money échouent (Nov 2026)",
+        "url": "https://senego.com/pi-spi-obligatoire-des-transferts-bancaires-vers-wave-et-orange-money-echouent_2020024.html"
+      }
+    },
+    {
+      "step": "Older transactions are hard to find",
+      "finding": "Two App Store reviews ask for search, date filters and totals in the transaction history. That matters when a chatbot can only cancel recent transfers.",
+      "source": {
+        "label": "App Store (Senegal): Wave Mobile Money reviews",
+        "url": "https://apps.apple.com/sn/app/wave-mobile-money/id1523884528?l=fr-FR"
+      }
+    }
+  ],
+  "approaches": [
+    "A cancel button on the receipt, with a live countdown",
+    "Show recipients when money isn't final yet",
+    "Confirm the recipient's registered name before sending",
+    "Let recipients accept a cancellation, or dispute it",
+    "Search and filters in transaction history"
+  ],
+  "ranges": [
+    {
+      "title": "Sender-side undo",
+      "summary": "Put “Cancel transfer” on the receipt with the time left, a reason and an instant result, instead of routing through Settings and WhatsApp.",
+      "pros": [
+        "Fixes the most urgent moment, seconds after a mistake.",
+        "Takes load off the chatbot and hotline."
+      ],
+      "cons": [
+        "Makes cancelling easier for bad actors too, with nothing for the recipient.",
+        "Doesn't help a recipient who has already handed something over."
+      ]
+    },
+    {
+      "title": "Recipient sees what isn't final yet",
+      "summary": "Mark incoming money as “final at 14:52” during the cancellation window, and notify the recipient with the reason if it's cancelled.",
+      "pros": [
+        "Protects people who hand over goods or change against a transfer.",
+        "Makes the rule visible instead of something you learn by losing money."
+      ],
+      "cons": [
+        "Adds a state to every incoming transfer.",
+        "Vendors may wait out the window, slowing trade."
+      ]
+    },
+    {
+      "title": "Two-sided Fair Cancel",
+      "summary": "Combine both sides: the sender cancels from the receipt, the recipient sees the window and gets a clear cancellation notice with a way to report it.",
+      "pros": [
+        "One rule, visible to both people.",
+        "Directly answers the review that asked Wave to rethink cancellation.",
+        "Ready for transfers that now cross networks through PI-SPI."
+      ],
+      "cons": [
+        "Needs policy decisions on reasons, limits and repeated cancellations.",
+        "More design and copy to test in French and local languages."
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Fair Cancel: one rule, visible to both people",
+    "body": "Range 3. The sender can undo from the receipt during the window, and the recipient always knows when money becomes final, gets told why it was cancelled, and can report it.",
+    "reasons": [
+      "A faster undo without recipient visibility would make the problem in the review more common.",
+      "Showing when money becomes final lets vendors decide for themselves whether to wait or accept the risk.",
+      "Clear status and next steps matter more as transfers cross banks and wallets."
+    ],
+    "tradeoff": "The recipient has to carry one more piece of information for a few minutes after each transfer. I'd show it quietly and only while it applies, then let it disappear."
+  },
+  "effortImpact": [
+    {
+      "option": "Two-sided Fair Cancel",
+      "chosen": true,
+      "effort": { "design": 6, "dev": 6, "gtm": 5 },
+      "impact": { "reach": 9, "value": 9, "business": 8 }
+    },
+    {
+      "option": "Sender-side undo only",
+      "effort": { "design": 3, "dev": 4, "gtm": 3 },
+      "impact": { "reach": 6, "value": 6, "business": 5 }
+    },
+    {
+      "option": "History search and filters",
+      "effort": { "design": 3, "dev": 4, "gtm": 2 },
+      "impact": { "reach": 5, "value": 5, "business": 4 }
+    }
+  ],
+  "depth": {
+    "body": "The prototype shows both sides of one transfer. As the sender, cancel a mistaken 25,000 F transfer from its receipt with the time left in view. As the recipient, see that the money isn't final yet, then get a clear notice with the reason when it's cancelled, and a way to report it. Switch between French and English. Names, amounts and timings are illustrative."
+  },
+  "validation": {
+    "method": "I'd start with Wave's support data on cancellation requests and disputes by country, then run quick tests with senders and with market vendors in Dakar and Abidjan. That would tell me whether the “final at” label is understood, and whether vendors change how they accept payments.",
+    "hypotheses": [
+      "Senders who make a mistake cancel faster and need support less often when the option is on the receipt.",
+      "Recipients who see when money becomes final are less often caught out by a cancellation.",
+      "Asking for a reason, and showing it to the recipient, discourages abusive cancellations."
+    ],
+    "metrics": [
+      { "name": "Time to cancel", "definition": "Median time from a mistaken send to a successful cancellation." },
+      { "name": "Cancellation support contacts", "definition": "Chatbot and hotline contacts about cancellations, per 10,000 transfers." },
+      { "name": "Disputed cancellations", "definition": "Share of cancellations that the recipient reports, by country and merchant type." }
+    ]
+  },
+  "nextSteps": [
+    "Learn the current cancellation rules and windows in each country from the team.",
+    "Review support tickets and disputes about cancellations.",
+    "Test the receipt and incoming-money states with senders and vendors, in French and Wolof or local languages.",
+    "Agree with policy and risk on reasons, limits and repeat-cancellation rules."
+  ],
+  "sources": [
+    { "label": "Ibrahim Kamara: Annuler un transfert Wave (Oct 2026)", "url": "https://ibrahimkamara.com/blog/annuler-transfert-wave" },
+    { "label": "App Store (Senegal): Wave Mobile Money", "url": "https://apps.apple.com/sn/app/wave-mobile-money/id1523884528?l=fr-FR" },
+    { "label": "Daba Finance: Wave joins the BCEAO's PI-SPI network", "url": "https://dabafinance.com/en/news/wave-joins-the-bceao-s-pi-spi-instant-payment-network-2026-10-02" },
+    { "label": "Senego: bank transfers to Wave and Orange Money fail after PI-SPI becomes mandatory", "url": "https://senego.com/pi-spi-obligatoire-des-transferts-bancaires-vers-wave-et-orange-money-echouent_2020024.html" },
+    { "label": "Wave careers: Product Designer", "url": "https://www.wave.com/en/careers/job/6238979004/" }
+  ]
+}
