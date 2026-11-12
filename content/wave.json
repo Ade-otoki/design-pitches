@@ -22,7 +22,8 @@
     "assumptions": [
       "I haven't used Wave myself. My view comes from public guides, App Store reviews, news and Wave's own job posting, so the current app may differ.",
       "The cancellation window and rules differ by country (a guide cites 30 minutes in Côte d'Ivoire, while the recipient hasn't been paid). The prototype uses 30 minutes as an example only.",
-      "The ledger already knows whether a transfer is still cancellable, so showing that state is mainly a design and policy question, not new infrastructure."
+      "The ledger already knows whether a transfer is still cancellable, so showing that state is mainly a design and policy question, not new infrastructure.",
+      "Wave has no public design system, so the prototype follows Wave's own App Store screens: an indigo home header with the balance, a white rounded sheet, round action icons, indigo transaction rows, cyan pill buttons, underline-style labels and amounts written as “25.000F”. There's no Wave logo or mascot. Patterns for the countdown, pending status, report action and cancel sheet were informed by Gojek, GoPay, Cash App, PayPal and Chime screens on Mobbin."
     ]
   },
   "goals": [
@@ -157,7 +158,7 @@
     }
   ],
   "depth": {
-    "body": "The prototype shows both sides of one transfer. As the sender, cancel a mistaken 25,000 F transfer from its receipt with the time left in view. As the recipient, see that the money isn't final yet, then get a clear notice with the reason when it's cancelled, and a way to report it. Switch between French and English. Names, amounts and timings are illustrative."
+    "body": "Built in Wave's visual language. As the sender, cancel a mistaken 25.000F transfer from its own receipt, with a live countdown, a reason and a sheet whose buttons can't be confused (“Annuler l'envoi” vs “Garder l'envoi”). As the recipient, see on Wave's home screen that the money is “Définitif à 14h52”, then a clear notice with the reason if it's cancelled, and a way to report it. Motion is quick and purposeful, and turns gentler for people who reduce motion. French and English. Names, amounts and timings are illustrative."
   },
   "validation": {
     "method": "I'd start with Wave's support data on cancellation requests and disputes by country, then run quick tests with senders and with market vendors in Dakar and Abidjan. That would tell me whether the “final at” label is understood, and whether vendors change how they accept payments.",
