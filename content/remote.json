@@ -1,0 +1,180 @@
+{
+  "slug": "remote",
+  "draft": false,
+  "company": "Remote",
+  "companyUrl": "https://remote.com",
+  "role": "Senior Product Designer, Pay Ecosystem",
+  "jobUrl": "https://job-boards.greenhouse.io/remotecom/jobs/6678920003",
+  "date": "2026-11-12",
+  "feature": {
+    "name": "Why My Pay Changed",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "€"
+  },
+  "prototype": {
+    "path": "/prototypes/remote",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/remote",
+    "frame": "phone"
+  },
+  "context": {
+    "title": "Employees can see their pay. They can't see why it changed.",
+    "body": "Remote pays employees in many countries, each with its own tax rules, social contributions and payslip format. The pay summary already breaks a payslip into salary, incentives, expenses, benefits and taxes and deductions. But when net pay is different from last month, the employee has to work out why on their own. Remote's help center points them to a country guide or to support. Employers recently got variance and gross-to-net reports for exactly this question. Employees haven't yet.",
+    "assumptions": [
+      "I've only seen Remote's pay experience through its public help center, product updates and reviews, not as a signed-in employee, so the current UI may differ from my reading.",
+      "The data behind employer variance reports (line-by-line differences between pay runs) could also power a simplified, employee-facing view.",
+      "Many “why is my pay different?” tickets come from a handful of causes: days worked, one-off payments, tax withholding changes, deductions and exchange rates."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Answer the question people actually ask",
+      "body": "Lead with “you received €184 less than last month”, then why, rather than a list of totals to compare by hand."
+    },
+    {
+      "title": "Explain every line in plain language",
+      "body": "Each change gets a one-sentence reason and, where it helps, a link to the country guide."
+    },
+    {
+      "title": "Turn the rest into a precise support request",
+      "body": "If a line still looks wrong, ask about that line with the payslip context attached, so support starts from the right place."
+    }
+  ],
+  "jtbd": "When my pay this month is different from last month, I want to see exactly which lines changed and why, so I can trust my payslip without opening a support ticket or decoding a PDF.",
+  "evidence": [
+    {
+      "step": "Confused employees are sent away from the product",
+      "finding": "Remote's help article for employees confused about their payslip says pay reflects days worked, bonuses and taxes. It sends them to a country-by-country payslip guide (with more countries still to be added) or to support.",
+      "source": {
+        "label": "Remote Help Center: What do I do if I'm confused about my payslip?",
+        "url": "https://support.remote.com/hc/en-us/articles/360054359232-What-do-I-do-if-I-m-confused-about-my-payslip"
+      }
+    },
+    {
+      "step": "The pay summary shows totals, not reasons",
+      "finding": "The in-app pay summary breaks a payslip into salary, incentives, expenses, benefits and taxes and deductions, with a chart of net vs deductions. It doesn't explain how taxes or deductions are calculated, and for some periods only the PDF is available.",
+      "source": {
+        "label": "Remote Help Center: How can I view and understand my payslip on Remote?",
+        "url": "https://support.remote.com/hc/en-us/articles/37547944533517-How-can-I-view-and-understand-my-payslip-on-Remote"
+      }
+    },
+    {
+      "step": "Employers already get the “what changed?” view",
+      "finding": "Remote's May–July 2026 updates gave PEO customers Variance and Gross-to-Net reports. Employees got an expense report timeline, but nothing yet that explains pay changes from one month to the next.",
+      "source": {
+        "label": "Remote blog: What's new, May–July 2026",
+        "url": "https://remote.com/blog/whats-new-remote-product-updates-may-july-2026"
+      }
+    },
+    {
+      "step": "Country-specific rules confuse people",
+      "finding": "In recent Trustpilot reviews, one employee was initially worried the provider didn't know their country's rules, and another suggested onboarding training on country-specific per diem structures.",
+      "source": {
+        "label": "Trustpilot: Remote reviews (Oct 2026)",
+        "url": "https://www.trustpilot.com/review/remote.com"
+      }
+    }
+  ],
+  "approaches": [
+    "A month-to-month change summary at the top of each payslip",
+    "Plain-language explanations on every payslip line",
+    "Complete the country payslip guides for every country",
+    "An AI chat that answers payslip questions",
+    "Ask support about a specific line, with context attached"
+  ],
+  "ranges": [
+    {
+      "title": "Line-by-line explanations",
+      "summary": "Add a short explanation and a country-guide link to every line of the existing pay summary.",
+      "pros": [
+        "Builds on the pay summary employees already use.",
+        "Helps with first payslips, not just changes."
+      ],
+      "cons": [
+        "Doesn't answer “why is this month different?”; people still compare two payslips by hand.",
+        "Long payslips become even longer."
+      ]
+    },
+    {
+      "title": "Month-to-month change summary",
+      "summary": "Lead with the difference in net pay since last month, then list only the lines that changed, each with its reason.",
+      "pros": [
+        "Matches the question in the help article exactly.",
+        "Mirrors the employer-side Variance report, so data and logic can be shared.",
+        "Short: most months only two or three lines change."
+      ],
+      "cons": [
+        "Needs a sensible comparison for first payslips, and after long leave or contract changes.",
+        "Reasons must be accurate for every country before they're shown."
+      ]
+    },
+    {
+      "title": "AI payslip assistant",
+      "summary": "Let employees ask questions about their payslip in chat.",
+      "pros": [
+        "Flexible; handles unusual questions.",
+        "Remote already has AI agents to build on."
+      ],
+      "cons": [
+        "Puts the work of asking on the employee.",
+        "Wrong answers about pay and tax are costly; it needs the structured data anyway."
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Lead with what changed, then ask about one line",
+    "body": "Range 2 as the core, with one action from Range 3: if a changed line still looks wrong, ask support or the assistant about that line, with the payslip context attached.",
+    "reasons": [
+      "It answers the most common question without the employee doing any comparison.",
+      "It reuses logic Remote already built for employer variance reports.",
+      "Support conversations start from a specific line, not “my pay looks wrong.”"
+    ],
+    "tradeoff": "Explanations would launch for a subset of countries and causes, with a clear fallback when a reason isn't available yet, rather than guessing."
+  },
+  "effortImpact": [
+    {
+      "option": "Change summary + ask about a line",
+      "chosen": true,
+      "effort": { "design": 5, "dev": 6, "gtm": 3 },
+      "impact": { "reach": 9, "value": 8, "business": 7 }
+    },
+    {
+      "option": "Explanations on every line",
+      "effort": { "design": 4, "dev": 5, "gtm": 3 },
+      "impact": { "reach": 7, "value": 5, "business": 5 }
+    },
+    {
+      "option": "AI payslip assistant",
+      "effort": { "design": 4, "dev": 8, "gtm": 5 },
+      "impact": { "reach": 6, "value": 6, "business": 6 }
+    }
+  ],
+  "depth": {
+    "body": "The prototype is a mobile pay summary for a fictional employee. It opens with the change in net pay since last month and lists only the lines that moved, each with a plain-language reason. Tap a line for detail, switch months to see different causes, and send a question about a single line with the context already attached. All amounts are illustrative, not real tax rules."
+  },
+  "validation": {
+    "method": "First, I'd classify a month of payslip-related support tickets by cause and country to pick the launch scope. Then I'd test the summary with employees in two or three countries, and compare ticket rates for payslips with and without the summary after launch.",
+    "hypotheses": [
+      "Most “why is my pay different?” questions come from a few causes that can be explained automatically.",
+      "Showing what changed reduces payslip-related support contacts.",
+      "Questions about a specific line are resolved faster than general payslip tickets."
+    ],
+    "metrics": [
+      { "name": "Payslip support contacts", "definition": "Payslip-related tickets per 1,000 payslips viewed, by country." },
+      { "name": "Time to resolution", "definition": "Median time to resolve line-specific questions vs general payslip tickets." },
+      { "name": "Explanation coverage", "definition": "Share of changed lines that come with an automatic reason, by country." }
+    ]
+  },
+  "nextSteps": [
+    "Learn how the employer Variance report is calculated and whether it can serve employees.",
+    "Tag a month of payslip tickets by cause and country.",
+    "Draft reason copy for the top five causes with payroll experts in two countries.",
+    "Test the summary with employees on their own last two payslips."
+  ],
+  "sources": [
+    { "label": "Remote Help Center: What do I do if I'm confused about my payslip?", "url": "https://support.remote.com/hc/en-us/articles/360054359232-What-do-I-do-if-I-m-confused-about-my-payslip" },
+    { "label": "Remote Help Center: How can I view and understand my payslip on Remote?", "url": "https://support.remote.com/hc/en-us/articles/37547944533517-How-can-I-view-and-understand-my-payslip-on-Remote" },
+    { "label": "Remote blog: What's new, May–July 2026", "url": "https://remote.com/blog/whats-new-remote-product-updates-may-july-2026" },
+    { "label": "Trustpilot: Remote reviews", "url": "https://www.trustpilot.com/review/remote.com" },
+    { "label": "Remote careers: Senior Product Designer, Pay Ecosystem", "url": "https://job-boards.greenhouse.io/remotecom/jobs/6678920003" }
+  ]
+}

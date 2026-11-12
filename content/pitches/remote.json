@@ -1,0 +1,54 @@
+{
+  "slug": "remote",
+  "company": "Remote",
+  "role": "Senior Product Designer",
+  "date": "NOV 2026",
+  "hook": "I want every employee to understand their pay, in any country",
+  "tags": ["pay", "ecosystem"],
+  "builtFor": {
+    "context": "Remote pays people in many countries, each with its own taxes, contributions and payslip format. Pay is the most personal thing Remote touches. When a payslip looks different and the employee can't tell why, trust drops, for them and for the employer who chose Remote.",
+    "opportunities": [
+      {
+        "title": "Explain changes, not just totals",
+        "body": "Lead each payslip with what changed since last month and why, in plain language, so employees don't decode a PDF."
+      },
+      {
+        "title": "Share logic across both sides",
+        "body": "Employers now get Variance and Gross-to-Net reports. A simplified employee view can reuse the same logic, so both sides see the same story."
+      },
+      {
+        "title": "Precise questions, faster answers",
+        "body": "Let employees ask about one specific line with the payslip context attached, so support starts from the right place."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "My background is FinTech, lending and RegTech: products where people make decisions about money and need to trust what they see.",
+      "At Shecluded I designed interfaces that presented lending data and account activity clearly for first-time borrowers. At Foodlify I designed a wallet-first checkout and a design system used across four product lines."
+    ],
+    "bring": [
+      { "title": "Financial clarity", "body": "Turning complex financial and compliance data into screens people can act on." },
+      { "title": "Design systems", "body": "Knowing when to follow a system like Norma, and how to contribute back." },
+      { "title": "AI prototyping", "body": "Working prototypes in code, like the one in this pitch." }
+    ]
+  },
+  "caseStudies": ["shecluded", "foodlify", "youverify"],
+  "systemsGets": "Someone who can design one sensitive moment, like a payslip, while keeping it consistent with Norma and every other surface in the pay ecosystem.",
+  "opportunity": {
+    "title": "Why My Pay Changed",
+    "problem": "Remote's pay summary breaks a payslip into totals, but when net pay changes, employees have to work out why. The help center points them to country guides or support. Employers recently got Variance reports; employees haven't.",
+    "solution": "Open each payslip with the change since last month, list only the lines that moved with a plain-language reason, and let the employee ask about one line with context attached."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how employees experience pay across countries, then contributing one useful improvement with the team.",
+    "days": [
+      { "day": "MON", "body": "Meet the pay team, design, payroll experts and support. Learn priorities, the Norma design system and how success is measured." },
+      { "day": "TUE", "body": "Review payslip-related support tickets and research. Tag questions by cause and country." },
+      { "day": "WED", "body": "Agree on one pay moment to improve, grounded in evidence and what the data already supports." },
+      { "day": "THU", "body": "Prototype with real (anonymised) payslip cases and review edge cases with a payroll expert." },
+      { "day": "FRI", "body": "Share findings, the prototype, the trade-offs and a proposed next step, asynchronously and live." }
+    ]
+  },
+  "ask": "I'd love to bring financial-product design experience, systems thinking and fast AI prototyping to Remote's mission of making global employment easy, starting with pay people can trust."
+}
