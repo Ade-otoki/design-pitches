@@ -61,6 +61,7 @@ export type ProductLog = {
 
   effortImpact?: {
     option: string;
+    chosen?: boolean; // mark the option the Decision section picked
     effort: { design: number; dev: number; gtm: number }; // 1-10, lower = easier
     impact: { reach: number; value: number; business: number }; // 1-10
   }[];

@@ -53,7 +53,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   if (!log) notFound();
 
   const ei = log.effortImpact?.map((r) => ({ ...r, ...scoreOf(r) }));
-  const best = ei?.reduce((a, b) => (b.ratio > a.ratio ? b : a));
+  const best = ei?.find((r) => r.chosen) ?? ei?.reduce((a, b) => (b.ratio > a.ratio ? b : a));
 
   return (
     <main>

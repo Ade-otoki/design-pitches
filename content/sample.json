@@ -71,7 +71,7 @@
   },
   "effortImpact": [
     { "option": "Template-first", "effort": { "design": 2, "dev": 2, "gtm": 3 }, "impact": { "reach": 5, "value": 4, "business": 4 } },
-    { "option": "Auto-match + fix in place", "effort": { "design": 5, "dev": 6, "gtm": 3 }, "impact": { "reach": 8, "value": 9, "business": 8 } },
+    { "option": "Auto-match + fix in place", "chosen": true, "effort": { "design": 5, "dev": 6, "gtm": 3 }, "impact": { "reach": 8, "value": 9, "business": 8 } },
     { "option": "Concierge import", "effort": { "design": 1, "dev": 1, "gtm": 8 }, "impact": { "reach": 3, "value": 7, "business": 5 } }
   ],
   "depth": {
