@@ -101,7 +101,11 @@
       "cons": [
         "Needs per-attempt probe data to be stored and exposed.",
         "Dense for people who just want the fix."
-      ]
+      ],
+      "image": {
+        "src": "/sketches/railway-1.svg",
+        "alt": "Sketch: failed deploy with a verdict and a timeline of every healthcheck probe"
+      }
     },
     {
       "title": "Preflight check in the CLI",
@@ -113,7 +117,11 @@
       "cons": [
         "Can't reproduce platform-side or environment-specific failures, such as missing migrations or private networking.",
         "Only helps CLI users, not GitHub-triggered deploys."
-      ]
+      ],
+      "image": {
+        "src": "/sketches/railway-2.svg",
+        "alt": "Sketch: CLI preflight that probes the healthcheck path before deploying"
+      }
     },
     {
       "title": "Incident status in the deploy view",
@@ -125,7 +133,11 @@
       "cons": [
         "Says nothing useful when the cause is the user's own app, which is the more common case in the threads.",
         "Risks blaming an incident for an unrelated failure."
-      ]
+      ],
+      "image": {
+        "src": "/sketches/railway-3.svg",
+        "alt": "Sketch: failed deploy with an incident banner when a platform incident overlaps"
+      }
     }
   ],
   "decision": {
@@ -142,18 +154,42 @@
     {
       "option": "Probe timeline + attribution",
       "chosen": true,
-      "effort": { "design": 5, "dev": 6, "gtm": 2 },
-      "impact": { "reach": 8, "value": 9, "business": 7 }
+      "effort": {
+        "design": 5,
+        "dev": 6,
+        "gtm": 2
+      },
+      "impact": {
+        "reach": 8,
+        "value": 9,
+        "business": 7
+      }
     },
     {
       "option": "CLI preflight check",
-      "effort": { "design": 3, "dev": 6, "gtm": 4 },
-      "impact": { "reach": 4, "value": 6, "business": 4 }
+      "effort": {
+        "design": 3,
+        "dev": 6,
+        "gtm": 4
+      },
+      "impact": {
+        "reach": 4,
+        "value": 6,
+        "business": 4
+      }
     },
     {
       "option": "Incident line on deploys",
-      "effort": { "design": 2, "dev": 3, "gtm": 1 },
-      "impact": { "reach": 3, "value": 5, "business": 4 }
+      "effort": {
+        "design": 2,
+        "dev": 3,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 3,
+        "value": 5,
+        "business": 4
+      }
     }
   ],
   "depth": {
@@ -188,13 +224,37 @@
     "Agree with the Canvas agent team how the timeline hands evidence to the agent."
   ],
   "sources": [
-    { "label": "Railway Help Station: Every deploy fails healthcheck (308 redirect)", "url": "https://station.railway.com/questions/every-deploy-fails-healthcheck-confirm-4adb21e6" },
-    { "label": "Railway Help Station: Production service failing healthcheck, 21+ failed deploys", "url": "https://station.railway.com/questions/production-service-failing-healthcheck-s-bfa606dc" },
-    { "label": "Railway Help Station: Deploy failed at Healthcheck with nothing in the logs", "url": "https://station.railway.com/community/deploy-failed-at-healthcheck-with-nothin-edb86e2f" },
-    { "label": "Railway Help Station: Consistent deploy failures without log details", "url": "https://station.railway.com/questions/consistent-deploy-failures-without-log-d-661d0c59" },
-    { "label": "Railway Help Station: Build failing with empty build logs", "url": "https://station.railway.com/questions/build-failing-on-railway-with-empty-buil-81b4dd02" },
-    { "label": "Railway Docs: Healthchecks", "url": "https://docs.railway.com/deployments/healthchecks" },
-    { "label": "Railway Changelog #0277: Chat with your canvas", "url": "https://railway.com/changelog/2026-02-13-chat-with-your-canvas" },
-    { "label": "Railway careers: Senior Product Designer", "url": "https://railway.com/careers/Product-designer" }
+    {
+      "label": "Railway Help Station: Every deploy fails healthcheck (308 redirect)",
+      "url": "https://station.railway.com/questions/every-deploy-fails-healthcheck-confirm-4adb21e6"
+    },
+    {
+      "label": "Railway Help Station: Production service failing healthcheck, 21+ failed deploys",
+      "url": "https://station.railway.com/questions/production-service-failing-healthcheck-s-bfa606dc"
+    },
+    {
+      "label": "Railway Help Station: Deploy failed at Healthcheck with nothing in the logs",
+      "url": "https://station.railway.com/community/deploy-failed-at-healthcheck-with-nothin-edb86e2f"
+    },
+    {
+      "label": "Railway Help Station: Consistent deploy failures without log details",
+      "url": "https://station.railway.com/questions/consistent-deploy-failures-without-log-d-661d0c59"
+    },
+    {
+      "label": "Railway Help Station: Build failing with empty build logs",
+      "url": "https://station.railway.com/questions/build-failing-on-railway-with-empty-buil-81b4dd02"
+    },
+    {
+      "label": "Railway Docs: Healthchecks",
+      "url": "https://docs.railway.com/deployments/healthchecks"
+    },
+    {
+      "label": "Railway Changelog #0277: Chat with your canvas",
+      "url": "https://railway.com/changelog/2026-02-13-chat-with-your-canvas"
+    },
+    {
+      "label": "Railway careers: Senior Product Designer",
+      "url": "https://railway.com/careers/Product-designer"
+    }
   ]
 }

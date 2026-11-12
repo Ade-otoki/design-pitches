@@ -101,7 +101,11 @@
       "cons": [
         "Makes cancelling easier for bad actors too, with nothing for the recipient.",
         "Doesn't help a recipient who has already handed something over."
-      ]
+      ],
+      "image": {
+        "src": "/sketches/wave-1.svg",
+        "alt": "Sketch: cancel button with a countdown on the sender's receipt"
+      }
     },
     {
       "title": "Recipient sees what isn't final yet",
@@ -113,7 +117,11 @@
       "cons": [
         "Adds a state to every incoming transfer.",
         "Vendors may wait out the window, slowing trade."
-      ]
+      ],
+      "image": {
+        "src": "/sketches/wave-2.svg",
+        "alt": "Sketch: recipient's home screen marks incoming money as not final until 14h52"
+      }
     },
     {
       "title": "Two-sided Fair Cancel",
@@ -126,7 +134,11 @@
       "cons": [
         "Needs policy decisions on reasons, limits and repeated cancellations.",
         "More design and copy to test in French and local languages."
-      ]
+      ],
+      "image": {
+        "src": "/sketches/wave-3.svg",
+        "alt": "Sketch: sender cancels with a reason; recipient sees when money is final and gets a cancellation notice"
+      }
     }
   ],
   "decision": {
@@ -143,18 +155,42 @@
     {
       "option": "Two-sided Fair Cancel",
       "chosen": true,
-      "effort": { "design": 6, "dev": 6, "gtm": 5 },
-      "impact": { "reach": 9, "value": 9, "business": 8 }
+      "effort": {
+        "design": 6,
+        "dev": 6,
+        "gtm": 5
+      },
+      "impact": {
+        "reach": 9,
+        "value": 9,
+        "business": 8
+      }
     },
     {
       "option": "Sender-side undo only",
-      "effort": { "design": 3, "dev": 4, "gtm": 3 },
-      "impact": { "reach": 6, "value": 6, "business": 5 }
+      "effort": {
+        "design": 3,
+        "dev": 4,
+        "gtm": 3
+      },
+      "impact": {
+        "reach": 6,
+        "value": 6,
+        "business": 5
+      }
     },
     {
       "option": "History search and filters",
-      "effort": { "design": 3, "dev": 4, "gtm": 2 },
-      "impact": { "reach": 5, "value": 5, "business": 4 }
+      "effort": {
+        "design": 3,
+        "dev": 4,
+        "gtm": 2
+      },
+      "impact": {
+        "reach": 5,
+        "value": 5,
+        "business": 4
+      }
     }
   ],
   "depth": {
@@ -168,9 +204,18 @@
       "Asking for a reason, and showing it to the recipient, discourages abusive cancellations."
     ],
     "metrics": [
-      { "name": "Time to cancel", "definition": "Median time from a mistaken send to a successful cancellation." },
-      { "name": "Cancellation support contacts", "definition": "Chatbot and hotline contacts about cancellations, per 10,000 transfers." },
-      { "name": "Disputed cancellations", "definition": "Share of cancellations that the recipient reports, by country and merchant type." }
+      {
+        "name": "Time to cancel",
+        "definition": "Median time from a mistaken send to a successful cancellation."
+      },
+      {
+        "name": "Cancellation support contacts",
+        "definition": "Chatbot and hotline contacts about cancellations, per 10,000 transfers."
+      },
+      {
+        "name": "Disputed cancellations",
+        "definition": "Share of cancellations that the recipient reports, by country and merchant type."
+      }
     ]
   },
   "nextSteps": [
@@ -180,10 +225,25 @@
     "Agree with policy and risk on reasons, limits and repeat-cancellation rules."
   ],
   "sources": [
-    { "label": "Ibrahim Kamara: Annuler un transfert Wave (Oct 2026)", "url": "https://ibrahimkamara.com/blog/annuler-transfert-wave" },
-    { "label": "App Store (Senegal): Wave Mobile Money", "url": "https://apps.apple.com/sn/app/wave-mobile-money/id1523884528?l=fr-FR" },
-    { "label": "Daba Finance: Wave joins the BCEAO's PI-SPI network", "url": "https://dabafinance.com/en/news/wave-joins-the-bceao-s-pi-spi-instant-payment-network-2026-10-02" },
-    { "label": "Senego: bank transfers to Wave and Orange Money fail after PI-SPI becomes mandatory", "url": "https://senego.com/pi-spi-obligatoire-des-transferts-bancaires-vers-wave-et-orange-money-echouent_2020024.html" },
-    { "label": "Wave careers: Product Designer", "url": "https://www.wave.com/en/careers/job/6238979004/" }
+    {
+      "label": "Ibrahim Kamara: Annuler un transfert Wave (Oct 2026)",
+      "url": "https://ibrahimkamara.com/blog/annuler-transfert-wave"
+    },
+    {
+      "label": "App Store (Senegal): Wave Mobile Money",
+      "url": "https://apps.apple.com/sn/app/wave-mobile-money/id1523884528?l=fr-FR"
+    },
+    {
+      "label": "Daba Finance: Wave joins the BCEAO's PI-SPI network",
+      "url": "https://dabafinance.com/en/news/wave-joins-the-bceao-s-pi-spi-instant-payment-network-2026-10-02"
+    },
+    {
+      "label": "Senego: bank transfers to Wave and Orange Money fail after PI-SPI becomes mandatory",
+      "url": "https://senego.com/pi-spi-obligatoire-des-transferts-bancaires-vers-wave-et-orange-money-echouent_2020024.html"
+    },
+    {
+      "label": "Wave careers: Product Designer",
+      "url": "https://www.wave.com/en/careers/job/6238979004/"
+    }
   ]
 }

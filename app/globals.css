@@ -140,7 +140,7 @@ ul.clean li { margin: 6px 0; color: var(--ink-2); }
 .range { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; border-bottom: 1px solid var(--line); }
 .range .copy { padding: clamp(48px, 7vw, 96px) var(--gutter) clamp(48px, 7vw, 96px) max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter))); }
 .range .visual { background: var(--sand); display: grid; place-items: center; padding: 48px; }
-.range .visual img { border-radius: 16px; box-shadow: 0 30px 60px -30px rgba(40,30,0,.4); }
+.range .visual img { width: min(480px, 100%); height: auto; border-radius: 16px; box-shadow: 0 30px 60px -30px rgba(40,30,0,.4); }
 .range .placeholder { width: min(380px, 100%); aspect-ratio: 4 / 5; border-radius: 16px; background: var(--card); display: grid; place-items: center; text-align: center; color: var(--ink-3); padding: 24px; font-size: 14px; }
 .range h3 { color: var(--umber); font-size: clamp(24px, 2.6vw, 30px); margin: 28px 0 10px; }
 .pc h4 { margin: 28px 0 0; font-size: 17px; font-weight: 600; }
