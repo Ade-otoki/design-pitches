@@ -111,8 +111,10 @@
 
 /* Opportunity */
 .opp { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3.5cqw; height: 100%; align-items: center; }
-.screen { aspect-ratio: 16 / 10; border-radius: 1cqw; overflow: hidden; border: 0.25cqw solid #333; background: #0e0f13; }
-.screen iframe { width: 100%; height: 100%; border: 0; display: block; }
+.screen { border-radius: 1cqw; overflow: hidden; border: 0.25cqw solid #333; background: #0e0f13; }
+.screen.phone { width: 42%; justify-self: center; border-radius: 3cqw; border: 0.8cqw solid #111; box-shadow: 0 0 0 0.2cqw #333; }
+.sf { position: relative; width: 100%; overflow: hidden; background: #fff; }
+.sf iframe { position: absolute; top: 0; left: 0; border: 0; display: block; }
 .btns { display: flex; flex-wrap: wrap; gap: 1cqw; margin-top: 1.6cqw; }
 .btn { display: inline-block; font-weight: 600; font-size: max(12px, 1.1cqw); padding: 0.9cqw 1.6cqw; border-radius: 0.7cqw; text-decoration: none; }
 .btn.yellow { background: var(--yellow); color: #111; }
@@ -149,6 +151,7 @@
   .index { font-size: 20px; }
   .foot { position: static; margin: 0 20px; padding-bottom: 14px; font-size: 11px; }
   .case-visual { padding: 16px; border-radius: 8px; }
+  .screen.phone { width: min(320px, 100%); border-width: 8px; border-radius: 32px; }
   .label { font-size: 12px; margin: -6px 0 12px; }
   .outcome-text { font-size: 13px; }
   .btn { font-size: 14px; padding: 10px 16px; border-radius: 8px; }

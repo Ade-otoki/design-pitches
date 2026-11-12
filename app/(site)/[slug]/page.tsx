@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { allLogs, getLog } from "../../../lib/content";
 import type { ProductLog } from "../../../lib/types";
 import { BOOKING_URL } from "../../../lib/site";
+import ScaledFrame from "../../../lib/ScaledFrame";
 
 export const dynamicParams = false;
 
@@ -27,17 +28,18 @@ function fmtDate(iso: string) {
 
 function Device({ log }: { log: ProductLog }) {
   const src = log.prototype.path;
+  const title = `${log.feature.name} prototype`;
   if (log.prototype.frame === "desktop") {
     return (
       <div className="desktop">
-        <div className="bar"><i /><i /><i /></div>
-        <iframe src={src} title={`${log.feature.name} prototype`} loading="lazy" />
+        <div className="bar"><i /><i /><i /><span>{log.company.toLowerCase()} · concept</span></div>
+        <ScaledFrame src={src} title={title} kind="desktop" />
       </div>
     );
   }
   return (
     <div className="phone">
-      <iframe src={src} title={`${log.feature.name} prototype`} loading="lazy" />
+      <ScaledFrame src={src} title={title} kind="phone" />
     </div>
   );
 }
@@ -62,7 +64,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
       {/* 1. Cover */}
       <div className="wrap">
-        <div className="cover">
+        <div className={`cover ${log.prototype.frame === "desktop" ? "is-desktop" : ""}`}>
           <div>
             <span className="chip" aria-hidden>{log.feature.icon ?? "✦"}</span>
             <p className="eyebrow" style={{ marginTop: 40 }}>
@@ -235,13 +237,14 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
       {/* 11. Conceptual depth */}
       <section>
-        <div className="wrap depth">
+        <div className={`wrap depth ${log.prototype.frame === "desktop" ? "is-desktop" : ""}`}>
           <div>
             <p className="eyebrow">Conceptual depth</p>
             <h2 className="serif h-section">The working prototype</h2>
             <p className="muted lede" style={{ marginTop: 20 }}>{log.depth.body}</p>
             <div className="cta-row">
               <a className="btn solid" href={log.prototype.path} target="_blank" rel="noreferrer">Open full screen ↗</a>
+              <a className="btn ghost" href={log.prototype.repoUrl} target="_blank" rel="noreferrer">View code</a>
             </div>
           </div>
           <Device log={log} />

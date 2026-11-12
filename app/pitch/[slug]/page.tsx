@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import type { PitchDeck } from "../../../lib/types";
 import { CASE_STUDIES, INTRO, LINKS, SYSTEMS, WORKING_STYLE } from "../../../lib/candidate";
 import { BOOKING_URL } from "../../../lib/site";
+import { getLog } from "../../../lib/content";
+import ScaledFrame from "../../../lib/ScaledFrame";
 import "./deck.css";
 
 const DIR = path.join(process.cwd(), "content", "pitches");
@@ -39,6 +41,7 @@ export default async function Pitch({ params }: { params: Promise<{ slug: string
   const d = getDeck(slug);
   if (!d) notFound();
   const C = d.company.toUpperCase();
+  const kind = getLog(slug)?.prototype.frame === "phone" ? "phone" : "desktop";
   const index = ["Intro", `Why ${d.company}`, "Experience", "Product thinking", "Design systems", "Working style", "First week", "Ask"];
 
   return (
@@ -174,8 +177,8 @@ export default async function Pitch({ params }: { params: Promise<{ slug: string
               <a className="btn ghost" href={`/${d.slug}`} target="_blank" rel="noreferrer">Read the product log ↗</a>
             </div>
           </div>
-          <div className="screen">
-            <iframe src={`/prototypes/${d.slug}`} title={`${d.opportunity.title} prototype`} loading="lazy" />
+          <div className={`screen ${kind}`}>
+            <ScaledFrame src={`/prototypes/${d.slug}`} title={`${d.opportunity.title} prototype`} kind={kind} />
           </div>
         </div>
       </Slide>
