@@ -11,7 +11,7 @@ export const INTRO = {
     "+31% repeat orders after redesigning Foodlify's checkout and ordering flows.",
     "−45% developer onboarding time with the Foodlify component library.",
     "30K+ female-owned businesses empowered across Nigeria and Africa at Shecluded.",
-    "3 Transaction Monitoring projects shipped on schedule at Youverify.",
+    "Designed Youverify's Transaction Monitoring MVP end to end.",
     "An iOS video-chat app delivered 6 weeks ahead of schedule.",
   ],
   closer: "I start from the workflow a person is actually navigating, prototype early, and treat research as an input to the next decision.",
