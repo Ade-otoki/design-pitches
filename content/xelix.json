@@ -1,0 +1,274 @@
+{
+  "slug": "xelix",
+  "draft": false,
+  "company": "Xelix",
+  "companyUrl": "https://www.xelix.com",
+  "role": "Senior Product Designer",
+  "jobUrl": "https://careers.xelix.com/jobs/8330412-senior-product-designer",
+  "date": "2026-11-13",
+  "feature": {
+    "name": "Verified Replies",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "✓"
+  },
+  "prototype": {
+    "path": "/prototypes/xelix",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/xelix",
+    "frame": "desktop",
+    "liveUrl": "/live/xelix"
+  },
+  "context": {
+    "title": "AI drafts the reply to a supplier, but someone still has to check every claim in it",
+    "body": "Xelix Helpdesk reads supplier emails, creates tickets and drafts replies from ERP data, and the AP team accepts or discards them with one click. The faster replies get, the more a single wrong promise costs: telling a supplier an invoice will be paid when it's on hold, or already paid, creates another query, or a dispute. Finance teams already spend about a quarter of their week checking AI output, and three in four say a lack of auditability holds them back. Today the evidence behind a draft lives in the ERP, not next to the reply.",
+    "assumptions": [
+      "I haven't used Xelix myself. My view comes from Xelix's public Helpdesk page and screenshots, Xelix's own benchmark article, G2 and industry surveys, so the product may already do more than I can see.",
+      "The concept assumes Helpdesk can read each invoice's status from the ERP data it already uses to draft replies (pay run, hold reason, payment date and reference).",
+      "Matching claims to ledger lines would use the same language model that drafts the reply, with the check shown as evidence, not hidden.",
+      "The layout follows Xelix's public Helpdesk screenshots: purple left rail, Dashboard / Inbox / Kanban, inbox tags, ticket fields, the 'Accept or discard generated reply?' banner and the Activity panel. Xelix has no public design system, so colours and type (Barlow) come from xelix.com. No Xelix logo.",
+      "Vendors, invoices and amounts are fictional."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Accurate first time",
+      "body": "No reply reaches a supplier with a payment promise the ledger can't back."
+    },
+    {
+      "title": "Evidence beside the reply",
+      "body": "The agent sees what the draft says and what the ledger says, side by side, without opening the ERP."
+    },
+    {
+      "title": "Proof on the record",
+      "body": "Every sent reply keeps the evidence it was based on, for audit and for the next query."
+    }
+  ],
+  "jtbd": "When a supplier asks about their invoices and Helpdesk drafts the reply, I want to know every statement in it is true before I send it, so I resolve the query once instead of creating another one.",
+  "evidence": [
+    {
+      "step": "Replies are drafted from ERP data",
+      "finding": "Xelix Helpdesk categorises supplier emails, creates tickets and drafts responses from ERP and ledger data. The team reviews the draft and resolves with one click, and Xelix says up to 40% of tickets can be resolved without people by day 90.",
+      "source": {
+        "label": "Xelix: Helpdesk",
+        "url": "https://xelix.com/platform/helpdesk"
+      }
+    },
+    {
+      "step": "Supplier queries are slow and mostly about payment",
+      "finding": "In a live benchmark with 40 shared-services leaders, first response averaged 44.7 hours and resolution 56.4 hours. About 40% of queries are payment-status or reminder requests.",
+      "source": {
+        "label": "Xelix: How AP teams make time for higher-value work",
+        "url": "https://xelix.com/resources/accounts-payable-processes/how-ap-teams-make-time-for-higher-value-work"
+      }
+    },
+    {
+      "step": "Few teams see why queries happen",
+      "finding": "Only 31% of participants in the same benchmark had full visibility into why AP queries arise.",
+      "source": {
+        "label": "Xelix: How AP teams make time for higher-value work",
+        "url": "https://xelix.com/resources/accounts-payable-processes/how-ap-teams-make-time-for-higher-value-work"
+      }
+    },
+    {
+      "step": "Checking AI eats a quarter of the week",
+      "finding": "A Datarails survey of 270 US finance leaders (Oct 2026) found teams spend 26% of their time checking or fixing AI output. 75% cite lack of auditability and 71% accuracy as reasons to hold back.",
+      "source": {
+        "label": "CFO Dive: AI verification eats 26% of finance teams' workweek",
+        "url": "https://www.cfodive.com/news/ai-verification-eats-26percent-finance-teams-workweek-datarails/832210/"
+      }
+    },
+    {
+      "step": "Customers rate Xelix highly",
+      "finding": "Xelix holds 4.8 out of 5 from 52 reviews on G2, across AP audit, duplicate detection, statement reconciliation and Helpdesk, so trust in the product is the asset to protect.",
+      "source": {
+        "label": "G2: Xelix reviews",
+        "url": "https://www.g2.com/products/xelix/reviews"
+      }
+    }
+  ],
+  "approaches": [
+    "List the sources used under each AI draft",
+    "Flag payment promises and ask for confirmation",
+    "Check every invoice in the draft against the ledger",
+    "Rewrite the draft from the evidence in one click",
+    "Save the evidence with the sent reply"
+  ],
+  "ranges": [
+    {
+      "title": "Show the sources",
+      "summary": "List the ledger, vendor record and pay run the draft was based on, under the reply.",
+      "pros": [
+        "Quick to build on today's Helpdesk.",
+        "Makes the draft feel less like a black box."
+      ],
+      "cons": [
+        "Nobody checks the claim against the sources.",
+        "A wrong promise still goes out."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/xelix-1-screen.svg",
+          "alt": "Sketch: AI reply with a list of sources underneath"
+        }
+      ],
+      "notes": [
+        "Transparent, not verified",
+        "Agent still checks by hand"
+      ]
+    },
+    {
+      "title": "Flag risky promises",
+      "summary": "Detect payment promises in the draft and require the agent to confirm before using it.",
+      "pros": [
+        "Stops the riskiest sentences slipping through.",
+        "Simple rule, easy to explain."
+      ],
+      "cons": [
+        "The agent still opens the ERP to check.",
+        "Adds friction to every payment query."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/xelix-2-screen.svg",
+          "alt": "Sketch: payment promise flagged with a confirmation checkbox"
+        }
+      ],
+      "notes": [
+        "Catches the risk",
+        "Moves the work, doesn't remove it"
+      ]
+    },
+    {
+      "title": "Verified Replies",
+      "summary": "Check every invoice in the draft against the ledger, show conflicts beside the reply, rewrite it from the evidence in one click, and save the proof.",
+      "pros": [
+        "Removes the manual ERP check.",
+        "Turns a wrong promise into a specific, useful answer."
+      ],
+      "cons": [
+        "Needs claim-to-ledger matching to be reliable.",
+        "More to design for edge cases (credit notes, partial payments)."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/xelix-3-draft-screen.svg",
+          "alt": "Sketch: draft with two invoices flagged against the ledger",
+          "label": "The draft"
+        },
+        {
+          "src": "/sketches/xelix-3-fixed-screen.svg",
+          "alt": "Sketch: reply rewritten with each invoice's real status",
+          "label": "Fixed"
+        }
+      ],
+      "notes": [
+        "Checked before it's sent",
+        "Needs reliable matching"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Verified Replies: every claim checked before it's sent",
+    "body": "Range 3. An Evidence tab beside the draft compares each invoice in the reply with the ledger, blocks 'Use as draft' while there are conflicts, and rewrites the reply from the evidence in one click.",
+    "reasons": [
+      "The 26% of time spent checking AI is exactly the ERP check this removes.",
+      "A wrong payment promise creates a new query, so accuracy is what actually cuts the 44.7-hour response time.",
+      "Saved evidence answers the auditability concern 75% of finance leaders raise."
+    ],
+    "tradeoff": "Matching can be wrong. I'd show it as evidence the agent can open, never as a silent auto-fix, and let them send anyway with a note."
+  },
+  "effortImpact": [
+    {
+      "option": "Verified Replies",
+      "chosen": true,
+      "effort": {
+        "design": 6,
+        "dev": 7,
+        "gtm": 3
+      },
+      "impact": {
+        "reach": 8,
+        "value": 9,
+        "business": 9
+      }
+    },
+    {
+      "option": "Flag risky promises",
+      "effort": {
+        "design": 3,
+        "dev": 4,
+        "gtm": 2
+      },
+      "impact": {
+        "reach": 8,
+        "value": 5,
+        "business": 5
+      }
+    },
+    {
+      "option": "Show the sources",
+      "effort": {
+        "design": 2,
+        "dev": 2,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 8,
+        "value": 3,
+        "business": 3
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built in the layout of Xelix's public Helpdesk screens. Three moments: the AI draft for a supplier's 'upcoming due invoices' email is checked, and two of three invoices conflict with the ledger (one on hold for a missing goods receipt, one already paid), so 'Use as draft' is blocked; 'Fix from evidence' rewrites the reply with each invoice's real status and asks for the delivery note; once sent, the ticket completes and the evidence is saved to Activity. The banner and toast animate in quickly and turn off for people who reduce motion. Vendors and invoices are fictional."
+  },
+  "validation": {
+    "method": "I'd start with tickets where a supplier replied again within a week, then test Verified Replies with AP agents on real payment-status queries.",
+    "hypotheses": [
+      "Checked drafts lead to fewer repeat queries from the same supplier.",
+      "Agents accept more AI drafts when the evidence is beside them.",
+      "Saved evidence shortens audit and dispute handling."
+    ],
+    "metrics": [
+      {
+        "name": "Repeat query rate",
+        "definition": "Share of resolved tickets where the same supplier asks again about the same invoices within 7 days."
+      },
+      {
+        "name": "Draft acceptance",
+        "definition": "Share of AI drafts used, with or without edits."
+      },
+      {
+        "name": "Time to resolve",
+        "definition": "Median hours from email received to ticket complete, for payment-status queries."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Learn how Helpdesk builds drafts from ERP data today and what agents check by hand.",
+    "Review tickets where a reply led to a follow-up or dispute.",
+    "Test the Evidence tab with AP agents on live payment-status queries.",
+    "Agree with customers' audit teams what evidence should be kept with a reply."
+  ],
+  "sources": [
+    {
+      "label": "Xelix: Helpdesk",
+      "url": "https://xelix.com/platform/helpdesk"
+    },
+    {
+      "label": "Xelix: How AP teams make time for higher-value work",
+      "url": "https://xelix.com/resources/accounts-payable-processes/how-ap-teams-make-time-for-higher-value-work"
+    },
+    {
+      "label": "CFO Dive: AI verification eats 26% of finance teams' workweek",
+      "url": "https://www.cfodive.com/news/ai-verification-eats-26percent-finance-teams-workweek-datarails/832210/"
+    },
+    {
+      "label": "G2: Xelix reviews",
+      "url": "https://www.g2.com/products/xelix/reviews"
+    },
+    {
+      "label": "Xelix careers: Senior Product Designer",
+      "url": "https://careers.xelix.com/jobs/8330412-senior-product-designer"
+    }
+  ]
+}

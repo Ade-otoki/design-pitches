@@ -1,0 +1,85 @@
+{
+  "slug": "xelix",
+  "company": "Xelix",
+  "role": "Senior Product Designer",
+  "date": "NOV 2026",
+  "hook": "I want every AI reply to a supplier to be right first time",
+  "tags": [
+    "fintech",
+    "ai"
+  ],
+  "builtFor": {
+    "context": "Xelix helps AP teams move from manual work to automated controls, and Helpdesk now drafts replies to supplier queries with AI. The next step for trust is making every drafted claim checkable: what the reply says, next to what the ledger says.",
+    "opportunities": [
+      {
+        "title": "Verified Replies",
+        "body": "Check every invoice in an AI-drafted reply against the ledger before it's sent."
+      },
+      {
+        "title": "Evidence on the record",
+        "body": "Keep the proof behind each reply with the ticket, for audit and the next query."
+      },
+      {
+        "title": "Prevent the next query",
+        "body": "Spot the holds and missing receipts behind repeat queries and ask suppliers for the fix in the first reply."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "My background is FinTech and RegTech: at Youverify I designed KYC verification and transaction-monitoring dashboards that compliance teams used to make decisions from dense financial data.",
+      "I make ideas tangible early and prototype in code with AI tools, which is how I built the concept in this pitch, and how Xelix says it wants to work."
+    ],
+    "bring": [
+      {
+        "title": "Financial controls",
+        "body": "Transaction monitoring and KYC tools for compliance teams at Youverify."
+      },
+      {
+        "title": "Measurable value",
+        "body": "A loan dashboard redesign that lifted first-time engagement by 30%."
+      },
+      {
+        "title": "AI-assisted design",
+        "body": "Working prototypes in code, like the one in this pitch."
+      }
+    ]
+  },
+  "caseStudies": [
+    "youverify",
+    "shecluded",
+    "foodlify"
+  ],
+  "systemsGets": "Someone who can design one high-stakes moment, an AI reply about money, and turn it into patterns the whole platform and design system can reuse.",
+  "opportunity": {
+    "title": "Verified Replies",
+    "problem": "Helpdesk drafts supplier replies from ERP data, but the agent still has to check every claim. A wrong promise ('we'll pay it when due' for an invoice on hold) creates another query, and finance teams already spend 26% of their week checking AI output.",
+    "solution": "An Evidence tab beside the draft checks each invoice against the ledger, blocks sending while there are conflicts, rewrites the reply from the evidence in one click, and saves the proof with the ticket."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how AP teams use Helpdesk and AI replies, then contributing one useful improvement with the team.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet product, engineering and the UX team. Learn the roadmap, the design system and how success is measured."
+      },
+      {
+        "day": "TUE",
+        "body": "Review Helpdesk usage, draft acceptance and repeat-query data, and sit in on customer calls."
+      },
+      {
+        "day": "WED",
+        "body": "Agree on one moment to improve, grounded in evidence."
+      },
+      {
+        "day": "THU",
+        "body": "Prototype it with AI tools, and review edge cases with an engineer."
+      },
+      {
+        "day": "FRI",
+        "body": "Share findings, the prototype, the trade-offs and a plan to test it with AP teams."
+      }
+    ]
+  },
+  "ask": "I'd love to bring fintech design experience and fast, AI-assisted prototyping to Xelix's UX team."
+}

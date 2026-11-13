@@ -568,3 +568,116 @@ if __name__ == "__main__":
     for name, fn in WEB_SCREENS.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)
+
+
+# ---------------- XELIX Helpdesk full screens (1280 x 800) ----------------
+XP = "#5b2bc4"
+
+
+def xframe(active_side="Evidence"):
+    out = f'<rect x="0" y="0" width="56" height="{WH}" fill="#3a1680"/>'
+    for i in range(5):
+        out += f'<rect x="16" y="{70+i*48}" width="24" height="24" rx="6" fill="{"#7b56d6" if i == 4 else "#5a37a6"}"/>'
+    out += f'<line x1="56" y1="56" x2="{WW}" y2="56" stroke="{LIGHT}" stroke-width="2"/>'
+    out += text(80, 35, "Dashboard", 15, "#55555f", 600) + f'<rect x="168" y="16" width="64" height="28" rx="6" fill="{XP}"/>' + text(200, 35, "Inbox", 15, "#fff", 700, "middle") + text(250, 35, "Kanban", 15, "#55555f", 600)
+    out += f'<rect x="0" y="0" width="0" height="0"/><rect x="56" y="56" width="250" height="{WH-56}" fill="#faf9fd"/><line x1="306" y1="56" x2="306" y2="{WH}" stroke="{LIGHT}" stroke-width="2"/>'
+    for i in range(6):
+        y = 76 + i * 110
+        if i == 0:
+            out += f'<rect x="56" y="{y-10}" width="250" height="104" fill="#ffffff"/><rect x="56" y="{y-10}" width="4" height="104" fill="{XP}"/>'
+        out += bar(76, y, 120, 11, "#cfcfd8") + bar(76, y + 22, 180, 9) + bar(76, y + 40, 200, 8) + f'<rect x="76" y="{y+60}" width="58" height="18" rx="9" fill="#e8f6ee"/>'
+    out += f'<line x1="980" y1="56" x2="980" y2="{WH}" stroke="{LIGHT}" stroke-width="2"/>'
+    out += text(330, 88, "Ticket #339962", 13, MID, 600) + text(330, 116, "Upcoming due invoices", 22, INK, 800)
+    for i, k in enumerate(["Status", "Priority", "Categories", "Assignee", "Vendors"]):
+        out += text(330 + i * 120, 146, k, 12, MID, 600) + f'<rect x="{330+i*120}" y="154" width="96" height="20" rx="5" fill="#f1eff7"/>'
+    tabs = ["Evidence", "Activity", "Comments"] if active_side == "Evidence" else ["Activity", "Comments"]
+    for i, t in enumerate(tabs):
+        on = t == active_side
+        out += text(1000 + i * 92, 90, t, 15, XP if on else MID, 700 if on else 600)
+        if on:
+            out += f'<rect x="1000" y="100" width="{len(t)*9}" height="3" fill="{XP}"/>'
+    return out
+
+
+def xdraft(x, y, lines_bad=False, fixed=False):
+    out = box(x, y, 620, 270, stroke=LIGHT, r=10, sw=2) + text(x + 20, y + 34, "Dear Joseph,", 15, INK, 500)
+    if fixed:
+        rows = ["• PP-2172246 is in the pay run on Fri 20 Nov.", "• PP-2166142 is on hold: please send the delivery note.", "• PP-2169089 was paid on 10 Nov (ref XLX-55190)."]
+        for i, r in enumerate(rows):
+            out += text(x + 20, y + 74 + i * 32, r, 15, INK, 500)
+    else:
+        for i, inv in enumerate(["PP-2172246", "PP-2166142", "PP-2169089"]):
+            bad = lines_bad and i > 0
+            if bad:
+                out += f'<rect x="{x+16}" y="{y+58+i*30}" width="112" height="24" rx="4" fill="{SP_BADBG}"/>'
+            out += text(x + 20, y + 76 + i * 30, inv, 15, SP_BAD if bad else INK, 600)
+        if lines_bad:
+            out += f'<rect x="{x+16}" y="{y+160}" width="560" height="26" rx="4" fill="{SP_BADBG}"/>'
+        out += text(x + 20, y + 179, "We will ensure these invoices are processed for payment as they become due.", 14, SP_BAD if lines_bad else INK, 500)
+    out += text(x + 20, y + 232, "Best regards, Tony", 15, INK, 500)
+    return out
+
+
+def xelix_1_web():
+    b = xframe("Activity")
+    b += f'<rect x="330" y="190" width="620" height="40" rx="8" fill="#e8f1fe"/>' + text(348, 215, "Accept or discard generated reply?", 15, INK, 600)
+    b += xdraft(330, 244)
+    b += box(330, 530, 620, 120, stroke=SP_P, r=10, sw=3) + text(350, 560, "Sources used", 16, INK, 800)
+    for i, s in enumerate(["AP ledger · 3 invoices", "Vendor record · Barber Ltd", "Pay run · 20 Nov"]):
+        b += f'<rect x="{350+i*196}" y="578" width="184" height="30" rx="15" fill="#f1eff7"/>' + text(442 + i * 196, 598, s, 13, XP, 700, "middle")
+    b += note(330, 690, "sources listed, but nobody checks the claim against them", "#8a8a93", 22)
+    b += note(990, 600, "cheap to add", SP_P, 24) + note(990, 630, "under the draft", SP_P, 24)
+    return wscreen(b, "Range 1: sources listed under the AI-drafted reply, but the claims aren't checked")
+
+
+def xelix_2_web():
+    b = xframe("Activity")
+    b += f'<rect x="330" y="190" width="620" height="40" rx="8" fill="{"#fff4e0"}"/>' + text(348, 215, "This reply promises a payment. Confirm before sending.", 15, "#8a5300", 700)
+    b += xdraft(330, 244, lines_bad=False)
+    b += f'<rect x="346" y="404" width="574" height="26" rx="4" fill="none" stroke="#d4880f" stroke-width="2" stroke-dasharray="6 5"/>'
+    b += box(330, 540, 300, 46, stroke=MID, r=8, sw=2) + text(352, 569, "☐  I've checked the payment dates", 14, INK, 600)
+    b += f'<rect x="760" y="540" width="190" height="46" rx="8" fill="#cfc8e0"/>' + text(855, 569, "Use as draft", 15, "#fff", 700, "middle")
+    b += note(330, 680, "catches promises, but the agent still checks the ERP by hand", "#8a8a93", 22)
+    b += note(990, 420, "flags risky", SP_P, 24) + note(990, 450, "promises", SP_P, 24) + arrow(986, 432, 930, 418, SP_P)
+    return wscreen(b, "Range 2: risky promises in the AI reply are flagged and need a manual confirmation")
+
+
+def xelix_3_draft_web():
+    b = xframe("Evidence")
+    b += f'<rect x="330" y="190" width="620" height="40" rx="8" fill="#fff4e0"/>' + text(348, 215, "2 invoices don't match the ledger", 15, "#8a5300", 800)
+    b += f'<rect x="700" y="196" width="130" height="28" rx="6" fill="#fff" stroke="{XP}" stroke-width="2"/>' + text(765, 215, "Fix from evidence", 12, XP, 700, "middle")
+    b += f'<rect x="840" y="196" width="100" height="28" rx="6" fill="#cfc8e0"/>' + text(890, 215, "Use as draft", 12, "#fff", 700, "middle")
+    b += xdraft(330, 244, lines_bad=True)
+    cards = [("PP-2172246", "Scheduled · 20 Nov", "#2f6fe0", "#e8f1fe", False), ("PP-2166142", "On hold · no receipt", "#8a5300", "#fff3d6", True), ("PP-2169089", "Paid 10 Nov", SP_OK, SP_OKBG, True)]
+    for i, (inv, st, c, bg, bad) in enumerate(cards):
+        y = 124 + i * 128
+        b += box(996, y, 266, 114, stroke="#f2b7be" if bad else LIGHT, r=10, sw=2) + text(1012, y + 28, inv, 15, INK, 800)
+        b += f'<rect x="1012" y="{y+40}" width="150" height="20" rx="10" fill="{bg}"/>' + text(1087, y + 55, st, 11, c, 700, "middle")
+        b += bar(1012, y + 72, 200, 8)
+        if bad:
+            b += text(1012, y + 100, "Draft claim is wrong", 13, SP_BAD, 700)
+    b += ring(330, 190, 620, 40, 8)
+    b += note(330, 690, "every claim checked against the ledger before it's sent", SP_P, 24)
+    return wscreen(b, "Range 3, the draft: every invoice in the AI reply checked against the ledger, with two conflicts flagged")
+
+
+def xelix_3_fixed_web():
+    b = xframe("Evidence")
+    b += f'<rect x="330" y="190" width="620" height="40" rx="8" fill="#e8f1fe"/>' + text(348, 215, "Every invoice matches the ledger · 3 of 3", 15, "#2f6fe0", 800)
+    b += f'<rect x="840" y="196" width="100" height="28" rx="6" fill="{XP}"/>' + text(890, 215, "Use as draft", 12, "#fff", 700, "middle")
+    b += xdraft(330, 244, fixed=True)
+    for i, (inv, st, c, bg) in enumerate([("PP-2172246", "Scheduled · 20 Nov", "#2f6fe0", "#e8f1fe"), ("PP-2166142", "On hold · no receipt", "#8a5300", "#fff3d6"), ("PP-2169089", "Paid 10 Nov", SP_OK, SP_OKBG)]):
+        y = 124 + i * 128
+        b += box(996, y, 266, 114, stroke=LIGHT, r=10, sw=2) + text(1012, y + 28, inv, 15, INK, 800)
+        b += f'<rect x="1012" y="{y+40}" width="150" height="20" rx="10" fill="{bg}"/>' + text(1087, y + 55, st, 11, c, 700, "middle") + bar(1012, y + 72, 200, 8)
+    b += ring(330, 244, 620, 270, 10)
+    b += note(330, 690, "accurate first time, evidence saved to the ticket", SP_P, 24)
+    return wscreen(b, "Range 3, fixed: the reply rewritten with each invoice's real status, ready to send")
+
+
+XELIX_SCREENS = {"xelix-1-screen": xelix_1_web, "xelix-2-screen": xelix_2_web, "xelix-3-draft-screen": xelix_3_draft_web, "xelix-3-fixed-screen": xelix_3_fixed_web}
+
+if __name__ == "__main__":
+    for name, fn in XELIX_SCREENS.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)
