@@ -174,7 +174,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
       {/* 7–9. Ranges */}
       {log.ranges.map((r, i) => (
-        <div className="range" key={r.title}>
+        <div className={`range ${log.prototype.frame === "desktop" ? "is-desktop" : ""}`} key={r.title}>
           <div className="copy">
             <span className="chip sm">{i + 1}</span>
             <h3 className="serif">Range {i + 1}: {r.title}</h3>
@@ -192,7 +192,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                 <div className={`sketch-row n${r.screens.length}`}>
                   {r.screens.map((sc) => (
                     <figure key={sc.src}>
-                      <IPhone17 image={sc.src} title={sc.alt} statusBar={sc.statusBar} />
+                      {log.prototype.frame === "desktop" ? (
+                        // Web-app concepts: full 1280x800 screens in a browser window, not a phone
+                        <div className="desktop sketch-desktop">
+                          <div className="bar"><i /><i /><i /><span>{log.company.toLowerCase()} · sketch</span></div>
+                          <img src={sc.src} alt={sc.alt} width={1280} height={800} />
+                        </div>
+                      ) : (
+                        <IPhone17 image={sc.src} title={sc.alt} statusBar={sc.statusBar} />
+                      )}
                       {sc.label && <figcaption>{sc.label}</figcaption>}
                     </figure>
                   ))}

@@ -113,7 +113,7 @@
         "Mistakes are still found 48 hours later."
       ],
       "screens": [
-        { "src": "/sketches/spendesk-1.svg", "alt": "Sketch: KYC email with a checklist of documents and their rules" }
+        { "src": "/sketches/spendesk-1-screen.svg", "alt": "Sketch: KYC email with a checklist of documents and their rules" }
       ],
       "notes": ["Clearer rules", "Still email-only, still late feedback"]
     },
@@ -129,7 +129,7 @@
         "No status once it's sent."
       ],
       "screens": [
-        { "src": "/sketches/spendesk-2.svg", "alt": "Sketch: upload screen with pre-checks, one failing for a missing signature" }
+        { "src": "/sketches/spendesk-2-screen.svg", "alt": "Sketch: upload screen with pre-checks, one failing for a missing signature" }
       ],
       "notes": ["Right the first time", "The owner still chases everyone"]
     },
@@ -145,8 +145,8 @@
         "More surfaces to build than a better email."
       ],
       "screens": [
-        { "src": "/sketches/spendesk-3-list.svg", "alt": "Sketch: verification checklist with statuses", "label": "Before sending" },
-        { "src": "/sketches/spendesk-3-review.svg", "alt": "Sketch: review timeline after sending", "label": "After sending" }
+        { "src": "/sketches/spendesk-3-list-screen.svg", "alt": "Sketch: verification checklist with statuses", "label": "Before sending" },
+        { "src": "/sketches/spendesk-3-review-screen.svg", "alt": "Sketch: review timeline after sending", "label": "After sending" }
       ],
       "notes": ["One place, start to finish", "Needs compliance sign-off"]
     }

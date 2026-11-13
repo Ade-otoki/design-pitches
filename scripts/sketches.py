@@ -419,3 +419,152 @@ if __name__ == "__main__":
     for name, fn in SP_SKETCHES.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)
+
+
+# ---------------- WEB APP full screens (1280 x 800) for the desktop browser frame ----------------
+WW, WH = 1280, 800
+
+
+def wscreen(body, title):
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{WW}" height="{WH}" viewBox="0 0 {WW} {WH}" role="img" aria-label="{title}">'
+            f'<title>{title}</title><rect width="{WW}" height="{WH}" fill="#ffffff"/>{body}</svg>')
+
+
+def wsidebar(active=6, items=("Home", "Requests", "Expenses", "Cards", "Invoices", "Bookkeeping", "Verification", "Settings")):
+    out = f'<rect x="0" y="0" width="240" height="{WH}" fill="#f6f6f8"/><line x1="240" y1="0" x2="240" y2="{WH}" stroke="{LIGHT}" stroke-width="2"/>'
+    out += f'<rect x="24" y="26" width="36" height="36" rx="8" fill="{LIGHT}"/>' + bar(72, 32, 110, 11, "#d6d6dc") + bar(72, 50, 70, 8)
+    for i, label in enumerate(items):
+        y = 104 + i * 46
+        if i == active:
+            out += f'<rect x="14" y="{y-6}" width="212" height="40" rx="9" fill="#ebe8f7"/>'
+        out += f'<rect x="30" y="{y+5}" width="16" height="16" rx="4" fill="{"#c9c1ee" if i == active else "#dcdce2"}"/>'
+        out += text(60, y + 19, label, 16, INK if i == active else "#55555f", 700 if i == active else 500)
+    return out
+
+
+def wtag(x, y, label, ok):
+    c, bg = (SP_OK, SP_OKBG) if ok == 1 else (SP_BAD, SP_BADBG) if ok == 0 else ("#4a4aba", "#eff1fe") if ok == 3 else ("#6b6b73", LIGHT)
+    w = 22 + len(label) * 8.6
+    return f'<rect x="{x-w}" y="{y}" width="{w}" height="28" rx="14" fill="{bg}"/>' + text(x - w / 2, y + 19, label, 14, c, 700, "middle")
+
+
+def wrow(x, y, w, title, sub, tag, ok, highlight=False):
+    out = ""
+    if highlight:
+        out += f'<rect x="{x}" y="{y}" width="{w}" height="64" fill="#faf9fe"/>'
+    out += f'<rect x="{x+20}" y="{y+16}" width="32" height="32" rx="8" fill="{LIGHT}"/>'
+    out += text(x + 68, y + 30, title, 17, INK, 700) + text(x + 68, y + 51, sub, 14, "#8a8a93", 500)
+    out += wtag(x + w - 56, y + 18, tag, ok) + text(x + w - 30, y + 38, "›", 22, MID, 500)
+    return out
+
+
+def spendesk_1_web():
+    # Webmail: the KYC request as it arrives today, rewritten as a clearer checklist
+    b = f'<rect x="0" y="0" width="{WW}" height="64" fill="#f6f6f8"/><line x1="0" y1="64" x2="{WW}" y2="64" stroke="{LIGHT}" stroke-width="2"/>'
+    b += text(32, 40, "Mail", 20, INK, 800) + f'<rect x="300" y="16" width="520" height="34" rx="17" fill="#ffffff" stroke="{LIGHT}" stroke-width="2"/>' + text(324, 39, "Search mail", 15, MID, 500)
+    b += f'<rect x="0" y="64" width="380" height="{WH-64}" fill="#ffffff"/><line x1="380" y1="64" x2="380" y2="{WH}" stroke="{LIGHT}" stroke-width="2"/>'
+    mails = [("collect@spendesk.com", "Action needed: periodic KYC review", True), ("Marie (CFO)", "Re: Q4 budget", False), ("Bank", "Statement ready", False), ("Thomas", "Board pack", False), ("Newsletter", "This week in finance", False)]
+    for i, (f, s, on) in enumerate(mails):
+        y = 80 + i * 86
+        if on:
+            b += f'<rect x="0" y="{y}" width="378" height="86" fill="#ebe8f7"/>'
+        b += text(28, y + 32, f, 16, INK, 800 if on else 600) + text(28, y + 58, s, 14, "#55555f" if on else MID, 500)
+    b += text(424, 120, "Action needed: your periodic KYC review", 26, INK, 800)
+    b += text(424, 152, "From collect@spendesk.com  ·  to the Account Owner", 15, MID, 500)
+    for i, w in enumerate([700, 640, 520]):
+        b += bar(424, 180 + i * 22, w, 10)
+    b += box(424, 262, 640, 300, stroke=SP_P, r=14, sw=3)
+    b += text(452, 302, "What we need, and the rules", 19, INK, 800)
+    rules = [("Kbis extract", "issued in the last 3 months"), ("Shareholding structure", "signed and dated, 100% of shares"),
+             ("IDs for each executive", "in colour, front and back"), ("Proof of address", "personal, under 3 months")]
+    for i, (a, r) in enumerate(rules):
+        y = 344 + i * 52
+        b += box(452, y - 18, 22, 22, stroke=INK, r=5, sw=2) + text(490, y, a, 17, INK, 700) + text(490, y + 22, r, 14, "#6b6b73", 500)
+    b += f'<rect x="424" y="592" width="230" height="50" rx="25" fill="{INK}"/>' + text(539, 623, "Upload documents", 16, "#fff", 700, "middle")
+    b += note(1088, 300, "clear list +", SP_P, 26) + note(1088, 334, "the rules", SP_P, 26) + arrow(1084, 316, 1070, 360, SP_P)
+    b += note(424, 700, "still email-only: spam, one person, and mistakes found 48h later", "#8a8a93", 22)
+    return wscreen(b, "Range 1: the KYC request email rewritten as a clear checklist of documents and rules")
+
+
+def spendesk_2_web():
+    b = wsidebar()
+    x0 = 300
+    b += text(x0, 66, "Verification  ›  Shareholding structure", 15, MID, 500)
+    b += text(x0, 110, "Upload your shareholding structure", 30, INK, 800)
+    b += text(x0, 142, "Signed and dated by a legal representative, under 3 months old.", 16, "#6b6b73", 500)
+    b += box(x0, 174, 620, 150, stroke=MID, r=14, sw=2, dash="9 8")
+    b += f'<rect x="{x0+290}" y="{206}" width="40" height="40" rx="10" fill="{LIGHT}"/>' + text(x0 + 310, 278, "Drop your file here  ·  we check it straight away", 16, "#6b6b73", 600, "middle")
+    b += box(x0, 350, 620, 64, stroke=LIGHT, r=12, sw=2) + f'<rect x="{x0+18}" y="366" width="32" height="32" rx="7" fill="{SP_BADBG}"/>'
+    b += text(x0 + 66, 380, "Cap-table_Northwind.pdf", 16, INK, 700) + text(x0 + 66, 400, "Uploaded just now · 1 page", 13, MID, 500)
+    b += text(x0, 456, "Automatic checks", 18, INK, 800)
+    checks = [("✓  Dated 2 Oct 2026, under 3 months", SP_OK, "#f4f8f4"), ("✓  Shows who owns 100% of the shares", SP_OK, "#f4f8f4"),
+              ("✕  No signature found. Sign and date the last page, then upload it again.", SP_BAD, SP_BADBG)]
+    for i, (s, c, bg) in enumerate(checks):
+        y = 476 + i * 60
+        b += f'<rect x="{x0}" y="{y}" width="620" height="48" rx="10" fill="{bg}"/>' + text(x0 + 18, y + 30, s, 16, c, 700)
+    b += note(960, 520, "catches the usual", SP_P, 26) + note(960, 554, "rejections at upload", SP_P, 26) + arrow(956, 540, 930, 574, SP_P)
+    b += note(x0, 740, "…but the Account Owner still chases every shareholder, and gets no status after sending", "#8a8a93", 22)
+    return wscreen(b, "Range 2: upload page that checks each document straight away, with a missing signature flagged")
+
+
+def spendesk_3_list_web():
+    b = wsidebar()
+    x0, w = 300, 820
+    b += text(x0, 66, "Settings  ›  Company verification", 15, MID, 500)
+    b += text(x0, 110, "Annual company verification", 30, INK, 800)
+    b += f'<rect x="{x0+w-118}" y="86" width="118" height="28" rx="14" fill="#fff1d6"/>' + text(x0 + w - 59, 105, "Due 12 Dec", 14, "#8a5300", 700, "middle")
+    b += box(x0, 140, w, 76, stroke=LIGHT, r=14, sw=2) + text(x0 + 22, 172, "4 of 6 ready", 19, INK, 800)
+    b += bar(x0 + 22, 190, w - 44, 10, LIGHT, 5) + bar(x0 + 22, 190, (w - 44) * 4 / 6, 10, SP_OK, 5)
+    rows = [("Certificate of incorporation (Kbis)", "Issued in the last 3 months", "Ready", 1, False),
+            ("Shareholding structure", "Signed and dated, under 3 months", "Needs a fix", 0, True),
+            ("Articles of association", "Latest signed version", "Ready", 1, False),
+            ("Marie Laurent · CEO", "ID in colour, front and back · proof of address", "Ready", 1, False),
+            ("Thomas Girard · owns 32%", "We sent him a secure link", "Waiting for Thomas", 3, True)]
+    b += box(x0, 240, w, 64 * len(rows), stroke=LIGHT, r=14, sw=2)
+    for i, (t, s, tag, ok, hl) in enumerate(rows):
+        y = 240 + i * 64
+        b += wrow(x0, y, w, t, s, tag, ok, False)
+        if i:
+            b += f'<line x1="{x0}" y1="{y}" x2="{x0+w}" y2="{y}" stroke="{LIGHT}" stroke-width="2"/>'
+    b += text(x0, 618, "Review usually takes 2 working days. We'll show the status here.", 14, MID, 500)
+    b += f'<rect x="{x0+w-250}" y="596" width="250" height="46" rx="10" fill="#e4e4ea"/>' + text(x0 + w - 125, 625, "Send for review · 2 left", 15, "#8a8a93", 700, "middle")
+    b += ring(x0 + w - 56 - 116.6, 322, 116.6, 28, 14) + note(1136, 330, "fix before", SP_P, 24) + note(1136, 360, "review", SP_P, 24)
+    b += ring(x0 + w - 56 - 176.8, 514, 176.8, 28, 14) + note(1136, 522, "they upload", SP_P, 24) + note(1136, 552, "their own ID", SP_P, 24)
+    b += note(x0, 720, "one list in Spendesk: pre-checks, ask a shareholder, a due date", SP_P, 24)
+    return wscreen(b, "Range 3, before sending: verification checklist with statuses, a failed pre-check and a shareholder asked to upload")
+
+
+def spendesk_3_review_web():
+    b = wsidebar()
+    x0, w = 300, 820
+    b += text(x0, 66, "Settings  ›  Company verification", 15, MID, 500)
+    b += text(x0, 110, "Annual company verification", 30, INK, 800)
+    b += f'<rect x="{x0+w-110}" y="86" width="110" height="28" rx="14" fill="#eff1fe"/>' + text(x0 + w - 55, 105, "In review", 14, "#4a4aba", 700, "middle")
+    b += f'<rect x="{x0}" y="140" width="{w}" height="70" rx="12" fill="#eff1fe"/>' + text(x0 + 22, 170, "Your documents are with our compliance team", 17, "#4a4aba", 800)
+    b += text(x0 + 22, 194, "Nothing else is needed from you. Questions will appear here as well as by email.", 14, "#55555f", 500)
+    b += box(x0, 234, w, 270, stroke=LIGHT, r=14, sw=2)
+    steps = [("13 Nov", "Sent for review", "By Marie Laurent · 6 of 6 items passed our checks", INK, True),
+             ("13 Nov", "In review", "Our compliance team is checking. Usually 2 working days.", SP_P, False),
+             ("17 Nov", "Decision expected", "We'll email you and update this page.", MID, False)]
+    for i, (d, t, s, c, filled) in enumerate(steps):
+        y = 280 + i * 76
+        b += text(x0 + 30, y + 6, d, 14, MID, 600)
+        b += f'<circle cx="{x0+120}" cy="{y}" r="9" fill="{c if filled else "#fff"}" stroke="{c}" stroke-width="3"/>'
+        if i < 2:
+            b += f'<line x1="{x0+120}" y1="{y+12}" x2="{x0+120}" y2="{y+64}" stroke="{LIGHT}" stroke-width="3"/>'
+        b += text(x0 + 146, y + 6, t, 18, c, 800) + text(x0 + 146, y + 30, s, 14, "#6b6b73", 500)
+    b += text(x0, 552, "What you sent", 16, INK, 800)
+    for i in range(6):
+        cx, cy = x0 + (i % 3) * 276, 572 + (i // 3) * 76
+        b += box(cx, cy, 264, 62, stroke=LIGHT, r=10, sw=2) + f'<rect x="{cx+14}" y="{cy+15}" width="32" height="32" rx="7" fill="#fbe3df"/>' + bar(cx + 60, cy + 20, 150, 10, "#d6d6dc") + bar(cx + 60, cy + 38, 100, 8)
+    b += note(1136, 330, "a status,", SP_P, 24) + note(1136, 360, "not silence", SP_P, 24) + arrow(1132, 346, 1100, 360, SP_P)
+    return wscreen(b, "Range 3, after sending: review timeline with what happens next and when")
+
+
+WEB_SCREENS = {"spendesk-1-screen": spendesk_1_web, "spendesk-2-screen": spendesk_2_web,
+               "spendesk-3-list-screen": spendesk_3_list_web, "spendesk-3-review-screen": spendesk_3_review_web}
+
+if __name__ == "__main__":
+    for name, fn in WEB_SCREENS.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)
