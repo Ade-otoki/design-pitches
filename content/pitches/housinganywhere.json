@@ -1,0 +1,85 @@
+{
+  "slug": "housinganywhere",
+  "company": "HousingAnywhere",
+  "role": "Senior Product Designer, Post Booking",
+  "date": "NOV 2026",
+  "hook": "I want every tenant's first 48 hours to feel safe",
+  "tags": [
+    "mobile",
+    "rentals"
+  ],
+  "builtFor": {
+    "context": "HousingAnywhere wants to be a trusted companion beyond the booking. The moment that tests that trust most is move-in: a new country, a new room, and 48 hours of protection that tenants don't always know how to use.",
+    "opportunities": [
+      {
+        "title": "Move-in Check",
+        "body": "A countdown and a short room checklist that make the 48-hour protection window usable."
+      },
+      {
+        "title": "Payments you can follow",
+        "body": "Show when the first month is held, released or refunded, in the app, not a help article."
+      },
+      {
+        "title": "Reports with proof",
+        "body": "One-tap reports with photos that support can judge quickly."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "Most of my work has been money moments on mobile: a lending app at Shecluded, a wallet-first checkout at Foodlify, and verification tools at Youverify.",
+      "I make ideas tangible early and prototype with AI tools, which is how I built the working concept in this pitch."
+    ],
+    "bring": [
+      {
+        "title": "Mobile money moments",
+        "body": "A loan dashboard redesign that lifted first-time engagement by 30%."
+      },
+      {
+        "title": "Marketplace experience",
+        "body": "Checkout and ordering for a B2B marketplace, helping lift repeat orders by 31%."
+      },
+      {
+        "title": "AI-assisted prototyping",
+        "body": "Working mobile prototypes in code, like the one in this pitch."
+      }
+    ]
+  },
+  "caseStudies": [
+    "shecluded",
+    "foodlify",
+    "youverify"
+  ],
+  "systemsGets": "Someone who can design one high-trust moment, like move-in day, and turn it into patterns the whole post-booking journey and design system can reuse.",
+  "opportunity": {
+    "title": "Move-in Check",
+    "problem": "The first month is held until 48 hours after move-in, but the window lives in a help article. Tenants can't always confirm a move-in time, and some report problems inside the window and hear nothing.",
+    "solution": "Show the payment timeline before move-in, a countdown and room checklist on the day, and a one-tap report with photos that keeps the payment held and promises a reply time."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how tenants experience move-in and payments, then contributing one useful improvement with the team.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet Product, Engineering, Research, Data and the operations team. Learn the roadmap and the design system."
+      },
+      {
+        "day": "TUE",
+        "body": "Review move-in support contacts, cancel requests and app data."
+      },
+      {
+        "day": "WED",
+        "body": "Agree on one moment to improve, grounded in evidence."
+      },
+      {
+        "day": "THU",
+        "body": "Prototype it with AI tools, and review edge cases with an engineer and ops."
+      },
+      {
+        "day": "FRI",
+        "body": "Share findings, the prototype, the trade-offs and a plan to test it with tenants."
+      }
+    ]
+  },
+  "ask": "I'd love to bring mobile fintech and marketplace design experience, and fast, AI-assisted prototyping, to HousingAnywhere's post-booking journey."
+}

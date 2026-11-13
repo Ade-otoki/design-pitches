@@ -1,0 +1,278 @@
+{
+  "slug": "housinganywhere",
+  "draft": false,
+  "company": "HousingAnywhere",
+  "companyUrl": "https://housinganywhere.com",
+  "role": "Senior Product Designer, Post Booking",
+  "jobUrl": "https://job-boards.greenhouse.io/housinganywhere/jobs/8202587003",
+  "date": "2026-11-13",
+  "feature": {
+    "name": "Move-in Check",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "✓"
+  },
+  "prototype": {
+    "path": "/prototypes/housinganywhere",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/housinganywhere",
+    "frame": "phone",
+    "liveUrl": "/live/housinganywhere"
+  },
+  "context": {
+    "title": "Tenants are protected for 48 hours after move-in, but the app doesn't help them use that time",
+    "body": "HousingAnywhere holds a tenant's first month until 48 hours after the official move-in date. If the room isn't as described, the tenant can ask to cancel within that window and get a refund. It's a strong promise, but it lives in a help article. Move-in day is chaotic: tenants are often in a new country, the arrival time isn't always confirmed, and the 48 hours pass quickly. Reviews show tenants who reported problems inside the window and heard nothing, and others still chasing refunds.",
+    "assumptions": [
+      "I haven't rented through HousingAnywhere. My view comes from the help centre, the Tenant Protection page, public reviews and the job posting, so the app may already do more than I can see.",
+      "Pausing the release while a report is open, and the 12-hour reply time, are proposals, not current policy. They'd need agreement with operations and finance.",
+      "The checklist items are examples; the real list would come from the most common reasons for cancel requests.",
+      "HousingAnywhere has no public design system, so the visual language comes from housinganywhere.com: deep teal-navy ink, slate text, an orange accent and Inter. No HousingAnywhere logo.",
+      "The tenant, landlord, room and amounts are fictional."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Know what happens next",
+      "body": "Before move-in, show the confirmed time and exactly when the first payment is held and released."
+    },
+    {
+      "title": "Use the 48 hours",
+      "body": "Turn the protection window into a short, guided room check on move-in day."
+    },
+    {
+      "title": "Report with proof, stay protected",
+      "body": "Make reporting a problem one tap with photos, with the payment held and a clear reply time."
+    }
+  ],
+  "jtbd": "When I move into a room I booked from abroad, I want to check it quickly and report anything wrong while I'm still protected, so I don't lose my first month or get stuck with a place that isn't as described.",
+  "evidence": [
+    {
+      "step": "Payment is held until 48h after move-in",
+      "finding": "The first month's rent is charged at booking and held until 48 hours after the official move-in date, then released to the advertiser.",
+      "source": {
+        "label": "HousingAnywhere Help: Secure payment system for tenants",
+        "url": "https://intercom.help/housing-anywhere/en/articles/2270144-secure-payment-system-for-tenants"
+      }
+    },
+    {
+      "step": "Problems must be reported inside 48 hours",
+      "finding": "Within 48 hours of move-in, tenants can submit a 'Cancel Rental' request in the conversation with the advertiser if the room differs significantly from the listing. If approved, they get a full refund of the first month.",
+      "source": {
+        "label": "HousingAnywhere Help: Secure payment system for tenants",
+        "url": "https://intercom.help/housing-anywhere/en/articles/2270144-secure-payment-system-for-tenants"
+      }
+    },
+    {
+      "step": "Protection is a core promise",
+      "finding": "HousingAnywhere markets Tenant Protection as a guarantee 'built into every rental', with landlord verification, scam monitoring and payment held until you move in.",
+      "source": {
+        "label": "HousingAnywhere: Tenant Protection",
+        "url": "https://housinganywhere.com/secure-payments"
+      }
+    },
+    {
+      "step": "Reviews are split",
+      "finding": "HousingAnywhere has 3.2 out of 5 from 6,108 Trustpilot reviews: 54% five-star and 27% one-star.",
+      "source": {
+        "label": "Trustpilot: HousingAnywhere reviews",
+        "url": "https://ca.trustpilot.com/review/housinganywhere.com?page=4"
+      }
+    },
+    {
+      "step": "Tenants struggle in the window",
+      "finding": "Recent reviews describe a tenant who couldn't get an exact move-in time (Oct 2026), and another who reported problems 'all inside the 48-hour window' and got no reply (Oct 2026).",
+      "source": {
+        "label": "Trustpilot: HousingAnywhere reviews",
+        "url": "https://ca.trustpilot.com/review/housinganywhere.com?page=4"
+      }
+    },
+    {
+      "step": "Refunds and fees are unclear",
+      "finding": "Reviewers say they're 'still struggling with the refund process' (Oct 2026) and that the Tenant Protection fee 'should be outlined clearer' (Sep 2026).",
+      "source": {
+        "label": "Trustpilot: HousingAnywhere reviews",
+        "url": "https://ca.trustpilot.com/review/housinganywhere.com?page=4"
+      }
+    }
+  ],
+  "approaches": [
+    "Explain Tenant Protection more clearly on the booking",
+    "Show a 48-hour countdown after move-in",
+    "Add a guided room checklist to the window",
+    "Make reporting a problem one tap, with photos",
+    "Show when the payment is held and released"
+  ],
+  "ranges": [
+    {
+      "title": "Explain the rule better",
+      "summary": "Put a clear Tenant Protection explanation on the booking screen.",
+      "pros": [
+        "Cheap and quick.",
+        "Fewer surprises about the 48-hour rule."
+      ],
+      "cons": [
+        "Still just text on move-in day.",
+        "Doesn't help tenants report anything."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/housinganywhere-1-screen.svg",
+          "alt": "Sketch: booking screen with a Tenant Protection explanation"
+        }
+      ],
+      "notes": [
+        "Clearer rule",
+        "Still just text"
+      ]
+    },
+    {
+      "title": "Show the countdown",
+      "summary": "After move-in, show how much of the 48-hour window is left and when the payment will be released.",
+      "pros": [
+        "Makes the deadline impossible to miss.",
+        "Sets expectations for landlords too."
+      ],
+      "cons": [
+        "Tells tenants the time, not what to check.",
+        "Reporting still happens in a message thread."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/housinganywhere-2-screen.svg",
+          "alt": "Sketch: 48-hour countdown card on the stay screen"
+        }
+      ],
+      "notes": [
+        "Visible deadline",
+        "What do I check?"
+      ]
+    },
+    {
+      "title": "Move-in Check",
+      "summary": "Before move-in, a confirmed time and a payment timeline. On move-in day, a countdown with a short room checklist and a one-tap report with photos that keeps the payment held.",
+      "pros": [
+        "Covers before, during and after the 48 hours.",
+        "Turns complaints into structured reports with evidence."
+      ],
+      "cons": [
+        "Needs operations to commit to a reply time.",
+        "Pausing the release needs policy and finance sign-off."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/housinganywhere-3-check.svg",
+          "alt": "Sketch: countdown with a room checklist",
+          "label": "Move-in day"
+        },
+        {
+          "src": "/sketches/housinganywhere-3-report.svg",
+          "alt": "Sketch: report with photos and payment held",
+          "label": "Something's wrong"
+        }
+      ],
+      "notes": [
+        "Guided, with proof",
+        "Needs ops commitment"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Move-in Check: make the 48 hours visible and usable",
+    "body": "Range 3. A payment timeline before move-in, a countdown and checklist on move-in day, and a one-tap report with photos that keeps the payment held and promises a reply time.",
+    "reasons": [
+      "The reviews aren't about the rule, they're about not knowing what to do inside it, or not hearing back.",
+      "Structured reports with photos are faster for the support team to judge than a message thread.",
+      "A visible held payment is the clearest proof that Tenant Protection works."
+    ],
+    "tradeoff": "Pausing the release extends how long landlords wait. I'd limit it to reports with evidence, and show landlords the same status so they can fix issues quickly."
+  },
+  "effortImpact": [
+    {
+      "option": "Move-in Check",
+      "chosen": true,
+      "effort": {
+        "design": 6,
+        "dev": 6,
+        "gtm": 4
+      },
+      "impact": {
+        "reach": 9,
+        "value": 9,
+        "business": 8
+      }
+    },
+    {
+      "option": "Show the countdown",
+      "effort": {
+        "design": 3,
+        "dev": 3,
+        "gtm": 2
+      },
+      "impact": {
+        "reach": 9,
+        "value": 5,
+        "business": 5
+      }
+    },
+    {
+      "option": "Explain the rule better",
+      "effort": {
+        "design": 2,
+        "dev": 1,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 8,
+        "value": 3,
+        "business": 3
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built in HousingAnywhere's visual language, running in an iPhone 17 frame. Three moments: before move-in, the confirmed move-in time from the landlord and a timeline of when the €650 first month is held and released; on move-in day, a 45-hour countdown and a five-item room check, with 'All good' enabled only once everything is ticked; when hot water fails, the report adds photos, pauses the release and promises a reply within 12 hours. Cards and the toast ease in quickly and turn off for people who reduce motion. The tenant, landlord and amounts are fictional."
+  },
+  "validation": {
+    "method": "I'd start with cancel requests and support contacts raised in the first 48 hours, then test Move-in Check with tenants moving in during a busy intake week.",
+    "hypotheses": [
+      "Tenants who use the checklist report real issues earlier and with clearer evidence.",
+      "Structured reports with photos are resolved faster than message-thread reports.",
+      "A visible payment timeline reduces 'where's my refund?' contacts."
+    ],
+    "metrics": [
+      {
+        "name": "Time to resolve",
+        "definition": "Median hours from a move-in report to a decision."
+      },
+      {
+        "name": "In-window reporting",
+        "definition": "Share of move-in problems reported inside the 48-hour window."
+      },
+      {
+        "name": "Payment-status contacts",
+        "definition": "Support contacts about held payments and refunds per 1,000 move-ins."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Review cancel requests and support contacts from the first 48 hours after move-in.",
+    "Learn how operations judge a report today and what evidence they need.",
+    "Agree a reply-time commitment and whether a report can pause the release.",
+    "Test the flow with tenants during a busy intake week, in English and Dutch."
+  ],
+  "sources": [
+    {
+      "label": "HousingAnywhere Help: Secure payment system for tenants",
+      "url": "https://intercom.help/housing-anywhere/en/articles/2270144-secure-payment-system-for-tenants"
+    },
+    {
+      "label": "HousingAnywhere: Tenant Protection",
+      "url": "https://housinganywhere.com/secure-payments"
+    },
+    {
+      "label": "Trustpilot: HousingAnywhere reviews",
+      "url": "https://ca.trustpilot.com/review/housinganywhere.com?page=4"
+    },
+    {
+      "label": "HousingAnywhere careers: Senior Product Designer, Post Booking",
+      "url": "https://job-boards.greenhouse.io/housinganywhere/jobs/8202587003"
+    }
+  ]
+}

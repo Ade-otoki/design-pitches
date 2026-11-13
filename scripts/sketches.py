@@ -681,3 +681,73 @@ if __name__ == "__main__":
     for name, fn in XELIX_SCREENS.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)
+
+
+# ---------------- HOUSINGANYWHERE phone screens (402 x 874) ----------------
+HA_OR, HA_INK = "#ff4c27", "#002630"
+
+
+def ha_head():
+    return text(SW / 2, 92, "Your stay", 18, HA_INK, 700, "middle") + box(16, 110, SW - 32, 78, stroke=LIGHT, r=14, sw=2) + f'<rect x="28" y="122" width="54" height="54" rx="10" fill="{LIGHT}"/>' + bar(96, 132, 170, 11, "#cfd8de") + bar(96, 152, 210, 8) + bar(96, 166, 140, 8)
+
+
+def ha_tabs():
+    out = f'<line x1="0" y1="{SH-84}" x2="{SW}" y2="{SH-84}" stroke="{LIGHT}" stroke-width="2"/>'
+    for i in range(5):
+        out += f'<rect x="{30+i*76}" y="{SH-68}" width="36" height="8" rx="4" fill="{HA_OR if i == 3 else "#cfd8de"}"/>'
+    return out
+
+
+def ha_1():
+    b = ha_head() + box(16, 204, SW - 32, 300, stroke=LIGHT, r=14, sw=2)
+    b += text(32, 236, "Your booking is confirmed", 18, HA_INK, 800)
+    for i, (l, r) in enumerate([("Move-in", "1 Dec"), ("Rent", "€650 / month"), ("Landlord", "Eva de Vries")]):
+        b += text(32, 276 + i * 34, l, 14, MID, 600) + text(SW - 32, 276 + i * 34, r, 14, INK, 700, "end")
+    b += f'<rect x="32" y="388" width="{SW-64}" height="80" rx="10" fill="#eef3f6"/>' + text(46, 414, "Tenant Protection", 14, HA_INK, 800) + text(46, 438, "Report problems within 48h of", 13, "#55555f", 500) + text(46, 456, "moving in for a refund.", 13, "#55555f", 500)
+    b += ring(32, 388, SW - 64, 80, 10)
+    b += note(24, 580, "explain the rule better", HA_OR, 22) + note(24, 612, "…but it's still just text", "#8a8a93", 18)
+    return screen(b + ha_tabs(), "Range 1: booking screen with a clearer Tenant Protection explanation")
+
+
+def ha_2():
+    b = ha_head() + f'<rect x="16" y="204" width="{SW-32}" height="96" rx="14" fill="{HA_INK}"/>'
+    b += f'<circle cx="62" cy="252" r="28" fill="none" stroke="{HA_OR}" stroke-width="4"/>' + text(62, 258, "45h", 16, "#fff", 800, "middle")
+    b += text(104, 244, "Check your room", 17, "#fff", 800) + text(104, 268, "Report problems before 3 Dec", 13, "#cfe0e8", 500)
+    b += ring(16, 204, SW - 32, 96, 14)
+    b += box(16, 316, SW - 32, 120, stroke=LIGHT, r=14, sw=2) + text(32, 348, "Paid · held until 3 Dec, 14:00", 14, HA_INK, 700) + bar(32, 366, 260, 8) + bar(32, 384, 200, 8)
+    b += note(24, 520, "a countdown makes the", HA_OR, 22) + note(24, 550, "48h window visible", HA_OR, 22) + note(24, 600, "…but what do I check?", "#8a8a93", 18)
+    return screen(b + ha_tabs(), "Range 2: a 48-hour countdown card on the stay screen")
+
+
+def ha_3a():
+    b = ha_head() + f'<rect x="16" y="204" width="{SW-32}" height="86" rx="14" fill="{HA_INK}"/>'
+    b += f'<circle cx="58" cy="247" r="24" fill="none" stroke="{HA_OR}" stroke-width="4"/>' + text(58, 252, "45h", 14, "#fff", 800, "middle") + text(96, 252, "Check your room", 16, "#fff", 800)
+    b += box(16, 304, SW - 32, 340, stroke=LIGHT, r=14, sw=2) + text(32, 336, "Move-in check", 16, HA_INK, 800) + text(SW - 32, 336, "4/5", 13, MID, 700, "end")
+    for i, (l, st) in enumerate([("Got the keys", 1), ("Matches the listing", 1), ("Clean and safe", 1), ("Heating and hot water", 0), ("Wi-Fi works", 1)]):
+        y = 362 + i * 44
+        b += f'<circle cx="44" cy="{y+12}" r="12" fill="{SP_OK if st else "#fff"}" stroke="{SP_OK if st else "#a5bccc"}" stroke-width="2"/>' + text(66, y + 17, l, 14, INK, 600)
+    b += box(32, 586, 160, 44, stroke=HA_INK, r=10, sw=2) + text(112, 613, "Something's wrong", 13, HA_INK, 700, "middle")
+    b += f'<rect x="204" y="586" width="166" height="44" rx="10" fill="#ffc2b5"/>' + text(287, 613, "All good, release", 13, "#fff", 700, "middle")
+    b += ring(32, 586, 160, 44, 10)
+    b += note(24, 700, "a checklist inside the window", HA_OR, 20)
+    return screen(b + ha_tabs(), "Range 3, move-in day: countdown with a short room checklist")
+
+
+def ha_3b():
+    b = ha_head() + box(16, 204, SW - 32, 86, stroke="#ffc4b8", r=14, sw=2)
+    b += f'<circle cx="58" cy="247" r="24" fill="#ffece9" stroke="{HA_OR}" stroke-width="3"/>' + text(58, 252, "held", 11, HA_OR, 800, "middle") + text(96, 244, "We're looking into it", 16, HA_INK, 800) + text(96, 266, "Reply within 12 hours", 13, "#55555f", 500)
+    b += box(16, 304, SW - 32, 300, stroke=LIGHT, r=14, sw=2) + text(32, 336, "Your report", 16, HA_INK, 800)
+    b += f'<circle cx="44" cy="374" r="12" fill="{HA_OR}"/>' + text(44, 379, "!", 13, "#fff", 800, "middle") + text(66, 379, "No hot water", 14, HA_OR, 700)
+    b += f'<rect x="32" y="400" width="{SW-64}" height="70" rx="10" fill="#ffece9"/>' + bar(46, 420, 240, 9, "#f3c6bb") + bar(46, 440, 180, 9, "#f3c6bb")
+    b += f'<rect x="32" y="486" width="64" height="64" rx="8" fill="{LIGHT}"/><rect x="106" y="486" width="64" height="64" rx="8" fill="{LIGHT}"/>' + text(186, 524, "2 photos", 13, MID, 600)
+    b += ring(16, 204, SW - 32, 86, 14)
+    b += note(24, 680, "money stays protected", HA_OR, 20) + note(24, 708, "while it's fixed", HA_OR, 20)
+    return screen(b + ha_tabs(), "Range 3, something's wrong: report with photos, payment held and a reply time")
+
+
+HA_SCREENS = {"housinganywhere-1-screen": ha_1, "housinganywhere-2-screen": ha_2, "housinganywhere-3-check": ha_3a, "housinganywhere-3-report": ha_3b}
+
+if __name__ == "__main__":
+    for name, fn in HA_SCREENS.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)
