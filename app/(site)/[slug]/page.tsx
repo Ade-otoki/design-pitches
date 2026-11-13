@@ -293,7 +293,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <div>
             <h2 className="serif h-section">Next steps</h2>
             <p className="muted" style={{ marginTop: 16 }}>
-              I&apos;m applying for the {log.role} role at {log.company}.{" "}
+              {log.route === "outreach" ? <>I&apos;d love to talk about the {log.role} role at {log.company}.</> : <>I&apos;m applying for the {log.role} role at {log.company}.</>}{" "}
               {log.jobUrl && <a href={log.jobUrl} target="_blank" rel="noreferrer">See the role ↗</a>}
             </p>
             <div className="cta-row">

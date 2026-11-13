@@ -1,0 +1,85 @@
+{
+  "slug": "koho",
+  "company": "KOHO",
+  "role": "Senior Product Designer",
+  "date": "NOV 2026",
+  "hook": "I want payday to never feel like a surprise",
+  "tags": [
+    "mobile",
+    "money"
+  ],
+  "builtFor": {
+    "context": "KOHO set out to make financial services better for every Canadian: no hidden fees, no predatory interest. Cover is a big part of that promise, a zero-interest cash advance instead of an overdraft. The rule behind it is simple and fair, money in repays Cover first, but members only see the result, not the reason.",
+    "opportunities": [
+      {
+        "title": "Clear Payday",
+        "body": "Preview how the next deposit splits between Cover and Spendable, and show where every deposit went."
+      },
+      {
+        "title": "Cover you can follow",
+        "body": "Bring Cover use and repayment back into view, so a $0.00 Spendable never reads as an error."
+      },
+      {
+        "title": "AI that explains money",
+        "body": "Use AI to turn balances and rules into one plain sentence about what just happened and what's next."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "Most of my work has been consumer financial products: a lending platform for female entrepreneurs at Shecluded, a wallet-first mobile checkout at Foodlify, and transaction-monitoring tools at Youverify.",
+      "I like the moments where money and trust meet, and I make ideas tangible early: the prototype in this pitch was built with AI tools, the way KOHO says it wants to work."
+    ],
+    "bring": [
+      {
+        "title": "Consumer fintech on mobile",
+        "body": "A loan dashboard redesign that lifted first-time engagement by 30%."
+      },
+      {
+        "title": "Measurable value",
+        "body": "A checkout redesign that helped lift repeat orders by 31%."
+      },
+      {
+        "title": "AI-assisted prototyping",
+        "body": "Working mobile prototypes in code, like the one in this pitch."
+      }
+    ]
+  },
+  "caseStudies": [
+    "shecluded",
+    "foodlify",
+    "youverify"
+  ],
+  "systemsGets": "Someone who can design one sensitive money moment, like a deposit repaying Cover, and keep it consistent across Spend, Borrow and the rest of KOHO's product.",
+  "opportunity": {
+    "title": "Clear Payday",
+    "problem": "Money that comes in repays Cover first, out of sight. Cover isn't in the transaction feed, alerts show only Spendable, and a small deposit can go entirely to Cover. A July 2026 complaint read exactly this as a system error.",
+    "solution": "Show the split before and after money lands. Home previews the next deposit (about $1,240: $150 to Cover, about $1,090 to spend), and every deposit shows where it went and why, with your full Cover limit ready again."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how members experience Cover and payday, then contributing one useful improvement with the team.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet product, design, engineering, data and support. Learn the roadmap, the design system and how success is measured."
+      },
+      {
+        "day": "TUE",
+        "body": "Review support data, complaints and research about Cover, deposits and cash-outs."
+      },
+      {
+        "day": "WED",
+        "body": "Agree on one moment to improve, grounded in evidence and KOHO's policies."
+      },
+      {
+        "day": "THU",
+        "body": "Prototype it with AI tools, and review edge cases with an engineer and a data analyst."
+      },
+      {
+        "day": "FRI",
+        "body": "Share findings, the prototype, the trade-offs and a plan to test it with members."
+      }
+    ]
+  },
+  "ask": "I'd love to bring consumer-fintech design experience and fast, AI-assisted prototyping to KOHO's mission of financially empowering a generation of Canadians."
+}

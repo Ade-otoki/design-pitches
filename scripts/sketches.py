@@ -264,6 +264,71 @@ SCREENS = {
     "wave-3-recipient": lambda: screen(wave_home(cancelled=True), "Range 3, recipient: cancellation notice with reason and report link"),
 }
 
+
+# ---------------- KOHO full screens for the iPhone 17 mockup (402 x 874) ----------------
+KP, KLAV, KGREEN, KPV = "#2f1868", "#ece4ff", "#1fa651", "#6b2bd9"
+
+
+def koho_home(preview=True, caught_up=False):
+    b = f'<circle cx="38" cy="80" r="12" fill="none" stroke="{INK}" stroke-width="2"/>' + f'<rect x="{SW/2-32}" y="68" width="64" height="24" rx="12" fill="{KLAV}"/>' + text(SW / 2, 85, "Extra", 13, KP, 600, "middle")
+    b += box(16, 106, SW - 32, 44, LIGHT, "#f5f4f8", 22, 1.5) + f'<rect x="20" y="110" width="88" height="36" rx="18" fill="{KP}"/>' + text(64, 133, "Spend", 14, "#fff", 600, "middle")
+    for i, t in enumerate(["Credit", "Borrow", "Save"]):
+        b += text(160 + i * 82, 133, t, 14, MID, 600, "middle")
+    b += f'<rect x="16" y="162" width="{SW-32}" height="140" rx="16" fill="#cfd8de"/>' + text(SW / 2, 222, "Spendable", 14, "#fff", 600, "middle")
+    b += text(SW / 2, 268, "$0.00" if not caught_up else "$1,090.00", 40, "#fff", 800, "middle")
+    b += f'<rect x="16" y="312" width="{SW-32}" height="36" rx="12" fill="{"#e7f6ec" if caught_up else "#f3edff"}"/>' + text(32, 335, "Cover ready · $250 available" if caught_up else "Cover: $150 to repay · $100 available", 13, "#11602f" if caught_up else KP, 600)
+    for i, t in enumerate(["Add", "Send", "Cards"]):
+        b += box(16 + i * 96, 362, 84, 36, "#d3cfdd", "#fff", 18, 1.5) + text(58 + i * 96, 385, t, 14, KP, 600, "middle")
+    y = 414
+    if preview:
+        b += box(16, y, SW - 32, 196, LIGHT, "#fff", 16, 1.5)
+        b += text(32, y + 28, "NEXT DEPOSIT", 11, MID, 700) + text(SW - 32, y + 28, "Fri, Nov 20", 12, MID, 500, "end")
+        b += text(32, y + 54, "Payroll · about $1,240", 16, INK, 700)
+        b += f'<rect x="32" y="{y+70}" width="{(SW-64)*0.12}" height="12" rx="6" fill="{KPV}"/><rect x="{32+(SW-64)*0.12+3}" y="{y+70}" width="{(SW-64)*0.88-3}" height="12" rx="6" fill="{KGREEN}"/>'
+        b += f'<rect x="32" y="{y+98}" width="10" height="10" rx="3" fill="{KPV}"/>' + text(50, y + 107, "Repays Cover", 13, INK, 500) + text(SW - 32, y + 107, "$150", 13, INK, 700, "end")
+        b += f'<rect x="32" y="{y+120}" width="10" height="10" rx="3" fill="{KGREEN}"/>' + text(50, y + 129, "To Spendable", 13, INK, 500) + text(SW - 32, y + 129, "~$1,090", 13, INK, 700, "end")
+        b += bar(32, y + 150, 280, 8) + bar(32, y + 166, 200, 8)
+        b += ring(16, y, SW - 32, 196, 16)
+        y += 220
+    elif caught_up:
+        b += f'<rect x="16" y="{y}" width="{SW-32}" height="76" rx="16" fill="#f3fbf5"/>' + text(36, y + 32, "You're all caught up", 15, INK, 700) + bar(36, y + 48, 260, 8, "#cfeeda")
+        y += 100
+    b += text(16, y + 14, "ACTIVITY", 11, MID, 700)
+    for i in range(3):
+        yy = y + 40 + i * 62
+        b += f'<circle cx="34" cy="{yy}" r="18" fill="#f5f4f8"/>' + bar(62, yy - 10, 110, 10, "#d9d6e3") + bar(62, yy + 6, 150, 8) + bar(SW - 96, yy - 6, 80, 10, "#d9d6e3")
+    return b
+
+
+def koho_detail(small=False):
+    b = nav("Deposit")
+    b += text(SW / 2, 172, "+$40.00" if small else "+$1,240.00", 38, "#178a43", 800, "middle") + bar(SW / 2 - 100, 192, 200, 10) + bar(SW / 2 - 60, 212, 120, 8)
+    y = 252
+    b += box(16, y, SW - 32, 150, LIGHT, "#fff", 16, 1.5) + text(32, y + 28, "WHERE IT WENT", 11, MID, 700)
+    if small:
+        b += f'<rect x="32" y="{y+44}" width="{SW-64}" height="14" rx="7" fill="{KPV}"/>'
+    else:
+        b += f'<rect x="32" y="{y+44}" width="{(SW-64)*0.12}" height="14" rx="7" fill="{KPV}"/><rect x="{32+(SW-64)*0.12+3}" y="{y+44}" width="{(SW-64)*0.88-3}" height="14" rx="7" fill="{KGREEN}"/>'
+    b += f'<rect x="32" y="{y+80}" width="10" height="10" rx="3" fill="{KPV}"/>' + text(50, y + 89, "Repaid Cover", 14, INK, 500) + text(SW - 32, y + 89, "$40.00" if small else "$150.00", 14, INK, 700, "end")
+    b += f'<rect x="32" y="{y+110}" width="10" height="10" rx="3" fill="{KGREEN}"/>' + text(50, y + 119, "Added to Spendable", 14, INK, 500) + text(SW - 32, y + 119, "$0.00" if small else "$1,090.00", 14, INK, 700, "end")
+    b += ring(16, y, SW - 32, 150, 16)
+    y += 172
+    b += f'<rect x="16" y="{y}" width="{SW-32}" height="104" rx="16" fill="#f3edff"/>' + text(32, y + 30, "Why all $40 went to Cover" if small else "Why part of it went to Cover", 15, KP, 700)
+    b += bar(32, y + 48, 300, 8, "#ddd0fb") + bar(32, y + 64, 280, 8, "#ddd0fb") + bar(32, y + 80, 200, 8, "#ddd0fb")
+    y += 128
+    for i in range(3):
+        b += f'<line x1="16" y1="{y+i*48}" x2="{SW-16}" y2="{y+i*48}" stroke="{LIGHT}" stroke-width="2"/>' + bar(16, y + 20 + i * 48, 120, 9) + bar(SW - 96, y + 20 + i * 48, 80, 9, "#d9d6e3")
+    b += f'<rect x="16" y="{y+170}" width="{SW-32}" height="50" rx="25" fill="{KP}"/>' + text(SW / 2, y + 201, "Got it", 16, "#fff", 700, "middle")
+    return b
+
+
+SCREENS.update({
+    "koho-1-screen": lambda: screen(koho_detail(), "Range 1: deposit detail shows how a paycheque was split between Cover and Spendable"),
+    "koho-2-screen": lambda: screen(koho_home(), "Range 2: home shows a preview of the next deposit's split before payday"),
+    "koho-3-before": lambda: screen(koho_home(), "Range 3, before payday: next-deposit preview on home"),
+    "koho-3-after": lambda: screen(koho_detail(small=True), "Range 3, after money lands: breakdown with an explanation, even for a small top-up"),
+})
+
 if __name__ == "__main__":
     for name, fn in SCREENS.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")

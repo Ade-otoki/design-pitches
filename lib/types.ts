@@ -10,6 +10,7 @@ export type ProductLog = {
   companyUrl: string;
   role: string; // e.g. "Senior Product Designer"
   jobUrl?: string;
+  route?: "apply" | "outreach"; // outreach = not eligible to apply via the form; reach out to people instead
   date: string; // ISO date the log was written
 
   feature: {

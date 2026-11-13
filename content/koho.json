@@ -1,0 +1,291 @@
+{
+  "slug": "koho",
+  "draft": false,
+  "company": "KOHO",
+  "companyUrl": "https://www.koho.ca",
+  "role": "Senior Product Designer",
+  "jobUrl": "https://jobs.ashbyhq.com/koho/3a1ab421-bec8-4933-9176-88751b5bbfb8",
+  "route": "outreach",
+  "date": "2026-11-13",
+  "feature": {
+    "name": "Clear Payday",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "$"
+  },
+  "prototype": {
+    "path": "/prototypes/koho",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/koho",
+    "frame": "phone",
+    "liveUrl": "/live/koho"
+  },
+  "context": {
+    "title": "When money comes in, Cover is repaid first, and people can't see the split",
+    "body": "Cover gives KOHO members a zero-interest cash advance when their Spendable balance hits $0. It's repaid automatically: any money that comes in goes to Cover first, and only what's left reaches Spendable. That rule is fair and simple, but it happens out of sight. Cover no longer appears in the transaction feed, alerts show only the Spendable balance, and a small deposit can vanish into Cover entirely. People are left doing the maths themselves on payday, and some read the gap as an error.",
+    "assumptions": [
+      "I haven't used KOHO myself. My view comes from KOHO's help centre and marketing pages, public reviews and complaints, and KOHO's own job posting, so the current app may already show more than I can see.",
+      "The next-deposit preview assumes KOHO can recognise a recurring direct deposit and estimate its amount from recent paycheques. I've shown it as an estimate (\"about\").",
+      "Amounts are illustrative: a $250 Cover limit with $150 used, a $1,240 paycheque and a $40 e-Transfer. I don't show the monthly Cover fee because it varies by limit.",
+      "KOHO has no public design system, so the prototype follows KOHO's own iOS screens on Mobbin: a white canvas, deep-purple pill buttons, the Spend / Credit / Borrow / Save segmented control, an image-backed Spendable card, outlined Add / Send / Cards chips, a lavender plan badge, uppercase section labels, bordered cards and the four-tab bar. I used Inter as a stand-in for KOHO's typeface, and a soft painted gradient instead of KOHO's artwork. There's no KOHO logo.",
+      "The split view was informed by Monarch's split-transaction screen, Ubank's split-income review and Stake's deposit detail with a plain-language status note, all on Mobbin."
+    ]
+  },
+  "goals": [
+    {
+      "title": "No surprises on payday",
+      "body": "Before money lands, show how much will go to Cover and how much will be left to spend."
+    },
+    {
+      "title": "Every deposit explains itself",
+      "body": "When money comes in, show where it went, on the deposit itself, in plain language."
+    },
+    {
+      "title": "Make the rule feel fair",
+      "body": "Turn \"Cover is repaid first\" from something you discover into something you expect, with your full limit visibly ready again."
+    }
+  ],
+  "jtbd": "When my paycheque or a transfer comes in while I've been using Cover, I want to know how much will go to Cover and how much I can actually spend, so I can plan my week without doing the maths or worrying that something went wrong.",
+  "evidence": [
+    {
+      "step": "Money you add repays Cover first",
+      "finding": "KOHO's help centre says money you add goes to your outstanding Cover balance first, and only the rest reaches Spendable. If a deposit is smaller than what you owe, the whole amount goes to Cover and nothing reaches Spendable.",
+      "source": {
+        "label": "KOHO Help: How does Cover (Cash Advance) work?",
+        "url": "https://help.koho.ca/en_us/how-does-cover-(cash-advance)-work-rJK1is5UWe.md"
+      }
+    },
+    {
+      "step": "Cover moved out of sight",
+      "finding": "A Cover update moved Cover out of the transaction feed: its balance now lives on the Cover page, and transaction alerts show only your Spendable balance. A $0.00 or negative Spendable is how you tell Cover paid for something.",
+      "source": {
+        "label": "KOHO Help: Cover updates, what you need to know",
+        "url": "https://help.koho.ca/en/articles/11380823-cover-updates-what-you-need-to-know"
+      }
+    },
+    {
+      "step": "The split is explained with arithmetic",
+      "finding": "KOHO's own help article spells out the split with a worked example: use $20 of Cover, add $50, and $20 goes to Cover while $30 stays in Spendable. People need it spelled out, and today that happens in a help article rather than on the deposit.",
+      "source": {
+        "label": "KOHO Help: If Cover spots me, how do I repay?",
+        "url": "https://help.koho.ca/en/articles/8250109-if-cover-spots-me-how-do-i-repay-what-i-use"
+      }
+    },
+    {
+      "step": "A cash-out read as an error",
+      "finding": "In a July 2026 complaint, a member said $87.78 was withheld from a RoundUps cash-out because of a system error. KOHO replied that a negative Spendable balance had offset it, and that Cover is tracked separately from Spendable.",
+      "source": {
+        "label": "Better Business Bureau: KOHO Financial complaints",
+        "url": "https://www.bbb.org/ca/on/toronto/profile/financial-services/koho-financial-inc-0107-1389848/complaints"
+      }
+    },
+    {
+      "step": "Cover is a core, growing product",
+      "finding": "KOHO markets Cover as an overdraft alternative from $2 a month, with limits up to $500 and guaranteed approval. It's a product many members lean on between paycheques.",
+      "source": {
+        "label": "KOHO: Overdraft protection with Cover",
+        "url": "https://www.koho.ca/overdraft-protection/"
+      }
+    },
+    {
+      "step": "Changes to Cover frustrate members",
+      "finding": "A September 2026 review of Cover notes a Reddit complaint after e-Transfers from Cover balances stopped, and says Cover-specific reviews are rare, so most feedback arrives through support.",
+      "source": {
+        "label": "Finder: KOHO Cover review (Sept 2026)",
+        "url": "https://www.finder.com/ca/cash-advance-apps/koho-cover-review"
+      }
+    }
+  ],
+  "approaches": [
+    "Show where a deposit went, on the deposit itself",
+    "Preview the next deposit's split on Home before payday",
+    "Explain small deposits that go entirely to Cover",
+    "Let members choose how much of each deposit repays Cover",
+    "Alert members when Cover pays for a purchase, with what's left to repay"
+  ],
+  "ranges": [
+    {
+      "title": "Explain it after it lands",
+      "summary": "Every incoming deposit shows a breakdown: how much repaid Cover, how much reached Spendable, and why.",
+      "pros": [
+        "Exact amounts, no estimates.",
+        "Answers \"where did my money go?\" in the place people look."
+      ],
+      "cons": [
+        "The surprise has already happened.",
+        "Doesn't help someone plan the week before payday."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/koho-1-screen.svg",
+          "alt": "Sketch: deposit detail showing $150 repaid Cover and $1,090 added to Spendable"
+        }
+      ],
+      "notes": [
+        "Split shown on the deposit itself",
+        "Still a surprise on payday"
+      ]
+    },
+    {
+      "title": "Preview before payday",
+      "summary": "Home shows the next expected deposit and how it will split between Cover and Spendable.",
+      "pros": [
+        "Removes the surprise: members know what they'll have to spend.",
+        "Nudges early repayment for people who want it."
+      ],
+      "cons": [
+        "It's an estimate, so it can be wrong.",
+        "Says nothing when an unexpected small deposit disappears into Cover."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/koho-2-screen.svg",
+          "alt": "Sketch: home with a next-deposit card showing $150 to Cover and about $1,090 to Spendable"
+        }
+      ],
+      "notes": [
+        "Plan the week before payday",
+        "Estimate, and silent on small top-ups"
+      ]
+    },
+    {
+      "title": "Clear Payday: preview and breakdown",
+      "summary": "Preview the split before payday, then show exactly where each deposit went, with a plain explanation, including when a small deposit goes entirely to Cover.",
+      "pros": [
+        "Covers the moment before and after money lands.",
+        "Explains the exact case that reads as an error today."
+      ],
+      "cons": [
+        "Two surfaces to design and maintain.",
+        "Needs reliable recurring-deposit detection for the preview."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/koho-3-before.svg",
+          "alt": "Sketch: before payday, the next-deposit preview on home",
+          "label": "Before payday"
+        },
+        {
+          "src": "/sketches/koho-3-after.svg",
+          "alt": "Sketch: after a $40 top-up, a breakdown explaining why all of it went to Cover",
+          "label": "After it lands"
+        }
+      ],
+      "notes": [
+        "Before and after, one rule",
+        "Explains the case people read as an error"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Clear Payday: show the split before and after money lands",
+    "body": "Range 3. A next-deposit preview on Home, and a \"where it went\" breakdown on every deposit while Cover is in use, with a plain explanation of why.",
+    "reasons": [
+      "The complaint above isn't about the rule, it's about not seeing it happen.",
+      "A preview alone breaks down on unexpected deposits; a breakdown alone still surprises people on payday.",
+      "Showing \"your full $250 is ready again\" turns repayment into a positive moment for Cover."
+    ],
+    "tradeoff": "The preview is an estimate. I'd label it clearly (\"about\", \"based on your last 3 paycheques\") and fall back to the exact breakdown once money lands."
+  },
+  "effortImpact": [
+    {
+      "option": "Clear Payday: preview and breakdown",
+      "chosen": true,
+      "effort": {
+        "design": 5,
+        "dev": 6,
+        "gtm": 3
+      },
+      "impact": {
+        "reach": 8,
+        "value": 9,
+        "business": 8
+      }
+    },
+    {
+      "option": "Breakdown on deposits only",
+      "effort": {
+        "design": 3,
+        "dev": 3,
+        "gtm": 2
+      },
+      "impact": {
+        "reach": 8,
+        "value": 6,
+        "business": 6
+      }
+    },
+    {
+      "option": "Choose how much repays Cover",
+      "effort": {
+        "design": 5,
+        "dev": 7,
+        "gtm": 6
+      },
+      "impact": {
+        "reach": 5,
+        "value": 7,
+        "business": 4
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built in KOHO's visual language. Switch between three moments: before payday, see a Cover chip with what's left to repay and a next-deposit card that splits about $1,240 into $150 for Cover and about $1,090 to spend. On payday, a toast says the paycheque arrived, Spendable updates and the deposit shows exactly where it went. With a small $40 top-up, the breakdown explains why all of it went to Cover and what's left. Motion is quick and purposeful (the split bar grows from Cover to Spendable, screens push like iOS), and turns gentler for people who reduce motion. Names and amounts are illustrative."
+  },
+  "validation": {
+    "method": "I'd start with KOHO's support contacts and complaints that mention missing money, Cover or deposits, then run quick moderated tests with members who use Cover, around a real payday.",
+    "hypotheses": [
+      "Members who see the split before payday contact support about \"missing\" money less often.",
+      "A breakdown on the deposit reduces disputes about money withheld from cash-outs and transfers.",
+      "Seeing \"your full limit is ready again\" increases how many members keep Cover after repaying."
+    ],
+    "metrics": [
+      {
+        "name": "Missing-money contacts",
+        "definition": "Support contacts about deposits, cash-outs or Cover repayments, per 10,000 Cover members."
+      },
+      {
+        "name": "Breakdown views",
+        "definition": "Share of deposits during Cover use where the member opens the breakdown."
+      },
+      {
+        "name": "Cover retention",
+        "definition": "Share of members still subscribed to Cover 30 days after a full repayment."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Learn how Cover repayment is booked today and what the app shows after a deposit.",
+    "Review support tickets and complaints about Cover, deposits and cash-outs.",
+    "Test the preview and breakdown with Cover members around payday, in English and French.",
+    "Agree with risk and compliance on how to word estimates and repayment."
+  ],
+  "sources": [
+    {
+      "label": "KOHO Help: How does Cover (Cash Advance) work?",
+      "url": "https://help.koho.ca/en_us/how-does-cover-(cash-advance)-work-rJK1is5UWe.md"
+    },
+    {
+      "label": "KOHO Help: Cover updates, what you need to know",
+      "url": "https://help.koho.ca/en/articles/11380823-cover-updates-what-you-need-to-know"
+    },
+    {
+      "label": "KOHO Help: If Cover spots me, how do I repay?",
+      "url": "https://help.koho.ca/en/articles/8250109-if-cover-spots-me-how-do-i-repay-what-i-use"
+    },
+    {
+      "label": "Better Business Bureau: KOHO Financial complaints",
+      "url": "https://www.bbb.org/ca/on/toronto/profile/financial-services/koho-financial-inc-0107-1389848/complaints"
+    },
+    {
+      "label": "KOHO: Overdraft protection with Cover",
+      "url": "https://www.koho.ca/overdraft-protection/"
+    },
+    {
+      "label": "Finder: KOHO Cover review (Sept 2026)",
+      "url": "https://www.finder.com/ca/cash-advance-apps/koho-cover-review"
+    },
+    {
+      "label": "KOHO careers: Senior Product Designer",
+      "url": "https://jobs.ashbyhq.com/koho/3a1ab421-bec8-4933-9176-88751b5bbfb8"
+    }
+  ]
+}
