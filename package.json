@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@dev-spendesk/grapes": "^1.61.1",
     "next": "^15.5.29",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

@@ -1,0 +1,54 @@
+{
+  "slug": "spendesk",
+  "company": "Spendesk",
+  "role": "Product Designer, KYC & AML",
+  "date": "NOV 2026",
+  "hook": "I want every KYC review to pass the first time",
+  "tags": ["kyc", "onboarding"],
+  "builtFor": {
+    "context": "Spendesk's KYC & AML squad exists to make it easy for legitimate businesses to join and stay, while keeping fraud out and the banking partner satisfied. Today the periodic review lives in email, and documents come back for small, preventable reasons, each round waiting 48 hours or more.",
+    "opportunities": [
+      {
+        "title": "Verification Hub",
+        "body": "One checklist inside Spendesk, from request to decision, with a status at every step."
+      },
+      {
+        "title": "AI pre-checks",
+        "body": "Check dates, signatures and ownership as documents are uploaded, so mistakes are fixed in seconds, not days."
+      },
+      {
+        "title": "Shared, not chased",
+        "body": "Let shareholders and executives upload their own documents through a secure link."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "At Youverify I designed KYC verification and transaction-monitoring dashboards, and an AML onboarding flow that gets a compliance team's customer data into monitoring without a developer.",
+      "I've spent my career on regulated money products, and I make ideas tangible early: the prototype in this pitch is built with Grapes, Spendesk's own component library."
+    ],
+    "bring": [
+      { "title": "KYC, KYB and AML", "body": "Verification and monitoring products for compliance teams at Youverify." },
+      { "title": "Onboarding that converts", "body": "A loan dashboard redesign that lifted first-time engagement by 30% at Shecluded." },
+      { "title": "AI-assisted prototyping", "body": "Working prototypes in code, built on the team's design system." }
+    ]
+  },
+  "caseStudies": ["youverify", "shecluded", "foodlify"],
+  "systemsGets": "Someone who can turn a compliance rule into a clear step, and contribute those patterns back to Grapes so every squad can reuse them.",
+  "opportunity": {
+    "title": "Verification Hub",
+    "problem": "The periodic KYC review arrives by email. Documents get sent back for a missing date or signature, each round takes 48 hours or more, and the Account Owner has no status in between.",
+    "solution": "One checklist inside Spendesk: every document is checked at upload, shareholders upload their own IDs through a secure link, and a timeline shows the review from sending to decision."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how companies experience KYC today, then contributing one useful improvement with the squad.",
+    "days": [
+      { "day": "MON", "body": "Meet Product, Engineering, Data, Risk and Compliance. Learn the roadmap, Grapes and how the squad measures success." },
+      { "day": "TUE", "body": "Review rejection reasons, support tickets and funnel data for onboarding and periodic reviews." },
+      { "day": "WED", "body": "Agree on one moment to improve, grounded in evidence and regulatory requirements." },
+      { "day": "THU", "body": "Prototype it in Grapes, and walk through edge cases with an engineer and a compliance analyst." },
+      { "day": "FRI", "body": "Share findings, the prototype, the trade-offs and a plan to test it with customers." }
+    ]
+  },
+  "ask": "I'd love to bring KYC and AML design experience and fast, AI-assisted prototyping to Spendesk's KYC & AML squad."
+}

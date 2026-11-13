@@ -1,0 +1,213 @@
+{
+  "slug": "spendesk",
+  "draft": false,
+  "company": "Spendesk",
+  "companyUrl": "https://www.spendesk.com",
+  "role": "Product Designer, KYC & AML",
+  "jobUrl": "https://career.spendesk.com/jobs/8592748-product-designer-kyc-aml",
+  "date": "2026-11-13",
+  "feature": {
+    "name": "Verification Hub",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "✓"
+  },
+  "prototype": {
+    "path": "/prototypes/spendesk",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/spendesk",
+    "frame": "desktop",
+    "liveUrl": "/live/spendesk"
+  },
+  "context": {
+    "title": "The periodic KYC review happens by email, and documents come back for small reasons",
+    "body": "Spendesk's banking partner requires regular KYC reviews. Today the request is emailed from collect@spendesk.com to the Account Owner, who has to gather documents with strict rules: under 3 months old, a signed and dated shareholding structure, IDs in colour front and back, and a personal proof of address for every executive. Validation takes 48 hours or more, and Spendesk's own FAQ lists the usual reasons it stalls: the email went to spam, a document is outdated, a date or signature is missing. Each one costs another round, and the help centre describes no status in between.",
+    "assumptions": [
+      "I haven't used Spendesk's KYC flow myself. My view comes from Spendesk's help-centre KYC articles, public reviews and the job posting, so the product may already do more than I can see.",
+      "Automatic checks assume Spendesk can read a document's date, ownership table and signature with document AI, with a person still making the final decision. The prototype shows what the checks would say, not a working model.",
+      "Asking a shareholder assumes compliance would accept documents uploaded by the person themselves through a secure link. That needs agreeing with Risk and Compliance.",
+      "\"Due 12 Dec\" and \"usually 2 working days\" are illustrative. The help centre says validation takes 48 hours or more, and doesn't publish what happens after a deadline.",
+      "Built with Grapes, Spendesk's open-source design system (@dev-spendesk/grapes): Callout, Tag, Button, FileCard, Upload, Panel, Timeline, Toast, Avatar, HighlightIcon and its tokens. Grapes' heading font, Roobert, isn't public, so headings use Inter. No Spendesk logo."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Right the first time",
+      "body": "Catch an outdated, unsigned or incomplete document at upload, not 48 hours later."
+    },
+    {
+      "title": "Share the work",
+      "body": "Let the Account Owner ask shareholders and executives to upload their own documents, without chasing them by email."
+    },
+    {
+      "title": "Never wonder where it stands",
+      "body": "Show a clear status from request to decision, inside Spendesk."
+    }
+  ],
+  "jtbd": "When our bank-required KYC review comes due, I want to know exactly what's needed, get it right the first time and see where the review stands, so our cards and payments keep running without weeks of back and forth.",
+  "evidence": [
+    {
+      "step": "Reviews are mandatory and come by email",
+      "finding": "Spendesk's FAQ says periodic reviews are required by its banking partner. Requests are emailed from collect@spendesk.com to the Account Owner, who handles uploads.",
+      "source": {
+        "label": "Spendesk Help: FAQ, our KYC process",
+        "url": "https://helpcenter.spendesk.com/en/articles/8717417-faq-our-kyc-process"
+      }
+    },
+    {
+      "step": "The usual blockers are small and preventable",
+      "finding": "The same FAQ lists the common problems: the Account Owner didn't get the email, documents are outdated, a date or signature is missing, or an executive is a legal entity.",
+      "source": {
+        "label": "Spendesk Help: FAQ, our KYC process",
+        "url": "https://helpcenter.spendesk.com/en/articles/8717417-faq-our-kyc-process"
+      }
+    },
+    {
+      "step": "Each round waits 48 hours or more",
+      "finding": "Validation takes 48 hours or more depending on the backlog, so every rejected document adds at least another two days.",
+      "source": {
+        "label": "Spendesk Help: FAQ, our KYC process",
+        "url": "https://helpcenter.spendesk.com/en/articles/8717417-faq-our-kyc-process"
+      }
+    },
+    {
+      "step": "Strict rules, one person",
+      "finding": "Only Account Owners can validate the KYC section, and an incomplete shareholding structure will be rejected. The article lists documents but no statuses, deadlines or notifications.",
+      "source": {
+        "label": "Spendesk Help: KYC process, Spendesk Financial Services",
+        "url": "https://helpcenter.spendesk.com/en/articles/8600566-kyc-process-spendesk-financial-services-sfs"
+      }
+    },
+    {
+      "step": "A human checks every document",
+      "finding": "The KYC-for-companies article walks through Business Information and Company Structure, then says a human will verify. IDs must be in colour and very clear.",
+      "source": {
+        "label": "Spendesk Help: KYC for companies, documents and process",
+        "url": "https://helpcenter.spendesk.com/en/articles/8813056-kyc-for-companies-required-document-and-process"
+      }
+    },
+    {
+      "step": "Verification delays block access",
+      "finding": "On Trustpilot (3.8 from 228 reviews), a 2025 review describes waiting 3+ weeks on a verification issue. Spendesk replied that some actions can't happen until identity or device is verified.",
+      "source": {
+        "label": "Trustpilot: Spendesk reviews",
+        "url": "https://www.trustpilot.com/review/spendesk.com"
+      }
+    }
+  ],
+  "approaches": [
+    "Rewrite the KYC email with a clear checklist and examples",
+    "Check each document automatically at upload",
+    "Let shareholders and executives upload their own documents",
+    "Show a review status and timeline inside Spendesk",
+    "Remind the Account Owner in-app, not only by email"
+  ],
+  "ranges": [
+    {
+      "title": "Explain the rules better",
+      "summary": "Keep the email, but turn it into a clear checklist with the rules and examples for each document.",
+      "pros": [
+        "Cheap and fast to ship.",
+        "Fewer documents rejected for misunderstood rules."
+      ],
+      "cons": [
+        "Still lands in spam sometimes.",
+        "Mistakes are still found 48 hours later."
+      ],
+      "screens": [
+        { "src": "/sketches/spendesk-1.svg", "alt": "Sketch: KYC email with a checklist of documents and their rules" }
+      ],
+      "notes": ["Clearer rules", "Still email-only, still late feedback"]
+    },
+    {
+      "title": "Check documents at upload",
+      "summary": "Every upload is checked straight away for date, ownership and signature, with a specific fix when something is missing.",
+      "pros": [
+        "Catches the FAQ's most common rejections before review.",
+        "Uses AI where it clearly helps a person."
+      ],
+      "cons": [
+        "The Account Owner still collects everyone's documents.",
+        "No status once it's sent."
+      ],
+      "screens": [
+        { "src": "/sketches/spendesk-2.svg", "alt": "Sketch: upload screen with pre-checks, one failing for a missing signature" }
+      ],
+      "notes": ["Right the first time", "The owner still chases everyone"]
+    },
+    {
+      "title": "Verification Hub",
+      "summary": "One checklist in Spendesk: each item checked at upload, shareholders asked to upload their own documents, and a timeline once it's sent for review.",
+      "pros": [
+        "Covers the three blockers: spam, mistakes, silence.",
+        "Spreads the work beyond the Account Owner."
+      ],
+      "cons": [
+        "Needs Risk and Compliance to agree on delegated uploads.",
+        "More surfaces to build than a better email."
+      ],
+      "screens": [
+        { "src": "/sketches/spendesk-3-list.svg", "alt": "Sketch: verification checklist with statuses", "label": "Before sending" },
+        { "src": "/sketches/spendesk-3-review.svg", "alt": "Sketch: review timeline after sending", "label": "After sending" }
+      ],
+      "notes": ["One place, start to finish", "Needs compliance sign-off"]
+    }
+  ],
+  "decision": {
+    "title": "Verification Hub: one checklist, checked at upload, shared and tracked",
+    "body": "Range 3. A checklist inside Spendesk that pre-checks every document, lets the Account Owner ask a shareholder to upload their own ID, and shows the review's status once it's sent.",
+    "reasons": [
+      "The FAQ's blockers are a missed email, a preventable mistake and no status. Only range 3 addresses all three.",
+      "Pre-checks turn a 48-hour rejection into a fix in seconds.",
+      "Delegation fits how companies work: the Account Owner rarely holds every shareholder's ID."
+    ],
+    "tradeoff": "Automatic checks can be wrong. I'd show them as guidance (\"we couldn't find a signature\"), let people send anyway with a note, and keep a person making the final decision."
+  },
+  "effortImpact": [
+    {
+      "option": "Verification Hub",
+      "chosen": true,
+      "effort": { "design": 6, "dev": 7, "gtm": 4 },
+      "impact": { "reach": 8, "value": 9, "business": 9 }
+    },
+    {
+      "option": "Check documents at upload",
+      "effort": { "design": 4, "dev": 6, "gtm": 2 },
+      "impact": { "reach": 8, "value": 7, "business": 7 }
+    },
+    {
+      "option": "Explain the rules better",
+      "effort": { "design": 2, "dev": 1, "gtm": 2 },
+      "impact": { "reach": 7, "value": 4, "business": 4 }
+    }
+  ],
+  "depth": {
+    "body": "Built with Spendesk's open-source Grapes components. Four moments: the checklist shows 4 of 6 items ready with a due date; opening the shareholding structure shows automatic checks, with a missing signature flagged and a way to upload the signed version; asking Thomas, a 32% shareholder, sends him a secure link and tracks it; once everything passes, Send for review unlocks and a timeline shows what happens next. The side panel slides in from the right, the progress bar grows as items turn ready, and motion turns gentler for people who reduce motion. Company, people and documents are fictional."
+  },
+  "validation": {
+    "method": "I'd start with KYC rejection reasons and support tickets, then test the hub with Account Owners going through a real periodic review, alongside Risk and Compliance.",
+    "hypotheses": [
+      "Pre-checks reduce documents rejected for date, signature or completeness.",
+      "Delegating to shareholders shortens the time from request to submission.",
+      "An in-app status reduces \"where is my review?\" contacts."
+    ],
+    "metrics": [
+      { "name": "First-time pass rate", "definition": "Share of reviews approved without any document being sent back." },
+      { "name": "Time to submit", "definition": "Median days from review request to the Account Owner sending everything." },
+      { "name": "KYC contacts", "definition": "Support contacts about KYC reviews per 100 reviews." }
+    ]
+  },
+  "nextSteps": [
+    "Learn how periodic reviews are triggered, assigned and checked today.",
+    "Pull rejection reasons and support tickets for the last few review cycles.",
+    "Agree with Risk and Compliance which checks can be automated and who may upload.",
+    "Test the checklist and pre-checks with Account Owners in English, French and German."
+  ],
+  "sources": [
+    { "label": "Spendesk Help: FAQ, our KYC process", "url": "https://helpcenter.spendesk.com/en/articles/8717417-faq-our-kyc-process" },
+    { "label": "Spendesk Help: KYC process, Spendesk Financial Services", "url": "https://helpcenter.spendesk.com/en/articles/8600566-kyc-process-spendesk-financial-services-sfs" },
+    { "label": "Spendesk Help: KYC for companies, documents and process", "url": "https://helpcenter.spendesk.com/en/articles/8813056-kyc-for-companies-required-document-and-process" },
+    { "label": "Spendesk Help: KYC review, what is it?", "url": "https://helpcenter.spendesk.com/en/articles/8804653-kyc-review-what-is-it" },
+    { "label": "Trustpilot: Spendesk reviews", "url": "https://www.trustpilot.com/review/spendesk.com" },
+    { "label": "Grapes, Spendesk's design system", "url": "https://grapes.spendesk.design" },
+    { "label": "Spendesk careers: Product Designer, KYC & AML", "url": "https://career.spendesk.com/jobs/8592748-product-designer-kyc-aml" }
+  ]
+}

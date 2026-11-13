@@ -333,3 +333,89 @@ if __name__ == "__main__":
     for name, fn in SCREENS.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)
+
+
+# ---------------- SPENDESK (desktop browser window, light) ----------------
+SP_P, SP_OK, SP_BAD, SP_BADBG, SP_OKBG = "#5d42d6", "#3a984c", "#c8313b", "#fde9ea", "#e9f6ec"
+
+
+def lbrowser(w, h, body, title):
+    b = box(20, 20, w - 40, h - 40, r=12, sw=2)
+    b += f'<line x1="20" y1="48" x2="{w-20}" y2="48" stroke="{INK}" stroke-width="2"/>'
+    b += "".join(f'<circle cx="{38+i*14}" cy="34" r="4" fill="{MID}"/>' for i in range(3))
+    return svg(w, h, b + body, title)
+
+
+def sp_sidebar(h):
+    out = f'<line x1="130" y1="48" x2="130" y2="{h-20}" stroke="{LIGHT}" stroke-width="2"/>'
+    for i in range(6):
+        out += bar(36, 70 + i * 22, 70 if i != 4 else 80, 8, "#d8d4ea" if i == 4 else LIGHT)
+    return out
+
+
+def sp_row(x, y, w, label, tag, ok):
+    c, bg = (SP_OK, SP_OKBG) if ok == 1 else (SP_BAD, SP_BADBG) if ok == 0 else (MID, LIGHT)
+    return (f'<line x1="{x}" y1="{y+30}" x2="{x+w}" y2="{y+30}" stroke="{LIGHT}" stroke-width="2"/>'
+            + f'<rect x="{x}" y="{y+4}" width="18" height="18" rx="5" fill="{LIGHT}"/>' + text(x + 28, y + 17, label, 11, INK, 600)
+            + f'<rect x="{x+w-78}" y="{y+5}" width="74" height="17" rx="8" fill="{bg}"/>' + text(x + w - 41, y + 17, tag, 9.5, c, 700, "middle"))
+
+
+def spendesk_1():
+    w, h = 520, 340
+    b = text(40, 74, "From: collect@spendesk.com", 11, MID, 600) + text(40, 96, "Action needed: your periodic KYC review", 14, INK, 700)
+    for i in range(2):
+        b += bar(40, 112 + i * 14, 400 - i * 120, 7)
+    b += box(40, 148, 300, 112, stroke=SP_P, r=10, sw=2)
+    for i, s in enumerate(["☐ Kbis, under 3 months old", "☐ Shareholding: signed + dated", "☐ IDs in colour, front and back", "☐ Proof of address < 3 months"]):
+        b += text(54, 172 + i * 24, s, 11, INK, 500)
+    b += note(356, 176, "clear list +", SP_P) + note(356, 196, "examples", SP_P)
+    b += note(40, 296, "still email-only · still rejected after 48h", "#9a9aa3", 13)
+    return lbrowser(w, h, b, "Range 1 sketch: a clearer KYC email with a document checklist and the rules spelled out")
+
+
+def spendesk_2():
+    w, h = 520, 340
+    b = sp_sidebar(h) + text(150, 76, "Upload: Shareholding structure", 13, INK, 700)
+    b += box(150, 92, 330, 54, stroke=MID, r=10, sw=1.5, dash="5 5") + text(315, 124, "Drop file · checked instantly", 11, MID, 600, "middle")
+    checks = [("✓ Dated 2 Oct 2026, under 3 months", SP_OK), ("✓ Shows 100% of shares", SP_OK), ("✕ No signature found: sign the last page", SP_BAD)]
+    for i, (s, c) in enumerate(checks):
+        b += f'<rect x="150" y="{160+i*30}" width="330" height="24" rx="6" fill="{SP_BADBG if c==SP_BAD else "#f6f6f8"}"/>' + text(160, 176 + i * 30, s, 11, c, 600)
+    b += note(150, 278, "catches the usual rejections", SP_P)
+    b += note(150, 300, "…but the owner still chases everyone", "#9a9aa3", 13)
+    return lbrowser(w, h, b, "Range 2 sketch: upload screen that pre-checks each document for date, ownership and signature")
+
+
+def spendesk_3_list():
+    w, h = 520, 340
+    b = sp_sidebar(h) + text(150, 76, "Annual company verification", 13, INK, 700)
+    b += f'<rect x="374" y="64" width="106" height="17" rx="8" fill="#fff1d6"/>' + text(427, 76, "Due 12 Dec", 9.5, "#8a5300", 700, "middle")
+    b += bar(150, 94, 330, 7, LIGHT) + bar(150, 94, 220, 7, SP_OK)
+    rows = [("Kbis", "Ready", 1), ("Shareholding structure", "Needs a fix", 0), ("Articles of association", "Ready", 1), ("Marie Laurent · CEO", "Ready", 1), ("Thomas Girard · 32%", "Asked Thomas", 2)]
+    for i, (l, t, ok) in enumerate(rows):
+        b += sp_row(150, 112 + i * 34, 330, l, t, ok)
+    b += ring(150, 282, 330, 28, 8) if False else ""
+    b += note(150, 300, "one list, pre-checks, ask a shareholder", SP_P, 13)
+    return lbrowser(w, h, b, "Range 3 sketch: verification checklist with statuses, a failed pre-check and a shareholder asked to upload")
+
+
+def spendesk_3_review():
+    w, h = 520, 340
+    b = sp_sidebar(h) + text(150, 76, "Annual company verification", 13, INK, 700)
+    b += f'<rect x="394" y="64" width="86" height="17" rx="8" fill="#eff1fe"/>' + text(437, 76, "In review", 9.5, SP_P, 700, "middle")
+    steps = [("Sent for review · 13 Nov", INK), ("In review · usually 2 working days", SP_P), ("Decision expected · 17 Nov", MID)]
+    for i, (s, c) in enumerate(steps):
+        y = 110 + i * 46
+        b += f'<circle cx="160" cy="{y}" r="6" fill="{"#fff" if i else c}" stroke="{c}" stroke-width="2"/>' + text(178, y + 4, s, 11.5, c, 700 if i == 1 else 600)
+        if i < 2:
+            b += f'<line x1="160" y1="{y+8}" x2="160" y2="{y+38}" stroke="{LIGHT}" stroke-width="2"/>'
+    b += note(150, 270, "a status, not silence", SP_P)
+    b += note(150, 292, "questions arrive here, not only by email", "#9a9aa3", 13)
+    return lbrowser(w, h, b, "Range 3 sketch: after sending, a review timeline with what happens next and when")
+
+
+SP_SKETCHES = {"spendesk-1": spendesk_1, "spendesk-2": spendesk_2, "spendesk-3-list": spendesk_3_list, "spendesk-3-review": spendesk_3_review}
+
+if __name__ == "__main__":
+    for name, fn in SP_SKETCHES.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)
