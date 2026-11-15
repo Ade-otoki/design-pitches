@@ -1,0 +1,263 @@
+{
+  "slug": "coder",
+  "draft": false,
+  "company": "Coder",
+  "companyUrl": "https://coder.com",
+  "role": "Senior Product Designer",
+  "jobUrl": "https://jobs.ashbyhq.com/coder/70d874fd-974b-4e27-a48c-07862c491a70",
+  "date": "2026-11-15",
+  "feature": {
+    "name": "Workspace Check",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "⌘"
+  },
+  "prototype": {
+    "path": "/prototypes/coder",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/coder",
+    "frame": "desktop",
+    "liveUrl": "/live/coder"
+  },
+  "context": {
+    "title": "Coder Agents choose where code runs, but developers can't easily see or steer that choice",
+    "body": "With Coder Agents, a developer describes the work and the agent picks a template, provisions a workspace and gets going. The template decides the network the agent can reach and the resources it uses, and the agent chooses it from template descriptions. Once it's working, follow-up messages wait until the current step finishes. Both are sensible defaults, but they're invisible at the moment a developer would want to step in: before the workspace starts, and while a long step runs.",
+    "assumptions": [
+      "I haven't used Coder Agents. My view comes from Coder's docs (v2.39), so the UI may already differ.",
+      "The docs say users can choose a workspace when starting a chat; they don't say whether the agent's automatic choice is shown or can be changed. The concept assumes it isn't, prominently.",
+      "The 10-second start window and 'Deliver now' are proposals; interrupting may need agent-side support.",
+      "Visual language approximates Coder's dark dashboard (zinc greys, sky-blue accent, Inter and a mono face). No Coder logo.",
+      "The repo, templates and people are fictional."
+    ]
+  },
+  "goals": [
+    {
+      "title": "See where the agent will work",
+      "body": "Show the template it picked, why, and its network and size, before it starts."
+    },
+    {
+      "title": "Change it cheaply",
+      "body": "Switch template, or reuse a running workspace, in one click."
+    },
+    {
+      "title": "Steer without guessing",
+      "body": "Show when a queued message will land, and offer to deliver it now."
+    }
+  ],
+  "jtbd": "When I hand a task to an agent, I want to know where it will run and be able to redirect it mid-task, so I trust it with real repos without watching every step.",
+  "evidence": [
+    {
+      "step": "The agent picks the template",
+      "finding": "Developers describe the work and Coder Agents handles 'selecting a template, provisioning a workspace, and executing the task', routing on template descriptions.",
+      "source": {
+        "label": "Coder Docs: Coder Agents",
+        "url": "https://coder.com/docs/ai-coder/tasks"
+      }
+    },
+    {
+      "step": "The choice affects security",
+      "finding": "Agent workspaces have the same network access as manual ones unless the template restricts it; Coder recommends dedicated agent templates with stricter network policies.",
+      "source": {
+        "label": "Coder Docs: Coder Agents",
+        "url": "https://coder.com/docs/ai-coder/tasks"
+      }
+    },
+    {
+      "step": "Overrides happen up front",
+      "finding": "The docs say users 'can also manually choose which workspace is used when starting a new chat', and suggest reviewing template descriptions if the agent picks the wrong one.",
+      "source": {
+        "label": "Coder Docs: Coder Agents",
+        "url": "https://coder.com/docs/ai-coder/tasks"
+      }
+    },
+    {
+      "step": "Follow-ups wait",
+      "finding": "'Messages are queued and delivered when the agent completes its current step'; interrupting is documented for sub-agents.",
+      "source": {
+        "label": "Coder Docs: Coder Agents",
+        "url": "https://coder.com/docs/ai-coder/tasks"
+      }
+    },
+    {
+      "step": "The role is about human–AI collaboration",
+      "finding": "The designer will 'define how humans and AI collaborate in developer tooling', end to end with PMs and engineers.",
+      "source": {
+        "label": "Coder careers: Senior Product Designer",
+        "url": "https://jobs.ashbyhq.com/coder/70d874fd-974b-4e27-a48c-07862c491a70"
+      }
+    }
+  ],
+  "approaches": [
+    "Name the chosen template in the chat",
+    "Show why it was chosen, with network and size",
+    "Give a short window to switch or reuse a workspace",
+    "Show queued messages and when they'll be delivered",
+    "Offer 'Deliver now' with the cost of interrupting",
+    "End with a review card: diff, tests, workspace lifetime"
+  ],
+  "ranges": [
+    {
+      "title": "Name the template",
+      "summary": "A line in the chat saying which template the agent picked.",
+      "pros": [
+        "Tiny change.",
+        "Makes the choice visible."
+      ],
+      "cons": [
+        "No reason or network shown.",
+        "Changing it means starting over."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/coder-1-screen.svg",
+          "alt": "Sketch: template named in chat"
+        }
+      ],
+      "notes": [
+        "Visible",
+        "Not steerable"
+      ]
+    },
+    {
+      "title": "Show the queue",
+      "summary": "Queued follow-ups shown with when they'll be delivered.",
+      "pros": [
+        "Ends 'did it hear me?'",
+        "Builds on existing behaviour."
+      ],
+      "cons": [
+        "No way to interrupt.",
+        "Workspace choice still hidden."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/coder-2-screen.svg",
+          "alt": "Sketch: queued message with delivery time"
+        }
+      ],
+      "notes": [
+        "Honest",
+        "Passive"
+      ]
+    },
+    {
+      "title": "Workspace Check",
+      "summary": "A workspace card with the reason, network and size and a window to switch, queued messages with 'Deliver now', and a review card when the work is ready.",
+      "pros": [
+        "Puts the developer in control at the two moments that matter.",
+        "Makes governance (network policy) visible, not just enforced."
+      ],
+      "cons": [
+        "A start window adds a few seconds.",
+        "Interrupting mid-step needs agent support."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/coder-3-pick-screen.svg",
+          "alt": "Sketch: workspace card with switch",
+          "label": "Pick"
+        },
+        {
+          "src": "/sketches/coder-3-steer-screen.svg",
+          "alt": "Sketch: queued message with Deliver now",
+          "label": "Steer"
+        }
+      ],
+      "notes": [
+        "Control",
+        "Needs agent support"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Workspace Check: see and steer where the agent works",
+    "body": "Range 3. Before provisioning, a card shows the template the agent chose, why, and its network and size, with 10 seconds to switch or reuse a running workspace. While it works, queued messages show when they'll land, with 'Deliver now'. At the end, a review card shows the diff, tests and when the workspace stops.",
+    "reasons": [
+      "The template decides what the agent can reach, so it deserves a glance.",
+      "Steering is how developers build trust in agents; hiding the queue makes them repeat themselves.",
+      "It makes platform teams' routing visible to developers, so bad descriptions get fixed."
+    ],
+    "tradeoff": "The start window slows every run a little. I'd make it skippable per template and measure how often people switch."
+  },
+  "effortImpact": [
+    {
+      "option": "Workspace Check",
+      "chosen": true,
+      "effort": {
+        "design": 5,
+        "dev": 6,
+        "gtm": 2
+      },
+      "impact": {
+        "reach": 8,
+        "value": 8,
+        "business": 7
+      }
+    },
+    {
+      "option": "Show the queue",
+      "effort": {
+        "design": 2,
+        "dev": 3,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 8,
+        "value": 5,
+        "business": 4
+      }
+    },
+    {
+      "option": "Name the template",
+      "effort": {
+        "design": 1,
+        "dev": 1,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 8,
+        "value": 3,
+        "business": 3
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built in a Coder-like dark dashboard. Three moments in a chat about a refund rounding bug: the agent's workspace card (python-payments, chosen because its description matches, Payments VPC only) with a 10-second window and alternatives including a running workspace; a queued follow-up that says it'll land after the test suite, with 'Deliver now'; and a review card with the diff, passing tests, a draft PR and when the workspace stops. Cards ease in, and motion turns off for people who reduce it."
+  },
+  "validation": {
+    "method": "I'd look at how often agent chats are restarted after the workspace starts, and how often developers repeat a message, then test the card with platform teams and developers.",
+    "hypotheses": [
+      "Developers switch template in a small but meaningful share of runs, mostly when descriptions are vague.",
+      "Fewer duplicate follow-up messages when the queue is visible.",
+      "Fewer chats restarted because of the wrong workspace."
+    ],
+    "metrics": [
+      {
+        "name": "Template switch rate",
+        "definition": "Share of agent runs where the developer changes the template in the start window."
+      },
+      {
+        "name": "Duplicate follow-ups",
+        "definition": "Follow-up messages repeated within 5 minutes, per chat."
+      },
+      {
+        "name": "Restarted chats",
+        "definition": "Chats abandoned and restarted within 10 minutes of provisioning."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Check with engineering what the agent knows when it picks a template.",
+    "Review template descriptions with two platform teams.",
+    "Test the card and queue with five developers on real repos.",
+    "Explore the same pattern for sub-agents."
+  ],
+  "sources": [
+    {
+      "label": "Coder Docs: Coder Agents",
+      "url": "https://coder.com/docs/ai-coder/tasks"
+    },
+    {
+      "label": "Coder careers: Senior Product Designer",
+      "url": "https://jobs.ashbyhq.com/coder/70d874fd-974b-4e27-a48c-07862c491a70"
+    }
+  ]
+}

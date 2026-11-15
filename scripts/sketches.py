@@ -928,3 +928,54 @@ if __name__ == "__main__":
     for name, fn in STRIPE_SCREENS.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)
+
+
+# ---------------- CODER agents web screens (1280 x 800) ----------------
+CODER_NAV = ("Agents", "Workspaces", "Templates", "Users", "Audit", "Deployment", "", "")
+
+
+def coder_chat(b):
+    b += f'<rect x="760" y="110" width="400" height="44" rx="10" fill="#ececf0"/>' + bar(780, 128, 300, 9, "#cfcfd8")
+    return b + bar(300, 180, 420, 9) + bar(300, 198, 300, 9)
+
+
+def coder_1_web():
+    b = coder_chat(wsidebar(0, CODER_NAV) + text(300, 80, "Fix refund rounding bug", 26, INK, 800))
+    b += box(300, 230, 860, 60, stroke=LIGHT, r=10, sw=2) + text(320, 266, "Workspace: python-payments (picked by agent)", 15, INK, 600)
+    b += ring(296, 226, 868, 68, 10) + note(300, 360, "name the template the agent picked", SP_P, 24) + note(300, 400, "…but you can only change it after it starts", "#8a8a93", 22)
+    return wscreen(b, "Range 1: show which template the agent picked, as a line in the chat")
+
+
+def coder_2_web():
+    b = coder_chat(wsidebar(0, CODER_NAV) + text(300, 80, "Fix refund rounding bug", 26, INK, 800))
+    b += f'<rect x="760" y="240" width="400" height="64" rx="10" fill="#fff" stroke="#8a8a93" stroke-width="2" stroke-dasharray="6 5"/>' + text(780, 268, "Also check partial refunds", 14, INK, 600) + text(780, 290, "Queued · after current step", 12, "#9a5b00", 700)
+    b += ring(756, 236, 408, 72, 10) + note(300, 380, "show queued messages and when they land", SP_P, 24) + note(300, 420, "…workspace choice still hidden", "#8a8a93", 22)
+    return wscreen(b, "Range 2: queued follow-ups shown with when they'll be delivered")
+
+
+def coder_3a_web():
+    b = coder_chat(wsidebar(0, CODER_NAV) + text(300, 80, "Fix refund rounding bug", 26, INK, 800))
+    b += box(300, 230, 860, 170, stroke=LIGHT, r=12, sw=2) + text(320, 258, "WORKSPACE", 12, MID, 700) + wtag(1140, 258, "Starts in 10s", 2)
+    b += text(320, 292, "python-payments", 18, INK, 800) + text(320, 316, "Matches 'Python backend services in the payments repo'", 13, MID, 600) + text(900, 292, "Payments VPC · 4 vCPU", 13, INK, 600)
+    b += f'<rect x="320" y="340" width="200" height="38" rx="8" fill="#38bdf8"/>' + text(420, 364, "Start python-payments", 13, "#082f49", 700, "middle") + box(536, 340, 220, 38, stroke=LIGHT, r=8, sw=2) + text(646, 364, "Use a different workspace", 13, INK, 700, "middle")
+    b += ring(296, 226, 868, 178, 12) + note(300, 470, "why this template, its network and size,", SP_P, 24) + note(300, 502, "with a 10-second window to change it", SP_P, 24)
+    return wscreen(b, "Range 3, pick: the workspace card with reason, network policy and a window to switch")
+
+
+def coder_3b_web():
+    b = coder_chat(wsidebar(0, CODER_NAV) + text(300, 80, "Fix refund rounding bug", 26, INK, 800))
+    b += box(300, 230, 860, 50, stroke=LIGHT, r=10, sw=2) + text(320, 262, "python-payments", 15, INK, 700) + wtag(1140, 262, "Running", 1)
+    for i, s in enumerate(["✓ Workspace ready · 38s", "✓ Reproduced", "◌ Running tests (2 of 4 min)"]):
+        b += text(300, 316 + i * 26, s, 14, "#2c5fd6" if i == 2 else INK, 600)
+    b += f'<rect x="760" y="400" width="400" height="64" rx="10" fill="#fff" stroke="#8a8a93" stroke-width="2" stroke-dasharray="6 5"/>' + text(780, 428, "Also check partial refunds", 14, INK, 600) + text(780, 450, "Queued · ~2 min", 12, "#9a5b00", 700)
+    b += box(760, 476, 220, 36, stroke=LIGHT, r=8, sw=2) + text(870, 499, "Deliver now", 13, INK, 700, "middle")
+    b += ring(756, 396, 408, 120, 12) + note(300, 560, "when it lands, and a way to interrupt", SP_P, 24)
+    return wscreen(b, "Range 3, steer: queued message with delivery time and 'Deliver now'")
+
+
+CODER_SCREENS = {"coder-1-screen": coder_1_web, "coder-2-screen": coder_2_web, "coder-3-pick-screen": coder_3a_web, "coder-3-steer-screen": coder_3b_web}
+
+if __name__ == "__main__":
+    for name, fn in CODER_SCREENS.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)

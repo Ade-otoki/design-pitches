@@ -1,0 +1,85 @@
+{
+  "slug": "coder",
+  "company": "Coder",
+  "role": "Senior Product Designer",
+  "date": "NOV 2026",
+  "hook": "I want developers to trust agents because they can see and steer them",
+  "tags": [
+    "devtools",
+    "ai"
+  ],
+  "builtFor": {
+    "context": "Coder runs developers and AI agents side by side in governed workspaces. As agents take on more of the work, the product question becomes how people see what an agent is doing, and step in at the right moment.",
+    "opportunities": [
+      {
+        "title": "Workspace Check",
+        "body": "Show where the agent will work, and why, before it starts."
+      },
+      {
+        "title": "Visible steering",
+        "body": "Queued messages that say when they'll land, with 'Deliver now'."
+      },
+      {
+        "title": "Review, then ship",
+        "body": "A clear end state: diff, tests and workspace lifetime."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "My work has been in complex products where people must trust what a system does: transaction monitoring at Youverify, lending at Shecluded, payments at Foodlify.",
+      "I prototype in code with AI tools every day, which is how I built the concept in this pitch, so I design for agents as a user of them."
+    ],
+    "bring": [
+      {
+        "title": "Trust in automated systems",
+        "body": "Compliance tools where analysts act on system-flagged alerts."
+      },
+      {
+        "title": "Design systems",
+        "body": "A component library that cut developer onboarding by 45%."
+      },
+      {
+        "title": "AI-assisted prototyping",
+        "body": "Working prototypes in code, like this one."
+      }
+    ]
+  },
+  "caseStudies": [
+    "youverify",
+    "shecluded",
+    "foodlify"
+  ],
+  "systemsGets": "Someone who designs the states between human and agent (waiting, queued, interrupted, ready) and turns them into patterns the whole product reuses.",
+  "opportunity": {
+    "title": "Workspace Check",
+    "problem": "Coder Agents pick a template from descriptions and queue follow-ups until a step finishes. Both are invisible when a developer would want to step in.",
+    "solution": "A workspace card with the reason, network and size and a window to switch, queued messages with 'Deliver now', and a review card at the end."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how developers and platform teams use agents today, then contributing one useful improvement with the team.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet product, design and engineering. Learn the agents roadmap and how templates are routed."
+      },
+      {
+        "day": "TUE",
+        "body": "Review agent chats, support threads and community feedback."
+      },
+      {
+        "day": "WED",
+        "body": "Agree on one human–agent moment to improve, grounded in evidence."
+      },
+      {
+        "day": "THU",
+        "body": "Prototype it in code and review edge cases with an engineer."
+      },
+      {
+        "day": "FRI",
+        "body": "Share findings, the prototype, trade-offs and a test plan."
+      }
+    ]
+  },
+  "ask": "I'd love to help define how humans and AI work together in Coder."
+}
