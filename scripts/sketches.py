@@ -751,3 +751,67 @@ if __name__ == "__main__":
     for name, fn in HA_SCREENS.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)
+
+
+# ---------------- FAIRE cart web screens (1280 x 800) ----------------
+FG, FW = "#2f6b3f", "#b25b12"
+
+
+def faire_frame():
+    b = f'<rect x="0" y="0" width="{WW}" height="30" fill="#2b2b2b"/>' + bar(470, 11, 340, 8, "#777")
+    b += text(40, 66, "W H O L E S A L E", 15, INK, 500) + f'<rect x="300" y="44" width="560" height="34" rx="17" fill="#fff" stroke="#bbb" stroke-width="2"/>'
+    b += f'<line x1="0" y1="118" x2="{WW}" y2="118" stroke="{LIGHT}" stroke-width="2"/>' + text(100, 168, "Cart", 32, INK, 500)
+    for i, (n, amt) in enumerate([("Annie B's Popcorn", "$312"), ("Lady May Tallow", "$540"), ("Juniper & Ash Candles", "$708")]):
+        y = 220 + i * 76
+        b += f'<circle cx="152" cy="{y+30}" r="20" fill="#e3dbcd"/>' + text(188, y + 28, n, 17, INK, 500) + bar(188, y + 40, 140, 8) + bar(548, y + 34, 150, 4, FG) + text(780, y + 34, amt, 16, INK, 600, "end")
+        b += f'<line x1="100" y1="{y+68}" x2="780" y2="{y+68}" stroke="{LIGHT}" stroke-width="2"/>'
+    b += f'<line x1="0" y1="{WH-62}" x2="{WW}" y2="{WH-62}" stroke="{LIGHT}" stroke-width="2"/><rect x="1000" y="{WH-50}" width="180" height="38" fill="#1f1f1f"/>' + text(1090, WH - 26, "Checkout", 15, "#fff", 600, "middle")
+    return b
+
+
+def faire_1_web():
+    b = faire_frame() + box(820, 140, 360, 210, stroke=LIGHT, r=0, sw=2)
+    for i, (l, r) in enumerate([("Item total", "$1,560"), ("Shipping", "Free"), ("Order total", "$1,560")]):
+        b += text(838, 180 + i * 34, l, 15, INK, 500) + text(1162, 180 + i * 34, r, 15, INK, 600, "end")
+    b += f'<rect x="838" y="290" width="324" height="44" fill="#f6f6f6"/>' + text(852, 318, "Net 60: $1,240 available", 15, INK, 700)
+    b += ring(838, 290, 324, 44, 4) + note(820, 420, "show the number", SP_P, 26) + note(820, 452, "in the summary", SP_P, 26)
+    b += note(100, 520, "…but the retailer still has to do the maths", "#8a8a93", 22)
+    return wscreen(b, "Range 1: available net 60 terms shown as a number in the cart summary")
+
+
+def faire_2_web():
+    b = faire_frame() + f'<rect x="0" y="{WH-120}" width="{WW}" height="58" fill="#fdf3e8"/>' + text(100, WH - 84, "$320 of this order will be charged on shipment", 17, FW, 700)
+    b += ring(90, WH - 116, 520, 50, 6) + note(820, 300, "warn at checkout", SP_P, 26) + note(820, 332, "before it happens", SP_P, 26) + arrow(820, 345, 640, 680, SP_P)
+    b += note(820, 420, "…but no way to fix it", "#8a8a93", 22)
+    return wscreen(b, "Range 2: a warning above the checkout button when part of the order won't fit net 60")
+
+
+def faire_3_cart_web():
+    b = faire_frame() + box(820, 140, 360, 330, stroke="#e7b88a", r=0, sw=2) + f'<rect x="822" y="142" width="356" height="326" fill="#fdf3e8"/>'
+    b += text(838, 174, "Net 60 terms", 17, INK, 700) + text(1162, 174, "$1,240 of $2,000", 13, MID, 500, "end")
+    b += f'<rect x="838" y="190" width="324" height="10" fill="#fff"/><rect x="838" y="190" width="123" height="10" fill="#9a9a9a"/><rect x="961" y="190" width="160" height="10" fill="{FG}"/><rect x="1121" y="190" width="41" height="10" fill="{FW}"/>'
+    b += text(838, 238, "$320 won't fit your terms.", 15, INK, 700)
+    for i, (t, s) in enumerate([("Ship Juniper & Ash on 2 Dec", "after the next invoice, it all fits"), ("Pay $320 on shipment", "charged to your card when it ships")]):
+        y = 260 + i * 76
+        b += box(838, y, 324, 64, stroke="#bbb", r=0, sw=2) + text(852, y + 26, t, 14, INK, 700) + text(852, y + 48, s, 12.5, MID, 500)
+    b += ring(830, 182, 340, 26, 4) + note(820, 540, "the limit, this order, and a fix", SP_P, 24)
+    return wscreen(b, "Range 3, the cart: terms bar with the overflow and two ways to fix it")
+
+
+def faire_3_pay_web():
+    b = faire_frame() + box(820, 140, 360, 330, stroke=LIGHT, r=0, sw=2) + text(838, 174, "Upcoming payments", 17, INK, 700)
+    for i, (a, d, c) in enumerate([("$480", "Due 1 Dec", FW), ("$280", "Due 19 Dec", INK), ("$852", "Due 12 Jan · this order", INK)]):
+        y = 200 + i * 62
+        b += f'<line x1="838" y1="{y}" x2="1162" y2="{y}" stroke="{LIGHT}" stroke-width="2"/>' + text(838, y + 28, a, 17, c, 700) + text(838, y + 50, d, 13, MID, 500)
+    b += box(1080, 212, 82, 28, stroke=INK, r=0, sw=2) + text(1121, 231, "Pay early", 12, INK, 600, "middle")
+    b += text(838, 410, "If a payment fails, net 60 pauses.", 13.5, INK, 700)
+    b += ring(830, 196, 340, 64, 4) + note(820, 540, "keep terms healthy", SP_P, 24) + note(820, 570, "before they pause", SP_P, 24)
+    return wscreen(b, "Range 3, upcoming payments: what's due and when, with a warning about failed payments")
+
+
+FAIRE_SCREENS = {"faire-1-screen": faire_1_web, "faire-2-screen": faire_2_web, "faire-3-cart-screen": faire_3_cart_web, "faire-3-pay-screen": faire_3_pay_web}
+
+if __name__ == "__main__":
+    for name, fn in FAIRE_SCREENS.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)

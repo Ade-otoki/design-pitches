@@ -1,0 +1,278 @@
+{
+  "slug": "faire",
+  "draft": false,
+  "company": "Faire",
+  "companyUrl": "https://www.faire.com",
+  "role": "Staff Product Designer, Financial Products",
+  "jobUrl": "https://boards.greenhouse.io/faire/jobs/8940599002",
+  "date": "2026-11-15",
+  "feature": {
+    "name": "Terms Check",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "$"
+  },
+  "prototype": {
+    "path": "/prototypes/faire",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/faire",
+    "frame": "desktop",
+    "liveUrl": "/live/faire"
+  },
+  "context": {
+    "title": "Net 60 terms are Faire's biggest benefit, but retailers can't see when an order won't fit them",
+    "body": "Faire extends net 60 terms to retailers on behalf of brands, and promotes up to $20K in terms on every page. But terms have a limit. When an order is bigger than what's available, Faire's help centre says it automatically switches to payment on shipment. When an invoice is overdue, net 60 becomes unavailable and checkout can be restricted. For a small shop managing cash flow, finding that out after checkout, or when a card charge fails, turns the best benefit into a surprise bill.",
+    "assumptions": [
+      "I haven't bought on Faire as a retailer. My view comes from Faire's help centre, Faire's cart as captured on Mobbin, a competitor's explainer and the job posting, so the product may already show more than I can see.",
+      "Faire's public support pages sit behind a bot check, and I couldn't reach retailer reviews from here, so this concept rests on the documented rules rather than measured complaints. Validating that comes first.",
+      "Shipping one brand later to fit the terms assumes Faire's existing 'Schedule ship date' option can be suggested at the cart.",
+      "The layout follows Faire's cart on Mobbin: promo bar, search, category row, serif 'Cart' heading, brand rows with minimum bars, summary and sticky checkout footer. Fonts are open substitutes (Inter, Libre Caslon). No Faire wordmark.",
+      "The store, brands, limits and amounts are fictional."
+    ]
+  },
+  "goals": [
+    {
+      "title": "No surprise charges",
+      "body": "A retailer knows before checkout how much of the order is on net 60 and how much is due on shipment."
+    },
+    {
+      "title": "A fix, not just a warning",
+      "body": "Offer the change that keeps the whole order on terms, like shipping one brand after the next invoice is paid."
+    },
+    {
+      "title": "Keep terms healthy",
+      "body": "Show upcoming payments so a failed charge doesn't pause terms and block checkout."
+    }
+  ],
+  "jtbd": "When I'm placing a big wholesale order before a busy season, I want to know it fits my net 60 terms and what I'll owe when, so I can stock up without a surprise charge or losing my terms.",
+  "evidence": [
+    {
+      "step": "Orders over the limit switch silently",
+      "finding": "If an order total exceeds available terms at checkout, payment on shipment is applied automatically. For scheduled or pre-order items, terms are applied at shipment, and the order converts if none are available then.",
+      "source": {
+        "label": "Faire Help: payment terms and overdue invoices",
+        "url": "https://www.faire.com/support/articles/23108487756571"
+      }
+    },
+    {
+      "step": "Overdue invoices pause terms",
+      "finding": "An overdue balance makes 60-day terms unavailable, a payment that fails on its due date can restrict checkout, and prolonged overdue invoices can lead to suspension.",
+      "source": {
+        "label": "Faire Help: payment terms and overdue invoices",
+        "url": "https://www.faire.com/support/articles/23108487756571"
+      }
+    },
+    {
+      "step": "Charges happen automatically",
+      "finding": "Faire charges each invoice automatically on its due date; bank payments take up to 5 business days, and retailers check status on the Invoices page.",
+      "source": {
+        "label": "Faire Help: payment terms and overdue invoices",
+        "url": "https://www.faire.com/support/articles/23108487756571"
+      }
+    },
+    {
+      "step": "Terms are the headline benefit",
+      "finding": "Every page of the retailer site carries a banner: 'Get up to $20K in payment terms when you apply for Open with Faire.'",
+      "source": {
+        "label": "Mobbin: Faire cart (web)",
+        "url": "https://mobbin.com/screens/f49153f9-62a0-4396-8016-1fadc0e38f3a"
+      }
+    },
+    {
+      "step": "Terms aren't unlimited",
+      "finding": "Even a competitor's explainer stresses that net 60 doesn't mean unlimited purchasing power: eligibility and limits depend on a credit assessment.",
+      "source": {
+        "label": "Resolve: Faire Net 60 explained (competitor, Jul 2026)",
+        "url": "https://resolvepay.com/blog/faire-net-60"
+      }
+    },
+    {
+      "step": "Financial products are core to Faire",
+      "finding": "The role leads net 60 and net 90 terms, Faire Pay and brand financing, described as 'among the most consequential and differentiated value props we offer'.",
+      "source": {
+        "label": "Faire careers: Staff Product Designer, Financial Products",
+        "url": "https://boards.greenhouse.io/faire/jobs/8940599002"
+      }
+    }
+  ],
+  "approaches": [
+    "Show available terms in the cart summary",
+    "Warn at checkout when part of an order won't fit",
+    "Show a terms bar with the overflow and a fix",
+    "Suggest scheduling a brand to ship after the next payment",
+    "Show upcoming payments and failed-payment risk"
+  ],
+  "ranges": [
+    {
+      "title": "Show the number",
+      "summary": "Add 'Net 60 available' to the cart summary.",
+      "pros": [
+        "Tiny change.",
+        "Makes the limit visible."
+      ],
+      "cons": [
+        "Retailers still do the maths.",
+        "No help when it doesn't fit."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/faire-1-screen.svg",
+          "alt": "Sketch: available terms in the cart summary"
+        }
+      ],
+      "notes": [
+        "Visible limit",
+        "Still mental maths"
+      ]
+    },
+    {
+      "title": "Warn at checkout",
+      "summary": "Warn above the checkout button when part of the order will be charged on shipment.",
+      "pros": [
+        "No more silent switch.",
+        "Easy to build."
+      ],
+      "cons": [
+        "A warning without a way out.",
+        "Comes at the last step."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/faire-2-screen.svg",
+          "alt": "Sketch: warning above checkout"
+        }
+      ],
+      "notes": [
+        "No surprise",
+        "No fix offered"
+      ]
+    },
+    {
+      "title": "Terms Check",
+      "summary": "A terms bar in the cart showing unpaid invoices, this order and any overflow, with one-click fixes and a view of upcoming payments.",
+      "pros": [
+        "Turns a surprise into a choice.",
+        "Uses features Faire already has (scheduled shipping)."
+      ],
+      "cons": [
+        "Needs real-time terms data in the cart.",
+        "Risk and Finance must agree what to suggest."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/faire-3-cart-screen.svg",
+          "alt": "Sketch: terms bar with overflow and fixes",
+          "label": "The cart"
+        },
+        {
+          "src": "/sketches/faire-3-pay-screen.svg",
+          "alt": "Sketch: upcoming payments",
+          "label": "Upcoming payments"
+        }
+      ],
+      "notes": [
+        "Choice, not surprise",
+        "Needs live terms data"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Terms Check: show the fit, offer the fix",
+    "body": "Range 3. A net 60 bar in the cart shows unpaid invoices, this order and the overflow, offers to ship one brand after the next payment so the whole order fits, and links to upcoming payments.",
+    "reasons": [
+      "The rules already exist; the problem is that retailers meet them after checkout.",
+      "A fix keeps more of the order on terms, which is the value Faire is selling.",
+      "Upcoming payments reduce failed charges, which pause terms and block checkout."
+    ],
+    "tradeoff": "Suggesting a later ship date delays a brand's sale. I'd only suggest it when the brand allows scheduling and the delay is short, and always show 'pay on shipment' as an equal option."
+  },
+  "effortImpact": [
+    {
+      "option": "Terms Check",
+      "chosen": true,
+      "effort": {
+        "design": 6,
+        "dev": 6,
+        "gtm": 3
+      },
+      "impact": {
+        "reach": 8,
+        "value": 8,
+        "business": 9
+      }
+    },
+    {
+      "option": "Warn at checkout",
+      "effort": {
+        "design": 2,
+        "dev": 3,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 8,
+        "value": 5,
+        "business": 5
+      }
+    },
+    {
+      "option": "Show the number",
+      "effort": {
+        "design": 1,
+        "dev": 2,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 8,
+        "value": 3,
+        "business": 3
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built in Faire's cart layout. Three moments: a $1,560 cart against $1,240 of available terms shows $320 that wouldn't fit; 'Ship Juniper & Ash on 2 Dec' moves one brand after the next $480 invoice, and the whole order stays on net 60; 'Upcoming payments' lists what's due and warns that a failed charge pauses terms. The bar animates as the order changes, and motion turns off for people who reduce it. The store, brands and amounts are fictional."
+  },
+  "validation": {
+    "method": "I'd start with orders that switched to payment on shipment and payments that failed, then test Terms Check with retailers placing seasonal orders.",
+    "hypotheses": [
+      "Retailers who see the overflow keep more of their order on terms.",
+      "Showing upcoming payments reduces failed charges.",
+      "Fewer retailers contact support about unexpected charges."
+    ],
+    "metrics": [
+      {
+        "name": "Share of GMV on terms",
+        "definition": "Order value placed on net 60 as a share of eligible retailers' total orders."
+      },
+      {
+        "name": "Failed payments",
+        "definition": "Invoice charges that fail on the due date, per 1,000 invoices."
+      },
+      {
+        "name": "Surprise-charge contacts",
+        "definition": "Support contacts about payment-on-shipment charges per 1,000 orders."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Learn how terms limits are set and how often orders switch to payment on shipment.",
+    "Review failed-payment and support data with Risk and Finance.",
+    "Test the cart terms bar with retailers placing seasonal orders.",
+    "Agree with brands when a suggested ship date is acceptable."
+  ],
+  "sources": [
+    {
+      "label": "Faire Help: payment terms and overdue invoices",
+      "url": "https://www.faire.com/support/articles/23108487756571"
+    },
+    {
+      "label": "Mobbin: Faire cart (web)",
+      "url": "https://mobbin.com/screens/f49153f9-62a0-4396-8016-1fadc0e38f3a"
+    },
+    {
+      "label": "Resolve: Faire Net 60 explained (competitor, Jul 2026)",
+      "url": "https://resolvepay.com/blog/faire-net-60"
+    },
+    {
+      "label": "Faire careers: Staff Product Designer, Financial Products",
+      "url": "https://boards.greenhouse.io/faire/jobs/8940599002"
+    }
+  ]
+}

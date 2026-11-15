@@ -1,0 +1,85 @@
+{
+  "slug": "faire",
+  "company": "Faire",
+  "role": "Staff Product Designer, Financial Products",
+  "date": "NOV 2026",
+  "hook": "I want every retailer to know exactly what they'll owe, and when",
+  "tags": [
+    "fintech",
+    "marketplace"
+  ],
+  "builtFor": {
+    "context": "Faire's financial products, net terms, Faire Pay and brand financing, are what independents can't get on their own. The experience of using them, knowing what fits, what's due and what happens if a payment slips, decides whether retailers trust them with bigger orders.",
+    "opportunities": [
+      {
+        "title": "Terms Check",
+        "body": "Show how an order fits net 60 in the cart, with a fix when it doesn't."
+      },
+      {
+        "title": "Healthy terms",
+        "body": "Help retailers avoid failed payments that pause terms and block checkout."
+      },
+      {
+        "title": "Financing for brands",
+        "body": "Apply the same clarity to brand financing: what you'll repay, and when."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "My work sits where finance meets everyday customers: loan products at Shecluded, a wallet-first checkout for a B2B marketplace at Foodlify, and KYC and transaction monitoring at Youverify.",
+      "I prototype fast with modern tools, which is how I built the working concept in this pitch."
+    ],
+    "bring": [
+      {
+        "title": "Lending and credit UX",
+        "body": "A loan dashboard redesign that lifted first-time engagement by 30%."
+      },
+      {
+        "title": "B2B marketplace checkout",
+        "body": "Helped lift repeat orders by 31% at Foodlify."
+      },
+      {
+        "title": "Rapid prototyping",
+        "body": "Working prototypes in code, like this one."
+      }
+    ]
+  },
+  "caseStudies": [
+    "shecluded",
+    "foodlify",
+    "youverify"
+  ],
+  "systemsGets": "Someone who can turn complex financial rules into clear moments, and make those patterns reusable across retailer and brand products.",
+  "opportunity": {
+    "title": "Terms Check",
+    "problem": "When an order is bigger than a retailer's available terms, Faire switches part of it to payment on shipment automatically, and an overdue invoice pauses terms entirely. Retailers find out after checkout.",
+    "solution": "A net 60 bar in the cart shows unpaid invoices, this order and any overflow, offers to ship one brand after the next payment, and lists upcoming payments."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how retailers and brands experience Faire's financial products, then contributing one useful improvement with the team.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet Product, Engineering, Data Science, Risk and Finance. Learn the financial products roadmap."
+      },
+      {
+        "day": "TUE",
+        "body": "Review terms usage, payment-on-shipment switches, failed payments and support data."
+      },
+      {
+        "day": "WED",
+        "body": "Agree on one moment to improve, grounded in evidence."
+      },
+      {
+        "day": "THU",
+        "body": "Prototype it and review edge cases with an engineer and Risk."
+      },
+      {
+        "day": "FRI",
+        "body": "Share findings, the prototype, the trade-offs and a test plan."
+      }
+    ]
+  },
+  "ask": "I'd love to bring lending and marketplace design experience, and fast prototyping, to Faire's Financial Products team."
+}
