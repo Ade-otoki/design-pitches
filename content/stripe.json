@@ -1,0 +1,275 @@
+{
+  "slug": "stripe",
+  "draft": false,
+  "company": "Stripe",
+  "companyUrl": "https://stripe.com",
+  "role": "Product Designer, Treasury",
+  "jobUrl": "https://stripe.com/jobs/search?gh_jid=8205126",
+  "date": "2026-11-15",
+  "feature": {
+    "name": "Cash Timeline",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "◷"
+  },
+  "prototype": {
+    "path": "/prototypes/stripe",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/stripe",
+    "frame": "desktop",
+    "liveUrl": "/live/stripe"
+  },
+  "context": {
+    "title": "Small businesses can see their Stripe balance, but not when the money will be in their bank",
+    "body": "Stripe's Balances page splits money into incoming and available, and recent activity shows an 'Available on' date per payment. What it doesn't answer is the question a small business owner actually has: will I have enough in my bank by Friday? Pending funds, payout delays and reserves each have a reason, but owners meet them as surprises. Public reviews are full of people who didn't know when, or why, their money would arrive. The Treasury team's brief is to help businesses get earnings sooner and understand their cash flow; this concept starts there.",
+    "assumptions": [
+      "I haven't used the Stripe Dashboard with a live account. My view of Balances comes from a Mobbin capture, Stripe's support docs and public reviews, so details may have changed.",
+      "The forecast assumes Stripe can project payout arrival from the payout schedule, settlement timing and bank, which the existing 'Available on' dates suggest.",
+      "The instant payout fee shown (1.5%) is illustrative, not Stripe's published price.",
+      "Visual language follows Stripe's Dashboard: white surfaces, grey hairlines, #635BFF purple, Inter-like sans. No Stripe logo.",
+      "The business, bank and amounts are fictional."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Answer 'when will I have it?'",
+      "body": "Show, day by day, when money becomes available and when it lands in the bank."
+    },
+    {
+      "title": "Connect money to what's due",
+      "body": "Check expected cash against a known bill, like payroll, before it's a problem."
+    },
+    {
+      "title": "Explain holds in plain words",
+      "body": "When money is held, say why, until when, and what it means this week."
+    }
+  ],
+  "jtbd": "When I have payroll or a supplier bill coming up, I want to know how much will actually be in my bank and when, so I can pay people on time without logging in every day to check.",
+  "evidence": [
+    {
+      "step": "Funds wait before they can be paid out",
+      "finding": "Stripe says the first payout usually comes about seven days after the first live payment, funds stay pending until then, and the bank may take additional time.",
+      "source": {
+        "label": "Stripe Support: 7-day delay for first payout",
+        "url": "https://support.stripe.com/questions/7-day-delay-for-first-payout-for-connected-accounts"
+      }
+    },
+    {
+      "step": "Reserves hold money for weeks",
+      "finding": "Stripe places reserves for risks like elevated disputes; it emails the terms and shows them in a Reserve pane at the bottom of the Balance page. Funds are released when the term ends, and it can be extended.",
+      "source": {
+        "label": "Stripe Support: Reserves FAQ",
+        "url": "https://support.stripe.com/questions/reserves-faq"
+      }
+    },
+    {
+      "step": "Owners feel the delay as a surprise",
+      "finding": "Stripe has 1.6/5 from 17,500+ UK Trustpilot reviews; many recent ones (Sep–Oct 2026) describe money pending for a week or payouts paused without a clear explanation.",
+      "source": {
+        "label": "Trustpilot UK: Stripe reviews",
+        "url": "https://uk.trustpilot.com/review/stripe.com?page=2"
+      }
+    },
+    {
+      "step": "The Dashboard shows dates, not a plan",
+      "finding": "Balances shows incoming vs available and an 'Available on' date per payment, but no view of when money reaches the bank against what's due.",
+      "source": {
+        "label": "Mobbin: Stripe Balances screen",
+        "url": "https://mobbin.com/screens/ec4bf8ef-b6b8-4fb7-b866-293ac767904e"
+      }
+    },
+    {
+      "step": "The role is about cash flow",
+      "finding": "Treasury designers help businesses 'get earnings sooner' and understand their cash flow, consistent with the broader Stripe Dashboard.",
+      "source": {
+        "label": "Stripe careers: Product Designer, Treasury",
+        "url": "https://stripe.com/jobs/search?gh_jid=8205126"
+      }
+    }
+  ],
+  "approaches": [
+    "Explain 'pending' and 'Available on' where they appear",
+    "Forecast upcoming payouts and arrival dates",
+    "Show money by day: available vs in the bank",
+    "Check the forecast against a bill like payroll",
+    "Explain reserves in the forecast, not a pane below",
+    "Offer instant payout with the trade-off shown"
+  ],
+  "ranges": [
+    {
+      "title": "Explain pending",
+      "summary": "Inline explanations of pending funds and 'Available on' dates in recent activity.",
+      "pros": [
+        "Small change to an existing page.",
+        "Reduces confusion about single payments."
+      ],
+      "cons": [
+        "Still no answer to 'how much, when?'",
+        "Owners must add it up themselves."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/stripe-1-screen.svg",
+          "alt": "Sketch: explanation of pending in recent activity"
+        }
+      ],
+      "notes": [
+        "Quick win",
+        "No total"
+      ]
+    },
+    {
+      "title": "Payout forecast",
+      "summary": "A list of upcoming payouts with estimated arrival dates.",
+      "pros": [
+        "Answers when money lands.",
+        "Builds on the payout schedule."
+      ],
+      "cons": [
+        "Not linked to what the money is for.",
+        "Reserves still live elsewhere."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/stripe-2-screen.svg",
+          "alt": "Sketch: upcoming payouts list"
+        }
+      ],
+      "notes": [
+        "Clear dates",
+        "No context"
+      ]
+    },
+    {
+      "title": "Cash Timeline",
+      "summary": "A day-by-day view of money becoming available and landing in the bank, checked against payroll, with reserves explained in place and instant payout as an option.",
+      "pros": [
+        "Answers the owner's real question in one view.",
+        "Turns reserves into a known plan, not a surprise."
+      ],
+      "cons": [
+        "Forecasts can be wrong if disputes or bank delays change.",
+        "Needs a way to know what's due (manual or connected)."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/stripe-3-timeline-screen.svg",
+          "alt": "Sketch: cash timeline with payroll check",
+          "label": "Timeline"
+        },
+        {
+          "src": "/sketches/stripe-3-reserve-screen.svg",
+          "alt": "Sketch: reserve explained with payroll impact",
+          "label": "Reserve"
+        }
+      ],
+      "notes": [
+        "One answer",
+        "Forecast risk"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Cash Timeline: when money arrives, and whether it's enough",
+    "body": "Range 3. A day-by-day view on Balances that separates 'becomes available' from 'lands in your bank', checks it against a bill like payroll, explains any reserve in place, and offers instant payout with the fee and the trade-off shown.",
+    "reasons": [
+      "Owners plan around their bank balance, not their Stripe balance.",
+      "Reserves feel like lost money when they're out of context; in a forecast, they're a date.",
+      "Instant payout is more useful when owners can see whether they need it."
+    ],
+    "tradeoff": "A forecast can be wrong. I'd label it as an estimate, show what could change it, and update it when disputes or bank delays happen."
+  },
+  "effortImpact": [
+    {
+      "option": "Cash Timeline",
+      "chosen": true,
+      "effort": {
+        "design": 6,
+        "dev": 7,
+        "gtm": 4
+      },
+      "impact": {
+        "reach": 9,
+        "value": 9,
+        "business": 7
+      }
+    },
+    {
+      "option": "Payout forecast",
+      "effort": {
+        "design": 3,
+        "dev": 5,
+        "gtm": 2
+      },
+      "impact": {
+        "reach": 8,
+        "value": 6,
+        "business": 5
+      }
+    },
+    {
+      "option": "Explain pending",
+      "effort": {
+        "design": 2,
+        "dev": 2,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 7,
+        "value": 4,
+        "business": 3
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built in Stripe's Dashboard language. Three moments for a fictional bakery: a timeline showing $10,990 reaching the bank by Friday against $9,800 payroll; the same week with a $2,500 reserve, explained in a banner and flagged as $1,310 short, with the date it's covered; and an instant payout showing the fee next to the free option, noting it doesn't change the total. Bars and cards ease in, and motion turns off for people who reduce it."
+  },
+  "validation": {
+    "method": "I'd start with support tickets and churn notes about pending funds, payout timing and reserves, then test the timeline with small businesses that run weekly payroll.",
+    "hypotheses": [
+      "Owners contact support less about 'where is my money' when arrival dates are forecast.",
+      "Reserves cause fewer complaints when shown with a release date and a weekly impact.",
+      "Instant payout use rises when the shortfall is visible, and satisfaction doesn't drop."
+    ],
+    "metrics": [
+      {
+        "name": "Payout-timing contacts",
+        "definition": "Support contacts about pending funds or payout timing per 1,000 active accounts."
+      },
+      {
+        "name": "Forecast accuracy",
+        "definition": "Share of days where forecast bank arrivals were within 5% of actual."
+      },
+      {
+        "name": "Instant payout conversion",
+        "definition": "Share of shortfall alerts followed by an instant payout."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Review support tickets and reviews about payout timing with Support and Risk.",
+    "Check what payout and reserve data can be forecast reliably.",
+    "Test the timeline with five small businesses that run weekly payroll.",
+    "Align with Treasury financial accounts so money in Stripe and the bank tell one story."
+  ],
+  "sources": [
+    {
+      "label": "Stripe Support: 7-day delay for first payout",
+      "url": "https://support.stripe.com/questions/7-day-delay-for-first-payout-for-connected-accounts"
+    },
+    {
+      "label": "Stripe Support: Reserves FAQ",
+      "url": "https://support.stripe.com/questions/reserves-faq"
+    },
+    {
+      "label": "Trustpilot UK: Stripe reviews",
+      "url": "https://uk.trustpilot.com/review/stripe.com?page=2"
+    },
+    {
+      "label": "Stripe careers: Product Designer, Treasury",
+      "url": "https://stripe.com/jobs/search?gh_jid=8205126"
+    },
+    {
+      "label": "Mobbin: Stripe Balances screen",
+      "url": "https://mobbin.com/screens/ec4bf8ef-b6b8-4fb7-b866-293ac767904e"
+    }
+  ]
+}

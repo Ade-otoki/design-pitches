@@ -1,0 +1,85 @@
+{
+  "slug": "stripe",
+  "company": "Stripe",
+  "role": "Product Designer, Treasury",
+  "date": "NOV 2026",
+  "hook": "I want every small business to know when its money will arrive",
+  "tags": [
+    "fintech",
+    "payments"
+  ],
+  "builtFor": {
+    "context": "Treasury brings business banking and payments together so businesses can receive, store, send and spend money in one place. For a small business, the question underneath all of it is simple: when will I have the money, and is it enough?",
+    "opportunities": [
+      {
+        "title": "Cash Timeline",
+        "body": "When money becomes available and lands in the bank, day by day."
+      },
+      {
+        "title": "Holds, explained",
+        "body": "Reserves shown as a date and a weekly impact, not a pane at the bottom."
+      },
+      {
+        "title": "Sooner, when it matters",
+        "body": "Instant payout offered when there's a shortfall, with the trade-off shown."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "My work has been in financial products where people need to trust what they see: lending at Shecluded, payments at Foodlify, KYC and transaction monitoring at Youverify.",
+      "I design for owners who aren't finance experts, and I prototype in code with AI tools, which is how I built the concept in this pitch."
+    ],
+    "bring": [
+      {
+        "title": "Money flows, shipped",
+        "body": "A 5-step loan flow and dashboard that lifted first-time engagement by 30%."
+      },
+      {
+        "title": "Business payments",
+        "body": "B2B marketplace checkout at Foodlify that helped lift repeat orders by 31%."
+      },
+      {
+        "title": "AI-assisted prototyping",
+        "body": "Working prototypes in code, like this one."
+      }
+    ]
+  },
+  "caseStudies": [
+    "youverify",
+    "shecluded",
+    "foodlify"
+  ],
+  "systemsGets": "Someone who designs the states money can be in (pending, held, in transit, landed) and makes them read the same across the Dashboard.",
+  "opportunity": {
+    "title": "Cash Timeline",
+    "problem": "Balances shows incoming and available money, but not when it will be in the bank. Pending funds and reserves reach owners as surprises, a common theme in public reviews.",
+    "solution": "A day-by-day timeline of money becoming available and landing in the bank, checked against payroll, with reserves explained and instant payout offered when there's a gap."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how small businesses experience cash timing today, then contributing one useful improvement with the team.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet Treasury product, engineering and design. Learn the roadmap for financial accounts and payouts."
+      },
+      {
+        "day": "TUE",
+        "body": "Review support tickets and research about payout timing, reserves and cash flow."
+      },
+      {
+        "day": "WED",
+        "body": "Agree on one moment to improve, grounded in evidence."
+      },
+      {
+        "day": "THU",
+        "body": "Prototype it in code and review forecast edge cases with engineering and Risk."
+      },
+      {
+        "day": "FRI",
+        "body": "Share findings, the prototype, trade-offs and a test plan with businesses."
+      }
+    ]
+  },
+  "ask": "I'd love to bring fintech and AI-assisted design experience to Stripe Treasury."
+}

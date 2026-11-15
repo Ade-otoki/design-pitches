@@ -873,3 +873,58 @@ if __name__ == "__main__":
     for name, fn in DUFFEL_SCREENS.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)
+
+
+# ---------------- STRIPE dashboard web screens (1280 x 800) ----------------
+STRIPE_NAV = ("Home", "Balances", "Transactions", "Customers", "Product catalogue", "Connect", "Payments", "Reporting")
+
+
+def stripe_1_web():
+    b = wsidebar(1, STRIPE_NAV) + text(300, 80, "Balances", 30, INK, 800)
+    b += bar(300, 110, 860, 14, "#cfcfd8")
+    for i in range(6):
+        y = 160 + i * 64
+        b += box(300, y, 860, 54, stroke=LIGHT, r=8, sw=2) + bar(320, y + 22, 200, 10, "#cfcfd8") + bar(640, y + 22, 120, 10) + text(1140, y + 33, "Available 18 Nov", 13, MID, 600, "end")
+    b += f'<rect x="900" y="210" width="250" height="70" rx="8" fill="{INK}"/>' + text(915, 240, "Pending: card payments", 13, "#fff", 600) + text(915, 262, "take 2 days to settle", 13, "#fff", 600)
+    b += ring(896, 206, 258, 78, 10) + note(300, 600, "explain 'pending' where it shows up", SP_P, 24)
+    b += note(300, 640, "…but no answer to 'when will I have it?'", "#8a8a93", 22)
+    return wscreen(b, "Range 1: explain pending and 'Available on' dates in recent activity")
+
+
+def stripe_2_web():
+    b = wsidebar(1, STRIPE_NAV) + text(300, 80, "Upcoming payouts", 30, INK, 800)
+    for i, (d, amt) in enumerate([("Tue 17 Nov", "$6,040"), ("Wed 18 Nov", "$1,380"), ("Thu 19 Nov", "$1,920"), ("Fri 20 Nov", "$1,650")]):
+        y = 120 + i * 80
+        b += box(300, y, 860, 66, stroke=LIGHT, r=10, sw=2) + text(320, y + 40, d, 16, INK, 700) + text(1140, y + 40, amt, 18, INK, 700, "end") + wtag(700, y + 40, "Estimated", 2)
+    b += ring(296, 116, 868, 330, 12) + note(300, 500, "a list of payouts and arrival dates", SP_P, 24) + note(300, 540, "…but no link to what the money is for", "#8a8a93", 22)
+    return wscreen(b, "Range 2: a forecast of upcoming payouts with estimated arrival dates")
+
+
+def stripe_3a_web():
+    b = wsidebar(1, STRIPE_NAV) + text(300, 80, "Cash timeline", 30, INK, 800)
+    for i, (d, a, k) in enumerate([("Today", 0, 0), ("Mon", 70, 0), ("Tue", 25, 95), ("Wed", 32, 23), ("Thu", 28, 32), ("Fri", 38, 28)]):
+        x = 300 + i * 100
+        b += box(x, 120, 88, 220, stroke=SP_P if i == 5 else LIGHT, r=8, sw=2) + text(x + 12, 146, d, 14, INK, 700)
+        if a: b += f'<rect x="{x+12}" y="{300-a}" width="30" height="{a}" rx="3" fill="#b9b5ff"/>'
+        if k: b += f'<rect x="{x+46}" y="{300-k}" width="30" height="{k}" rx="3" fill="#0e9aa7"/>'
+    b += box(940, 120, 220, 170, stroke=LIGHT, r=10, sw=2) + text(956, 150, "By Friday payroll", 15, INK, 700) + bar(956, 170, 180, 9) + f'<rect x="956" y="200" width="188" height="40" rx="6" fill="{SP_OKBG}"/>' + text(968, 226, "Covered, $1,190 spare", 13, SP_OK, 700)
+    b += ring(936, 116, 228, 178, 12) + note(300, 420, "when it lands in the bank,", SP_P, 24) + note(300, 452, "checked against what's due", SP_P, 24)
+    return wscreen(b, "Range 3, timeline: available vs in-the-bank by day, with a payroll check")
+
+
+def stripe_3b_web():
+    b = wsidebar(1, STRIPE_NAV) + text(300, 80, "Cash timeline", 30, INK, 800)
+    b += f'<rect x="300" y="104" width="860" height="48" rx="8" fill="#fff4e0"/>' + text(318, 134, "$2,500 held as a reserve until 14 Jan · released automatically", 14, "#5c3a00", 700)
+    b += bar(300, 180, 600, 14, "#cfcfd8") + f'<rect x="760" y="180" width="140" height="14" fill="#f5a524"/>'
+    b += box(940, 220, 220, 210, stroke="#f5c26b", r=10, sw=2) + text(956, 250, "By Friday payroll", 15, INK, 700) + f'<rect x="956" y="266" width="188" height="40" rx="6" fill="#fde8ec"/>' + text(968, 292, "$1,310 short", 13, SP_BAD, 700)
+    b += bar(956, 324, 180, 8) + bar(956, 342, 150, 8) + f'<rect x="956" y="370" width="150" height="34" rx="6" fill="{SP_P}"/>' + text(1031, 392, "Remind me Thu", 13, "#fff", 700, "middle")
+    b += ring(296, 100, 868, 56, 10) + note(300, 480, "say why money is held, until when,", SP_P, 24) + note(300, 512, "and what it means for Friday", SP_P, 24)
+    return wscreen(b, "Range 3, reserve: why money is held, until when, and the payroll impact")
+
+
+STRIPE_SCREENS = {"stripe-1-screen": stripe_1_web, "stripe-2-screen": stripe_2_web, "stripe-3-timeline-screen": stripe_3a_web, "stripe-3-reserve-screen": stripe_3b_web}
+
+if __name__ == "__main__":
+    for name, fn in STRIPE_SCREENS.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)
