@@ -1,0 +1,85 @@
+{
+  "slug": "duffel",
+  "company": "Duffel",
+  "role": "Senior Product Designer",
+  "date": "NOV 2026",
+  "hook": "I want every travel disruption to come with a clear next step",
+  "tags": [
+    "travel",
+    "ai"
+  ],
+  "builtFor": {
+    "context": "Duffel is rebuilding travel's infrastructure, and disruptions are where it's tested: airline rules, payments and anxious travellers collide. The AI support product decides what happens next for both the seller and the traveller.",
+    "opportunities": [
+      {
+        "title": "Change Desk",
+        "body": "Every airline change, sorted by urgency and labelled by what the seller can do."
+      },
+      {
+        "title": "Honest handover",
+        "body": "When the Assistant can't act, hand over with context, and show the reply time."
+      },
+      {
+        "title": "One story, two audiences",
+        "body": "Design the seller and traveller sides of a disruption as one flow."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "My work has been in complex, regulated products where trust is everything: lending at Shecluded, payments at Foodlify, KYC and transaction monitoring at Youverify.",
+      "I design for multiple stakeholders at once and prototype in code with AI tools, which is how I built the concept in this pitch."
+    ],
+    "bring": [
+      {
+        "title": "Complex flows, shipped",
+        "body": "A 5-step loan flow and dashboard that lifted first-time engagement by 30%."
+      },
+      {
+        "title": "B2B and B2C together",
+        "body": "Marketplace checkout for businesses and their customers at Foodlify."
+      },
+      {
+        "title": "AI-assisted prototyping",
+        "body": "Working prototypes in code, like this one."
+      }
+    ]
+  },
+  "caseStudies": [
+    "youverify",
+    "shecluded",
+    "foodlify"
+  ],
+  "systemsGets": "Someone who designs the states, edge cases and handovers, not only the happy path, and turns them into patterns the whole product can reuse.",
+  "opportunity": {
+    "title": "Change Desk",
+    "problem": "Duffel notifies sellers of changes from 300+ airlines, but only 20+ can be accepted in one click; other changes still go to support by email, while the flight gets closer.",
+    "solution": "One queue sorted by departure and labelled by action, with one-click accept, an Assistant-drafted message, and a pre-filled, tracked hand-off to support."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how sellers and travellers experience disruptions today, then contributing one useful improvement with the team.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet product, engineering and operations. Learn the AI support roadmap and how the Assistant hands over today."
+      },
+      {
+        "day": "TUE",
+        "body": "Review disruption tickets, Assistant conversations and handover data."
+      },
+      {
+        "day": "WED",
+        "body": "Agree on one moment to improve, grounded in evidence."
+      },
+      {
+        "day": "THU",
+        "body": "Prototype it in code and review failure states with an engineer."
+      },
+      {
+        "day": "FRI",
+        "body": "Share findings, the prototype, the trade-offs and a test plan with sellers."
+      }
+    ]
+  },
+  "ask": "I'd love to bring complex-product and AI-assisted design experience to Duffel's AI support product."
+}

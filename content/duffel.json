@@ -1,0 +1,282 @@
+{
+  "slug": "duffel",
+  "draft": false,
+  "company": "Duffel",
+  "companyUrl": "https://duffel.com",
+  "role": "Senior Product Designer",
+  "jobUrl": "https://jobs.ashbyhq.com/duffel/cf86333d-b4bc-493e-8743-89634726df5f",
+  "date": "2026-11-15",
+  "feature": {
+    "name": "Change Desk",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "✈"
+  },
+  "prototype": {
+    "path": "/prototypes/duffel",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/duffel",
+    "frame": "desktop",
+    "liveUrl": "/live/duffel"
+  },
+  "context": {
+    "title": "When a flight changes, what a travel seller can do depends on the airline, and the dashboard doesn't say",
+    "body": "Duffel notifies sellers of airline-initiated changes from 300+ airlines. For 20+ of them, the seller can accept the change straight away; for one, it can be automated; for the rest, someone has to review options with the customer, and customer-requested changes go to help@duffel.com by email. Each seller has to learn which path applies, while the flight's departure gets closer. The Duffel Assistant already hands travellers to support when it can't act; the seller's side deserves the same clarity.",
+    "assumptions": [
+      "I haven't used the Duffel Dashboard. My view comes from Duffel's docs, help centre, blog and changelog, so some of this may have changed since those were written.",
+      "The concept assumes Duffel knows, per airline and change, whether it can be accepted in Duffel, needs support, or needs no action, which its docs imply.",
+      "The 4-hour support reply time is a proposal, not a published commitment.",
+      "Visual language from duffel.com: deep purple-black ink (#100024), teal and mint accents, zinc greys and GT America (Inter as substitute). No Duffel logo.",
+      "The seller, passengers and flights are fictional."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Know what you can do",
+      "body": "Every change says whether you can resolve it here, need Duffel support, or can ignore it."
+    },
+    {
+      "title": "Act before departure",
+      "body": "Sort by how soon the flight leaves, so urgent changes come first."
+    },
+    {
+      "title": "Hand over without email",
+      "body": "When the Assistant can't act, send support a pre-filled request with the traveller's choice, and track the reply."
+    }
+  ],
+  "jtbd": "When an airline changes my customer's flight, I want to know straight away whether I can fix it myself and how urgent it is, so the traveller gets a clear answer before they leave for the airport.",
+  "evidence": [
+    {
+      "step": "Changes come from hundreds of airlines",
+      "finding": "Duffel notifies sellers of airline-initiated changes from 300+ connected airlines, via API, dashboard and email.",
+      "source": {
+        "label": "Duffel blog: Manage flight changes in minutes",
+        "url": "https://duffel.com/blog/manage-flight-changes-in-minutes-with-new-order-management-features"
+      }
+    },
+    {
+      "step": "Few can be resolved in one click",
+      "finding": "Sellers can accept changes immediately for 20+ airlines and automate them for one; for hundreds more they only get notifications.",
+      "source": {
+        "label": "Duffel blog: Manage flight changes in minutes",
+        "url": "https://duffel.com/blog/manage-flight-changes-in-minutes-with-new-order-management-features"
+      }
+    },
+    {
+      "step": "Customer changes are manual",
+      "finding": "Duffel's help centre says flight changes are currently manual: non-IATA sellers email help@duffel.com, and changes can't be made through the API or dashboard.",
+      "source": {
+        "label": "Duffel Help: How do I change a customer's flight?",
+        "url": "https://help.duffel.com/hc/en-gb/articles/360019692099-How-do-I-change-a-customer-s-flight"
+      }
+    },
+    {
+      "step": "The Assistant hands over when it can't act",
+      "finding": "The Duffel Assistant connects travellers to Duffel's support specialists where an automated action isn't available, and accepts a summary so agents have context.",
+      "source": {
+        "label": "Duffel Docs: Integrating the Duffel Assistant",
+        "url": "https://duffel.com/docs/guides/integrating-the-duffel-assistant"
+      }
+    },
+    {
+      "step": "An 'Action required' view already exists",
+      "finding": "Duffel added an 'Action required' tab for airline changes awaiting a decision, first for British Airways orders, showing exactly what changed.",
+      "source": {
+        "label": "Duffel changelog: Resolve airline-initiated changes in the dashboard",
+        "url": "https://changelog.duffel.com/announcements/you-can-now-resolve-british-airways-airline-initiated-changes-in-the-duffel-dashboard"
+      }
+    },
+    {
+      "step": "The role is about disruption and AI",
+      "finding": "The role owns Duffel's AI support product end to end, including 'when it hands over to a human, and how users understand, trust and correct it'.",
+      "source": {
+        "label": "Duffel careers: Senior Product Designer",
+        "url": "https://jobs.ashbyhq.com/duffel/cf86333d-b4bc-493e-8743-89634726df5f"
+      }
+    }
+  ],
+  "approaches": [
+    "Extend the Action required tab to every airline",
+    "Label each change by what the seller can do",
+    "Sort changes by time to departure",
+    "Draft the customer message with the Assistant",
+    "Replace support emails with a pre-filled, tracked request"
+  ],
+  "ranges": [
+    {
+      "title": "Action required, everywhere",
+      "summary": "Extend the Orders 'Action required' tab to every airline that supports changes.",
+      "pros": [
+        "Builds on what exists.",
+        "Quick win for supported airlines."
+      ],
+      "cons": [
+        "Unsupported airlines still arrive by email.",
+        "No sense of urgency."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/duffel-1-screen.svg",
+          "alt": "Sketch: Action required tab in Orders"
+        }
+      ],
+      "notes": [
+        "Familiar",
+        "Email for the rest"
+      ]
+    },
+    {
+      "title": "Label by what you can do",
+      "summary": "One queue that labels each change as accept here, needs support, or no action.",
+      "pros": [
+        "Sellers stop guessing per airline.",
+        "Cuts noise from minor changes."
+      ],
+      "cons": [
+        "Support is still an email.",
+        "No help writing to the traveller."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/duffel-2-screen.svg",
+          "alt": "Sketch: change queue labelled by action"
+        }
+      ],
+      "notes": [
+        "Clear paths",
+        "Still email"
+      ]
+    },
+    {
+      "title": "Change Desk",
+      "summary": "A queue sorted by departure and labelled by action, with a was/now view, an Assistant-drafted message, one-click accept, and a pre-filled support hand-off tracked in place.",
+      "pros": [
+        "Covers every path, not just supported airlines.",
+        "Same handover model the Assistant uses for travellers."
+      ],
+      "cons": [
+        "Needs reliable per-airline capability data.",
+        "Support SLAs need agreeing with operations."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/duffel-3-accept-screen.svg",
+          "alt": "Sketch: change detail with one-click accept",
+          "label": "Accept"
+        },
+        {
+          "src": "/sketches/duffel-3-handoff-screen.svg",
+          "alt": "Sketch: pre-filled support hand-off",
+          "label": "Hand off"
+        }
+      ],
+      "notes": [
+        "Every path covered",
+        "Needs capability data"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Change Desk: one queue, clear paths, handover built in",
+    "body": "Range 3. Changes sorted by departure and labelled by what the seller can do, with one-click accept where airlines allow it, an Assistant-drafted message, and a pre-filled, tracked hand-off to support where they don't.",
+    "reasons": [
+      "Only 20+ of 300+ airlines can be resolved in one click, so the hard cases are the common ones.",
+      "Sorting by departure puts the 38-hour cancellation above the 10-day aircraft swap.",
+      "It mirrors the Assistant's traveller handover, so B2B and B2C feel like one product."
+    ],
+    "tradeoff": "A pre-filled request makes it easier to send things to support, which could raise volume. I'd measure it against fewer back-and-forth emails per case."
+  },
+  "effortImpact": [
+    {
+      "option": "Change Desk",
+      "chosen": true,
+      "effort": {
+        "design": 6,
+        "dev": 7,
+        "gtm": 3
+      },
+      "impact": {
+        "reach": 8,
+        "value": 9,
+        "business": 8
+      }
+    },
+    {
+      "option": "Label by what you can do",
+      "effort": {
+        "design": 3,
+        "dev": 4,
+        "gtm": 2
+      },
+      "impact": {
+        "reach": 8,
+        "value": 6,
+        "business": 5
+      }
+    },
+    {
+      "option": "Action required, everywhere",
+      "effort": {
+        "design": 2,
+        "dev": 4,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 6,
+        "value": 4,
+        "business": 4
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built in Duffel's visual language. Three moments: a queue of four changes sorted by departure, labelled 'Accept in Duffel', 'Needs Duffel support' or 'No action needed'; accepting BA's 2h10m delay with an Assistant-drafted message to the traveller; and handing Iberia's cancellation to Duffel's travel support with the traveller's chosen alternative, tracked with a reply time. The detail panel eases in, and motion turns off for people who reduce it. The seller, passengers and flights are fictional."
+  },
+  "validation": {
+    "method": "I'd start with support tickets about airline changes and time-to-resolution data, then test Change Desk with travel sellers during a disruption-heavy week.",
+    "hypotheses": [
+      "Sellers resolve supported changes faster when the path is labelled.",
+      "Pre-filled hand-offs need fewer follow-up messages than emails.",
+      "Fewer travellers arrive at the airport without knowing about a change."
+    ],
+    "metrics": [
+      {
+        "name": "Time to resolve",
+        "definition": "Median hours from change detected to resolved, by path."
+      },
+      {
+        "name": "Messages per hand-off",
+        "definition": "Back-and-forth messages per support case about a change."
+      },
+      {
+        "name": "Resolved before departure",
+        "definition": "Share of actionable changes resolved more than 24h before departure."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Map which airlines and change types fall into each path today.",
+    "Review support tickets and emails about changes with operations.",
+    "Test the queue and hand-off with travel sellers in a busy disruption week.",
+    "Align the seller hand-off with the Assistant's traveller hand-off."
+  ],
+  "sources": [
+    {
+      "label": "Duffel blog: Manage flight changes in minutes",
+      "url": "https://duffel.com/blog/manage-flight-changes-in-minutes-with-new-order-management-features"
+    },
+    {
+      "label": "Duffel Help: How do I change a customer's flight?",
+      "url": "https://help.duffel.com/hc/en-gb/articles/360019692099-How-do-I-change-a-customer-s-flight"
+    },
+    {
+      "label": "Duffel Docs: Integrating the Duffel Assistant",
+      "url": "https://duffel.com/docs/guides/integrating-the-duffel-assistant"
+    },
+    {
+      "label": "Duffel changelog: Resolve airline-initiated changes in the dashboard",
+      "url": "https://changelog.duffel.com/announcements/you-can-now-resolve-british-airways-airline-initiated-changes-in-the-duffel-dashboard"
+    },
+    {
+      "label": "Duffel careers: Senior Product Designer",
+      "url": "https://jobs.ashbyhq.com/duffel/cf86333d-b4bc-493e-8743-89634726df5f"
+    }
+  ]
+}

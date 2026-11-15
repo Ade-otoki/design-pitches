@@ -815,3 +815,61 @@ if __name__ == "__main__":
     for name, fn in FAIRE_SCREENS.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)
+
+
+# ---------------- DUFFEL dashboard web screens (1280 x 800) ----------------
+def duffel_base(active=3):
+    return wsidebar(active, ("Home", "Search flights", "Orders", "Change Desk", "Stays", "Payments", "Developers", "Settings"))
+
+
+def duffel_1_web():
+    b = wsidebar(2, ("Home", "Search flights", "Orders", "Stays", "Payments", "Developers", "Settings", "")) + text(300, 80, "Orders", 30, INK, 800)
+    b += f'<rect x="300" y="104" width="160" height="32" rx="8" fill="#ebe8f7"/>' + text(380, 125, "Action required · 3", 14, SP_P, 700, "middle")
+    for i in range(6):
+        y = 160 + i * 64
+        b += box(300, y, 860, 54, stroke=LIGHT, r=8, sw=2) + bar(320, y + 18, 160, 10, "#cfcfd8") + bar(320, y + 34, 260, 8) + bar(980, y + 22, 120, 10, "#e4e4ea")
+    b += ring(296, 100, 168, 40, 10) + note(300, 600, "a tab per airline that supports it", SP_P, 24)
+    b += note(300, 640, "…the rest still arrive by email", "#8a8a93", 22)
+    return wscreen(b, "Range 1: an Action required tab in Orders for airlines that support changes")
+
+
+def duffel_2_web():
+    b = duffel_base() + text(300, 80, "Change Desk", 30, INK, 800)
+    for i, (t, tag, ok) in enumerate([("Departure moved 2h later", "Accept in Duffel", 1), ("Flight cancelled", "Needs Duffel support", 0), ("Moved 15m earlier", "No action", 2)]):
+        y = 120 + i * 96
+        b += box(300, y, 860, 84, stroke=LIGHT, r=10, sw=2) + bar(320, y + 20, 160, 11, "#cfcfd8") + text(320, y + 54, t, 16, INK, 600) + wtag(1140, y + 30, tag, ok)
+    b += ring(980, 140, 170, 230, 12) + note(300, 470, "sort every change by what you can do", SP_P, 24) + note(300, 510, "…but support is still an email", "#8a8a93", 22)
+    return wscreen(b, "Range 2: one queue labelling each change as accept here, needs support or no action")
+
+
+def duffel_3a_web():
+    b = duffel_base() + text(300, 80, "Change Desk", 30, INK, 800)
+    for i, (t, h, urg) in enumerate([("Ada · moved 2h later", "Departs in 62h", 0), ("Tom · cancelled", "Departs in 38h", 1), ("Mei · moved 15m", "", 0)]):
+        y = 120 + i * 96
+        b += box(300, y, 500, 84, stroke=INK if i == 0 else LIGHT, r=10, sw=2) + text(320, y + 34, t, 16, INK, 700) + text(780, y + 60, h, 13, SP_BAD if urg else MID, 700, "end")
+    b += box(830, 120, 330, 420, stroke=LIGHT, r=12, sw=2) + f'<rect x="846" y="140" width="298" height="70" rx="8" fill="#f3f2ee"/>' + text(860, 170, "Was 09:40  →  Now 11:50", 15, INK, 700)
+    b += f'<rect x="846" y="226" width="298" height="54" rx="8" fill="{SP_OKBG}"/>' + text(860, 258, "You can accept this here", 14, SP_OK, 700)
+    b += box(846, 296, 298, 110, stroke=LIGHT, r=8, sw=2) + bar(860, 318, 250, 8) + bar(860, 336, 230, 8) + bar(860, 354, 200, 8)
+    b += f'<rect x="846" y="424" width="200" height="38" rx="8" fill="{INK}"/>' + text(946, 448, "Accept and notify", 14, "#fff", 700, "middle")
+    b += ring(842, 418, 212, 50, 10) + note(300, 620, "accept + a ready message, in one click", SP_P, 24)
+    return wscreen(b, "Range 3, accept: change detail with was/now, a ready customer message and one-click accept")
+
+
+def duffel_3b_web():
+    b = duffel_base() + text(300, 80, "Change Desk", 30, INK, 800)
+    b += box(300, 120, 500, 84, stroke=LIGHT, r=10, sw=2) + text(320, 154, "Tom · cancelled", 16, INK, 700) + wtag(780, 160, "With Duffel support", 3)
+    b += box(830, 120, 330, 420, stroke=LIGHT, r=12, sw=2) + f'<rect x="846" y="140" width="298" height="60" rx="8" fill="#fff3db"/>' + text(860, 176, "Handled by Duffel support", 14, "#9a5b00", 700)
+    for i, t in enumerate(["IB 3106 · 10:05 → 10:25", "IB 3110 · 15:40 → 16:00"]):
+        y = 216 + i * 64
+        b += box(846, y, 298, 54, stroke=INK if i == 0 else LIGHT, r=8, sw=2) + f'<circle cx="866" cy="{y+27}" r="7" fill="{INK if i == 0 else "#fff"}" stroke="{INK}" stroke-width="2"/>' + text(882, y + 32, t, 14, INK, 600)
+    b += f'<rect x="846" y="356" width="298" height="60" rx="8" fill="#eaf0fd"/>' + text(860, 382, "Sent · reply within 4 working hours", 13, "#2c5fd6", 700)
+    b += ring(842, 352, 306, 68, 10) + note(300, 300, "pre-filled request,", SP_P, 24) + note(300, 332, "tracked here, not in email", SP_P, 24)
+    return wscreen(b, "Range 3, hand-off: pre-filled support request with the passenger's choice and a tracked reply time")
+
+
+DUFFEL_SCREENS = {"duffel-1-screen": duffel_1_web, "duffel-2-screen": duffel_2_web, "duffel-3-accept-screen": duffel_3a_web, "duffel-3-handoff-screen": duffel_3b_web}
+
+if __name__ == "__main__":
+    for name, fn in DUFFEL_SCREENS.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)
