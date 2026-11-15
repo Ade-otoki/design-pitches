@@ -1,0 +1,85 @@
+{
+  "slug": "aside",
+  "company": "Aside",
+  "role": "Founding Designer",
+  "date": "NOV 2026",
+  "hook": "I want people to hand work to an agent and still feel in charge",
+  "tags": [
+    "ai",
+    "browser"
+  ],
+  "builtFor": {
+    "context": "Aside wants to combine familiar browser conventions with an assistant that does real work, without either feeling bolted on. The hardest moments are when the agent acts toward other people, or gets stuck.",
+    "opportunities": [
+      {
+        "title": "Review Lane",
+        "body": "Approve outgoing work in one calm pass while the agent keeps going."
+      },
+      {
+        "title": "Blocked, not stopped",
+        "body": "Pause one item, not the task, with a clear way to take over."
+      },
+      {
+        "title": "Show the source",
+        "body": "Every draft shows what it was based on, so review stays real."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "My work has been in products where people must trust what a system does on their behalf: transaction monitoring at Youverify, lending at Shecluded, payments at Foodlify.",
+      "I prototype in code with AI tools every day, which is how I built the concept in this pitch, so I design agent experiences as a heavy user of them."
+    ],
+    "bring": [
+      {
+        "title": "Trust in automated systems",
+        "body": "Tools where people act on what a system flagged and know when to step in."
+      },
+      {
+        "title": "Systems thinking",
+        "body": "A component library that cut developer onboarding by 45%."
+      },
+      {
+        "title": "AI-assisted prototyping",
+        "body": "Working prototypes in code, like this one."
+      }
+    ]
+  },
+  "caseStudies": [
+    "youverify",
+    "shecluded",
+    "foodlify"
+  ],
+  "systemsGets": "Someone who designs the primitives of human–agent work (progress, review, block, recovery) once, so the next ten features reuse them.",
+  "opportunity": {
+    "title": "Review Lane",
+    "problem": "Sends wait for approval one at a time, and a sign-in check stops the whole task. At scale, that's either constant interruption or stalled work.",
+    "solution": "A lane that collects ready sends for one review while the agent keeps working, per-item recovery for blocks, and a summary of what went out."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how people hand work to Aside today, then contributing one useful improvement with the founders.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet the team. Use Aside for real work and note every moment of friction."
+      },
+      {
+        "day": "TUE",
+        "body": "Talk to five community users about long tasks, approvals and blocks."
+      },
+      {
+        "day": "WED",
+        "body": "Agree on one moment to improve, grounded in what users said."
+      },
+      {
+        "day": "THU",
+        "body": "Prototype it in code and review edge cases with engineering."
+      },
+      {
+        "day": "FRI",
+        "body": "Share findings, the prototype and a plan to test it with users."
+      }
+    ]
+  },
+  "ask": "I'd love to be Aside's founding designer and help make agents feel calm, clear and trustworthy."
+}

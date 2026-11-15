@@ -1,0 +1,269 @@
+{
+  "slug": "aside",
+  "draft": false,
+  "company": "Aside",
+  "companyUrl": "https://aside.com",
+  "role": "Founding Designer",
+  "jobUrl": "https://www.ycombinator.com/companies/aside/jobs/Iw9ggf8-mts-founding-designer",
+  "date": "2026-11-15",
+  "feature": {
+    "name": "Review Lane",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "◧"
+  },
+  "prototype": {
+    "path": "/prototypes/aside",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/aside",
+    "frame": "desktop",
+    "liveUrl": "/live/aside"
+  },
+  "context": {
+    "title": "When an agent works for you at scale, approvals either interrupt you or stop the work",
+    "body": "Aside can act across sites you're signed into, and it already has thoughtful controls: Guard mode, Queue and Steer, and sensitive actions like sending or paying wait for approval. But a task like 'send a personal note to 12 design leads' produces 12 sends to approve, and a single sign-in check or CAPTCHA stops the task until someone deals with it. The role asks for 'progress states, review, and recovery' for exactly this kind of work, including 'personalized outreach at scale'.",
+    "assumptions": [
+      "I haven't used Aside. My view comes from two detailed public reviews and the job post, so the product may already do some of this.",
+      "aside.com didn't load for me, so the visuals follow macOS-native conventions and Aside's 'New York' sidebar layout as described publicly. No Aside logo.",
+      "Sending 'one by one, at a human pace' is a proposal, as is pausing only the blocked item.",
+      "People, companies and messages are fictional."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Review once, not 12 times",
+      "body": "Sends collect in one lane you can scan, edit or skip."
+    },
+    {
+      "title": "Keep working while you decide",
+      "body": "Research continues; only the send waits for you."
+    },
+    {
+      "title": "Blocked, not stopped",
+      "body": "A sign-in check pauses one item, with a clear way to take over."
+    }
+  ],
+  "jtbd": "When I hand Aside a batch of personal outreach, I want to approve what goes out in one calm pass, so I stay in control without babysitting the task.",
+  "evidence": [
+    {
+      "step": "Sends wait for approval",
+      "finding": "Sensitive actions such as payments, posting or sending wait for user approval; Guard is the default permission mode.",
+      "source": {
+        "label": "Dale Seo: Aside, the AI browser that logs in and works for you",
+        "url": "https://daleseo.com/aside/"
+      }
+    },
+    {
+      "step": "Blocks stop the task",
+      "finding": "MFA, CAPTCHA and identity checks stop the task until a person completes them; 'Take over' lets you continue an agent tab manually.",
+      "source": {
+        "label": "Dale Seo: Aside, the AI browser that logs in and works for you",
+        "url": "https://daleseo.com/aside/"
+      }
+    },
+    {
+      "step": "Autonomy raises the stakes",
+      "finding": "Ultrabrowse runs long tasks 'until it's done'; a reviewer argues an explicit approval gate matters most when the agent acts toward other people.",
+      "source": {
+        "label": "eesel AI: Aside AI browser review (Jun 2026)",
+        "url": "https://eesel.ai/blog/aside-ai-browser-review"
+      }
+    },
+    {
+      "step": "Trust is the test",
+      "finding": "With the Windows launch, the question is whether 'an agent can safely finish work inside a user's authenticated browser'.",
+      "source": {
+        "label": "Runtime Wire: Aside brings its browser agent to Windows (Sep 2026)",
+        "url": "https://runtimewire.com/article/aside-ai-browser-launches-windows-app"
+      }
+    },
+    {
+      "step": "The role names it",
+      "finding": "The founding designer will define 'progress states, review, and recovery' for work including 'personalized outreach at scale'.",
+      "source": {
+        "label": "YC: Aside, MTS Founding Designer",
+        "url": "https://www.ycombinator.com/companies/aside/jobs/Iw9ggf8-mts-founding-designer"
+      }
+    }
+  ],
+  "approaches": [
+    "Approve each send in a modal",
+    "Draft everything, then review once",
+    "A Review lane that fills while the agent works",
+    "Pause only the blocked item",
+    "A summary of what was sent, skipped and needs you"
+  ],
+  "ranges": [
+    {
+      "title": "Approve each send",
+      "summary": "A modal asks for approval each time the agent reaches a send.",
+      "pros": [
+        "Simple and explicit.",
+        "Matches today's gate."
+      ],
+      "cons": [
+        "12 interruptions for 12 people.",
+        "Task stalls at every send."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/aside-1-screen.svg",
+          "alt": "Sketch: approval modal per send"
+        }
+      ],
+      "notes": [
+        "Explicit",
+        "Interruptive"
+      ]
+    },
+    {
+      "title": "Draft all, then review",
+      "summary": "The agent drafts all 12 first, then shows one review list.",
+      "pros": [
+        "One review pass.",
+        "Easy to compare tone."
+      ],
+      "cons": [
+        "Nothing goes out until the slowest one is done.",
+        "A block still stops everything."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/aside-2-screen.svg",
+          "alt": "Sketch: batch review of all drafts"
+        }
+      ],
+      "notes": [
+        "Calm",
+        "Slow"
+      ]
+    },
+    {
+      "title": "Review Lane",
+      "summary": "Ready sends collect in a lane you can scan, edit or skip while research continues; blocks pause one item; a summary shows sent, skipped and needs-you.",
+      "pros": [
+        "Fewer interruptions without less control.",
+        "Recovery is per item, not per task."
+      ],
+      "cons": [
+        "Needs care so batching doesn't feel like rubber-stamping.",
+        "Pacing sends adds time."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/aside-3-lane-screen.svg",
+          "alt": "Sketch: review lane",
+          "label": "Lane"
+        },
+        {
+          "src": "/sketches/aside-3-blocked-screen.svg",
+          "alt": "Sketch: blocked item with take over",
+          "label": "Blocked"
+        }
+      ],
+      "notes": [
+        "Calm control",
+        "Pacing"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Review Lane: approve in one pass, recover per item",
+    "body": "Range 3. Sends collect in a Review lane with the source each note used, while Aside keeps researching. A sign-in check pauses only the affected person, with 'Take over this tab'. The task ends with what was sent, skipped and still needs you.",
+    "reasons": [
+      "It keeps the approval gate explicit, which matters most when an agent writes to other people.",
+      "Batching cuts interruptions without hiding what goes out.",
+      "Per-item recovery turns a stopped task into one small decision."
+    ],
+    "tradeoff": "Batch approval can turn into rubber-stamping. Showing the source behind each note, and expanding the first one by default, keeps the review real."
+  },
+  "effortImpact": [
+    {
+      "option": "Review Lane",
+      "chosen": true,
+      "effort": {
+        "design": 5,
+        "dev": 6,
+        "gtm": 2
+      },
+      "impact": {
+        "reach": 7,
+        "value": 9,
+        "business": 8
+      }
+    },
+    {
+      "option": "Draft all, then review",
+      "effort": {
+        "design": 3,
+        "dev": 3,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 7,
+        "value": 6,
+        "business": 5
+      }
+    },
+    {
+      "option": "Approve each send",
+      "effort": {
+        "design": 1,
+        "dev": 1,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 7,
+        "value": 3,
+        "business": 3
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built in a macOS-native style with Aside's vertical sidebar (tabs, Agent Tabs, tasks). Three moments in an outreach task: four ready notes in the Review lane, each with what it was based on and a Skip, while research continues; a sign-in check that pauses only Tom's message, with Take over or Skip, and four sends already done; and a summary with sent, skipped and needs-you, plus updating the source sheet. Cards ease in, and motion turns off for people who reduce it."
+  },
+  "validation": {
+    "method": "I'd look at how often outreach-style tasks are abandoned at an approval or a block, then test the lane with ten heavy users from the community.",
+    "hypotheses": [
+      "Users approve sends in fewer sessions without editing less.",
+      "Fewer tasks are abandoned after a sign-in check.",
+      "Users trust Aside with larger batches over time."
+    ],
+    "metrics": [
+      {
+        "name": "Approval sessions per task",
+        "definition": "Separate times a user returns to approve sends in one task."
+      },
+      {
+        "name": "Blocked-task completion",
+        "definition": "Share of tasks hitting a block that still finish."
+      },
+      {
+        "name": "Edit rate",
+        "definition": "Share of drafts edited before sending (watch for rubber-stamping)."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Map every action type that waits for approval today.",
+    "Test the lane with ten community users on real outreach.",
+    "Define pacing rules per site with engineering.",
+    "Extend the pattern to payments and form submissions."
+  ],
+  "sources": [
+    {
+      "label": "eesel AI: Aside AI browser review (Jun 2026)",
+      "url": "https://eesel.ai/blog/aside-ai-browser-review"
+    },
+    {
+      "label": "Dale Seo: Aside, the AI browser that logs in and works for you",
+      "url": "https://daleseo.com/aside/"
+    },
+    {
+      "label": "Runtime Wire: Aside brings its browser agent to Windows (Sep 2026)",
+      "url": "https://runtimewire.com/article/aside-ai-browser-launches-windows-app"
+    },
+    {
+      "label": "YC: Aside, MTS Founding Designer",
+      "url": "https://www.ycombinator.com/companies/aside/jobs/Iw9ggf8-mts-founding-designer"
+    }
+  ]
+}

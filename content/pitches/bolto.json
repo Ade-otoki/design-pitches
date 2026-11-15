@@ -1,0 +1,85 @@
+{
+  "slug": "bolto",
+  "company": "Bolto",
+  "role": "Design Engineer",
+  "date": "NOV 2026",
+  "hook": "I want every payroll to go out right, without anyone checking every row",
+  "tags": [
+    "fintech",
+    "hr"
+  ],
+  "builtFor": {
+    "context": "Bolto is building AI-native recruiting, payroll and HR in one place. Because it sees hires, raises and departures first, it can make payroll the calmest part of the month, not the most stressful.",
+    "opportunities": [
+      {
+        "title": "Payroll Preflight",
+        "body": "What changed since last run, what's wrong, and a fix for each."
+      },
+      {
+        "title": "What happens next",
+        "body": "When money moves, who gets paid, and until when you can cancel."
+      },
+      {
+        "title": "Shared components",
+        "body": "Issue cards, timelines and totals the whole product reuses."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "My work has been in financial products where mistakes cost people money: lending at Shecluded, payments at Foodlify, compliance at Youverify.",
+      "I design and build: this concept is a working prototype in React, built with AI tools, and I built a component library that cut developer onboarding by 45%."
+    ],
+    "bring": [
+      {
+        "title": "Money flows, shipped",
+        "body": "A 5-step loan flow and dashboard that lifted first-time engagement by 30%."
+      },
+      {
+        "title": "Design systems",
+        "body": "A component library and tokens that cut developer onboarding by 45%."
+      },
+      {
+        "title": "Design in code",
+        "body": "Working React prototypes, like this one."
+      }
+    ]
+  },
+  "caseStudies": [
+    "youverify",
+    "shecluded",
+    "foodlify"
+  ],
+  "systemsGets": "Someone who designs and builds the states of consequential work (needs attention, ready, submitted, paid) as reusable components.",
+  "opportunity": {
+    "title": "Payroll Preflight",
+    "problem": "Payroll review usually means scanning a table of everyone. EY found errors in 1 in 5 payrolls, at $339 each to fix.",
+    "solution": "Open on what changed and what's wrong, with a reason and a fix each, block submit only on must-fix issues, then show what happens next."
+  },
+  "firstWeek": {
+    "intro": "My first week would follow Bolto's 30-day plan: learn the product, find a high-impact usability issue, and start shipping.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet the team, set up the frontend and run a test payroll end to end."
+      },
+      {
+        "day": "TUE",
+        "body": "Review customer tickets and corrections with the payroll team."
+      },
+      {
+        "day": "WED",
+        "body": "Pick one high-impact usability issue, grounded in evidence."
+      },
+      {
+        "day": "THU",
+        "body": "Design and build the fix in the codebase, with edge cases."
+      },
+      {
+        "day": "FRI",
+        "body": "Open the PR, demo it, and plan how to measure it."
+      }
+    ]
+  },
+  "ask": "I'd love to design and build Bolto's experience, starting with the moments where money moves."
+}

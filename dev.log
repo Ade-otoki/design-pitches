@@ -1,0 +1,33 @@
+   ▲ Next.js 15.5.29
+   - Local:        http://localhost:3100
+   - Network:      http://192.0.2.2:3100
+
+ ✓ Starting...
+ ✓ Ready in 2s
+ ○ Compiling /prototypes/aside ...
+ ✓ Compiled /prototypes/aside in 2.7s (538 modules)
+ GET /prototypes/aside 200 in 3173ms
+ GET /prototypes/aside?embed=1&scenario=batch 200 in 74ms
+ GET /prototypes/aside?embed=1&scenario=blocked 200 in 69ms
+ GET /prototypes/aside?embed=1&scenario=done 200 in 61ms
+ ✓ Compiled in 506ms (538 modules)
+ ✓ Compiled in 184ms (215 modules)
+ ○ Compiling /prototypes/bolto ...
+ ✓ Compiled /prototypes/bolto in 544ms (540 modules)
+ GET /prototypes/bolto 200 in 775ms
+ GET /prototypes/bolto?embed=1&scenario=review 200 in 56ms
+ GET /prototypes/bolto?embed=1&scenario=fixed 200 in 79ms
+ GET /prototypes/bolto?embed=1&scenario=submitted 200 in 73ms
+ ✓ Compiled in 348ms (540 modules)
+ ✓ Compiled in 172ms (217 modules)
+ ○ Compiling /[slug] ...
+ ✓ Compiled /[slug] in 723ms (565 modules)
+ GET /aside 200 in 1509ms
+ ✓ Compiled /live/aside in 270ms (575 modules)
+ GET /live/aside 200 in 435ms
+ ✓ Compiled /pitch/[slug] in 183ms (584 modules)
+ GET /pitch/aside 200 in 764ms
+ GET /bolto 200 in 117ms
+ ✓ Compiled /live/bolto in 293ms (592 modules)
+ GET /live/bolto 200 in 403ms
+ GET /pitch/bolto 200 in 132ms

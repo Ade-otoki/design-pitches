@@ -1,0 +1,257 @@
+{
+  "slug": "bolto",
+  "draft": false,
+  "company": "Bolto",
+  "companyUrl": "https://www.bolto.com",
+  "role": "Design Engineer",
+  "jobUrl": "https://www.ycombinator.com/companies/bolto/jobs/EqbaElZ-design-engineer",
+  "date": "2026-11-15",
+  "feature": {
+    "name": "Payroll Preflight",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "✓"
+  },
+  "prototype": {
+    "path": "/prototypes/bolto",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/bolto",
+    "frame": "desktop",
+    "liveUrl": "/live/bolto"
+  },
+  "context": {
+    "title": "Before payroll goes out, the person running it has to find problems hiding in a table",
+    "body": "Bolto brings recruiting, payroll and HR together, so it knows about every new hire, raise and departure before payroll runs. Yet payroll review is usually a table of everyone, checked by eye. EY's latest research for Paycom found errors in 1 in 5 payrolls, at $339 each to fix. Bolto's job post puts it plainly: help someone 'understand what needs attention, complete a task confidently, and know what happens next'.",
+    "assumptions": [
+      "I haven't used Bolto. My view comes from the job post, its launch and public listings, so the product may already do some of this.",
+      "Bolto's product UI wasn't available to inspect, so the visuals are a neutral business-software style. No Bolto logo.",
+      "The checks (missing bank details, unusual pay change, leaver pay) are examples; real rules would come from Bolto's payroll and compliance teams.",
+      "The company, people and amounts are fictional."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Show only what changed",
+      "body": "Start from changes since last payroll, not 42 rows."
+    },
+    {
+      "title": "Explain and fix in place",
+      "body": "Every issue says why it matters and offers a one-click fix."
+    },
+    {
+      "title": "Say what happens next",
+      "body": "After submitting: when money moves, who gets paid, until when you can cancel."
+    }
+  ],
+  "jtbd": "When I run payroll, I want to see only what's different and what's wrong, with a fix, so everyone is paid correctly and on time without me checking every row.",
+  "evidence": [
+    {
+      "step": "Payroll errors are common",
+      "finding": "EY's 2026 analysis for Paycom: respondents reported errors in 1 in 5 payrolls, and each costs $339 on average to correct.",
+      "source": {
+        "label": "Paycom / EY: cost per payroll error climbs to $339 (Oct 2026)",
+        "url": "https://www.paycom.com/about/press-room/ey-survey-cost-per-payroll-error-climbs-to-339-average-for-companies/"
+      }
+    },
+    {
+      "step": "Teams field questions every run",
+      "finding": "The same research found payroll and HR teams receive about 30 employee questions per pay period.",
+      "source": {
+        "label": "Paycom / EY: cost per payroll error climbs to $339 (Oct 2026)",
+        "url": "https://www.paycom.com/about/press-room/ey-survey-cost-per-payroll-error-climbs-to-339-average-for-companies/"
+      }
+    },
+    {
+      "step": "Bolto knows about changes first",
+      "finding": "Bolto combines recruiting, payroll and HR in one platform, so hires and changes flow into payroll from the same system.",
+      "source": {
+        "label": "Product Hunt: Bolto launch",
+        "url": "https://www.producthunt.com/p/bolto-2/bolto-3"
+      }
+    },
+    {
+      "step": "The role asks for clarity",
+      "finding": "Payroll and HR 'involve complex workflows and consequential decisions'; the job is to help someone 'understand what needs attention, complete a task confidently, and know what happens next'.",
+      "source": {
+        "label": "YC: Bolto, Design Engineer",
+        "url": "https://www.ycombinator.com/companies/bolto/jobs/EqbaElZ-design-engineer"
+      }
+    }
+  ],
+  "approaches": [
+    "Keep the table, add warnings",
+    "Start from changes since last payroll",
+    "Explain each issue and offer a fix",
+    "Block submit only on must-fix issues",
+    "Show what happens after submitting"
+  ],
+  "ranges": [
+    {
+      "title": "Table, checked by eye",
+      "summary": "Today's common pattern: every person in a table, then Submit.",
+      "pros": [
+        "Familiar.",
+        "Nothing hidden."
+      ],
+      "cons": [
+        "Errors hide in rows.",
+        "No sense of what changed."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/bolto-1-screen.svg",
+          "alt": "Sketch: payroll table"
+        }
+      ],
+      "notes": [
+        "Familiar",
+        "Error-prone"
+      ]
+    },
+    {
+      "title": "Warnings on rows",
+      "summary": "A banner and flagged rows in the same table.",
+      "pros": [
+        "Points at problems.",
+        "Small change."
+      ],
+      "cons": [
+        "No reason or fix.",
+        "Still a table to scan."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/bolto-2-screen.svg",
+          "alt": "Sketch: warnings on rows"
+        }
+      ],
+      "notes": [
+        "Better",
+        "No fix"
+      ]
+    },
+    {
+      "title": "Payroll Preflight",
+      "summary": "Changes since last run, issues with why and a one-click fix, submit blocked only by must-fix issues, then a timeline of what happens next.",
+      "pros": [
+        "Uses what Bolto already knows from hiring and HR.",
+        "Ends with clarity, not just a confirmation."
+      ],
+      "cons": [
+        "Rules need payroll and compliance input per country.",
+        "Too many 'checks' would become noise."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/bolto-3-preflight-screen.svg",
+          "alt": "Sketch: preflight with issues",
+          "label": "Preflight"
+        },
+        {
+          "src": "/sketches/bolto-3-next-screen.svg",
+          "alt": "Sketch: what happens next",
+          "label": "Next"
+        }
+      ],
+      "notes": [
+        "Clear",
+        "Rules needed"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Payroll Preflight: what changed, what's wrong, what's next",
+    "body": "Range 3. Payroll opens on changes since last run and the issues that need attention, each with a reason and a fix. Submit is blocked only by must-fix issues, and after submitting, a timeline shows when money moves and who gets paid.",
+    "reasons": [
+      "Bolto sees hires and departures before payroll does, so it can catch issues others can't.",
+      "Explaining 'why' turns a warning into a decision.",
+      "'What happens next' answers the questions employees and admins ask every run."
+    ],
+    "tradeoff": "Too many checks become noise. I'd split 'must fix' from 'check', tune thresholds with real data, and track how often checks are dismissed."
+  },
+  "effortImpact": [
+    {
+      "option": "Payroll Preflight",
+      "chosen": true,
+      "effort": {
+        "design": 5,
+        "dev": 6,
+        "gtm": 3
+      },
+      "impact": {
+        "reach": 9,
+        "value": 9,
+        "business": 8
+      }
+    },
+    {
+      "option": "Warnings on rows",
+      "effort": {
+        "design": 2,
+        "dev": 3,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 9,
+        "value": 5,
+        "business": 4
+      }
+    },
+    {
+      "option": "Table, checked by eye",
+      "effort": {
+        "design": 1,
+        "dev": 1,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 9,
+        "value": 2,
+        "business": 2
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built as a working payroll screen for a fictional 42-person company in 3 countries. Three moments: preflight with three issues (a new hire without a bank account, a 40% pay jump, a leaver paid for the full month), each with a reason and a fix, and Submit disabled until must-fix issues are handled; the same run, clear, with total cost updated; and after submitting, a timeline of the debit, contractor payouts in MXN and PLN, payslips and the cancel deadline. Cards ease in, and motion turns off for people who reduce it."
+  },
+  "validation": {
+    "method": "I'd review payroll corrections and off-cycle runs, then test preflight with five admins during a real pay period.",
+    "hypotheses": [
+      "Fewer off-cycle correction runs.",
+      "Admins spend less time reviewing before submitting.",
+      "Fewer employee questions after pay day."
+    ],
+    "metrics": [
+      {
+        "name": "Correction runs",
+        "definition": "Off-cycle runs created to fix a regular payroll, per 100 payrolls."
+      },
+      {
+        "name": "Time to submit",
+        "definition": "Minutes from opening payroll to submitting."
+      },
+      {
+        "name": "Check dismissal rate",
+        "definition": "Share of 'check' items dismissed without change (noise signal)."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Pull the top causes of corrections with the payroll team.",
+    "Agree must-fix rules per country with compliance.",
+    "Test with five admins in a live pay period.",
+    "Build the components into the design system."
+  ],
+  "sources": [
+    {
+      "label": "Paycom / EY: cost per payroll error climbs to $339 (Oct 2026)",
+      "url": "https://www.paycom.com/about/press-room/ey-survey-cost-per-payroll-error-climbs-to-339-average-for-companies/"
+    },
+    {
+      "label": "YC: Bolto, Design Engineer",
+      "url": "https://www.ycombinator.com/companies/bolto/jobs/EqbaElZ-design-engineer"
+    },
+    {
+      "label": "Product Hunt: Bolto launch",
+      "url": "https://www.producthunt.com/p/bolto-2/bolto-3"
+    }
+  ]
+}

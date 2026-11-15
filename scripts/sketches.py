@@ -979,3 +979,106 @@ if __name__ == "__main__":
     for name, fn in CODER_SCREENS.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)
+
+
+# ---------------- ASIDE browser web screens (1280 x 800) ----------------
+ASIDE_NAV = ("Today", "Docs", "Sheets", "Agent Tabs", "Priya · profile", "Tom · profile", "Tasks", "Outreach")
+
+
+def aside_1_web():
+    b = wsidebar(7, ASIDE_NAV) + text(300, 80, "Outreach to 12 design leads", 26, INK, 800)
+    for i in range(3):
+        b += bar(300, 120 + i * 22, 300, 9)
+    b += f'<rect x="420" y="250" width="440" height="190" rx="14" fill="#fff" stroke="{INK}" stroke-width="2"/>' + text(440, 286, "Send this message to Priya?", 16, INK, 700) + bar(440, 310, 380, 9) + bar(440, 330, 330, 9)
+    b += f'<rect x="440" y="380" width="120" height="38" rx="8" fill="{INK}"/>' + text(500, 404, "Approve", 13, "#fff", 700, "middle")
+    b += ring(416, 246, 448, 198, 14) + note(300, 520, "approve each send as it happens", SP_P, 24) + note(300, 560, "…12 interruptions, task stalls each time", "#8a8a93", 22)
+    return wscreen(b, "Range 1: approve each send in a modal as the agent reaches it")
+
+
+def aside_2_web():
+    b = wsidebar(7, ASIDE_NAV) + text(300, 80, "Outreach to 12 design leads", 26, INK, 800)
+    b += box(300, 120, 860, 300, stroke=LIGHT, r=12, sw=2) + text(320, 150, "All 12 drafts", 15, INK, 700)
+    for i in range(6):
+        b += bar(320, 175 + i * 36, 500, 10, "#cfcfd8") + bar(1040, 175 + i * 36, 90, 10, "#e4e4ea")
+    b += ring(296, 116, 868, 308, 12) + note(300, 490, "draft everything first, then review once", SP_P, 24) + note(300, 530, "…nothing sends until all 12 are done", "#8a8a93", 22)
+    return wscreen(b, "Range 2: draft every message first, then review the whole batch")
+
+
+def aside_3a_web():
+    b = wsidebar(7, ASIDE_NAV) + text(300, 80, "Outreach to 12 design leads", 26, INK, 800)
+    for i, s in enumerate(["✓ Read shortlist", "✓ Researched 8", "◌ Researching 4 more"]):
+        b += text(300, 130 + i * 28, s, 14, "#2c5fd6" if i == 2 else INK, 600)
+    b += box(720, 110, 440, 360, stroke=LIGHT, r=14, sw=2) + text(740, 142, "Review lane", 15, INK, 700) + wtag(1140, 142, "4 ready", 2)
+    for i in range(4):
+        b += box(740, 162 + i * 58, 400, 48, stroke=LIGHT, r=8, sw=2) + f'<circle cx="764" cy="{186+i*58}" r="12" fill="#e7e5df"/>' + bar(786, 180 + i * 58, 160, 9, "#cfcfd8") + text(1126, 191 + i * 58, "Skip", 12, MID, 600, "end")
+    b += f'<rect x="740" y="410" width="110" height="38" rx="8" fill="{INK}"/>' + text(795, 434, "Send 4", 13, "#fff", 700, "middle")
+    b += ring(716, 106, 448, 368, 14) + note(300, 300, "sends collect in a lane;", SP_P, 24) + note(300, 332, "the agent keeps working", SP_P, 24)
+    return wscreen(b, "Range 3, lane: ready sends collect for review while research continues")
+
+
+def aside_3b_web():
+    b = wsidebar(5, ASIDE_NAV) + text(300, 80, "Outreach to 12 design leads", 26, INK, 800)
+    b += box(720, 110, 440, 300, stroke=LIGHT, r=14, sw=2) + text(740, 142, "Needs you", 15, INK, 700)
+    b += f'<rect x="740" y="160" width="400" height="110" rx="10" fill="#fff3db"/>' + text(756, 190, "Site asked to confirm it's you", 14, "#9a5b00", 700) + text(756, 212, "Only Tom's message is paused", 13, "#5c3a00", 600)
+    b += f'<rect x="756" y="226" width="150" height="32" rx="7" fill="{INK}"/>' + text(831, 247, "Take over tab", 12, "#fff", 700, "middle")
+    for i in range(3):
+        b += text(740, 310 + i * 26, "✓ Sent", 13, SP_OK, 700) + bar(800, 302 + i * 26, 140, 9)
+    b += ring(736, 156, 408, 118, 10) + note(300, 300, "blocked, not stopped:", SP_P, 24) + note(300, 332, "one item waits, the rest continue", SP_P, 24)
+    return wscreen(b, "Range 3, blocked: a sign-in check pauses one send, not the task")
+
+
+ASIDE_SCREENS = {"aside-1-screen": aside_1_web, "aside-2-screen": aside_2_web, "aside-3-lane-screen": aside_3a_web, "aside-3-blocked-screen": aside_3b_web}
+
+
+# ---------------- BOLTO payroll web screens (1280 x 800) ----------------
+BOLTO_NAV = ("Home", "Hiring", "People", "Payroll", "Time off", "Benefits", "Documents", "Settings")
+
+
+def bolto_1_web():
+    b = wsidebar(3, BOLTO_NAV) + text(300, 80, "November payroll", 26, INK, 800)
+    b += box(300, 120, 860, 330, stroke=LIGHT, r=10, sw=2)
+    for i in range(8):
+        b += bar(320, 145 + i * 36, 180, 10, "#cfcfd8") + bar(900, 145 + i * 36, 100, 10) + bar(1040, 145 + i * 36, 90, 10)
+    b += f'<rect x="980" y="470" width="180" height="40" rx="8" fill="#2f5bea"/>' + text(1070, 495, "Submit payroll", 13, "#fff", 700, "middle")
+    b += note(300, 560, "a table of 42 rows to eyeball", SP_P, 24) + note(300, 600, "…errors hide in the rows", "#8a8a93", 22)
+    return wscreen(b, "Range 1: today's pattern, a full table to check before submitting")
+
+
+def bolto_2_web():
+    b = wsidebar(3, BOLTO_NAV) + text(300, 80, "November payroll", 26, INK, 800)
+    b += f'<rect x="300" y="110" width="860" height="56" rx="10" fill="#fef2f2"/>' + text(320, 144, "3 warnings found · see rows marked ⚠", 14, "#b91c1c", 700)
+    b += box(300, 180, 860, 260, stroke=LIGHT, r=10, sw=2)
+    for i in range(6):
+        b += bar(320, 205 + i * 36, 180, 10, "#cfcfd8") + (text(880, 214 + i * 36, "⚠", 14, "#b91c1c", 700) if i in (1, 4) else "") + bar(1040, 205 + i * 36, 90, 10)
+    b += ring(296, 106, 868, 64, 10) + note(300, 520, "flag rows with warnings", SP_P, 24) + note(300, 560, "…but no 'why' or one-click fix", "#8a8a93", 22)
+    return wscreen(b, "Range 2: warnings banner and flagged rows in the table")
+
+
+def bolto_3a_web():
+    b = wsidebar(3, BOLTO_NAV) + text(300, 80, "November payroll", 26, INK, 800) + text(300, 106, "Submit by Wed 25 Nov for on-time pay", 13, MID, 600)
+    b += text(300, 146, "Since last payroll: +2 hires · 1 leaving · 1 raise", 14, INK, 600)
+    for i, (t, ok) in enumerate([("No bank account · Leah", 0), ("Pay up 40% · Diego", 2), ("Full month for leaver · Sam", 0)]):
+        y = 170 + i * 76
+        b += box(300, y, 580, 64, stroke="#fecaca" if ok == 0 else LIGHT, r=10, sw=2) + wtag(380, y + 36, "Must fix" if ok == 0 else "Check", 0 if ok == 0 else 2) + text(400, y + 38, t, 14, INK, 600) + box(760, y + 16, 104, 32, stroke=LIGHT, r=7, sw=2) + text(812, y + 37, "Fix", 12, INK, 700, "middle")
+    b += box(910, 140, 250, 230, stroke=LIGHT, r=12, sw=2) + text(930, 172, "$150,870", 24, INK, 800) + bar(930, 196, 200, 8) + bar(930, 214, 180, 8)
+    b += f'<rect x="930" y="300" width="210" height="40" rx="8" fill="#e5e7eb"/>' + text(1035, 325, "Fix 2 to submit", 13, MID, 700, "middle")
+    b += ring(296, 166, 588, 232, 12) + note(300, 470, "only what changed, with why and a fix", SP_P, 24)
+    return wscreen(b, "Range 3, preflight: changes since last run, issues with reasons and fixes")
+
+
+def bolto_3b_web():
+    b = wsidebar(3, BOLTO_NAV) + text(300, 80, "November payroll", 26, INK, 800) + wtag(1140, 80, "Submitted", 1)
+    for i, t in enumerate(["Submitted · today", "$148,320 debited · Thu", "Contractors paid in MXN/PLN · Fri", "Employees paid · Mon 30 Nov", "Leah paid when she adds a bank"]):
+        y = 140 + i * 60
+        b += f'<circle cx="310" cy="{y}" r="8" fill="{"#047857" if i == 0 else "#fff"}" stroke="#9ca3af" stroke-width="2"/>' + text(330, y + 5, t, 15, INK, 600)
+    b += f'<line x1="310" y1="148" x2="310" y2="372" stroke="#e5e7eb" stroke-width="2"/>'
+    b += ring(296, 120, 520, 280, 12) + note(300, 470, "what happens next, and until when you can cancel", SP_P, 24)
+    return wscreen(b, "Range 3, next: a timeline of debit, payouts and payslips after submitting")
+
+
+BOLTO_SCREENS = {"bolto-1-screen": bolto_1_web, "bolto-2-screen": bolto_2_web, "bolto-3-preflight-screen": bolto_3a_web, "bolto-3-next-screen": bolto_3b_web}
+
+if __name__ == "__main__":
+    for name, fn in {**ASIDE_SCREENS, **BOLTO_SCREENS}.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)
