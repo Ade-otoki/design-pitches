@@ -1082,3 +1082,207 @@ if __name__ == "__main__":
     for name, fn in {**ASIDE_SCREENS, **BOLTO_SCREENS}.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)
+
+
+# ---------------- RIPPLING global payroll web screens ----------------
+RIP_NAV = ("Home", "People", "Payroll", "Global payroll", "Time", "Spend", "IT", "Reports")
+
+
+def rip_1_web():
+    b = wsidebar(3, RIP_NAV) + text(300, 80, "Global payroll", 26, INK, 800)
+    for i, c in enumerate(["US", "GB", "BR", "IN", "DE"]):
+        y = 120 + i * 60
+        b += box(300, y, 860, 50, stroke=LIGHT, r=8, sw=2) + text(320, y + 31, c, 15, INK, 700) + bar(400, y + 21, 200, 9) + wtag(1140, y + 30, "Draft", 2)
+    b += note(300, 470, "a list of pay runs per country", SP_P, 24) + note(300, 508, "…deadlines live inside each one", "#8a8a93", 22)
+    return wscreen(b, "Range 1: today's pattern, a list of pay runs, one per country")
+
+
+def rip_2_web():
+    b = wsidebar(3, RIP_NAV) + text(300, 80, "Global payroll", 26, INK, 800)
+    b += f'<rect x="300" y="110" width="860" height="56" rx="8" fill="#fff4dc"/>' + text(320, 144, "2 pay runs need approval this week", 15, "#9a5b00", 700)
+    for i in range(4):
+        y = 186 + i * 56
+        b += box(300, y, 860, 46, stroke=LIGHT, r=8, sw=2) + bar(320, y + 19, 220, 9) + text(1140, y + 28, "Approve by …", 12, MID, 600, "end")
+    b += ring(296, 106, 868, 64, 10) + note(300, 470, "a banner of what's due", SP_P, 24) + note(300, 508, "…but no 'why' when a date moves", "#8a8a93", 22)
+    return wscreen(b, "Range 2: a due-this-week banner over the pay run list")
+
+
+def rip_3a_web():
+    b = wsidebar(3, RIP_NAV) + text(300, 80, "November pay runs", 26, INK, 800)
+    for i in range(10):
+        b += text(380 + i * 54, 130, ["16", "17", "18", "19", "20", "23", "24", "25", "26", "27"][i], 12, "#a3283a" if i == 4 else MID, 600, "middle")
+    for i, (c, a, p) in enumerate([("US", 7, 9), ("GB", 5, 9), ("BR", 2, 6), ("IN", 7, 9)]):
+        y = 160 + i * 52
+        b += text(310, y + 6, c, 14, INK, 700) + f'<line x1="{380+a*54}" y1="{y}" x2="{380+p*54}" y2="{y}" stroke="#d9c7d2" stroke-width="3"/>'
+        b += f'<rect x="{356+a*54}" y="{y-12}" width="50" height="22" rx="5" fill="{"#f8b51b" if c in ("GB","BR") else "#4a1f3a"}"/>' + box(356 + p * 54, y - 12, 50, 22, stroke="#6b2d54", r=5, sw=2)
+    b += ring(296, 110, 600, 250, 12) + note(300, 430, "every country on one calendar:", SP_P, 24) + note(300, 462, "approve-by and payday side by side", SP_P, 24)
+    return wscreen(b, "Range 3, calendar: approve-by and payday for every country on one timeline")
+
+
+def rip_3b_web():
+    b = wsidebar(3, RIP_NAV) + text(300, 80, "November pay runs", 26, INK, 800)
+    b += box(900, 110, 260, 280, stroke=LIGHT, r=12, sw=2) + text(916, 140, "Why Brazil moved", 15, INK, 700)
+    b += bar(916, 160, 220, 8) + bar(916, 176, 200, 8) + f'<rect x="916" y="200" width="228" height="34" rx="6" fill="#fdeeee"/>' + text(928, 222, "20 Nov national holiday", 12, "#a3283a", 700)
+    for i, t in enumerate(["Wed 18 approve", "Thu 19 debit", "Tue 24 paid"]):
+        b += text(916, 262 + i * 24, t, 13, INK, 600)
+    b += box(300, 110, 560, 280, stroke=LIGHT, r=12, sw=2) + text(320, 140, "Funding plan", 15, INK, 700)
+    for i, (c, ok) in enumerate([("USD", 1), ("GBP", 1), ("BRL", 0), ("INR", 1)]):
+        b += text(320, 180 + i * 44, c, 14, INK, 700) + bar(400, 172 + i * 44, 200, 9) + wtag(840, 180 + i * 44, "Covered" if ok else "Short", 1 if ok else 0)
+    b += ring(896, 106, 268, 288, 12) + note(300, 450, "explain moved dates; plan funding per currency", SP_P, 24)
+    return wscreen(b, "Range 3, detail: why a deadline moved, and funding per currency")
+
+
+RIP_SCREENS = {"rippling-1-screen": rip_1_web, "rippling-2-screen": rip_2_web, "rippling-3-calendar-screen": rip_3a_web, "rippling-3-detail-screen": rip_3b_web}
+
+if __name__ == "__main__":
+    for name, fn in RIP_SCREENS.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)
+
+
+# ---------------- VERA (phone) ----------------
+VN = "#13294b"
+
+
+def vera_head(q="CAP, healthy adult: antibiotic?"):
+    return f'<rect x="16" y="110" width="{SW-32}" height="56" rx="14" fill="#eef2f6"/>' + text(32, 144, q, 15, INK, 700)
+
+
+def vera_1():
+    b = vera_head() + text(24, 200, "Answer", 14, VN, 800)
+    for i in range(6):
+        b += bar(24, 220 + i * 22, SW - 80 - (i % 3) * 40, 9)
+    b += text(24, 380, "Sources [1] [2] [3]", 13, MID, 700) + ring(18, 364, 180, 24, 6)
+    b += note(24, 470, "citations at the end", SP_P, 20) + note(24, 500, "…which line came from where?", "#8a8a93", 18)
+    return screen(b, "Range 1: answer with a list of sources at the end")
+
+
+def vera_2():
+    b = vera_head() + text(24, 200, "Answer", 14, VN, 800)
+    for i in range(3):
+        y = 220 + i * 70
+        b += bar(24, y, SW - 60, 9) + bar(24, y + 18, SW - 120, 9) + text(24, y + 44, f"[{i+1}]", 12, VN, 700) + wtag(110, y + 44, "Moderate", 2)
+    b += note(24, 470, "inline citation + evidence grade", SP_P, 20) + note(24, 500, "…still can't see the passage", "#8a8a93", 18)
+    return screen(b, "Range 2: inline citations and evidence grade per sentence")
+
+
+def vera_3a():
+    b = vera_head() + text(24, 200, "Answer · 3 claims", 14, VN, 800)
+    for i, ok in enumerate([1, 1, 0]):
+        y = 220 + i * 80
+        b += box(16, y, SW - 32, 68, stroke="#bfe3e1" if i == 2 else LIGHT, r=12, sw=2) + bar(30, y + 16, SW - 90, 9) + bar(30, y + 32, SW - 140, 9)
+        b += text(30, y + 56, "✓ Supported" if ok else "◐ Partly supported", 12, "#0f8b8d" if ok else "#9a5b00", 700)
+    b += f'<rect x="0" y="500" width="{SW}" height="300" rx="22" fill="#fff" stroke="{LIGHT}" stroke-width="2"/>' + text(24, 540, "[3] ATS/IDSA 2019", 14, VN, 800)
+    b += f'<rect x="24" y="556" width="{SW-48}" height="90" rx="8" fill="#f7fafb"/>' + f'<rect x="36" y="590" width="{SW-90}" height="16" fill="#fff1b8"/>'
+    b += f'<rect x="24" y="660" width="{SW-48}" height="40" rx="8" fill="#fff4dc"/>' + text(36, 685, "Why partly: tied to clinical stability", 12, "#9a5b00", 700)
+    b += ring(18, 550, SW - 36, 100, 10)
+    return screen(b, "Range 3, claim: tap a claim to see the exact passage that supports it")
+
+
+def vera_3b():
+    b = vera_head() + text(24, 200, "Answer · 3 claims", 14, VN, 800)
+    for i in range(3):
+        b += box(16, 220 + i * 70, SW - 32, 60, stroke=LIGHT, r=12, sw=2) + bar(30, 240 + i * 70, SW - 90, 9)
+    b += f'<rect x="16" y="440" width="{SW-32}" height="130" rx="12" fill="#fff4dc" stroke="#f1d29b" stroke-width="2"/>' + text(32, 470, "Your hospital protocol differs", 14, "#4a3300", 800)
+    b += bar(32, 490, SW - 90, 9, "#e8cf9a") + bar(32, 508, SW - 140, 9, "#e8cf9a") + box(32, 526, 130, 32, stroke="#4a3300", r=8, sw=2) + text(97, 547, "Open page 12", 12, "#4a3300", 700, "middle")
+    b += ring(12, 436, SW - 24, 138, 14) + note(24, 640, "local protocol, opened at the page", SP_P, 20)
+    return screen(b, "Range 3, local: flag where your protocol differs, open at the exact page")
+
+
+VERA_SCREENS = {"vera-1": vera_1, "vera-2": vera_2, "vera-3-claim": vera_3a, "vera-3-local": vera_3b}
+
+
+# ---------------- VOICEOPS web ----------------
+VO_NAV = ("Today", "Coaching", "Team", "Calls", "Playbook", "Settings", "", "")
+
+
+def vo_1_web():
+    b = wsidebar(1, VO_NAV) + text(300, 80, "Team dashboard", 26, INK, 800)
+    for i in range(3):
+        b += box(300 + i * 290, 110, 270, 110, stroke=LIGHT, r=10, sw=2) + bar(316 + i * 290, 140, 120, 9) + text(316 + i * 290, 190, ["72%", "4.1", "-8%"][i], 26, INK, 800)
+    b += box(300, 240, 860, 200, stroke=LIGHT, r=10, sw=2) + note(320, 300, "scores per rep", MID, 18)
+    b += note(300, 520, "dashboards of scores", SP_P, 24) + note(300, 556, "…the manager still has to decide what to coach", "#8a8a93", 22)
+    return wscreen(b, "Range 1: scorecards and dashboards; the manager works out what to coach")
+
+
+def vo_2_web():
+    b = wsidebar(1, VO_NAV) + text(300, 80, "Coaching", 26, INK, 800)
+    for i in range(5):
+        y = 110 + i * 70
+        b += box(300, y, 860, 60, stroke=LIGHT, r=10, sw=2) + text(320, y + 26, f"Rep {i+1}", 14, INK, 700) + bar(320, y + 38, 500, 9) + wtag(1140, y + 32, "Sent", 1)
+    b += note(300, 520, "AI sends every note automatically", SP_P, 24) + note(300, 556, "…no say on what reaches reps", "#8a8a93", 22)
+    return wscreen(b, "Range 2: every AI-drafted note goes straight to reps")
+
+
+def vo_3a_web():
+    b = wsidebar(1, VO_NAV) + text(300, 80, "Today's coaching", 26, INK, 800)
+    for i, (c, t) in enumerate([("#e5f2ee", "High"), ("#fff3d9", "Medium")]):
+        y = 120 + i * 120
+        b += box(300, y, 540, 104, stroke=LIGHT, r=12, sw=2) + text(316, y + 28, ["Maria · Price objections", "Aisha · Compliance"][i], 14, INK, 700) + bar(316, y + 48, 460, 9) + bar(316, y + 66, 380, 9)
+        b += f'<rect x="316" y="{y+78}" width="60" height="22" rx="6" fill="#1f6f5c"/>' + box(386, y + 78, 110, 22, stroke=LIGHT, r=6, sw=2)
+    b += box(870, 120, 290, 220, stroke=LIGHT, r=12, sw=2) + text(886, 150, "The moment · 2:14pm", 14, INK, 700)
+    for i in range(30):
+        h = 10 + (i * 37) % 30
+        b += f'<rect x="{886+i*8}" y="{190-h/2}" width="5" height="{h}" rx="2" fill="{"#1f6f5c" if 12 < i < 19 else "#cfdcd8"}"/>'
+    b += bar(886, 230, 240, 9) + bar(886, 248, 200, 9) + ring(296, 116, 548, 112, 12)
+    b += note(300, 420, "review only what needs you,", SP_P, 24) + note(300, 452, "with the call moment as evidence", SP_P, 24)
+    return wscreen(b, "Range 3, review: low-confidence or sensitive notes, with the call moment")
+
+
+def vo_3b_web():
+    b = wsidebar(1, VO_NAV) + text(300, 80, "What Voiceops can send without you", 24, INK, 800)
+    for i, (t, s) in enumerate([("Praise", 1), ("Skill notes, high", 1), ("Skill notes, medium", 2), ("Compliance", 0)]):
+        y = 130 + i * 56
+        b += text(300, y + 28, t, 15, INK, 700) + text(640, y + 28, ["96%", "91%", "68%", "—"][i], 15, MID, 700) + wtag(1000, y + 28, ["Automatic", "Automatic", "Review first", "Always reviewed"][i], s)
+    b += ring(296, 120, 868, 230, 12) + note(300, 420, "trust earned per note type,", SP_P, 24) + note(300, 452, "from what the manager approved", SP_P, 24)
+    return wscreen(b, "Range 3, trust: auto-send unlocks per note type from approval history")
+
+
+VO_SCREENS = {"voiceops-1-screen": vo_1_web, "voiceops-2-screen": vo_2_web, "voiceops-3-review-screen": vo_3a_web, "voiceops-3-trust-screen": vo_3b_web}
+
+
+# ---------------- CMUX web (desktop app) ----------------
+CM_NAV = ("api · fix-refunds", "web · checkout", "infra · node22", "docs · readme", "", "", "", "")
+
+
+def cm_1_web():
+    b = wsidebar(0, CM_NAV) + f'<rect x="290" y="40" width="880" height="720" fill="#0f1116"/>'
+    b += f'<rect x="290" y="40" width="880" height="360" fill="none" stroke="#3b82f6" stroke-width="4"/>' + text(310, 80, "? Allow npm run db:migrate [y/n]", 15, "#cfd2db", 600)
+    b += note(310, 470, "a blue ring on the pane", "#8ab4ff", 24) + note(310, 506, "…you hunt for which pane and why", "#8a8a93", 22)
+    return wscreen(b, "Range 1: today, a ring on the pane and tab that needs input")
+
+
+def cm_2_web():
+    b = wsidebar(0, CM_NAV) + f'<rect x="290" y="40" width="580" height="720" fill="#0f1116"/>'
+    b += box(890, 60, 270, 300, stroke=LIGHT, r=10, sw=2) + text(906, 90, "Notifications", 14, INK, 700)
+    for i in range(3):
+        b += bar(906, 116 + i * 40, 220, 9) + bar(906, 130 + i * 40, 160, 7, "#e4e4ea")
+    b += note(310, 470, "a list of notifications", SP_P, 24) + note(310, 506, "…jump to each pane to answer", "#8a8a93", 22)
+    return wscreen(b, "Range 2: a notification list; each one jumps to its pane")
+
+
+def cm_3a_web():
+    b = wsidebar(0, CM_NAV) + f'<rect x="290" y="40" width="560" height="720" fill="#0f1116"/>'
+    b += text(870, 80, "Needs you · 3 waiting", 15, INK, 700)
+    for i, (k, c) in enumerate([("Needs permission", "#3b82f6"), ("Asked you", "#f5b041"), ("Tests failed", "#f2555a")]):
+        y = 100 + i * 130
+        b += box(870, y, 290, 118, stroke=LIGHT, r=10, sw=2) + text(886, y + 26, k, 12, c, 700) + bar(886, y + 42, 220, 9) + bar(886, y + 60, 180, 8, "#e4e4ea")
+        b += f'<rect x="886" y="{y+80}" width="96" height="26" rx="6" fill="#3b82f6"/>' + box(990, y + 80, 80, 26, stroke=LIGHT, r=6, sw=2)
+    b += ring(866, 96, 298, 126, 12) + note(310, 470, "why each agent is waiting,", "#8ab4ff", 24) + note(310, 506, "answered right in the queue", "#8ab4ff", 24)
+    return wscreen(b, "Range 3, queue: who needs you, why, and a one-click answer")
+
+
+def cm_3b_web():
+    b = wsidebar(0, CM_NAV) + f'<rect x="290" y="40" width="560" height="720" fill="#0f1116"/>'
+    b += text(870, 80, "All clear", 15, INK, 700) + f'<rect x="870" y="100" width="290" height="80" rx="10" fill="#e8f7ef"/>' + text(886, 132, "✓ No agent is waiting", 14, "#1f7a4c", 700) + text(886, 156, "3 resolved in 2 min", 12, MID, 600)
+    b += text(310, 100, "✓ migration applied · running tests", 14, "#cfd2db", 600) + text(310, 130, "✓ renamed label · running vitest", 14, "#cfd2db", 600)
+    b += ring(866, 96, 298, 88, 12) + note(310, 470, "agents keep going; you stay in flow", "#8ab4ff", 24)
+    return wscreen(b, "Range 3, clear: queue empties as agents continue")
+
+
+CM_SCREENS = {"cmux-1-screen": cm_1_web, "cmux-2-screen": cm_2_web, "cmux-3-queue-screen": cm_3a_web, "cmux-3-clear-screen": cm_3b_web}
+
+if __name__ == "__main__":
+    for name, fn in {**VERA_SCREENS, **VO_SCREENS, **CM_SCREENS}.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)

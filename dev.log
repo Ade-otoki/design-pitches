@@ -31,3 +31,18 @@
  ✓ Compiled /live/bolto in 293ms (592 modules)
  GET /live/bolto 200 in 403ms
  GET /pitch/bolto 200 in 132ms
+ ○ Compiling /prototypes/aside ...
+ ✓ Compiled /prototypes/aside in 526ms (366 modules)
+ GET /prototypes/aside?embed=1&scenario=batch 200 in 686ms
+ GET /prototypes/aside?embed=1&scenario=blocked 200 in 85ms
+ GET /prototypes/aside?embed=1&scenario=done 200 in 99ms
+ GET /live/aside 200 in 63ms
+ GET /prototypes/aside?embed=1&sync=1&scenario=batch 200 in 62ms
+ GET /prototypes/aside?embed=1&sync=1&scenario=batch 200 in 124ms
+ ✓ Compiled /prototypes/bolto in 351ms (371 modules)
+ GET /prototypes/bolto?embed=1&scenario=review 200 in 477ms
+ GET /prototypes/bolto?embed=1&scenario=fixed 200 in 73ms
+ GET /prototypes/bolto?embed=1&scenario=submitted 200 in 78ms
+ GET /live/bolto 200 in 65ms
+ GET /prototypes/bolto?embed=1&sync=1&scenario=review 200 in 65ms
+ GET /prototypes/bolto?embed=1&sync=1&scenario=review 200 in 122ms

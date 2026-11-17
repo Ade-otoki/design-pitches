@@ -1,0 +1,85 @@
+{
+  "slug": "cmux",
+  "company": "cmux",
+  "role": "Founding Designer",
+  "date": "NOV 2026",
+  "hook": "I want developers to run five agents and still feel calm",
+  "tags": [
+    "devtools",
+    "ai"
+  ],
+  "builtFor": {
+    "context": "cmux is where developers run many AI coding agents at once. As agent count grows, the scarce resource is the developer's attention.",
+    "opportunities": [
+      {
+        "title": "Attention Queue",
+        "body": "Who needs you, why, and how long they've waited."
+      },
+      {
+        "title": "Answer inline",
+        "body": "Allow once, reply or open the pane, without switching."
+      },
+      {
+        "title": "Protect flow",
+        "body": "Keyboard-first, oldest first, quiet when clear."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "I run AI agents every day to prototype in code, which is how I built this concept, so I design cmux's problems as a user.",
+      "My product work has been in trust-heavy tools where people act on what a system raises: transaction monitoring at Youverify."
+    ],
+    "bring": [
+      {
+        "title": "Trust in automated systems",
+        "body": "Tools where people act on what a system flagged and know when to step in."
+      },
+      {
+        "title": "Design systems",
+        "body": "A component library that cut developer onboarding by 45%."
+      },
+      {
+        "title": "AI-assisted prototyping",
+        "body": "Working prototypes in code, like this one."
+      }
+    ]
+  },
+  "caseStudies": [
+    "youverify",
+    "shecluded",
+    "foodlify"
+  ],
+  "systemsGets": "Someone obsessed with the 1px details and the states between human and agent (working, waiting, blocked, done).",
+  "opportunity": {
+    "title": "Attention Queue",
+    "problem": "Pane rings show where an agent needs you, not why, so every request means switching panes and reading back.",
+    "solution": "A queue labelled by why each agent waits, with inline answers, oldest first, and an all-clear state."
+  },
+  "firstWeek": {
+    "intro": "My first week would be dogfooding cmux hard and shipping one improvement.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Set up cmux with five agents on real work. Note every friction."
+      },
+      {
+        "day": "TUE",
+        "body": "Read issues and community feedback; talk to heavy users."
+      },
+      {
+        "day": "WED",
+        "body": "Pick one interaction to improve with the founders."
+      },
+      {
+        "day": "THU",
+        "body": "Prototype it in code against the real app."
+      },
+      {
+        "day": "FRI",
+        "body": "Ship it, or open the PR, and share what changed."
+      }
+    ]
+  },
+  "ask": "I'd love to be cmux's founding designer."
+}

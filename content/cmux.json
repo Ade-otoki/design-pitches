@@ -1,0 +1,258 @@
+{
+  "slug": "cmux",
+  "draft": false,
+  "company": "cmux",
+  "companyUrl": "https://cmux.com",
+  "role": "Founding Designer",
+  "jobUrl": "https://www.ycombinator.com/companies/cmux/jobs/p21OZLR-founding-designer",
+  "date": "2026-11-17",
+  "feature": {
+    "name": "Attention Queue",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "▣"
+  },
+  "prototype": {
+    "path": "/prototypes/cmux",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/cmux",
+    "frame": "desktop",
+    "liveUrl": "/live/cmux"
+  },
+  "context": {
+    "title": "With several agents running, the hard part is knowing who needs you and why",
+    "body": "cmux lets developers run many AI coding agents side by side, and rings a pane blue when an agent needs input. That works for one or two agents. With five, the rings say where, not why: a permission prompt, a question and a failed test all look the same, and each one means switching panes, reading back, answering and switching again.",
+    "assumptions": [
+      "I've read cmux's docs and README but haven't run it with many agents; the product may already do some of this.",
+      "Inline answers assume agents expose their prompt type and options through hooks, extending today's `cmux notify`.",
+      "Visuals follow a dark native-terminal style with cmux's blue attention ring. No cmux logo.",
+      "Repos, agents and output are fictional."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Say why, not just where",
+      "body": "Permission, question or failure, with what the agent wants."
+    },
+    {
+      "title": "Answer without switching",
+      "body": "Allow, reply or open the pane from one queue."
+    },
+    {
+      "title": "Protect flow",
+      "body": "Oldest first, keyboard-first, and quiet when there's nothing to do."
+    }
+  ],
+  "jtbd": "When several agents are working in parallel, I want to see which ones are blocked on me and why, and unblock them in seconds, so they keep going while I stay in my own work.",
+  "evidence": [
+    {
+      "step": "Rings show where",
+      "finding": "When an agent needs input, 'the affected pane gets a blue ring and its tab lights up'; a panel collects alerts and Cmd+Shift+U jumps to the most recent unread.",
+      "source": {
+        "label": "cmux docs (Mintlify): features and notifications",
+        "url": "https://www.mintlify.com/manaflow-ai/cmux"
+      }
+    },
+    {
+      "step": "Agents signal through hooks",
+      "finding": "Agents raise attention with `cmux notify` wired into their hooks, so richer signals (prompt type, options) are possible.",
+      "source": {
+        "label": "cmux docs (Mintlify): features and notifications",
+        "url": "https://www.mintlify.com/manaflow-ai/cmux"
+      }
+    },
+    {
+      "step": "Many agents in parallel",
+      "finding": "cmux is a native macOS terminal 'designed for running multiple AI coding agents in parallel', used by hundreds of thousands of developers.",
+      "source": {
+        "label": "YC: cmux, Founding Designer",
+        "url": "https://www.ycombinator.com/companies/cmux/jobs/p21OZLR-founding-designer"
+      }
+    },
+    {
+      "step": "The role is about AI workflows",
+      "finding": "The founding designer will 'help design the most useful product for developers to do work with AI' and own the interaction model end to end.",
+      "source": {
+        "label": "YC: cmux, Founding Designer",
+        "url": "https://www.ycombinator.com/companies/cmux/jobs/p21OZLR-founding-designer"
+      }
+    }
+  ],
+  "approaches": [
+    "Ring the pane (today)",
+    "A notification list",
+    "A queue that says why each agent is waiting",
+    "Answer common prompts inline",
+    "Oldest-first with keyboard shortcuts",
+    "Quiet 'all clear' state"
+  ],
+  "ranges": [
+    {
+      "title": "Pane rings",
+      "summary": "Today's pattern: a blue ring on the pane and tab.",
+      "pros": [
+        "Ambient and fast.",
+        "No extra UI."
+      ],
+      "cons": [
+        "Says where, not why.",
+        "You switch panes to find out."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/cmux-1-screen.svg",
+          "alt": "Sketch: ring on pane"
+        }
+      ],
+      "notes": [
+        "Ambient",
+        "Vague"
+      ]
+    },
+    {
+      "title": "Notification list",
+      "summary": "A list of alerts; each jumps to its pane.",
+      "pros": [
+        "Collects everything.",
+        "Already exists in part."
+      ],
+      "cons": [
+        "Still a jump per alert.",
+        "No sense of urgency or type."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/cmux-2-screen.svg",
+          "alt": "Sketch: notification list"
+        }
+      ],
+      "notes": [
+        "Complete",
+        "Jumpy"
+      ]
+    },
+    {
+      "title": "Attention Queue",
+      "summary": "A queue labelled by why each agent is waiting (permission, question, failure), with the agent's request and one-click answers; oldest first, keyboard-first, and an all-clear state.",
+      "pros": [
+        "Unblocks agents without leaving your pane.",
+        "Makes waiting time visible."
+      ],
+      "cons": [
+        "Needs agents to expose prompt types.",
+        "Inline answers must be safe (e.g. allow once)."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/cmux-3-queue-screen.svg",
+          "alt": "Sketch: attention queue",
+          "label": "Queue"
+        },
+        {
+          "src": "/sketches/cmux-3-clear-screen.svg",
+          "alt": "Sketch: all clear",
+          "label": "Clear"
+        }
+      ],
+      "notes": [
+        "Flow",
+        "Agent support"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Attention Queue: who needs you, why, and a one-click answer",
+    "body": "Range 3. A side queue lists every agent waiting on you, labelled as a permission, a question or a failure, with how long it has waited. Common answers (allow once, a reply, open the failing pane) happen inline, and the pane ring clears as the agent continues.",
+    "reasons": [
+      "Developers run agents to stay in flow; switching panes to read back breaks it.",
+      "The type of wait decides the urgency, so it should be the first thing you see.",
+      "Keyboard-first matches how cmux users already work."
+    ],
+    "tradeoff": "Inline approvals could make it too easy to allow risky commands. I'd default to 'allow once', show the exact command, and never batch-approve."
+  },
+  "effortImpact": [
+    {
+      "option": "Attention Queue",
+      "chosen": true,
+      "effort": {
+        "design": 5,
+        "dev": 6,
+        "gtm": 2
+      },
+      "impact": {
+        "reach": 9,
+        "value": 9,
+        "business": 7
+      }
+    },
+    {
+      "option": "Notification list",
+      "effort": {
+        "design": 2,
+        "dev": 2,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 9,
+        "value": 5,
+        "business": 4
+      }
+    },
+    {
+      "option": "Pane rings",
+      "effort": {
+        "design": 1,
+        "dev": 1,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 9,
+        "value": 3,
+        "business": 3
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built as a working cmux window with two agent panes and a side queue. Three moments: three agents waiting (a migration that needs permission, a question about renaming a label, and two failed tests), each with its request and answers; the permission answered inline, so the ring clears and the agent continues; and an all-clear state after all three are resolved. Items ease in, and motion turns off for people who reduce it."
+  },
+  "validation": {
+    "method": "I'd watch five developers running three or more agents for an hour, log every switch to answer an agent, then test the queue.",
+    "hypotheses": [
+      "Less time agents spend waiting on a human.",
+      "Fewer pane switches per hour.",
+      "Developers run more agents in parallel."
+    ],
+    "metrics": [
+      {
+        "name": "Agent wait time",
+        "definition": "Minutes from an agent's request to the user's answer."
+      },
+      {
+        "name": "Pane switches",
+        "definition": "Switches made only to answer an agent, per hour."
+      },
+      {
+        "name": "Parallel agents",
+        "definition": "Average concurrent agents per active user."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Dogfood with five agents in parallel for a week.",
+    "Define prompt types with agent hook authors.",
+    "Test the queue with five heavy users.",
+    "Design the same pattern for cmux iOS."
+  ],
+  "sources": [
+    {
+      "label": "cmux docs (Mintlify): features and notifications",
+      "url": "https://www.mintlify.com/manaflow-ai/cmux"
+    },
+    {
+      "label": "GitHub: manaflow-ai/cmux",
+      "url": "https://github.com/manaflow-ai/cmux"
+    },
+    {
+      "label": "YC: cmux, Founding Designer",
+      "url": "https://www.ycombinator.com/companies/cmux/jobs/p21OZLR-founding-designer"
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "slug": "rippling",
+  "draft": false,
+  "company": "Rippling",
+  "companyUrl": "https://www.rippling.com",
+  "role": "Product Design Lead, Global Payroll",
+  "jobUrl": "https://www.ycombinator.com/companies/rippling/jobs/USJIYst-product-design-lead-global-payroll",
+  "date": "2026-11-17",
+  "feature": {
+    "name": "Global Pay Calendar",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "◷"
+  },
+  "prototype": {
+    "path": "/prototypes/rippling",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/rippling",
+    "frame": "desktop",
+    "liveUrl": "/live/rippling"
+  },
+  "context": {
+    "title": "Running payroll in five countries means five sets of deadlines, holidays and currencies",
+    "body": "Rippling lets a company pay employees, EOR hires and contractors around the world from one system. But each country has its own approval window, bank holidays and funding currency, so 'when do I need to approve, and is the money there?' has a different answer for every entity. Admins piece it together from separate pay runs. A local holiday that moves a deadline is easy to miss until pay is late.",
+    "assumptions": [
+      "I haven't used Rippling Global Payroll. My view comes from Rippling's product page, public reviews and the job post, so the product may already do some of this.",
+      "Rippling's footnote says eligible companies can approve 'up to 3 business days before payday'; I've used that rule in the example, but real cutoffs vary by country.",
+      "Brazil's 20 Nov national holiday is real; the company, people and amounts are fictional.",
+      "Visuals approximate Rippling's brand (deep plum bar, warm yellow accent) on a clean business layout. No Rippling logo."
+    ]
+  },
+  "goals": [
+    {
+      "title": "One view of every deadline",
+      "body": "Approve-by and payday for every country on one calendar."
+    },
+    {
+      "title": "Explain moved dates",
+      "body": "When a local holiday shifts a deadline, say so before it's missed."
+    },
+    {
+      "title": "Fund every currency on time",
+      "body": "Show what each currency needs, when, and from where."
+    }
+  ],
+  "jtbd": "When I run payroll across countries, I want to see every approval deadline and funding need in one place, so nobody is paid late because of a date I didn't know had moved.",
+  "evidence": [
+    {
+      "step": "Approval windows depend on business days",
+      "finding": "Rippling's footnote: eligible companies can approve payroll 'up to 3 business days before payday', excluding weekends and holidays, depending on market.",
+      "source": {
+        "label": "Rippling: Global Payroll product page",
+        "url": "https://www.rippling.com/products/payroll/global-payroll"
+      }
+    },
+    {
+      "step": "One system, many entities",
+      "finding": "Rippling runs payroll for employees, EOR hires and contractors 'without switching tools', with localised tax and filing in supported markets.",
+      "source": {
+        "label": "Rippling: Global Payroll product page",
+        "url": "https://www.rippling.com/products/payroll/global-payroll"
+      }
+    },
+    {
+      "step": "Timing frustrates admins",
+      "finding": "Recent 2-star reviews mention pay transfers taking 'three working days' excluding holidays, support waits that 'stall urgent payroll questions', and gaps for international needs.",
+      "source": {
+        "label": "Capterra: Rippling reviews (2-star, Nov 2026)",
+        "url": "https://www.capterra.com/p/172127/Rippling/reviews/?rating=2"
+      }
+    },
+    {
+      "step": "The role is about scale",
+      "finding": "The team pays 'hundreds of thousands of employees over $50B annually' and wants to reimagine 'key workflows to support our scaling needs'.",
+      "source": {
+        "label": "YC: Rippling, Product Design Lead, Global Payroll",
+        "url": "https://www.ycombinator.com/companies/rippling/jobs/USJIYst-product-design-lead-global-payroll"
+      }
+    }
+  ],
+  "approaches": [
+    "Keep one pay run per country",
+    "Add a due-this-week banner",
+    "Put every country's deadlines on one calendar",
+    "Explain moved dates in place",
+    "Plan funding per currency",
+    "Remind before each country's cutoff"
+  ],
+  "ranges": [
+    {
+      "title": "Pay run list",
+      "summary": "Today's common pattern: one pay run per country in a list.",
+      "pros": [
+        "Familiar.",
+        "Each run is self-contained."
+      ],
+      "cons": [
+        "Deadlines live inside each run.",
+        "No cross-country view."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/rippling-1-screen.svg",
+          "alt": "Sketch: pay run list"
+        }
+      ],
+      "notes": [
+        "Familiar",
+        "Fragmented"
+      ]
+    },
+    {
+      "title": "Due-this-week banner",
+      "summary": "A banner of approvals due, over the list.",
+      "pros": [
+        "Quick to ship.",
+        "Surfaces urgency."
+      ],
+      "cons": [
+        "No reason when a date moves.",
+        "Funding still separate."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/rippling-2-screen.svg",
+          "alt": "Sketch: due banner"
+        }
+      ],
+      "notes": [
+        "Helpful",
+        "Shallow"
+      ]
+    },
+    {
+      "title": "Global Pay Calendar",
+      "summary": "Every country's approve-by and payday on one timeline, moved dates explained in place, and a funding plan per currency.",
+      "pros": [
+        "One answer to 'what do I need to do this week?'.",
+        "Catches holiday shifts before they cost a payday."
+      ],
+      "cons": [
+        "Needs reliable holiday and cutoff data per market.",
+        "Large companies need grouping by region."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/rippling-3-calendar-screen.svg",
+          "alt": "Sketch: global calendar",
+          "label": "Calendar"
+        },
+        {
+          "src": "/sketches/rippling-3-detail-screen.svg",
+          "alt": "Sketch: moved date and funding",
+          "label": "Detail"
+        }
+      ],
+      "notes": [
+        "Clear",
+        "Data-heavy"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Global Pay Calendar: every country's deadline, in one view",
+    "body": "Range 3. A calendar of approve-by and payday for every entity, with local holidays marked; a side panel that explains why a deadline moved; and a funding plan that shows each currency's debit date and whether it's covered.",
+    "reasons": [
+      "Admins think in weeks, not in separate pay runs.",
+      "A moved deadline is the error that's easiest to miss and costliest to fix.",
+      "Funding is part of being on time, so it belongs in the same view."
+    ],
+    "tradeoff": "The calendar is only as good as the cutoff and holiday data. I'd show the rule behind each date so admins can trust or question it."
+  },
+  "effortImpact": [
+    {
+      "option": "Global Pay Calendar",
+      "chosen": true,
+      "effort": {
+        "design": 6,
+        "dev": 7,
+        "gtm": 3
+      },
+      "impact": {
+        "reach": 8,
+        "value": 9,
+        "business": 8
+      }
+    },
+    {
+      "option": "Due-this-week banner",
+      "effort": {
+        "design": 2,
+        "dev": 2,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 8,
+        "value": 5,
+        "business": 4
+      }
+    },
+    {
+      "option": "Pay run list",
+      "effort": {
+        "design": 1,
+        "dev": 1,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 8,
+        "value": 2,
+        "business": 2
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built as a working Global Payroll screen for a fictional company with five entities. Three moments: a calendar where Brazil's approve-by is tomorrow because 20 Nov is a national holiday and the UK needs two National Insurance numbers; a panel explaining the moved date with the approve, debit and pay timeline; and a funding plan where BRL is short, with the option to convert from USD at approval. Panels ease in, and motion turns off for people who reduce it."
+  },
+  "validation": {
+    "method": "I'd review late or off-cycle payrolls across countries with the payroll ops team, then test the calendar with five multi-country admins during a real cycle.",
+    "hypotheses": [
+      "Fewer late approvals in countries with local holidays.",
+      "Admins spend less time checking each country's run.",
+      "Fewer funding shortfalls at debit."
+    ],
+    "metrics": [
+      {
+        "name": "Late approvals",
+        "definition": "Pay runs approved after their cutoff, per 100 runs."
+      },
+      {
+        "name": "Funding shortfalls",
+        "definition": "Debits that fail or need a top-up, per 100 runs."
+      },
+      {
+        "name": "Time to approve all",
+        "definition": "Time from first to last approval across a company's countries."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Map cutoff and holiday rules per market with payroll ops.",
+    "Review late and off-cycle runs for patterns.",
+    "Test with five multi-country admins.",
+    "Design grouping for companies in 20+ countries."
+  ],
+  "sources": [
+    {
+      "label": "Rippling: Global Payroll product page",
+      "url": "https://www.rippling.com/products/payroll/global-payroll"
+    },
+    {
+      "label": "Capterra: Rippling reviews (2-star, Nov 2026)",
+      "url": "https://www.capterra.com/p/172127/Rippling/reviews/?rating=2"
+    },
+    {
+      "label": "YC: Rippling, Product Design Lead, Global Payroll",
+      "url": "https://www.ycombinator.com/companies/rippling/jobs/USJIYst-product-design-lead-global-payroll"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "slug": "rippling",
+  "company": "Rippling",
+  "role": "Product Design Lead, Global Payroll",
+  "date": "NOV 2026",
+  "hook": "I want global payroll to feel as calm as paying one team",
+  "tags": [
+    "fintech",
+    "payroll"
+  ],
+  "builtFor": {
+    "context": "Rippling runs payroll for employees, EOR hires and contractors around the world in one system. As companies add countries, the hard part isn't calculating pay; it's knowing what's due where, and when.",
+    "opportunities": [
+      {
+        "title": "Global Pay Calendar",
+        "body": "Every country's approve-by and payday in one view."
+      },
+      {
+        "title": "Moved dates, explained",
+        "body": "Local holidays flagged before they cost a payday."
+      },
+      {
+        "title": "Funding per currency",
+        "body": "What each currency needs, when, and from where."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "My work has been in financial products where mistakes cost people money: lending at Shecluded, payments at Foodlify, compliance at Youverify.",
+      "I prototype in code with AI tools, which is how I built the concept in this pitch, and I've worked with remote, multi-country teams for years."
+    ],
+    "bring": [
+      {
+        "title": "Complex money flows",
+        "body": "A 5-step loan flow and dashboard that lifted first-time engagement by 30%."
+      },
+      {
+        "title": "Design systems",
+        "body": "A component library that cut developer onboarding by 45%."
+      },
+      {
+        "title": "Regulated products",
+        "body": "KYC and transaction monitoring for financial institutions."
+      }
+    ]
+  },
+  "caseStudies": [
+    "youverify",
+    "shecluded",
+    "foodlify"
+  ],
+  "systemsGets": "Someone who designs the states of a pay run across countries (draft, needs you, approved, funded, paid) so they read the same everywhere.",
+  "opportunity": {
+    "title": "Global Pay Calendar",
+    "problem": "Each country has its own approval window, holidays and currency, so admins piece deadlines together from separate pay runs, and a moved date is easy to miss.",
+    "solution": "One calendar of approve-by and payday for every entity, moved dates explained in place, and a funding plan per currency."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how multi-country admins run payroll today, then contributing one useful improvement with the team.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet Global Payroll product, design and engineering. Learn the roadmap and the markets."
+      },
+      {
+        "day": "TUE",
+        "body": "Review late and off-cycle pay runs and support tickets across countries."
+      },
+      {
+        "day": "WED",
+        "body": "Agree on one moment to improve, grounded in evidence."
+      },
+      {
+        "day": "THU",
+        "body": "Prototype it and review edge cases with payroll ops and engineering."
+      },
+      {
+        "day": "FRI",
+        "body": "Share findings, the prototype and a test plan with admins."
+      }
+    ]
+  },
+  "ask": "I'd love to help Rippling make global payroll feel simple at any scale."
+}

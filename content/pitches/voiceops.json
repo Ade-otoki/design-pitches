@@ -1,0 +1,85 @@
+{
+  "slug": "voiceops",
+  "company": "Voiceops",
+  "role": "Founding Product Designer",
+  "date": "NOV 2026",
+  "hook": "I want AI coaching that managers trust enough to let it run",
+  "tags": [
+    "ai",
+    "b2b"
+  ],
+  "builtFor": {
+    "context": "Voiceops turns millions of calls into coaching for every rep. The hard design question, in your own words, is when the product should show, ask, coach or act.",
+    "opportunities": [
+      {
+        "title": "Coaching Review",
+        "body": "Managers review only what needs them, with evidence."
+      },
+      {
+        "title": "Evidence in seconds",
+        "body": "The call moment, not the transcript."
+      },
+      {
+        "title": "Earned autonomy",
+        "body": "Auto-send unlocked from what managers approved."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "My work has been in products where people act on what a system flagged: transaction monitoring at Youverify, where analysts needed evidence before acting.",
+      "I design for data-heavy, high-stakes decisions and prototype in code with AI tools."
+    ],
+    "bring": [
+      {
+        "title": "Trust in automated systems",
+        "body": "Tools where people act on what a system flagged and know when to step in."
+      },
+      {
+        "title": "Design systems",
+        "body": "A component library that cut developer onboarding by 45%."
+      },
+      {
+        "title": "AI-assisted prototyping",
+        "body": "Working prototypes in code, like this one."
+      }
+    ]
+  },
+  "caseStudies": [
+    "youverify",
+    "shecluded",
+    "foodlify"
+  ],
+  "systemsGets": "Someone who designs the states between AI and people (draft, needs review, sent, undone) as one system across reps, managers and leaders.",
+  "opportunity": {
+    "title": "Coaching Review",
+    "problem": "Managers can't review every note for hundreds of reps, but sending everything skips the trust coaching needs.",
+    "solution": "Review only low-confidence and sensitive notes with the call moment as evidence, and unlock auto-send per note type from approval history."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how managers and reps use Voiceops today, then turning one customer request into a clear design decision.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet the team in New York. Learn the roadmap and top customer requests."
+      },
+      {
+        "day": "TUE",
+        "body": "Sit with managers and reps at a customer, watch coaching happen."
+      },
+      {
+        "day": "WED",
+        "body": "Agree on one decision to make, grounded in what we saw."
+      },
+      {
+        "day": "THU",
+        "body": "Prototype it and review with the CTO and engineers."
+      },
+      {
+        "day": "FRI",
+        "body": "Share the decision, prototype and test plan."
+      }
+    ]
+  },
+  "ask": "I'd love to be Voiceops' founding product designer."
+}

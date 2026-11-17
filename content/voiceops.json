@@ -1,0 +1,258 @@
+{
+  "slug": "voiceops",
+  "draft": false,
+  "company": "Voiceops",
+  "companyUrl": "https://voiceops.com",
+  "role": "Founding Product Designer",
+  "jobUrl": "https://www.ycombinator.com/companies/voiceops/jobs/fS7IE67-founding-product-designer",
+  "date": "2026-11-17",
+  "feature": {
+    "name": "Coaching Review",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "◉"
+  },
+  "prototype": {
+    "path": "/prototypes/voiceops",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/voiceops",
+    "frame": "desktop",
+    "liveUrl": "/live/voiceops"
+  },
+  "context": {
+    "title": "An AI coach has to earn the right to talk to reps without a manager",
+    "body": "Voiceops turns millions of calls into daily coaching for every rep. The founding designer's brief asks exactly how much evidence to show, and when Voiceops should show, ask, coach or act. Managers can't review every note for every rep every day, but sending everything automatically skips the trust that coaching depends on. The product needs a way to start supervised and take on more as managers agree with it.",
+    "assumptions": [
+      "I haven't used Voiceops. My view comes from the job post and Voiceops' product page; public reviews are thin, so the problem framing leans on the brief.",
+      "Confidence levels and approval rates are illustrative; the real thresholds would come from data.",
+      "Voiceops' product UI wasn't available to inspect; this uses a clean manager-dashboard style. No Voiceops logo.",
+      "Reps, calls and numbers are fictional."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Review only what needs a manager",
+      "body": "Low-confidence and sensitive notes go to review; the rest are sent."
+    },
+    {
+      "title": "Evidence in seconds",
+      "body": "The call moment and a few lines, not a transcript."
+    },
+    {
+      "title": "Trust earned per note type",
+      "body": "Auto-send unlocks from what managers approved unchanged."
+    }
+  ],
+  "jtbd": "When Voiceops drafts coaching for my team, I want to check only the notes that need me, with the moment that backs them up, so my reps get good coaching every day without me reading everything.",
+  "evidence": [
+    {
+      "step": "The brief names the problem",
+      "finding": "The designer will decide 'how much evidence to show', 'when Voiceops should show, ask, coach, or act', and 'how Voiceops earns the trust to take on more work'.",
+      "source": {
+        "label": "YC: Voiceops, Founding Product Designer",
+        "url": "https://www.ycombinator.com/companies/voiceops/jobs/fS7IE67-founding-product-designer"
+      }
+    },
+    {
+      "step": "Coaching is daily and personal",
+      "finding": "Voiceops delivers 'daily feedback and micro-coaching' to each rep, generated from their own calls.",
+      "source": {
+        "label": "Voiceops: Sales Coach product page",
+        "url": "https://voiceops.com/products/sales-coach"
+      }
+    },
+    {
+      "step": "Humans stay in the loop",
+      "finding": "Voiceops is described as combining AI with human-in-the-loop review so managers can coach more calls per rep in less time.",
+      "source": {
+        "label": "TrustRadius: VoiceOps product listing",
+        "url": "https://www.trustradius.com/products/voiceops/reviews"
+      }
+    },
+    {
+      "step": "Scale is the constraint",
+      "finding": "A single customer can have 'hundreds of reps, millions of calls', and the system should not become 'another system the customer has to manage'.",
+      "source": {
+        "label": "YC: Voiceops, Founding Product Designer",
+        "url": "https://www.ycombinator.com/companies/voiceops/jobs/fS7IE67-founding-product-designer"
+      }
+    }
+  ],
+  "approaches": [
+    "Dashboards of scores",
+    "Send every AI note automatically",
+    "Review queue for low-confidence and sensitive notes",
+    "Show the call moment as evidence",
+    "Unlock auto-send per note type",
+    "Always review compliance"
+  ],
+  "ranges": [
+    {
+      "title": "Score dashboards",
+      "summary": "Scorecards per rep; the manager decides what to coach.",
+      "pros": [
+        "Familiar.",
+        "Full control."
+      ],
+      "cons": [
+        "Manager does all the work.",
+        "Doesn't scale to hundreds of reps."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/voiceops-1-screen.svg",
+          "alt": "Sketch: dashboards"
+        }
+      ],
+      "notes": [
+        "Familiar",
+        "Manual"
+      ]
+    },
+    {
+      "title": "Send everything",
+      "summary": "Every AI-drafted note goes straight to reps.",
+      "pros": [
+        "Scales instantly.",
+        "No manager time."
+      ],
+      "cons": [
+        "No trust built.",
+        "Mistakes reach reps."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/voiceops-2-screen.svg",
+          "alt": "Sketch: auto-send all"
+        }
+      ],
+      "notes": [
+        "Fast",
+        "Risky"
+      ]
+    },
+    {
+      "title": "Coaching Review",
+      "summary": "Managers review only low-confidence or sensitive notes, with the call moment as evidence; auto-send unlocks per note type from their approval history; compliance always goes to a manager.",
+      "pros": [
+        "Trust grows with evidence, not assumption.",
+        "Managers spend time where it matters."
+      ],
+      "cons": [
+        "Needs good confidence calibration.",
+        "Thresholds must be easy to understand and undo."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/voiceops-3-review-screen.svg",
+          "alt": "Sketch: review with evidence",
+          "label": "Review"
+        },
+        {
+          "src": "/sketches/voiceops-3-trust-screen.svg",
+          "alt": "Sketch: trust per note type",
+          "label": "Trust"
+        }
+      ],
+      "notes": [
+        "Earned trust",
+        "Calibration"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Coaching Review: start supervised, earn autonomy",
+    "body": "Range 3. Each morning, notes that need a manager (medium confidence, compliance) come with the call moment as evidence; praise and high-confidence notes are sent with an undo. A trust table shows what managers approved unchanged, and unlocks auto-send per note type.",
+    "reasons": [
+      "It answers the brief's question of when to ask and when to act with data, not a setting.",
+      "Evidence as a short moment respects a manager's time.",
+      "Compliance stays human by default."
+    ],
+    "tradeoff": "Auto-send could spread a bad pattern. A weekly digest and a one-hour undo keep managers in charge."
+  },
+  "effortImpact": [
+    {
+      "option": "Coaching Review",
+      "chosen": true,
+      "effort": {
+        "design": 6,
+        "dev": 6,
+        "gtm": 3
+      },
+      "impact": {
+        "reach": 8,
+        "value": 9,
+        "business": 9
+      }
+    },
+    {
+      "option": "Send everything",
+      "effort": {
+        "design": 1,
+        "dev": 2,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 8,
+        "value": 4,
+        "business": 5
+      }
+    },
+    {
+      "option": "Score dashboards",
+      "effort": {
+        "design": 2,
+        "dev": 2,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 8,
+        "value": 3,
+        "business": 3
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built as a working manager screen for a fictional insurer. Three moments: today's review with two notes that need a manager and two sent automatically; the evidence for a price-objection note, with the 42-second call moment and the line that worked; and a trust table where praise and high-confidence notes send automatically and compliance is always reviewed. Panels ease in, and motion turns off for people who reduce it."
+  },
+  "validation": {
+    "method": "I'd sit with three managers during morning coaching prep, then pilot review-first with one team and compare against auto-send.",
+    "hypotheses": [
+      "Managers spend less time on coaching prep.",
+      "Reps act on more notes when managers stand behind them.",
+      "Edit rate on high-confidence notes stays low."
+    ],
+    "metrics": [
+      {
+        "name": "Prep time",
+        "definition": "Minutes a manager spends reviewing notes per day."
+      },
+      {
+        "name": "Edit rate",
+        "definition": "Share of AI notes edited before sending, by type."
+      },
+      {
+        "name": "Rep behaviour change",
+        "definition": "Change in the coached behaviour over the next 10 calls."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Sit with three managers during coaching prep.",
+    "Calibrate confidence with the ML team.",
+    "Pilot review-first with one team.",
+    "Design the weekly digest and undo."
+  ],
+  "sources": [
+    {
+      "label": "YC: Voiceops, Founding Product Designer",
+      "url": "https://www.ycombinator.com/companies/voiceops/jobs/fS7IE67-founding-product-designer"
+    },
+    {
+      "label": "Voiceops: Sales Coach product page",
+      "url": "https://voiceops.com/products/sales-coach"
+    },
+    {
+      "label": "TrustRadius: VoiceOps product listing",
+      "url": "https://www.trustradius.com/products/voiceops/reviews"
+    }
+  ]
+}

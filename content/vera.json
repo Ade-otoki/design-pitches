@@ -1,0 +1,258 @@
+{
+  "slug": "vera",
+  "draft": false,
+  "company": "Vera Health",
+  "companyUrl": "https://www.verahealth.ai",
+  "role": "Founding Designer",
+  "jobUrl": "https://www.ycombinator.com/companies/vera-health/jobs/uQyQ2Hp-founding-designer",
+  "date": "2026-11-17",
+  "feature": {
+    "name": "Claim Check",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "✓"
+  },
+  "prototype": {
+    "path": "/prototypes/vera",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/vera",
+    "frame": "phone",
+    "liveUrl": "/live/vera"
+  },
+  "context": {
+    "title": "A cited answer isn't the same as a checked answer",
+    "body": "Vera answers clinical questions with citations from millions of papers and guidelines, and grades the evidence. But a clinician on a ward has seconds to decide whether to trust a line. Citations sit at the level of the answer, not the claim, so checking means opening a source and hunting for the passage. Local protocols can differ from national guidance, and some users say they can't open a reference at the exact page.",
+    "assumptions": [
+      "I haven't used Vera. My view comes from a detailed 2026 review, Google Play reviews and the job post, so the product may already do some of this.",
+      "Clinical content is illustrative, based on ATS/IDSA 2019 and NICE NG138 outpatient pneumonia guidance; 'St Luke's antimicrobial guide' is fictional. Not medical advice.",
+      "Vera's own visuals weren't available to inspect; this uses a calm clinical style (white, deep navy, teal). No Vera logo.",
+      "Per-claim matching assumes Vera can align answer sentences to source passages, which its retrieval likely supports."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Check any line in one tap",
+      "body": "Each claim shows whether its source supports it, and the exact passage."
+    },
+    {
+      "title": "Show where certainty differs",
+      "body": "Evidence grade per claim, not one grade for the whole answer."
+    },
+    {
+      "title": "Respect local protocols",
+      "body": "Flag where the hospital's guide differs, and open it at the page."
+    }
+  ],
+  "jtbd": "When I look something up between patients, I want to check the line I'm about to act on in seconds, so I can trust the answer without reading the whole paper.",
+  "evidence": [
+    {
+      "step": "A citation isn't proof",
+      "finding": "A 2026 review notes 'a citation does not prove that the source supports the claim', and that evidence grading 'may differ between statements in one answer'.",
+      "source": {
+        "label": "iatroX: Vera Health review 2026 (updated Oct 2026)",
+        "url": "https://www.iatrox.com/blog/vera-health-review-2026-features-evidence-calculators-cme-limitations"
+      }
+    },
+    {
+      "step": "Local guidance matters",
+      "finding": "The same review says country-aware answers 'need checking against national and local guidance'. Vera Spaces combine internal protocols with external guidance.",
+      "source": {
+        "label": "iatroX: Vera Health review 2026 (updated Oct 2026)",
+        "url": "https://www.iatrox.com/blog/vera-health-review-2026-features-evidence-calculators-cme-limitations"
+      }
+    },
+    {
+      "step": "Users want the exact page",
+      "finding": "A Google Play reviewer (Aug 2026) says local sources lack a file reader 'to view the exact page of the reference'. Vera has 4.8 stars from about 11K reviews and 100K+ downloads.",
+      "source": {
+        "label": "Google Play: Vera Health, AI for Clinicians",
+        "url": "https://play.google.com/store/apps/details?id=io.vera.app"
+      }
+    },
+    {
+      "step": "The role is about clarity",
+      "finding": "Every screen should help a clinician 'understand what they're looking at, find what they need, and know what to do next'.",
+      "source": {
+        "label": "YC: Vera Health, Founding Designer",
+        "url": "https://www.ycombinator.com/companies/vera-health/jobs/uQyQ2Hp-founding-designer"
+      }
+    }
+  ],
+  "approaches": [
+    "List sources at the end",
+    "Inline citations with an evidence grade",
+    "Per-claim support check",
+    "Show the exact passage in a sheet",
+    "Flag local protocol differences",
+    "Open sources at the right page"
+  ],
+  "ranges": [
+    {
+      "title": "Sources at the end",
+      "summary": "Answer text, then a list of sources.",
+      "pros": [
+        "Familiar.",
+        "Clean answer."
+      ],
+      "cons": [
+        "No link from a line to its source.",
+        "Checking means hunting."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/vera-1.svg",
+          "alt": "Sketch: sources at the end"
+        }
+      ],
+      "notes": [
+        "Clean",
+        "Hard to check"
+      ]
+    },
+    {
+      "title": "Inline citations",
+      "summary": "A citation number and evidence grade on each sentence.",
+      "pros": [
+        "Shows where each line came from.",
+        "Small change."
+      ],
+      "cons": [
+        "Still can't see the passage.",
+        "No sign the source really supports it."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/vera-2.svg",
+          "alt": "Sketch: inline citations"
+        }
+      ],
+      "notes": [
+        "Better",
+        "Not proof"
+      ]
+    },
+    {
+      "title": "Claim Check",
+      "summary": "Each claim is labelled Supported or Partly supported, with its evidence grade; tap to see the exact passage highlighted; local protocol differences are flagged with a link to the page.",
+      "pros": [
+        "Checking takes one tap, not a search.",
+        "Honest about partial support."
+      ],
+      "cons": [
+        "Needs reliable claim-to-passage matching.",
+        "More UI on a small screen."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/vera-3-claim.svg",
+          "alt": "Sketch: claim with passage",
+          "label": "Claim"
+        },
+        {
+          "src": "/sketches/vera-3-local.svg",
+          "alt": "Sketch: local protocol differs",
+          "label": "Local"
+        }
+      ],
+      "notes": [
+        "Trustworthy",
+        "Matching risk"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Claim Check: every line, one tap from its proof",
+    "body": "Range 3. Answers split into claims, each with a support label and evidence grade. Tapping a claim opens a sheet with the exact passage highlighted and, when support is partial, why. When the user's hospital protocol differs, Vera says so and opens the guide at the page.",
+    "reasons": [
+      "Clinicians act on single lines, so trust has to work at that level.",
+      "Being open about partial support builds more trust than hiding it.",
+      "Local protocols are what many clinicians actually have to follow."
+    ],
+    "tradeoff": "Matching a claim to a passage can be wrong. I'd show the passage itself, never just a score, so the clinician can judge."
+  },
+  "effortImpact": [
+    {
+      "option": "Claim Check",
+      "chosen": true,
+      "effort": {
+        "design": 5,
+        "dev": 7,
+        "gtm": 3
+      },
+      "impact": {
+        "reach": 9,
+        "value": 9,
+        "business": 8
+      }
+    },
+    {
+      "option": "Inline citations",
+      "effort": {
+        "design": 2,
+        "dev": 3,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 9,
+        "value": 5,
+        "business": 5
+      }
+    },
+    {
+      "option": "Sources at the end",
+      "effort": {
+        "design": 1,
+        "dev": 1,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 9,
+        "value": 3,
+        "business": 3
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built as a working iPhone screen. A question about outpatient pneumonia gets three claims, each marked Supported or Partly supported with its evidence grade. Tapping the duration claim opens a sheet with the guideline passage highlighted and a note on why it's only partly supported. A hospital protocol that uses a different dose is flagged with a link to its page. The sheet slides up, and motion turns off for people who reduce it."
+  },
+  "validation": {
+    "method": "I'd watch five clinicians use Vera between patients and time how long they take to check a line, then test Claim Check against today's answers.",
+    "hypotheses": [
+      "Clinicians open sources more often, and faster.",
+      "Fewer answers are flagged as wrong or misleading.",
+      "Trust ratings rise for answers with partial support shown."
+    ],
+    "metrics": [
+      {
+        "name": "Time to verify",
+        "definition": "Seconds from answer to viewing the supporting passage."
+      },
+      {
+        "name": "Source opens per answer",
+        "definition": "How often clinicians open a cited passage."
+      },
+      {
+        "name": "Flag rate",
+        "definition": "Claims flagged by users per 1,000 answers."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Shadow five clinicians using Vera on shift.",
+    "Check claim-to-passage matching quality with engineering.",
+    "Test Claim Check with clinicians in two specialties.",
+    "Work with Spaces customers on local protocol links."
+  ],
+  "sources": [
+    {
+      "label": "iatroX: Vera Health review 2026 (updated Oct 2026)",
+      "url": "https://www.iatrox.com/blog/vera-health-review-2026-features-evidence-calculators-cme-limitations"
+    },
+    {
+      "label": "Google Play: Vera Health, AI for Clinicians",
+      "url": "https://play.google.com/store/apps/details?id=io.vera.app"
+    },
+    {
+      "label": "YC: Vera Health, Founding Designer",
+      "url": "https://www.ycombinator.com/companies/vera-health/jobs/uQyQ2Hp-founding-designer"
+    }
+  ]
+}

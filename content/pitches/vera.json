@@ -1,0 +1,85 @@
+{
+  "slug": "vera",
+  "company": "Vera Health",
+  "role": "Founding Designer",
+  "date": "NOV 2026",
+  "hook": "I want clinicians to trust every line they act on",
+  "tags": [
+    "health",
+    "ai"
+  ],
+  "builtFor": {
+    "context": "Vera is the clinical app clinicians reach for between patients. Its answers are cited; the next step is making each line easy to check in the seconds a clinician has.",
+    "opportunities": [
+      {
+        "title": "Claim Check",
+        "body": "Each claim labelled and one tap from its passage."
+      },
+      {
+        "title": "Honest certainty",
+        "body": "Evidence grade per claim, and 'partly supported' when it is."
+      },
+      {
+        "title": "Local protocols",
+        "body": "Where the hospital's guide differs, opened at the page."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "My work has been in products where people act on what a system tells them: transaction monitoring at Youverify, lending at Shecluded.",
+      "I design for people under time pressure who need to know when to trust the system and when to check, and I prototype in code with AI tools."
+    ],
+    "bring": [
+      {
+        "title": "Trust in automated systems",
+        "body": "Tools where people act on what a system flagged and know when to step in."
+      },
+      {
+        "title": "Design systems",
+        "body": "A component library that cut developer onboarding by 45%."
+      },
+      {
+        "title": "AI-assisted prototyping",
+        "body": "Working prototypes in code, like this one."
+      }
+    ]
+  },
+  "caseStudies": [
+    "youverify",
+    "shecluded",
+    "foodlify"
+  ],
+  "systemsGets": "Someone who designs the states of trust in an answer (supported, partly, conflicting, local) and makes them consistent everywhere.",
+  "opportunity": {
+    "title": "Claim Check",
+    "problem": "Citations sit at the level of the answer, so checking a line means hunting through a source, and local protocols can differ.",
+    "solution": "Per-claim support labels and grades, the exact passage one tap away, and local protocol differences flagged with the page."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how clinicians use Vera on shift, then shipping one improvement with the founders.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet the team. Use Vera for real clinical questions and note friction."
+      },
+      {
+        "day": "TUE",
+        "body": "Talk to clinicians and watch them check answers between patients."
+      },
+      {
+        "day": "WED",
+        "body": "Agree on one moment to improve, grounded in what they did."
+      },
+      {
+        "day": "THU",
+        "body": "Prototype it and review the details with engineering."
+      },
+      {
+        "day": "FRI",
+        "body": "Ship it, or share it for testing, with a plan to measure it."
+      }
+    ]
+  },
+  "ask": "I'd love to be Vera's founding designer and help clinicians trust every answer."
+}
