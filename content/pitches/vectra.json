@@ -1,0 +1,85 @@
+{
+  "slug": "vectra",
+  "company": "VECTRA International",
+  "role": "Technical Product Designer",
+  "date": "NOV 2026",
+  "hook": "I want every AI flag in an audit to have a clear human decision behind it",
+  "tags": [
+    "compliance",
+    "ai"
+  ],
+  "builtFor": {
+    "context": "VECTRA's portal brings participants, assessors, QA staff and board executives into one place, with AI verification along the way. VECTRA's own writing sets a high bar for evidence; the portal should carry it.",
+    "opportunities": [
+      {
+        "title": "Evidence Review",
+        "body": "Claim and evidence side by side for every AI flag."
+      },
+      {
+        "title": "A decision trail",
+        "body": "Uphold, edit or dismiss, with a logged reason."
+      },
+      {
+        "title": "Honest conclusions",
+        "body": "Board views that say what isn't covered."
+      }
+    ]
+  },
+  "whyMe": {
+    "body": [
+      "I designed Youverify's Transaction Monitoring MVP end to end: compliance analysts reviewing alerts a system raised, with evidence and a clear next step. That's the same human-in-the-loop problem as VECTRA's portal.",
+      "I built a component library and design system at Foodlify that cut developer onboarding by 45%, which is the rebrand and component work this role asks for."
+    ],
+    "bring": [
+      {
+        "title": "Compliance and AI review",
+        "body": "KYC and transaction-monitoring tools for regulated businesses."
+      },
+      {
+        "title": "Design systems",
+        "body": "Components, tokens and documentation engineers can build from fast."
+      },
+      {
+        "title": "Remote and async",
+        "body": "Years working remotely with distributed product and engineering teams."
+      }
+    ]
+  },
+  "caseStudies": [
+    "youverify",
+    "shecluded",
+    "foodlify"
+  ],
+  "systemsGets": "Someone who turns a rebrand into tokens, components and documented specs the engineering team can ship from.",
+  "opportunity": {
+    "title": "Evidence Review",
+    "problem": "AI flags inconsistencies across audit reports and evidence, but reviewers have to open documents to check them, and boards need conclusions that state their limits.",
+    "solution": "Claim and evidence side by side, uphold, edit or dismiss with a logged reason, and board conclusions that say what isn't covered."
+  },
+  "firstWeek": {
+    "intro": "My first week would focus on how each persona uses the portal, then shipping one improvement and starting the rebrand audit.",
+    "days": [
+      {
+        "day": "MON",
+        "body": "Meet the team. Walk through the portal as a participant, assessor, QA reviewer and board member."
+      },
+      {
+        "day": "TUE",
+        "body": "Sit with QA staff reviewing real AI flags; note where they slow down."
+      },
+      {
+        "day": "WED",
+        "body": "Audit the component library against the new brand."
+      },
+      {
+        "day": "THU",
+        "body": "Design the review screen and spec the components."
+      },
+      {
+        "day": "FRI",
+        "body": "Share the prototype, specs and a plan for the rebrand rollout."
+      }
+    ]
+  },
+  "ask": "I'd love to help VECTRA make AI verification clear and trustworthy for every persona."
+}

@@ -1,0 +1,274 @@
+{
+  "slug": "vectra",
+  "draft": false,
+  "company": "VECTRA International",
+  "companyUrl": "https://vectra-intl.com",
+  "role": "Technical Product Designer",
+  "jobUrl": "https://wellfound.com/jobs/5101686-technical-product-designer",
+  "date": "2026-11-17",
+  "feature": {
+    "name": "Evidence Review",
+    "sprint": "Self-initiated · 1-day concept sprint",
+    "icon": "◎"
+  },
+  "prototype": {
+    "path": "/prototypes/vectra",
+    "repoUrl": "https://github.com/Ade-otoki/design-pitches/tree/main/app/prototypes/vectra",
+    "frame": "desktop",
+    "liveUrl": "/live/vectra"
+  },
+  "context": {
+    "title": "AI can flag inconsistencies in an audit; a person still has to decide what they mean",
+    "body": "VECTRA helps companies make sense of supplier audits and certificates, and its new portal brings participants, independent assessors, QA staff and board executives into one place, with AI verification tools along the way. VECTRA's own guidance is careful: a SMETA report is evidence about one assessment, a management commitment is not proof a problem is fixed, and a verified certificate isn't proof it fits your decision. The portal has to carry that care into every screen, especially when the AI flags something.",
+    "assumptions": [
+      "I haven't seen VECTRA's portal. My view comes from the job post, VECTRA's website and its recent articles, so the product may differ.",
+      "The three AI flags (closed without evidence, scope gap, certificate mismatch) are drawn from VECTRA's own articles on SMETA and certificate verification.",
+      "Visuals follow vectra-intl.com: Poppins, deep navy, VECTRA green and a warm yellow. No VECTRA logo.",
+      "Suppliers, sites, people and findings are fictional."
+    ]
+  },
+  "goals": [
+    {
+      "title": "Decide with the evidence in view",
+      "body": "The claim, the evidence and why the AI flagged it, side by side."
+    },
+    {
+      "title": "Keep people in charge",
+      "body": "Uphold, edit or dismiss, with every decision logged."
+    },
+    {
+      "title": "Tell the board what's not covered",
+      "body": "Conclusions that state their limits, not a single score."
+    }
+  ],
+  "jtbd": "When the AI flags something in an audit, I want to see the claim and the evidence side by side and record my decision, so what reaches participants and the board is accurate and defensible.",
+  "evidence": [
+    {
+      "step": "The role asks for human-in-the-loop",
+      "finding": "Design 'intuitive verification workflows that allow reviewers to easily review, edit, or approve AI-flagged inconsistencies' in a portal for participants, assessors, QA staff and board executives.",
+      "source": {
+        "label": "Wellfound: VECTRA International, Technical Product Designer (posted 18 Nov 2026)",
+        "url": "https://wellfound.com/jobs/5101686-technical-product-designer"
+      }
+    },
+    {
+      "step": "A commitment isn't evidence",
+      "finding": "VECTRA: 'A management commitment to change a procedure is not the same as evidence that the change has worked.'",
+      "source": {
+        "label": "VECTRA: SMETA Audit Reports, What Buyers Can and Cannot Conclude (6 Nov 2026)",
+        "url": "https://vectra-intl.com/blog/smeta-audit-reports-buyer-guide/"
+      }
+    },
+    {
+      "step": "Reports have limits",
+      "finding": "A SMETA report 'cannot certify that a supplier is low risk across every site, product, subcontractor or period'; buyers should decide between approval, conditions or further due diligence.",
+      "source": {
+        "label": "VECTRA: SMETA Audit Reports, What Buyers Can and Cannot Conclude (6 Nov 2026)",
+        "url": "https://vectra-intl.com/blog/smeta-audit-reports-buyer-guide/"
+      }
+    },
+    {
+      "step": "Verified isn't the same as relevant",
+      "finding": "Under ISO 25500-110:2026, a successful response shows a certificate record exists; teams 'must still evaluate the certificate's status, scope, issuer, recipient' and relevance.",
+      "source": {
+        "label": "VECTRA: ISO 25500-110:2026, verifying certificates in your supply chain (12 Nov 2026)",
+        "url": "https://vectra-intl.com/blog/iso-25500-110-supply-chain-certificate-verification/"
+      }
+    },
+    {
+      "step": "Conclusions must state their limits",
+      "finding": "An assurance conclusion should explain 'the level and limits of confidence provided'.",
+      "source": {
+        "label": "VECTRA: Independent Assurance vs. Internal Audit",
+        "url": "https://vectra-intl.com/blog/independent-assurance-vs-internal-audit/"
+      }
+    }
+  ],
+  "approaches": [
+    "A list of AI flags",
+    "Highlights inside the report",
+    "Claim and evidence side by side",
+    "Uphold, edit or dismiss with a reason",
+    "An audit trail of every decision",
+    "Board conclusions that state what isn't covered"
+  ],
+  "ranges": [
+    {
+      "title": "Flag list",
+      "summary": "A flat list of AI flags; evidence lives in the PDFs.",
+      "pros": [
+        "Quick to build.",
+        "Everything in one list."
+      ],
+      "cons": [
+        "Reviewer opens two documents per flag.",
+        "No record of why a flag was dismissed."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/vectra-1-screen.svg",
+          "alt": "Sketch: flag list"
+        }
+      ],
+      "notes": [
+        "Fast",
+        "Slow to review"
+      ]
+    },
+    {
+      "title": "Highlights in the report",
+      "summary": "AI highlights inside the report document.",
+      "pros": [
+        "Shows context.",
+        "Familiar to assessors."
+      ],
+      "cons": [
+        "Claim and evidence still apart.",
+        "No decision trail."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/vectra-2-screen.svg",
+          "alt": "Sketch: highlights in report"
+        }
+      ],
+      "notes": [
+        "Contextual",
+        "No decision"
+      ]
+    },
+    {
+      "title": "Evidence Review",
+      "summary": "Each flag shows why the AI raised it, the claim and the evidence side by side, and three decisions (uphold, edit, dismiss with reason) that are logged; the board sees reviewed conclusions with what isn't covered.",
+      "pros": [
+        "Matches VECTRA's own standard of evidence.",
+        "Every AI flag has a human decision behind it."
+      ],
+      "cons": [
+        "Needs structured extraction from reports and CAPRs.",
+        "Dismiss reasons must be quick to give."
+      ],
+      "screens": [
+        {
+          "src": "/sketches/vectra-3-review-screen.svg",
+          "alt": "Sketch: claim vs evidence",
+          "label": "Review"
+        },
+        {
+          "src": "/sketches/vectra-3-board-screen.svg",
+          "alt": "Sketch: board conclusions",
+          "label": "Board"
+        }
+      ],
+      "notes": [
+        "Defensible",
+        "Extraction"
+      ]
+    }
+  ],
+  "decision": {
+    "title": "Evidence Review: the AI flags, a reviewer decides, the board sees the limits",
+    "body": "Range 3. QA staff work through AI flags with the claim and the evidence side by side, uphold, edit or dismiss each with a logged reason, and only reviewed conclusions reach the board, each stating what the evidence supports and what it doesn't cover.",
+    "reasons": [
+      "It applies VECTRA's own distinction between commitment and evidence to every flag.",
+      "A logged decision makes the AI defensible to clients and auditors.",
+      "Boards need conclusions with limits, not just scores."
+    ],
+    "tradeoff": "More steps for reviewers. Pre-filling the likely decision and moving to the next flag automatically keeps it fast."
+  },
+  "effortImpact": [
+    {
+      "option": "Evidence Review",
+      "chosen": true,
+      "effort": {
+        "design": 5,
+        "dev": 6,
+        "gtm": 3
+      },
+      "impact": {
+        "reach": 8,
+        "value": 9,
+        "business": 8
+      }
+    },
+    {
+      "option": "Highlights in the report",
+      "effort": {
+        "design": 3,
+        "dev": 4,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 8,
+        "value": 5,
+        "business": 4
+      }
+    },
+    {
+      "option": "Flag list",
+      "effort": {
+        "design": 1,
+        "dev": 2,
+        "gtm": 1
+      },
+      "impact": {
+        "reach": 8,
+        "value": 3,
+        "business": 3
+      }
+    }
+  ],
+  "depth": {
+    "body": "Built as a working portal screen in VECTRA's visual language. Three moments: a SMETA audit at QA review with three AI flags and the stage of each persona; a flag where the CAPR says 'closed' but the only evidence is a commitment letter, with uphold, edit or dismiss; and the board view, where each site's conclusion says why and what isn't covered. Panels ease in, and motion turns off for people who reduce it."
+  },
+  "validation": {
+    "method": "I'd sit with QA staff reviewing three real audits, time each flag, then test Evidence Review against the current flow.",
+    "hypotheses": [
+      "Reviewers decide on flags faster.",
+      "Fewer dismissed flags lack a reason.",
+      "Board members can explain a conclusion's limits."
+    ],
+    "metrics": [
+      {
+        "name": "Time per flag",
+        "definition": "Minutes from opening a flag to a decision."
+      },
+      {
+        "name": "Reasoned dismissals",
+        "definition": "Share of dismissed flags with a recorded reason."
+      },
+      {
+        "name": "Flag precision",
+        "definition": "Share of AI flags upheld by reviewers, per flag type."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Review three real audits with QA staff.",
+    "Map what the AI can extract from reports and CAPRs.",
+    "Test the review screen with assessors and QA.",
+    "Apply the rebrand to the component library."
+  ],
+  "sources": [
+    {
+      "label": "Wellfound: VECTRA International, Technical Product Designer (posted 18 Nov 2026)",
+      "url": "https://wellfound.com/jobs/5101686-technical-product-designer"
+    },
+    {
+      "label": "VECTRA: SMETA Audit Reports, What Buyers Can and Cannot Conclude (6 Nov 2026)",
+      "url": "https://vectra-intl.com/blog/smeta-audit-reports-buyer-guide/"
+    },
+    {
+      "label": "VECTRA: ISO 25500-110:2026, verifying certificates in your supply chain (12 Nov 2026)",
+      "url": "https://vectra-intl.com/blog/iso-25500-110-supply-chain-certificate-verification/"
+    },
+    {
+      "label": "VECTRA: Independent Assurance vs. Internal Audit",
+      "url": "https://vectra-intl.com/blog/independent-assurance-vs-internal-audit/"
+    },
+    {
+      "label": "VECTRA International: services",
+      "url": "https://vectra-intl.com/services-2/"
+    }
+  ]
+}

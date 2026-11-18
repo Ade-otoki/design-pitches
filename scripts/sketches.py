@@ -1286,3 +1286,55 @@ if __name__ == "__main__":
     for name, fn in {**VERA_SCREENS, **VO_SCREENS, **CM_SCREENS}.items():
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)
+
+
+# ---------------- VECTRA web ----------------
+VX_NAV = ("Participants", "Assessments", "QA review", "Board", "", "", "", "")
+
+
+def vx_1_web():
+    b = wsidebar(2, VX_NAV) + text(300, 80, "QA review", 26, INK, 800)
+    for i in range(6):
+        y = 110 + i * 56
+        b += box(300, y, 860, 46, stroke=LIGHT, r=8, sw=2) + bar(320, y + 19, 260, 9) + wtag(1140, y + 28, "AI: inconsistent", 0 if i < 3 else 2)
+    b += note(300, 500, "a list of AI flags", SP_P, 24) + note(300, 536, "…reviewer opens two PDFs to check each one", "#8a8a93", 22)
+    return wscreen(b, "Range 1: a flat list of AI flags; evidence lives in the uploaded PDFs")
+
+
+def vx_2_web():
+    b = wsidebar(2, VX_NAV) + text(300, 80, "Audit report", 26, INK, 800)
+    b += box(300, 110, 860, 420, stroke=LIGHT, r=10, sw=2)
+    for i in range(10):
+        b += bar(320, 140 + i * 30, 600 - (i % 3) * 80, 9)
+    b += f'<rect x="316" y="226" width="520" height="22" fill="#fff1b8"/>' + f'<rect x="316" y="346" width="420" height="22" fill="#fff1b8"/>'
+    b += note(300, 590, "highlights in the report", SP_P, 24) + note(300, 626, "…no side-by-side, no decision trail", "#8a8a93", 22)
+    return wscreen(b, "Range 2: AI highlights inside the report document")
+
+
+def vx_3a_web():
+    b = wsidebar(2, VX_NAV) + text(300, 80, "Closed without evidence", 24, INK, 800)
+    b += f'<rect x="300" y="110" width="860" height="60" rx="8" fill="#f8fafc"/>' + f'<rect x="300" y="110" width="4" height="60" fill="#ffbe33"/>' + bar(320, 136, 600, 9)
+    b += box(300, 190, 420, 120, stroke=LIGHT, r=12, sw=2) + text(316, 216, "What the report says", 12, MID, 700) + text(316, 246, "Status: Closed", 15, INK, 700)
+    b += box(740, 190, 420, 120, stroke=LIGHT, r=12, sw=2) + text(756, 216, "What the evidence shows", 12, MID, 700) + text(756, 246, "Only a commitment letter", 15, INK, 700)
+    b += f'<rect x="300" y="330" width="200" height="40" rx="20" fill="#099250"/>' + text(400, 355, "Uphold: reopen", 13, "#fff", 700, "middle") + box(512, 330, 140, 40, stroke=LIGHT, r=20, sw=2) + text(582, 355, "Edit", 13, INK, 700, "middle")
+    b += ring(296, 186, 868, 128, 14) + note(300, 440, "claim vs evidence, side by side,", SP_P, 24) + note(300, 472, "then a decision that's logged", SP_P, 24)
+    return wscreen(b, "Range 3, review: claim and evidence side by side, uphold, edit or dismiss")
+
+
+def vx_3b_web():
+    b = wsidebar(3, VX_NAV) + text(300, 80, "Supplier assurance · Q4", 26, INK, 800)
+    for i, (n, c) in enumerate([("48", "#fff"), ("31", "#fff"), ("12", "#fff5df"), ("5", "#fdecec")]):
+        b += f'<rect x="{300+i*215}" y="110" width="200" height="80" rx="12" fill="{c}" stroke="{LIGHT}" stroke-width="2"/>' + text(316 + i * 215, 155, n, 26, INK, 800)
+    for i, (t, s) in enumerate([("More due diligence", 0), ("Approved", 1), ("With conditions", 2)]):
+        y = 220 + i * 54
+        b += bar(300, y + 18, 200, 9) + wtag(640, y + 26, t, s) + bar(800, y + 18, 200, 9, "#e4e4ea")
+    b += ring(296, 212, 868, 170, 12) + note(300, 450, "board sees conclusions and what isn't covered", SP_P, 24)
+    return wscreen(b, "Range 3, board: reviewed conclusions with the limits of each")
+
+
+VX_SCREENS = {"vectra-1-screen": vx_1_web, "vectra-2-screen": vx_2_web, "vectra-3-review-screen": vx_3a_web, "vectra-3-board-screen": vx_3b_web}
+
+if __name__ == "__main__":
+    for name, fn in VX_SCREENS.items():
+        (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
+        print("wrote", name)
